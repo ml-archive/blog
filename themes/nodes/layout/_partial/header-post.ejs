@@ -1,0 +1,62 @@
+<div class="article-header">
+
+	<a class="article-header__back-button" href="<%= config.url %>">
+		<svg width="14px" height="14px" viewBox="0 0 14 14">
+			<g transform="translate(-13.000000, -13.000000)" fill="#FFFFFF">
+				<path d="M16.8,19 L27,19 L27,21 L16.8,21 L21.4,25.6 L20,27 L13,20 L13.7,19.3 L20,13 L21.4,14.4 L16.8,19 Z M16,20.2 L16,19.8 L15.8,20 L16,20.2 Z"></path>
+			</g>
+		</svg>
+	</a>
+
+	<div class="article apply-typography">
+		<div class="article-meta">
+			<div class="article-meta__left">
+				<% if(page.categories && page.categories.length > 0) { %>
+				<div class="article-meta__category">
+					<%- list_categories(page.categories, {
+						show_count: false
+					}) %>
+				</div>
+				<% } else { %>
+				<div class="article-meta__category">
+					Uncategorized
+				</div>
+				<% }%>
+
+				<% if(page.readingTime) { %>
+				<div class="seperator-line seperator-line--60"></div>
+				<div class="article-meta__reading-time">
+					<%- page.readingTime.text %>
+				</div>
+				<% } %>
+
+			</div>
+			<div class="article-meta__right">
+				<% if(page.author) { %>
+				<div class="article-meta__author">
+					<%- page.author.name %>
+				</div>
+				<% } %>
+
+				<% if(page.author && page.date) { %>
+				&nbsp;·&nbsp;
+				<% } %>
+
+				<% if(page.date) { %>
+				<div class="article-meta__date">
+					<%- page.date.format('MMMM Do YYYY') %>
+				</div>
+				<% } %>
+			</div>
+		</div>
+
+
+		<div class="article__title">
+			<h2>
+				<a href="<%- url_for(page.path) %>">
+					<%- page.title %>
+				</a>
+			</h2>
+		</div>
+	</div>
+</div>

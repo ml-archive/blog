@@ -1,0 +1,23 @@
+@import 'util/util';
+
+$warm-pink: #ff4d79;
+$black: #000000;
+$white: #fafafa;
+$gray: #ccc;
+$black-60: rgba(0, 0, 0, 0.6);
+$black-30: rgba(0, 0, 0, 0.3);
+$real-white: #ffffff;
+
+$whitespace-base: rem-calc(10);
+$whitespace-small: $whitespace-base; // 10px
+$whitespace-medium: $whitespace-base * 2; // 20px
+$whitespace-large: $whitespace-base * 4; // 40px
+$whitespace-xlarge: $whitespace-base * 8; //80px
+$whitespace-xxlarge: $whitespace-base * 16; // 160px
+
+$page-header-height: rem-calc(80);
+
+$fontweight-thin: 100;
+$fontweight-regular: 300;
+$fontweight-medium: 400;
+$fontweight-bold: 500;

@@ -1,0 +1,12 @@
+{
+  "name": "Hexo Blank",
+  "version": "0.0.1",
+  "authors": [
+    "Austin Knight <aknight@Backcountry.com>"
+  ],
+  "description": "The barest of bones hexo theme",
+  "license": "MIT",
+  "private": false,
+  "dependencies": {
+  }
+}

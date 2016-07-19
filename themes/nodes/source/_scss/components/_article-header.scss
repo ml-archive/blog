@@ -1,0 +1,42 @@
+.article-header {
+	@include flex-grid-row();
+	@include flex-align($x: center);
+
+
+	position: relative;
+	padding-top: $whitespace-base;
+	padding-bottom: $whitespace-medium;
+
+	.article {
+		@include flex-grid-column($columns: 12);
+		@include breakpoint(medium) {
+			@include flex-grid-column($columns: 8);
+
+			padding-top: $whitespace-medium;
+			padding-bottom: $whitespace-base * 5;
+		}
+		@include breakpoint(large) {
+			@include flex-grid-column($columns: 6);
+		}
+	}
+}
+
+.article-header__back-button {
+	justify-content: center;
+	align-items: center;
+
+	position: absolute;
+	left: $whitespace-large;
+	top: $whitespace-base * 6;
+
+	width: 40px;
+	height: 40px;
+
+	background-color: $warm-pink;
+	border-radius: 999px;
+
+	display: none;
+	@include breakpoint(medium) {
+		display: flex;
+	}
+}

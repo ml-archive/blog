@@ -1,0 +1,37 @@
+.page-header {
+	//display: flex;
+	//align-items: center;
+	//justify-content: space-between;
+	@include flex-grid-row();
+	@include flex-align($x: spaced);
+
+	font-family: $header-font-family;
+
+	a {
+		color: $black;
+	}
+
+	@include breakpoint(large) {
+	}
+}
+.page-header__brand,
+.page-header__navigation {
+	@include flex-grid-column($columns: 12);
+	@include breakpoint(large) {
+		@include flex-grid-column($columns: 6);
+	}
+}
+.page-header__brand {
+	padding-right: $whitespace-medium;
+	padding-left: $whitespace-medium;
+	@include breakpoint(large) {
+		padding-right: rem-calc($whitespace-base * 6);
+		padding-left: rem-calc($whitespace-base * 6);
+	}
+}
+.page-header__navigation {
+	padding-right: $whitespace-medium;
+	@include breakpoint(large) {
+		padding-right: rem-calc($whitespace-base * 6);
+	}
+}

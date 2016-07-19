@@ -1,0 +1,11 @@
+$colors: $warm-pink, $black, $white, $black-60, $black-30, $real-white, $gray;
+$color-names: 'warm-pink', 'black', 'white', 'black-60', 'black-30', 'real-white', 'gray';
+
+@for $i from 1 through length($colors) {
+	.text-#{nth($color-names, $i)} {
+		color: nth($colors, $i);
+	}
+	.background-#{nth($color-names, $i)} {
+		background-color: nth($colors, $i);
+	}
+}

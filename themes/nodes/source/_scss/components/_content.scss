@@ -1,0 +1,30 @@
+.content {
+	@include flex-grid-row();
+	@include flex-align($x: center);
+	margin-right: $whitespace-medium;
+	margin-bottom: $whitespace-medium;
+	margin-left: $whitespace-medium;
+
+	background-color: $white;
+}
+.content__article {
+	@include flex-grid-column($columns: 12);
+	@include breakpoint(medium) {
+		@include flex-grid-column($columns: 8);
+	}
+	@include breakpoint(large) {
+		@include flex-grid-column($columns: 6);
+	}
+
+	padding-top: $whitespace-medium;
+	padding-bottom: $whitespace-medium;
+
+	background-image: 	linear-gradient(90deg, rgba(204, 204, 204, 0.2) 1px, transparent 1px),
+						linear-gradient(90deg, rgba(204, 204, 204, 0.2) 1px, transparent 1px);
+	background-size:50% 1px, 99.99% 100px;
+
+	@include breakpoint(large) {
+		padding-top: $whitespace-xlarge;
+		padding-bottom: $whitespace-medium;
+	}
+}

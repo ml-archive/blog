@@ -1,0 +1,19 @@
+language: node_js
+branches:
+  only:
+  - master
+before_install:
+- npm install -g hexo
+- npm install
+install:
+- gulp styles
+- hexo generate
+before_script:
+- git config --global user.name 'Dennis Haulund Nielsen via Travis CI'
+- git config --global user.email 'dhni@nodes.dk'
+- sed -i'' "s~git@github.com:nodesagency/blog.git~https://${GH_TOKEN}:x-oauth-basic@github.com/nodesagency/blog.git~" _config.yml
+script:
+- hexo deploy --silent
+env:
+  global:
+    secure: dW9jVMcQ/4pTeQ02mUe6cE5+T2CfgUQl8Bjy7JWErQt3gv9sYLjGYyUS8YBg5rNZm9RirJ7USPzxT1Zmi2rwYt0TWNYeWffmNB3MDQRVcBuflmP7zpBCpkuUA4buq9rkrH58lmT/kim71BiwR+/iLnOhgxfw8W0WseFEb4MSN0e678KMgkYDmz/tHaMiNM2aFRx1UD3EdNIqUtnR7CLNbNzTxrZwveFS+5j+fYyPt41iXoOOwyJ220vEYVqgTBOHn5rds/8c/ec9SNW7PkB697yQOdRN2p1P3Zw1KbXu3Cl62KEAU0OaEAsunJ2iM3cbLwAZxe9kgG6CjecNm6gpEbAylASJPGPVQ8zb9/Er8rXPOKcS2XeYat6SZiYKNuiKhRYSvnRHy2Ss2n13glULfPvFQHLR63D4SEJmTHaYaqojQFpDIwP0oI7kJkzEVrnBLwUnhrrVoDybQg1Aj27DUAgeOluJNglWBE+2zabHbueLRHuSlP26XaQlst62kDeL5aKgjSoY9iued9JfHmFXraxc0d3myqz10+UP1lAoDuChWhz/O9Yjp25bQGfXIob3PWpJocXnSz89Ld6U1YIIbQFdMghwEJ+4biKIAbaaNHdEuK497uni0rAQtqgQW3PI1GkhPWTRxb3uT2NxxKae1vLHkHG5QcrDVyLFj70bz1E=

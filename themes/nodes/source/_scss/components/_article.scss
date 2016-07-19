@@ -1,0 +1,53 @@
+.article {
+	img {
+		border-radius: 10px;
+	}
+	figure {
+		margin-left: 0;
+		margin-right: 0;
+	}
+	figcaption {
+		font-family: $header-font-family;
+		color: $black-30;
+		&:before {
+			content: '\2014 \0020';
+		}
+	}
+	@include breakpoint(medium) {
+		figure {
+			margin-right: -16.6666%;
+			margin-left: -16.6666%;
+		}
+		figcaption {
+			//margin-right: 16.6666%;
+			//margin-left: 16.6666%;
+		}
+	}
+	@include breakpoint(large) {
+		figure {
+			margin-right: -25%;
+			margin-left: -25%;
+		}
+		figcaption {
+			margin-right: 16.6666%;
+			margin-left: 16.6666%;
+		}
+	}
+}
+
+.article__title {
+	padding-left: $whitespace-medium;
+	padding-right: $whitespace-medium;
+	@include breakpoint(large) {
+		padding-left: 0;
+		padding-right: 0;
+	}
+
+	h2 {
+		font-weight: $fontweight-regular;
+		margin-bottom: 0;
+	}
+	a {
+		color: $black;
+	}
+}

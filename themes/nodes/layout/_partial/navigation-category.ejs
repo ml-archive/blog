@@ -1,0 +1,21 @@
+<!--<h3>NAV</h3>-->
+<nav class="site-menu">
+</nav>
+
+
+<div class="top-bar">
+	<div class="top-bar-title">
+		<a href="<%= config.url %>"><%= config.title %></a>
+	</div>
+	<div class="top-bar-right">
+		<div class="float-right">
+			<ul class="menu">
+				<% for (var i in theme.menu){ %>
+				<li>
+					<a href="<%- url_for(theme.menu[i]) %>"><%= i %></a>
+				</li>
+				<% } %>
+			</ul>
+		</div>
+	</div>
+</div>

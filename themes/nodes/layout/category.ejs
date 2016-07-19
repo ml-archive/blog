@@ -1,0 +1,31 @@
+<%- partial('_partial/header-page') %>
+
+<div class="row">
+	<div class="small-12 columns">
+		Categories: <%- n_listcategories() %>
+	</div>
+</div>
+
+<div class="row">
+	<div class="small-12 columns">
+		<h1>Viewing all posts in category: <%- page.category %></h1>
+	</div>
+	<div class="small-12 columns">
+
+		<% page.posts.each(function(post){ %>
+		<%- partial('_partial/article-list-item', {post: post, latest: false}) %>
+		<% }); %>
+
+	</div>
+</div>
+<div class="row align-center">
+	<!--<div class="small-12 columns">-->
+	<%- f_paginator({
+		prev_text: "Previous",
+		next_text: "Next",
+		end_size: 2,
+		mid_size: 4
+	}) %>
+	<!--</div>-->
+</div>
+

@@ -1,0 +1,21 @@
+@mixin size($type: padding, $side: null, $size: $whitespace-base) {
+	@if $side == null {
+		#{$type}: $size;
+	} @else if $side == all {
+		#{$type}: $size;
+	} @else if $side == horizontal {
+		#{$type}-left: $size;
+		#{$type}-right: $size;
+	} @else if $side == vertical {
+		#{$type}-top: $size;
+		#{$type}-bottom: $size;
+	} @else if $side == top {
+		#{$type}-top: $size;
+	} @else if $side == right {
+		#{$type}-right: $size;
+	} @else if $side == bottom {
+		#{$type}-bottom: $size;
+	} @else if $side == left {
+		#{$type}-left: $size;
+	}
+}

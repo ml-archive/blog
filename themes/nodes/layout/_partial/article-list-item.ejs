@@ -1,0 +1,70 @@
+<div class="article article-summary apply-typography">
+	<div class="article-meta">
+		<div class="article-meta__left">
+			<% if(!latest) { %>
+				<% if(post.categories && post.categories.length > 0) { %>
+					<div class="article-meta__category">
+						<%- list_categories(post.categories, {
+							show_count: false
+						}) %>
+					</div>
+				<% } else { %>
+					<div class="article-meta__category">
+						Uncategorized
+					</div>
+				<% }%>
+			<% } %>
+
+			<% if(post.readingTime) { %>
+				<% if(!latest) { %>
+					<div class="seperator-line seperator-line--60"></div>
+				<% } %>
+				<div class="article-meta__reading-time">
+					<%- post.readingTime.text %>
+				</div>
+			<% } %>
+
+		</div>
+		<div class="article-meta__right">
+			<% if(!latest) { %>
+				<% if(post.author) { %>
+					<div class="article-meta__author">
+						<%- post.author.name %>
+					</div>
+				<% } %>
+
+				<% if(post.author && post.date) { %>
+					&nbsp;·&nbsp;
+				<% } %>
+			<% } %>
+			<% if(post.date) { %>
+				<div class="article-meta__date">
+					<%- post.date.format('MMMM Do YYYY') %>
+				</div>
+			<% } %>
+		</div>
+	</div>
+
+
+	<div class="article__title">
+		<h2>
+			<a href="<%- url_for(post.path) %>">
+				<%- post.title %>
+			</a>
+		</h2>
+	</div>
+
+	<% if(post.excerpt) { %>
+		<div class="article-summary__excerpt">
+			<p>
+				<%- post.excerpt %>
+
+				<% if(theme.excerpt_link) { %>
+				<a href="<%- url_for(post.path) %>">
+					<%- theme.excerpt_link %>
+				</a>
+				<% } %>
+			</p>
+		</div>
+	<% } %>
+</div>

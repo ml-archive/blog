@@ -1,0 +1,25 @@
+# Header
+menu:
+  Home: /
+  Articles: blog/
+  Open Source: open-source/
+  Back to Nodes: http://www.nodesagency.com/
+rss: /atom.xml
+
+# Content
+excerpt_link: Read More
+
+# Sidebar
+sidebar: right
+widgets:
+- category
+- tag
+- tagcloud
+- archive
+- recent_posts
+
+# Miscellaneous
+google_analytics:
+favicon: /favicon.png
+twitter:
+google_plus:

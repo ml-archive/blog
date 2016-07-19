@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html class="no-js">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  <%
+  var title = page.title;
+
+  if (is_archive()){
+    title = 'Archives';
+
+    if (is_month()){
+      title += ': ' + page.year + '/' + page.month;
+    } else if (is_year()){
+      title += ': ' + page.year;
+    }
+  } else if (is_category()){
+    title = 'Category: ' + page.category;
+  } else if (is_tag()){
+    title = 'Tag: ' + page.tag;
+  }
+  %>
+
+  <title><% if (title){ %><%= title %> | <% } %><%= config.title %></title>
+
+  <% if (theme.rss){ %>
+    <link rel="alternative" href="<%- theme.rss %>" title="<%= config.title %>" type="application/atom+xml">
+  <% } %>
+
+  <% if (theme.favicon){ %>
+    <link rel="icon" href="<%- theme.favicon %>">
+  <% } %>
+
+  <link href="https://fonts.googleapis.com/css?family=Noto+Serif|Roboto+Mono|Roboto:100,300,400,500" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.rawgit.com/konpa/devicon/master/devicon.min.css">
+
+  <%- css('css/style') %>
+
+</head>
+<body>
+
+  <%- body %>
+
+  <%- js('/js/vendor/jquery.min.js') %>
+  <%- js('/js/vendor/barba.min.js') %>
+  <%- js('/js/vendor/vendor.js') %>
+  <%- js('/js/client/app.js') %>
+</body>
+</html>

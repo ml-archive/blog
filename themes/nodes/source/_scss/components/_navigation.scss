@@ -1,0 +1,64 @@
+html:not(.no-js) {
+	//height: 0;
+	.page-header__navigation {
+		height: 0;
+		overflow: hidden;
+
+		transition: height 0.7s;
+		will-change: height;
+		@include breakpoint(large) {
+			height: auto;
+			overflow: auto;
+		}
+	}
+	.navigation {
+
+	}
+}
+.navigation__item {
+	display: block;
+
+	padding-left: $whitespace-medium;
+
+	line-height: $page-header-height / 2;
+
+	@include breakpoint(large) {
+		display: inline-block;
+
+		margin-right: $whitespace-large;
+		padding-left: 0;
+
+		line-height: $page-header-height;
+
+		&:last-of-type {
+			margin-right: 0;
+		}
+	}
+}
+.navigation__item--active {
+	box-shadow: inset 2px 0 0 0 $warm-pink;
+
+	@include breakpoint(large) {
+		box-shadow: inset 0 2px 0 0 $warm-pink;
+	}
+}
+
+html.no-js .page-header__mobile-toggle {
+	display: none;
+}
+.page-header__mobile-toggle {
+	margin-left: auto;
+	padding-right: $whitespace-medium;
+	padding-left: $whitespace-medium;
+
+	line-height: $page-header-height / 2;
+	@include breakpoint(large) {
+		display: none;
+	}
+
+	button {
+		&:focus {
+			outline: none;
+		}
+	}
+}

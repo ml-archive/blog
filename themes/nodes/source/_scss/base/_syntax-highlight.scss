@@ -1,0 +1,111 @@
+.highlight {
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.highlight figcaption {
+	a {
+		float: right;
+	}
+}
+
+.highlight {
+	table {
+		margin: 0;
+		width: auto;
+
+		border-collapse: collapse;
+		border-spacing: 0;
+	}
+	table thead, table tbody, table tfoot {
+		background-color: transparent;
+		border: none;
+	}
+}
+.highlight pre {
+	margin: 0;
+	padding: 0;
+}
+.highlight .gutter pre {
+	text-align: right;
+	padding-right: 20px;
+}
+.highlight .code pre {
+
+
+}
+
+.highlight {
+	display: block;
+	overflow-x: auto;
+	background: #2d2d2d;
+	color: #cccccc;
+	padding: 0.5em;
+
+	/* Tomorrow Night Eighties Theme */
+	/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+	/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+
+	/* Tomorrow Comment */
+	.comment,
+	.quote {
+		color: #999999;
+	}
+
+	/* Tomorrow Red */
+	.variable,
+	.template-variable,
+	.tag,
+	.name,
+	.selector-id,
+	.selector-class,
+	.regexp,
+	.deletion {
+		color: #f2777a;
+	}
+
+	/* Tomorrow Orange */
+	.number,
+	.built_in,
+	.builtin-name,
+	.literal,
+	.type,
+	.params,
+	.meta,
+	.link {
+		color: #f99157;
+	}
+
+	/* Tomorrow Yellow */
+	.attribute {
+		color: #ffcc66;
+	}
+
+	/* Tomorrow Green */
+	.string,
+	.symbol,
+	.bullet,
+	.addition {
+		color: #99cc99;
+	}
+
+	/* Tomorrow Blue */
+	.title,
+	.section {
+		color: #6699cc;
+	}
+
+	/* Tomorrow Purple */
+	.keyword,
+	.selector-tag {
+		color: #cc99cc;
+	}
+
+	.emphasis {
+		font-style: italic;
+	}
+
+	.strong {
+		font-weight: bold;
+	}
+}
