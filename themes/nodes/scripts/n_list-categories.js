@@ -19,6 +19,8 @@ function nListCategoriesHelper(categories, options) {
 	var order = options.order || 1;
 	var transform = options.transform;
 	var showCurrent = options.show_current || false;
+	var showAll = options.show_all || false;
+	var showAllSlug = options.show_all_slug || 'archive';
 	var result = '';
 	var self = this;
 	

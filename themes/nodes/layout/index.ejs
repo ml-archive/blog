@@ -9,19 +9,21 @@
 				<p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda atque consequatur corporis deleniti doloremque dolorum eligendi facilis fugiat ipsum iure libero, nemo nisi quas, sequi temporibus. Consequatur cum cupiditate ea earum esse facilis hic in, itaque molestias nam nisi non, provident quaerat, repellat suscipit temporibus unde voluptas! Ad autem eligendi eum fugit iure maxime nemo odio, optio rem similique. Officia.</p>
 			</div>
 			<div class="articles-latest">
-				<h2>Newest Articles</h2>
+				<div class="page-subheader margin-bottom--medium">
+					<h3>New Articles</h3>
+				</div>
 
 				<div class="articles-latest__list">
 					<% site.categories.each(function(c, cI) { %>
-					<div class="articles-latest__article">
-						<h3>Latest in <span class="articles-latest__category"><%- c.name %></span>:</h3>
+						<div class="articles-latest__article">
+							<h3>Latest in <span class="articles-latest__category"><%- c.name %></span>:</h3>
 
-						<% site.categories.findOne({name: c.name}).posts.each(function(post, i) { %>
-						<% if(i === 0) { %>
-						<%- partial('_partial/article-list-item', {post: post, latest: true}) %>
-						<% } %>
-						<% }); %>
-					</div>
+							<% site.categories.findOne({name: c.name}).posts.each(function(post, i) { %>
+								<% if(i === 0) { %>
+									<%- partial('_partial/article-list-item', {post: post, latest: true}) %>
+								<% } %>
+							<% }); %>
+						</div>
 					<% }); %>
 				</div>
 			</div>
