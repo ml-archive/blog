@@ -40,7 +40,7 @@ gulp.task('browserSync', function() {
 		// server: {
 		// 	baseDir: 'public'
 		// },
-		proxy: 'http://localhost:4000/nhexo'
+		proxy: 'http://localhost:4000/blog'
 	})
 });
 

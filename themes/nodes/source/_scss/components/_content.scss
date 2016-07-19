@@ -6,6 +6,7 @@
 .content {
 	@include flex-grid-row();
 	@include flex-align($x: center);
+	min-height: calc(100vh - (#{$page-header-height} + #{$whitespace-medium}));
 	margin-bottom: $whitespace-medium;
 }
 .content__article {

@@ -1,31 +1,35 @@
 <%- partial('_partial/header-page') %>
 
-<div class="row">
-	<div class="small-12 columns">
-		Categories: <%- n_listcategories() %>
-	</div>
-</div>
+<div class="content-wrapper">
+	<div class="content">
+		<div class="content__article">
+			<div class="page-subheader">
+				<h3>Viewing all posts in category: <%- page.category %></h3>
+			</div>
 
-<div class="row">
-	<div class="small-12 columns">
-		<h1>Viewing all posts in category: <%- page.category %></h1>
-	</div>
-	<div class="small-12 columns">
+			<% page.posts.each(function(post){ %>
+				<%- partial('_partial/article-list-item', {post: post, latest: false}) %>
 
-		<% page.posts.each(function(post){ %>
-		<%- partial('_partial/article-list-item', {post: post, latest: false}) %>
-		<% }); %>
+				<div class="article-divider">
+					<svg viewBox="0 0 20 20">
+						<g>
+							<path d="M11,9 L11,2 L10,2 L10,9 L3,9 L3,10 L10,10 L10,17 L11,17 L11,10 L18,10 L18,9 L11,9 Z" id="Plus" fill="#CCCCCC"></path>
+						</g>
+					</svg>
+				</div>
+				<% }); %>
 
+				<% if(page.total > 1) { %>
+					<%- f_paginator({
+						prev_text: "Previous",
+						next_text: "Next",
+						end_size: 2,
+						mid_size: 4,
+						class: 'text-center'
+					}) %>
+			<% } %>
+		</div>
 	</div>
-</div>
-<div class="row align-center">
-	<!--<div class="small-12 columns">-->
-	<%- f_paginator({
-		prev_text: "Previous",
-		next_text: "Next",
-		end_size: 2,
-		mid_size: 4
-	}) %>
-	<!--</div>-->
+	<%- partial('_partial/widgets/sticky-categories') %>
 </div>
 
