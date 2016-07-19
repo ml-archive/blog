@@ -1,35 +1,36 @@
 <%- partial('_partial/header-page') %>
-<div class="content">
-	<div class="content__article">
-		<div class="hero-unit">
-			<h1>
-				Welcome to the Nodes Engineering site.
-			</h1>
-			<p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda atque consequatur corporis deleniti doloremque dolorum eligendi facilis fugiat ipsum iure libero, nemo nisi quas, sequi temporibus. Consequatur cum cupiditate ea earum esse facilis hic in, itaque molestias nam nisi non, provident quaerat, repellat suscipit temporibus unde voluptas! Ad autem eligendi eum fugit iure maxime nemo odio, optio rem similique. Officia.</p>
-		</div>
-		<div class="articles-latest">
-			<h2>Newest Articles</h2>
+<div class="content-wrapper">
+	<div class="content">
+		<div class="content__article">
+			<div class="hero-unit">
+				<h1>
+					Welcome to the Nodes Engineering site.
+				</h1>
+				<p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda atque consequatur corporis deleniti doloremque dolorum eligendi facilis fugiat ipsum iure libero, nemo nisi quas, sequi temporibus. Consequatur cum cupiditate ea earum esse facilis hic in, itaque molestias nam nisi non, provident quaerat, repellat suscipit temporibus unde voluptas! Ad autem eligendi eum fugit iure maxime nemo odio, optio rem similique. Officia.</p>
+			</div>
+			<div class="articles-latest">
+				<h2>Newest Articles</h2>
 
-			<div class="articles-latest__list">
-				<% site.categories.each(function(c, cI) { %>
+				<div class="articles-latest__list">
+					<% site.categories.each(function(c, cI) { %>
 					<div class="articles-latest__article">
 						<h3>Latest in <span class="articles-latest__category"><%- c.name %></span>:</h3>
 
 						<% site.categories.findOne({name: c.name}).posts.each(function(post, i) { %>
-							<% if(i === 0) { %>
-								<%- partial('_partial/article-list-item', {post: post, latest: true}) %>
-							<% } %>
+						<% if(i === 0) { %>
+						<%- partial('_partial/article-list-item', {post: post, latest: true}) %>
+						<% } %>
 						<% }); %>
 					</div>
-				<% }); %>
+					<% }); %>
+				</div>
 			</div>
-		</div>
 
-		<div class="repos repos--featured">
+			<div class="repos repos--featured">
 
-			<h2>Featured Open Source projects</h2>
+				<h2>Featured Open Source projects</h2>
 
-			<% for (repo in site.data.github_frontend) { %>
+				<% for (repo in site.data.github_frontend) { %>
 				<div class="repo"
 					 data-github-repo="<%= site.data.github_frontend[repo].slug %>"
 					 data-github-org="<%= site.data.github_frontend[repo].organization %>"
@@ -54,10 +55,9 @@
 						</p>
 					</div>
 				</div>
-			<% } %>
+				<% } %>
 
+			</div>
 		</div>
 	</div>
 </div>
-
-

@@ -1,11 +1,12 @@
+.content-wrapper {
+	margin-right: $whitespace-medium;
+	margin-left: $whitespace-medium;
+	background-color: $white;
+}
 .content {
 	@include flex-grid-row();
 	@include flex-align($x: center);
-	margin-right: $whitespace-medium;
 	margin-bottom: $whitespace-medium;
-	margin-left: $whitespace-medium;
-
-	background-color: $white;
 }
 .content__article {
 	@include flex-grid-column($columns: 12);

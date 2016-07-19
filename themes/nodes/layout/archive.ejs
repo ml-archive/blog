@@ -1,8 +1,9 @@
 <%- partial('_partial/header-page') %>
 
-<div class="content">
-	<div class="content__article">
-		<% page.posts.each(function(post){ %>
+<div class="content-wrapper">
+	<div class="content">
+		<div class="content__article">
+			<% page.posts.each(function(post){ %>
 			<%- partial('_partial/article-list-item', {post: post, latest: false}) %>
 
 			<div class="article-divider">
@@ -12,9 +13,9 @@
 					</g>
 				</svg>
 			</div>
-		<% }); %>
+			<% }); %>
 
-		<% if(page.total > 1) { %>
+			<% if(page.total > 1) { %>
 			<%- f_paginator({
 				prev_text: "Previous",
 				next_text: "Next",
@@ -22,6 +23,7 @@
 				mid_size: 4,
 				class: 'text-center'
 			}) %>
-		<% } %>
+			<% } %>
+		</div>
 	</div>
 </div>
