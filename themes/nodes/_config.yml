@@ -2,7 +2,6 @@
 menu:
   Home: /
   Articles: articles/
-  Back to Nodes: http://www.nodesagency.com/
 rss: /atom.xml
 
 # Content
