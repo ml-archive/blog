@@ -1,5 +1,5 @@
 <nav role="navigation" class="navigation" id="navigation">
 	<% for (var i in theme.menu){ %>
-		<a class="navigation__item <%= nIsCurrent(theme.menu[i]) ? 'navigation__item--active' : '' %>" href="<%- url_for(theme.menu[i]) %>"><%= i %></a>
+		<a class="navigation__item <%= nIsCurrent(theme.menu[i]) ? 'navigation__item--active' : '' %> <%= (theme.menu[i] === 'articles/' && is_category()) ? 'navigation__item--active' : '' %>" href="<%- url_for(theme.menu[i]) %>"><%= i %></a>
 	<% } %>
 </nav>
