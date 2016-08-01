@@ -19,8 +19,8 @@ gulp.task('styles', function() {
 			.pipe(sourcemaps.init())
 			.pipe(sass({
 				includePaths: [
-					'./themes/nodes/node_modules/foundation-sites/scss',
-					'./themes/nodes/node_modules/utility-opentype/css'
+					'./node_modules/foundation-sites/scss',
+					'./node_modules/utility-opentype/css'
 				]
 			}).on('error', sass.logError))
 			.pipe(postcss([
@@ -37,7 +37,12 @@ gulp.task('styles:watch', function() {
 gulp.task('browserSync', function() {
 	browserSync.init({
 		files: ['public/**/*.*'],
-		proxy: 'http://localhost:4000/blog'
+		server: {
+			baseDir: 'public',
+			routes: {
+				'/blog': 'public'
+			}
+		}
 	})
 });
 
