@@ -32,12 +32,19 @@
   },
   "devDependencies": {
     "autoprefixer": "^6.3.7",
+    "babel-core": "^6.11.4",
+    "babel-preset-es2015": "^6.9.0",
     "browser-sync": "^2.12.5",
     "concurrently": "^2.2.0",
+    "del": "^2.2.1",
     "faker": "^3.1.0",
     "gulp": "^3.9.1",
+    "gulp-babel": "^6.1.2",
+    "gulp-concat": "^2.6.0",
     "gulp-postcss": "^6.1.1",
     "gulp-sass": "^2.3.1",
-    "gulp-sourcemaps": "^2.0.0-alpha"
+    "gulp-size": "^2.1.0",
+    "gulp-sourcemaps": "^2.0.0-alpha",
+    "gulp-uglify": "^2.0.0"
   }
 }

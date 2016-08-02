@@ -226,7 +226,7 @@ var RESPONSES = {
 	document.querySelector('html').classList.remove('no-js');
 })();
 
-jQuery(document).ready(function($) {
+$(document).ready(function() {
 	
 	var $articleBackButton = $('.article-header__back-button');
 	if($articleBackButton.length > 0) {
