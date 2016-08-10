@@ -1,11 +1,17 @@
 {
-  "name": "hexo-site",
+  "name": "nodes-techblog",
   "version": "0.2.0",
   "private": true,
   "scripts": {
-    "build": "hexo clean && hexo generate",
-    "theme": "concurrently --kill-others --raw 'hexo generate -w' 'gulp'",
-    "write": "concurrently --kill-others --raw 'hexo generate -w' 'gulp browserSync'"
+    "build": "hexo clean && gulp build && hexo generate",
+    "deploy": "npm run build && hexo deploy",
+    "theme": "concurrently --kill-others 'hexo generate -w --color' 'gulp --color'",
+    "write": "concurrently --kill-others --raw 'hexo generate -w --color' 'gulp static --color'"
+  },
+  "bin": {
+    "theme": "bin/theme.js",
+    "write": "bin/write.js",
+    "deploy": "bin/deploy.js"
   },
   "hexo": {
     "version": "3.2.2"
@@ -45,6 +51,7 @@
     "gulp-sass": "^2.3.1",
     "gulp-size": "^2.1.0",
     "gulp-sourcemaps": "^2.0.0-alpha",
-    "gulp-uglify": "^2.0.0"
+    "gulp-uglify": "^2.0.0",
+    "shelljs": "^0.7.3"
   }
 }

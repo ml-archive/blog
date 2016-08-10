@@ -15,6 +15,8 @@ var autoprefixer = require('autoprefixer');
 var babel = require('gulp-babel');
 var uglify = require('gulp-uglify');
 
+var shell = require('shelljs');
+
 var config = {
 	styles: {
 		inFiles: './themes/nodes/source/_scss/*.scss',
@@ -83,4 +85,21 @@ gulp.task('serve', ['styles', 'scripts'], function() {
 	gulp.watch([config.scripts.watchPattern], ['scripts', reload]);
 });
 
+gulp.task('serve:static', ['styles', 'scripts'], function() {
+	browserSync({
+		notify: false,
+		files: ['public/**/*.*'],
+		server: {
+			baseDir: 'public',
+			routes: {
+				'/blog': 'public'
+			}
+		}
+	});
+});
+
 gulp.task('default', ['clean', 'serve']);
+
+gulp.task('build', ['clean', 'styles', 'scripts'], function() {
+	shell.exec('hexo generate');
+});
