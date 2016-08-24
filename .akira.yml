@@ -12,3 +12,5 @@ config:
     database: /config/database.php
 
 docker_template: "clean-default"
+
+slack_channel: "#nodesengineeringblog"
