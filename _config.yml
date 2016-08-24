@@ -12,7 +12,7 @@ timezone:
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
-url: https://engineering.nodes.dk
+url: https://engineering.nodesagency.com
 root: /
 permalink: articles/:category/:title/
 permalink_defaults:
