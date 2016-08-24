@@ -26,5 +26,3 @@ prepare:
 config:
 
 docker_template: "clean-default"
-
-slack_channel: "#nodesengineeringblog"
