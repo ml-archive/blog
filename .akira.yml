@@ -15,6 +15,8 @@ before_prepare:
     - command: '/usr/bin/npm install gulp-uglify'
     - command: '/usr/bin/npm install shelljs'
     - command: '/usr/bin/npm install gulp'
+    - command: '/usr/bin/npm install hexo'
+    - command: '/usr/bin/npm install hexo-cli'
     - command: '/usr/local/bin/gulp styles'
     - command: '/usr/local/bin/hexo generate'
 
