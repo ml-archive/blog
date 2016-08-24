@@ -17,13 +17,13 @@ before_prepare:
     - command: '/usr/bin/npm install gulp'
     - command: '/usr/bin/npm install hexo'
     - command: '/usr/bin/npm install hexo-cli'
+    - command: '/usr/bin/npm install hexo-util'
     - command: '/usr/local/bin/gulp styles'
     - command: '/usr/local/bin/hexo generate'
 
 prepare:
 
 config:
-    database: /config/database.php
 
 docker_template: "clean-default"
 
