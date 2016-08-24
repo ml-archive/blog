@@ -1,0 +1,15 @@
+project:
+    name: tech-blog
+    type: hexo
+
+before_prepare:
+    - command: '/usr/local/bin/hexo generate'
+
+prepare:
+
+config:
+    database: /config/database.php
+
+docker_template: "clean-default"
+
+slack_channel: "#nodesengineeringblog"
