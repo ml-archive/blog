@@ -3,6 +3,7 @@ project:
     type: hexo
 
 before_prepare:
+    - command: '/usr/bin/npm install gulp'
     - command: '/usr/local/bin/gulp styles'
     - command: '/usr/local/bin/hexo generate'
 
