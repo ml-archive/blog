@@ -92,7 +92,7 @@ gulp.task('serve:static', ['styles', 'scripts'], function() {
 		server: {
 			baseDir: 'public',
 			routes: {
-				'/blog': 'public'
+				'/': 'public'
 			}
 		}
 	});
