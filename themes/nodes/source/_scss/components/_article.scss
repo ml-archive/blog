@@ -1,5 +1,7 @@
 .article {
 	img {
+
+		margin: 1em auto;
 		border-radius: 10px;
 	}
 	figure {
@@ -15,8 +17,8 @@
 	}
 	@include breakpoint(medium) {
 		figure {
-			margin-right: -16.6666%;
-			margin-left: -16.6666%;
+			//margin-right: -16.6666%;
+			//margin-left: -16.6666%;
 		}
 		figcaption {
 			//margin-right: 16.6666%;
@@ -25,12 +27,12 @@
 	}
 	@include breakpoint(large) {
 		figure {
-			margin-right: -25%;
-			margin-left: -25%;
+			//margin-right: -25%;
+			//margin-left: -25%;
 		}
 		figcaption {
-			margin-right: 16.6666%;
-			margin-left: 16.6666%;
+			//margin-right: 16.6666%;
+			//margin-left: 16.6666%;
 		}
 	}
 }

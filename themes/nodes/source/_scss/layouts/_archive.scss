@@ -1,0 +1,16 @@
+.content.archive {
+	position: relative; // Enable background-lines
+	@include flex-grid-row();
+	@include flex-align($x: center);
+
+	.background-lines:after {
+		@include flex-grid-column($columns: 12);
+		@include breakpoint(medium) {
+			@include flex-grid-column($columns: 8);
+		}
+	}
+	.content__article {
+		@include flex-grid-column($columns: 12);
+		max-width: 700px;
+	}
+}

@@ -6,7 +6,7 @@
     "build": "hexo clean && gulp build && hexo generate",
     "deploy": "npm run build && hexo deploy",
     "theme": "concurrently --kill-others 'hexo generate -w --color' 'gulp --color'",
-    "write": "concurrently --kill-others --raw 'hexo generate -w --color' 'gulp static --color'"
+    "write": "concurrently --kill-others --raw 'hexo generate -w --color' 'gulp serve:static --color'"
   },
   "bin": {
     "theme": "bin/theme.js",

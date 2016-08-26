@@ -6,7 +6,7 @@
 			<h1>
 				Welcome to the Nodes Engineering site.
 			</h1>
-			<p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda atque consequatur corporis deleniti doloremque dolorum eligendi facilis fugiat ipsum iure libero, nemo nisi quas, sequi temporibus. Consequatur cum cupiditate ea earum esse facilis hic in, itaque molestias nam nisi non, provident quaerat, repellat suscipit temporibus unde voluptas! Ad autem eligendi eum fugit iure maxime nemo odio, optio rem similique. Officia.</p>
+			<p class="lead text-center">Fresh out of the presses, we are proud to present our new engineering site! Here we are going to write about all things related to the development we do at Nodes.</p>
 		</div>
 		<div class="articles-latest">
 			<!--<h2>Newest Articles</h2>-->
@@ -24,39 +24,6 @@
 					</div>
 				<% }); %>
 			</div>
-		</div>
-
-		<div class="repos repos--featured">
-
-			<h2>Featured Open Source projects</h2>
-
-			<% for (repo in site.data.github_frontend) { %>
-				<div class="repo"
-					 data-github-repo="<%= site.data.github_frontend[repo].slug %>"
-					 data-github-org="<%= site.data.github_frontend[repo].organization %>"
-					 data-github-languages="<%= site.data.github_frontend[repo].languages %>">
-
-					<div class="repo__languages"></div>
-
-					<a class="repo__link" href="<%= site.data.github_frontend[repo].url %>" target="_blank">
-						<%= site.data.github_frontend[repo].name %> <i class="devicon-github-plain"></i>
-					</a>
-
-					<div class="repo__statistics">
-						<p class="repo__stars">
-							<svg width="14px" height="16px" viewBox="0 0 14 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-								<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-									<g class="repo__star-icon" fill="#000000">
-										<polygon points="14 6 9.1 5.36 7 1 4.9 5.36 0 6 3.6 9.26 2.67 14 7 11.67 11.33 14 10.4 9.26"></polygon>
-									</g>
-								</g>
-							</svg>
-							<span class="repo__stars-out"></span>
-						</p>
-					</div>
-				</div>
-			<% } %>
-
 		</div>
 	</div>
 </div>
