@@ -100,6 +100,4 @@ gulp.task('serve:static', ['styles', 'scripts'], function() {
 
 gulp.task('default', ['clean', 'serve']);
 
-gulp.task('build', ['clean', 'styles', 'scripts'], function() {
-	shell.exec('hexo generate');
-});
+gulp.task('build', ['clean', 'styles', 'scripts']);
