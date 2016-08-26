@@ -31,6 +31,7 @@
 }
 .page-header__navigation {
 	padding-right: $whitespace-medium;
+	text-align: right;
 	@include breakpoint(large) {
 		padding-right: rem-calc($whitespace-base * 6);
 	}

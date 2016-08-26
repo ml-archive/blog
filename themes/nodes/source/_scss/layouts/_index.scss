@@ -1,0 +1,24 @@
+.content.index {
+	.background-lines:after {
+		@include flex-grid-column($columns: 12);
+		@include breakpoint(medium) {
+			@include flex-grid-column($columns: 8);
+		}
+	}
+	.content__article {
+		position: relative; // Enable background-lines
+		@include flex-grid-row();
+		@include flex-align($x: center);
+	}
+
+	.hero-unit,
+	.articles-latest {
+		@include flex-grid-column($columns: 12);
+		@include breakpoint(medium) {
+			@include flex-grid-column($columns: 8);
+		}
+	}
+	.repos {
+		@include flex-grid-column($columns: 12);
+	}
+}

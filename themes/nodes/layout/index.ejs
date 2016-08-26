@@ -1,32 +1,31 @@
 <%- partial('_partial/header-page') %>
-<div class="content-wrapper">
-	<div class="content">
-		<div class="content__article">
-			<div class="hero-unit">
-				<h1>
-					Welcome to the Nodes Engineering site.
-				</h1>
-				<p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda atque consequatur corporis deleniti doloremque dolorum eligendi facilis fugiat ipsum iure libero, nemo nisi quas, sequi temporibus. Consequatur cum cupiditate ea earum esse facilis hic in, itaque molestias nam nisi non, provident quaerat, repellat suscipit temporibus unde voluptas! Ad autem eligendi eum fugit iure maxime nemo odio, optio rem similique. Officia.</p>
-			</div>
-			<div class="articles-latest">
-				<div class="page-subheader margin-bottom--medium">
-					<h3>New Articles</h3>
-				</div>
+<div class="content index">
+	<div class="content__article">
+		<div class="background-lines"></div>
+		<div class="hero-unit">
+			<h1>
+				Welcome to the Nodes Engineering site.
+			</h1>
+			<p class="lead text-center">Fresh out of the presses, we are proud to present our new engineering site! Here we are going to write about all things related to the development we do at Nodes.</p>
+		</div>
+		<div class="articles-latest">
+			<!--<h2>Newest Articles</h2>-->
 
-				<div class="articles-latest__list">
-					<% site.categories.each(function(c, cI) { %>
-						<div class="articles-latest__article">
-							<h3>Latest in <span class="articles-latest__category"><%- c.name %></span>:</h3>
+			<div class="articles-latest__list">
+				<% site.categories.each(function(c, cI) { %>
+					<div class="articles-latest__article">
+						<h2>Latest in <span class="articles-latest__category"><%- c.name %></span>:</h2>
 
-							<% site.categories.findOne({name: c.name}).posts.each(function(post, i) { %>
-								<% if(i === 0) { %>
-									<%- partial('_partial/article-list-item', {post: post, latest: true}) %>
-								<% } %>
-							<% }); %>
-						</div>
-					<% }); %>
-				</div>
+						<% site.categories.findOne({name: c.name}).posts.each(function(post, i) { %>
+							<% if(i === 0) { %>
+								<%- partial('_partial/article-list-item', {post: post, latest: true}) %>
+							<% } %>
+						<% }); %>
+					</div>
+				<% }); %>
 			</div>
 		</div>
 	</div>
 </div>
+
+

@@ -3,21 +3,8 @@ project:
     type: hexo
 
 before_prepare:
-    - command: '/usr/bin/npm install del'
-    - command: '/usr/bin/npm install browser-sync'
-    - command: '/usr/bin/npm install gulp-sourcemaps'
-    - command: '/usr/bin/npm install gulp-concat'
-    - command: '/usr/bin/npm install gulp-size'
-    - command: '/usr/bin/npm install gulp-sass'
-    - command: '/usr/bin/npm install gulp-postcss'
-    - command: '/usr/bin/npm install autoprefixer'
-    - command: '/usr/bin/npm install gulp-babel'
-    - command: '/usr/bin/npm install gulp-uglify'
-    - command: '/usr/bin/npm install shelljs'
-    - command: '/usr/bin/npm install gulp'
-    - command: '/usr/bin/npm install hexo'
-    - command: '/usr/bin/npm install hexo-cli'
-    - command: '/usr/bin/npm install hexo-util'
+    - command: '/usr/bin/npm install -g hexo'
+    - command: '/usr/bin/npm install'
     - command: '/usr/local/bin/gulp styles'
     - command: '/usr/local/bin/hexo generate'
 

@@ -52,3 +52,4 @@ You can embed images in posts too, and they'll respect the width of your browser
 <a href="http://www.flickr.com/photos/idangazit/1859143502/" title="IMG_0874 by idangazit, on Flickr"><img src="http://farm3.staticflickr.com/2108/1859143502_9f50faccb5_b.jpg" width="1024" height="683" alt="IMG_0874"></a>
 
 *A photo I took of a woman bathing in the Ganges river*
+Hiii
