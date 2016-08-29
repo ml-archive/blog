@@ -98,6 +98,6 @@ gulp.task('serve:static', ['styles', 'scripts'], function() {
 	});
 });
 
-gulp.task('default', ['clean', 'serve']);
+gulp.task('default', ['clean', 'styles', 'scripts', 'serve']);
 
 gulp.task('build', ['clean', 'styles', 'scripts']);
