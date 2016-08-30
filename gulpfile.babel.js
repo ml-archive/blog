@@ -1,0 +1,145 @@
+/**
+ *  Nodes Engineering Blog
+ */
+
+'use strict';
+
+import gulp from 'gulp';
+import del from 'del';
+
+import browserSync from 'browser-sync';
+const reload = browserSync.reload;
+
+import sourcemaps from 'gulp-sourcemaps';
+import concat from 'gulp-concat';
+import size from 'gulp-size';
+
+import sass from 'gulp-sass';
+import postcss from 'gulp-postcss';
+import autoprefixer from 'autoprefixer';
+
+import babel from 'gulp-babel';
+import uglify from 'gulp-uglify';
+
+const PATHS = {
+	styles: {
+		inFiles: './themes/nodes/source/_scss/*.scss',
+		outFiles: './themes/nodes/source/css',
+		tmpPath: '.tmp/styles'
+	},
+	scripts: {
+		inFiles: [
+			'./themes/nodes/source/_js/vendor/jquery.min.js',
+			'./themes/nodes/source/_js/client/app.js',
+			'./themes/nodes/source/_js/client/file.js'
+		],
+		outFiles: './themes/nodes/source/js',
+		tmpPath: '.tmp/scripts'
+	}
+};
+
+const CLEAN_PATHS = [
+	'.tmp'
+];
+
+const WATCH_PATTERNS = {
+	styles: './themes/nodes/source/_scss/**/*.scss',
+	scripts: './themes/nodes/source/_js/**/*.js',
+	images: '',
+	fonts: ''
+};
+
+// Sass Modules which is to be @import'ed in our stylesheets.
+// Add any module you install through npm (or bower, but please don't) here,
+// and @import them without their full file path in style.scss file.
+const SASS_MODULES = [
+	'./node_modules/foundation-sites/scss',
+	'./node_modules/utility-opentype/css'
+];
+
+const AUTOPREFIXER_BROWSERS = [
+	'ie >= 10',
+	'ie_mob >= 10',
+	'ff >= 30',
+	'chrome >= 34',
+	'safari >= 7',
+	'opera >= 23',
+	'ios >= 7',
+	'android >= 4.4',
+	'bb >= 10'
+];
+
+// Javascript Modules which is to be included in concatination and uglification.
+// Add any module you install through npm (or bower, but please don't) here.
+const JS_MODULES = [
+];
+
+// Compile, prefix and minify styles
+gulp.task('styles', () => {
+	return gulp.src(PATHS.styles.inFiles)
+		.pipe(sourcemaps.init())
+		.pipe(sass({includePaths: SASS_MODULES})
+			.on('error', sass.logError))
+		.pipe(postcss([
+			autoprefixer(AUTOPREFIXER_BROWSERS)
+		]))
+		.pipe(gulp.dest(PATHS.styles.tmpPath))
+		.pipe(size({title: 'styles'}))
+		.pipe(sourcemaps.write('./'))
+		.pipe(gulp.dest(PATHS.styles.outFiles));
+});
+
+// Transpile ES2015 code, concatinate and uglify the generated scripts
+gulp.task('scripts', () => {
+	return gulp.src(PATHS.scripts.inFiles)
+		.pipe(sourcemaps.init())
+		.pipe(babel())
+		.pipe(sourcemaps.write())
+		.pipe(gulp.dest(PATHS.scripts.tmpPath))
+		.pipe(concat('app.min.js'))
+		.pipe(uglify({preserveComments: 'some'}))
+		.pipe(size({title: 'scripts'}))
+		.pipe(sourcemaps.write())
+		.pipe(gulp.dest(PATHS.scripts.outFiles));
+});
+
+// Clean up the temporary folder
+gulp.task('clean', () => {
+	del(CLEAN_PATHS, {dot: true});
+});
+
+// Start a browserSync server and start concurrent watch tasks
+gulp.task('serve', ['styles', 'scripts'], () => {
+	browserSync({
+		notify: false,
+		files: ['public/**/*.*'],
+		server: {
+			baseDir: 'public',
+			routes: {
+				'/': 'public'
+			}
+		}
+	});
+	
+	gulp.watch([WATCH_PATTERNS.styles], ['styles', reload]);
+	gulp.watch([WATCH_PATTERNS.scripts], ['scripts', reload]);
+});
+
+// Start a browserSync server and start concurrent watch tasks
+// There is currently no difference between the normal serve and the static task.
+gulp.task('serve:static', ['styles', 'scripts'], () => {
+	browserSync({
+		notify: false,
+		files: ['public/**/*.*'],
+		server: {
+			baseDir: 'public',
+			routes: {
+				'/': 'public'
+			}
+		}
+	});
+});
+
+// Convenience tasks
+gulp.task('default', ['clean', 'styles', 'scripts', 'serve']);
+gulp.task('build', ['clean', 'styles', 'scripts']);
