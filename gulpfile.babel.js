@@ -17,9 +17,11 @@ import size from 'gulp-size';
 import sass from 'gulp-sass';
 import postcss from 'gulp-postcss';
 import autoprefixer from 'autoprefixer';
+import cssnano from 'gulp-cssnano';
 
 import babel from 'gulp-babel';
 import uglify from 'gulp-uglify';
+import jscs from 'gulp-jscs';
 
 const PATHS = {
 	styles: {
@@ -32,6 +34,9 @@ const PATHS = {
 			'./themes/nodes/source/_js/vendor/jquery.min.js',
 			'./themes/nodes/source/_js/client/app.js',
 			'./themes/nodes/source/_js/client/file.js'
+		],
+		lintFiles: [
+			'./themes/nodes/source/_js/client/**/*.js',
 		],
 		outFiles: './themes/nodes/source/js',
 		tmpPath: '.tmp/scripts'
@@ -71,8 +76,7 @@ const AUTOPREFIXER_BROWSERS = [
 
 // Javascript Modules which is to be included in concatination and uglification.
 // Add any module you install through npm (or bower, but please don't) here.
-const JS_MODULES = [
-];
+const JS_MODULES = [];
 
 // Compile, prefix and minify styles
 gulp.task('styles', () => {
@@ -84,6 +88,7 @@ gulp.task('styles', () => {
 			autoprefixer(AUTOPREFIXER_BROWSERS)
 		]))
 		.pipe(gulp.dest(PATHS.styles.tmpPath))
+		.pipe(cssnano())
 		.pipe(size({title: 'styles'}))
 		.pipe(sourcemaps.write('./'))
 		.pipe(gulp.dest(PATHS.styles.outFiles));
@@ -101,6 +106,12 @@ gulp.task('scripts', () => {
 		.pipe(size({title: 'scripts'}))
 		.pipe(sourcemaps.write())
 		.pipe(gulp.dest(PATHS.scripts.outFiles));
+});
+
+gulp.task('lint', () => {
+	return gulp.src(PATHS.scripts.lintFiles)
+		.pipe(jscs())
+		.pipe(jscs.reporter('fail'));
 });
 
 // Clean up the temporary folder
