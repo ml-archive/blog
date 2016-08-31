@@ -6,6 +6,7 @@
 
 import gulp from 'gulp';
 import del from 'del';
+import path from 'path';
 
 import browserSync from 'browser-sync';
 const reload = browserSync.reload;
@@ -23,6 +24,10 @@ import babel from 'gulp-babel';
 import uglify from 'gulp-uglify';
 import jscs from 'gulp-jscs';
 
+import imagemin from 'gulp-imagemin';
+
+import swPrecache from 'sw-precache';
+
 const PATHS = {
 	styles: {
 		inFiles: './themes/nodes/source/_scss/*.scss',
@@ -35,11 +40,15 @@ const PATHS = {
 			'./themes/nodes/source/_js/client/app.js',
 			'./themes/nodes/source/_js/client/file.js'
 		],
+		outFiles: './themes/nodes/source/js',
+		tmpPath: '.tmp/scripts',
 		lintFiles: [
 			'./themes/nodes/source/_js/client/**/*.js',
-		],
-		outFiles: './themes/nodes/source/js',
-		tmpPath: '.tmp/scripts'
+		]
+	},
+	images: {
+		inFiles: './themes/nodes/source/_img/**/*',
+		outFiles: './themes/nodes/source/img'
 	}
 };
 
@@ -49,9 +58,10 @@ const CLEAN_PATHS = [
 
 const WATCH_PATTERNS = {
 	styles: './themes/nodes/source/_scss/**/*.scss',
-	scripts: './themes/nodes/source/_js/**/*.js',
-	images: '',
-	fonts: ''
+	scripts: ['./themes/nodes/source/_js/client/**/*.js', './themes/nodes/source/_js/vendor/**/*.js'],
+	images: './themes/nodes/source/_img/**/*',
+	fonts: '',
+	serviceWorker: './themes/nodes/source/_js/sw/*.js'
 };
 
 // Sass Modules which is to be @import'ed in our stylesheets.
@@ -108,6 +118,16 @@ gulp.task('scripts', () => {
 		.pipe(gulp.dest(PATHS.scripts.outFiles));
 });
 
+gulp.task('images', () => {
+	return gulp.src(PATHS.images.inFiles)
+		.pipe(imagemin({
+			progressive: true,
+			interlaced: true
+		}))
+		.pipe(gulp.dest(PATHS.images.outFiles))
+		.pipe(size({title: 'images'}));
+});
+
 gulp.task('lint', () => {
 	return gulp.src(PATHS.scripts.lintFiles)
 		.pipe(jscs())
@@ -119,9 +139,38 @@ gulp.task('clean', () => {
 	del(CLEAN_PATHS, {dot: true});
 });
 
+gulp.task('copy-sw-scripts', () => {
+	return gulp.src([
+			'node_modules/sw-toolbox/sw-toolbox.js',
+			'themes/nodes/source/_js/sw/runtime-caching.js'
+		])
+		.pipe(gulp.dest('themes/nodes/source/js/sw'));
+});
+gulp.task('generate-service-worker', ['copy-sw-scripts'], () => {
+	const rootDir = 'public';
+	const filePath = path.join(rootDir, 'service-worker.js');
+	
+	return swPrecache.write(filePath, {
+		cacheId: 'nodes-engineering-blog',
+		importScripts: [
+			'js/sw/sw-toolbox.js',
+			'js/sw/runtime-caching.js'
+		],
+		staticFileGlobs: [
+			// Add/remove glob patterns to match your directory setup.
+			`${rootDir}/img/**/*`,
+			`${rootDir}/js/**/*.js`,
+			`${rootDir}/css/**/*.css`,
+			`${rootDir}/**/*.{html,json}`
+		],
+		stripPrefix: rootDir + '/'
+	});
+});
+
 // Start a browserSync server and start concurrent watch tasks
-gulp.task('serve', ['styles', 'scripts'], () => {
+gulp.task('serve', ['build'], () => {
 	browserSync({
+		// https: true,
 		notify: false,
 		files: ['public/**/*.*'],
 		server: {
@@ -134,12 +183,14 @@ gulp.task('serve', ['styles', 'scripts'], () => {
 	
 	gulp.watch([WATCH_PATTERNS.styles], ['styles', reload]);
 	gulp.watch([WATCH_PATTERNS.scripts], ['scripts', reload]);
+	gulp.watch([WATCH_PATTERNS.serviceWorker], ['generate-service-worker', reload]);
 });
 
 // Start a browserSync server and start concurrent watch tasks
 // There is currently no difference between the normal serve and the static task.
-gulp.task('serve:static', ['styles', 'scripts'], () => {
+gulp.task('serve:static', ['build'], () => {
 	browserSync({
+		// https: true,
 		notify: false,
 		files: ['public/**/*.*'],
 		server: {
@@ -152,5 +203,5 @@ gulp.task('serve:static', ['styles', 'scripts'], () => {
 });
 
 // Convenience tasks
-gulp.task('default', ['clean', 'styles', 'scripts', 'serve']);
-gulp.task('build', ['clean', 'styles', 'scripts']);
+gulp.task('default', ['build', 'serve']);
+gulp.task('build', ['clean', 'generate-service-worker', 'styles', 'scripts', 'images']);
