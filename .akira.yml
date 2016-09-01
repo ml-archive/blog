@@ -5,8 +5,7 @@ project:
 before_prepare:
     - command: '/usr/bin/npm install -g hexo'
     - command: '/usr/bin/npm install'
-    - command: '/usr/local/bin/gulp styles'
-    - command: '/usr/local/bin/hexo generate'
+    - command: '/usr/local/bin/npm run build'
 
 prepare:
 

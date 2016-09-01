@@ -135,7 +135,7 @@ gulp.task('images', () => {
 
 gulp.task('copy', () => {
 	gulp.src([
-			'themes/nodes/source/*',
+			'themes/nodes/source/*.*',
 			'!themes/nodes/source/*.html'
 		], {dot: true})
 		.pipe(gulp.dest('public'))
@@ -183,7 +183,7 @@ gulp.task('generate-service-worker', ['copy-sw-scripts'], () => {
 });
 
 // Start a browserSync server and start concurrent watch tasks
-gulp.task('serve', ['build'], () => {
+gulp.task('serve', ['build', 'build:post'], () => {
 	browserSync({
 		// https: true,
 		notify: false,
@@ -202,8 +202,8 @@ gulp.task('serve', ['build'], () => {
 });
 
 // Start a browserSync server and start concurrent watch tasks
-// There is currently no difference between the normal serve and the static task.
-gulp.task('serve:static', ['build'], () => {
+// The only difference from normal serve is that we do NOT build
+gulp.task('serve:static', () => {
 	browserSync({
 		// https: true,
 		notify: false,
@@ -218,7 +218,7 @@ gulp.task('serve:static', ['build'], () => {
 });
 
 // Convenience tasks
-gulp.task('default', ['build', 'serve']);
+gulp.task('default', ['serve']);
 gulp.task('build', ['clean'], cb => {
 	runSequence(
 		'styles',
