@@ -7,6 +7,8 @@
 import gulp from 'gulp';
 import del from 'del';
 import path from 'path';
+import runSequence from 'run-sequence';
+import newer from 'gulp-newer';
 
 import browserSync from 'browser-sync';
 const reload = browserSync.reload;
@@ -91,6 +93,7 @@ const JS_MODULES = [];
 // Compile, prefix and minify styles
 gulp.task('styles', () => {
 	return gulp.src(PATHS.styles.inFiles)
+		.pipe(newer(PATHS.styles.tmpPath))
 		.pipe(sourcemaps.init())
 		.pipe(sass({includePaths: SASS_MODULES})
 			.on('error', sass.logError))
@@ -107,6 +110,7 @@ gulp.task('styles', () => {
 // Transpile ES2015 code, concatinate and uglify the generated scripts
 gulp.task('scripts', () => {
 	return gulp.src(PATHS.scripts.inFiles)
+		.pipe(newer(PATHS.scripts.tmpPath))
 		.pipe(sourcemaps.init())
 		.pipe(babel())
 		.pipe(sourcemaps.write())
@@ -118,8 +122,9 @@ gulp.task('scripts', () => {
 		.pipe(gulp.dest(PATHS.scripts.outFiles));
 });
 
+// Optimize theme related images
 gulp.task('images', () => {
-	return gulp.src(PATHS.images.inFiles)
+	gulp.src(PATHS.images.inFiles)
 		.pipe(imagemin({
 			progressive: true,
 			interlaced: true
@@ -128,6 +133,16 @@ gulp.task('images', () => {
 		.pipe(size({title: 'images'}));
 });
 
+gulp.task('copy', () => {
+	gulp.src([
+			'themes/nodes/source/*',
+			'!themes/nodes/source/*.html'
+		], {dot: true})
+		.pipe(gulp.dest('public'))
+		.pipe(size({title: 'copy'}));
+});
+
+// Run theme related javascript through jscs linter
 gulp.task('lint', () => {
 	return gulp.src(PATHS.scripts.lintFiles)
 		.pipe(jscs())
@@ -159,7 +174,7 @@ gulp.task('generate-service-worker', ['copy-sw-scripts'], () => {
 		staticFileGlobs: [
 			// Add/remove glob patterns to match your directory setup.
 			`${rootDir}/img/**/*`,
-			`${rootDir}/js/**/*.js`,
+			`${rootDir}/js/*.js`,
 			`${rootDir}/css/**/*.css`,
 			`${rootDir}/**/*.{html,json}`
 		],
@@ -204,4 +219,11 @@ gulp.task('serve:static', ['build'], () => {
 
 // Convenience tasks
 gulp.task('default', ['build', 'serve']);
-gulp.task('build', ['clean', 'generate-service-worker', 'styles', 'scripts', 'images']);
+gulp.task('build', ['clean'], cb => {
+	runSequence(
+		'styles',
+		['scripts', 'images'],
+		cb
+	);
+});
+gulp.task('build:post', ['copy', 'generate-service-worker']);
