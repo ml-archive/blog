@@ -30,6 +30,10 @@ import imagemin from 'gulp-imagemin';
 
 import swPrecache from 'sw-precache';
 
+import {output as pagespeed} from 'psi';
+
+const PUBLIC_URL = 'https://engineering.nodesagency.com';
+
 const PATHS = {
 	styles: {
 		inFiles: './themes/nodes/source/_scss/*.scss',
@@ -90,6 +94,11 @@ const AUTOPREFIXER_BROWSERS = [
 // Add any module you install through npm (or bower, but please don't) here.
 const JS_MODULES = [];
 
+/*
+	Primary tasks (Building, optimizing, etc.)
+	These tasks are expected to be run by CI servers and for development.
+*/
+
 // Compile, prefix and minify styles
 gulp.task('styles', () => {
 	return gulp.src(PATHS.styles.inFiles)
@@ -133,6 +142,7 @@ gulp.task('images', () => {
 		.pipe(size({title: 'images'}));
 });
 
+// Copy misc. files to the root public dir (robots.txt, manifests, favicons, etc.)
 gulp.task('copy', () => {
 	gulp.src([
 			'themes/nodes/source/*.*',
@@ -142,23 +152,17 @@ gulp.task('copy', () => {
 		.pipe(size({title: 'copy'}));
 });
 
-// Run theme related javascript through jscs linter
-gulp.task('lint', () => {
-	return gulp.src(PATHS.scripts.lintFiles)
-		.pipe(jscs())
-		.pipe(jscs.reporter('fail'));
-});
-
 // Clean up the temporary folder
 gulp.task('clean', () => {
 	del(CLEAN_PATHS, {dot: true});
 });
 
+// Service worker related tasks. If you are unsure what this is - don't modify it.
 gulp.task('copy-sw-scripts', () => {
 	return gulp.src([
-			'node_modules/sw-toolbox/sw-toolbox.js',
-			'themes/nodes/source/_js/sw/runtime-caching.js'
-		])
+		'node_modules/sw-toolbox/sw-toolbox.js',
+		'themes/nodes/source/_js/sw/runtime-caching.js'
+	])
 		.pipe(gulp.dest('themes/nodes/source/js/sw'));
 });
 gulp.task('generate-service-worker', ['copy-sw-scripts'], () => {
@@ -181,6 +185,29 @@ gulp.task('generate-service-worker', ['copy-sw-scripts'], () => {
 		stripPrefix: rootDir + '/'
 	});
 });
+
+/*
+	Secondary tasks (Analyzing, reporting, testing)
+	These tasks are expected to be run manually by developers to help analyze and optimize the code.
+ */
+
+// Run theme related javascript through jscs linter
+gulp.task('lint', () => {
+	return gulp.src(PATHS.scripts.lintFiles)
+		.pipe(jscs())
+		.pipe(jscs.reporter('fail'));
+});
+
+// Run PageSpeed Insights on the public site (https://engineering.nodesagency.com)
+gulp.task('pagespeed', cb => {
+	pagespeed(PUBLIC_URL, {
+		strategy: 'mobile'
+	}, cb);
+});
+
+/*
+	Shortcut tasks (combining primary tasks for developer and CI convenience)
+ */
 
 // Start a browserSync server and start concurrent watch tasks
 gulp.task('serve', ['build', 'build:post'], () => {
@@ -217,8 +244,8 @@ gulp.task('serve:static', () => {
 	});
 });
 
-// Convenience tasks
 gulp.task('default', ['serve']);
+
 gulp.task('build', ['clean'], cb => {
 	runSequence(
 		'styles',
@@ -226,4 +253,5 @@ gulp.task('build', ['clean'], cb => {
 		cb
 	);
 });
+
 gulp.task('build:post', ['copy', 'generate-service-worker']);
