@@ -5,7 +5,7 @@ project:
 before_prepare:
     - command: '/usr/bin/npm install -g hexo'
     - command: '/usr/bin/npm install'
-    - command: '/usr/local/bin/npm run build'
+    - command: '/usr/bin/npm run build'
 
 prepare:
 
