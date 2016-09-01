@@ -8,11 +8,6 @@
     "theme": "concurrently --kill-others 'hexo generate -w --color' 'gulp --color'",
     "write": "concurrently --kill-others --raw 'hexo generate -w --color' 'gulp serve:static --color'"
   },
-  "bin": {
-    "theme": "bin/theme.js",
-    "write": "bin/write.js",
-    "deploy": "bin/deploy.js"
-  },
   "hexo": {
     "version": "3.2.2"
   },
@@ -37,13 +32,13 @@
     "utility-opentype": "^0.1.4"
   },
   "devDependencies": {
+    "apache-server-configs": "^2.14.0",
     "autoprefixer": "^6.3.7",
     "babel-core": "^6.11.4",
     "babel-preset-es2015": "^6.9.0",
     "browser-sync": "^2.12.5",
     "concurrently": "^2.2.0",
     "del": "^2.2.1",
-    "faker": "^3.1.0",
     "gulp": "^3.9.1",
     "gulp-babel": "^6.1.2",
     "gulp-concat": "^2.6.0",
