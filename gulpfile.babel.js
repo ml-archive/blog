@@ -21,7 +21,6 @@ import sass from 'gulp-sass';
 import postcss from 'gulp-postcss';
 import autoprefixer from 'autoprefixer';
 import cssnano from 'gulp-cssnano';
-import inlineCss from 'gulp-inline-css';
 import inlineSource from 'gulp-inline-source';
 
 import babel from 'gulp-babel';
