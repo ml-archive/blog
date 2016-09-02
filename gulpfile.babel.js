@@ -102,7 +102,7 @@ const JS_MODULES = [];
 // Compile, prefix and minify styles
 gulp.task('styles', () => {
 	return gulp.src(PATHS.styles.inFiles)
-		.pipe(newer(PATHS.styles.tmpPath))
+		// .pipe(newer(PATHS.styles.tmpPath))
 		.pipe(sourcemaps.init())
 		.pipe(sass({includePaths: SASS_MODULES})
 			.on('error', sass.logError))
@@ -112,14 +112,14 @@ gulp.task('styles', () => {
 		.pipe(gulp.dest(PATHS.styles.tmpPath))
 		.pipe(cssnano())
 		.pipe(size({title: 'styles'}))
-		.pipe(sourcemaps.write('./'))
+		.pipe(sourcemaps.write())
 		.pipe(gulp.dest(PATHS.styles.outFiles));
 });
 
 // Transpile ES2015 code, concatinate and uglify the generated scripts
 gulp.task('scripts', () => {
 	return gulp.src(PATHS.scripts.inFiles)
-		.pipe(newer(PATHS.scripts.tmpPath))
+		// .pipe(newer(PATHS.scripts.tmpPath))
 		.pipe(sourcemaps.init())
 		.pipe(babel())
 		.pipe(sourcemaps.write())
@@ -213,9 +213,7 @@ gulp.task('pagespeed', cb => {
 // Start a browserSync server and start concurrent watch tasks
 gulp.task('serve', ['build', 'build:post'], () => {
 	browserSync({
-		// https: true,
 		notify: false,
-		files: ['public/**/*.*'],
 		server: {
 			baseDir: 'public',
 			routes: {
@@ -224,18 +222,22 @@ gulp.task('serve', ['build', 'build:post'], () => {
 		}
 	});
 	
-	gulp.watch([WATCH_PATTERNS.styles], ['styles', reload]);
-	gulp.watch([WATCH_PATTERNS.scripts], ['scripts', reload]);
-	gulp.watch([WATCH_PATTERNS.serviceWorker], ['generate-service-worker', reload]);
+	gulp.watch([WATCH_PATTERNS.styles], ['styles']);
+	gulp.watch([WATCH_PATTERNS.scripts], ['scripts']);
+	gulp.watch([WATCH_PATTERNS.serviceWorker], ['generate-service-worker']);
+	
+	// We reload only when stuff in public has changed (Hexo has done its thing!)
+	gulp.watch('public/**/*.*', reload);
 });
 
-// Start a browserSync server and start concurrent watch tasks
-// The only difference from normal serve is that we do NOT build
+// Start a browserSync server.
+// The only difference from normal serve is that don't build any theme related files.
 gulp.task('serve:static', () => {
 	browserSync({
 		// https: true,
 		notify: false,
 		files: ['public/**/*.*'],
+		reloadDebounce: 2000,
 		server: {
 			baseDir: 'public',
 			routes: {
@@ -243,16 +245,19 @@ gulp.task('serve:static', () => {
 			}
 		}
 	});
+	
+	gulp.watch('public/**/*.*', reload);
 });
 
 gulp.task('default', ['serve']);
 
-gulp.task('build', ['clean'], cb => {
-	runSequence(
-		'styles',
-		['scripts', 'images'],
-		cb
-	);
-});
+gulp.task('build', ['clean', 'styles', 'scripts', 'images']);
+// gulp.task('build', ['clean'], cb => {
+// 	runSequence(
+// 		'styles',
+// 		['scripts', 'images'],
+// 		cb
+// 	);
+// });
 
 gulp.task('build:post', ['copy', 'generate-service-worker']);
