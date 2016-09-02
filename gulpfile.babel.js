@@ -21,6 +21,8 @@ import sass from 'gulp-sass';
 import postcss from 'gulp-postcss';
 import autoprefixer from 'autoprefixer';
 import cssnano from 'gulp-cssnano';
+import inlineCss from 'gulp-inline-css';
+import inlineSource from 'gulp-inline-source';
 
 import babel from 'gulp-babel';
 import uglify from 'gulp-uglify';
@@ -55,6 +57,9 @@ const PATHS = {
 	images: {
 		inFiles: './themes/nodes/source/_img/**/*',
 		outFiles: './themes/nodes/source/img'
+	},
+	html: {
+		inFiles: './public/**/*.html'
 	}
 };
 
@@ -144,6 +149,14 @@ gulp.task('images', () => {
 		}))
 		.pipe(gulp.dest(PATHS.images.outFiles))
 		.pipe(size({title: 'images'}));
+});
+
+gulp.task('html', () => {
+	return gulp.src(PATHS.html.inFiles)
+		.pipe(inlineSource({
+			rootpath: './public'
+		}))
+		.pipe(gulp.dest('./public'));
 });
 
 // Copy misc. files to the root public dir (robots.txt, manifests, favicons, etc.)
@@ -256,12 +269,5 @@ gulp.task('serve:static', () => {
 gulp.task('default', ['serve']);
 
 gulp.task('build', ['clean', 'styles', 'scripts', 'images']);
-// gulp.task('build', ['clean'], cb => {
-// 	runSequence(
-// 		'styles',
-// 		['scripts', 'images'],
-// 		cb
-// 	);
-// });
 
-gulp.task('build:post', ['copy', 'generate-service-worker']);
+gulp.task('build:post', ['copy', 'generate-service-worker', 'html']);
