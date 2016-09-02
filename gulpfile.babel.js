@@ -110,9 +110,13 @@ gulp.task('styles', () => {
 			autoprefixer(AUTOPREFIXER_BROWSERS)
 		]))
 		.pipe(gulp.dest(PATHS.styles.tmpPath))
-		.pipe(cssnano())
+		.pipe(cssnano({
+			discardComments: {
+				removeAll: true
+			}
+		}))
 		.pipe(size({title: 'styles'}))
-		.pipe(sourcemaps.write())
+		.pipe(sourcemaps.write('./maps'))
 		.pipe(gulp.dest(PATHS.styles.outFiles));
 });
 
