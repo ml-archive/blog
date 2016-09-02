@@ -127,7 +127,7 @@ gulp.task('scripts', () => {
 		.pipe(concat('app.min.js'))
 		.pipe(uglify({preserveComments: 'some'}))
 		.pipe(size({title: 'scripts'}))
-		.pipe(sourcemaps.write())
+		.pipe(sourcemaps.write('./maps'))
 		.pipe(gulp.dest(PATHS.scripts.outFiles));
 });
 
