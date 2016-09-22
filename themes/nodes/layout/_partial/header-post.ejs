@@ -1,12 +1,12 @@
+<header class="page-header">
+	<div class="page-header__brand">
+		<%- partial('_partial/brand') %>
+	</div>
+	<div class="page-header__navigation">
+		<%- partial('_partial/navigation-site') %>
+	</div>
+</header>
 <div class="article-header">
-
-	<a class="article-header__back-button" href="<%= config.url %>">
-		<svg width="14px" height="14px" viewBox="0 0 14 14">
-			<g transform="translate(-13.000000, -13.000000)" fill="#FFFFFF">
-				<path d="M16.8,19 L27,19 L27,21 L16.8,21 L21.4,25.6 L20,27 L13,20 L13.7,19.3 L20,13 L21.4,14.4 L16.8,19 Z M16,20.2 L16,19.8 L15.8,20 L16,20.2 Z"></path>
-			</g>
-		</svg>
-	</a>
 
 	<div class="article apply-typography">
 		<div class="article-meta">
@@ -53,9 +53,7 @@
 
 		<div class="article__title">
 			<h2>
-				<a href="<%- url_for(page.path) %>">
-					<%- page.title %>
-				</a>
+				<%- page.title %>
 			</h2>
 		</div>
 	</div>
