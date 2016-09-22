@@ -11,7 +11,7 @@ categories:
 # Continuous Integration With Deployment to TestFlight and HockeyApp
 
 
-We've recently revised our development process on the iOS team and set up a continuos integration server to make and deploy our builds faster, easier and more consistently. This post should shed some light on what we chose and how we set it up.
+We've recently revised our development process on the iOS team and set up a continuous integration server to make and deploy our builds faster, easier and more consistently. This post should shed some light on what we chose and how we set it up.
 
 
 ## The Requirements
@@ -59,7 +59,7 @@ We were quite happy with our setup, only major issues were the initial setup tim
 
 ![GitLab](https://d32wt9uxwfssua.cloudfront.net/tech-blog/uploads/gitlab.png)
 
-We wanted to choose something that would be easy to understand even for our interns or junior developers and since we recently updated our installation of GitLab to the latest version, we've been intrigued to try **GitLab's Pipelines** which are specifically meant for continuos integration.
+We wanted to choose something that would be easy to understand even for our interns or junior developers and since we recently updated our installation of GitLab to the latest version, we've been intrigued to try **GitLab's Pipelines** which are specifically meant for continuous integration.
 
 Rewriting of some of the scripts from Jenkins was needed, but worth the result. We've achieved an extremely easy project setup (just adding one file to the repo) and it's easy to understand for everyone. For more complex projects we allow overriding the build scripts per project, again by just putting them in the repo.
 
@@ -69,9 +69,9 @@ Rewriting of some of the scripts from Jenkins was needed, but worth the result. 
 
 ### Commit Message Trigger
 
-We figured out that the simplest way of triggering a CI build for us will be some magic words in a commit message. We still need to manually incerment build and version numbers of our apps, and that's the perfect commit where to make the CI build the project.
+We figured out that the simplest way of triggering a CI build for us will be some magic words in a commit message. We still need to manually increment build and version numbers of our apps, and that's the perfect commit where to make the CI build the project.
 
-First, we tell the CI where it should deploy the app after building and then the environment the should should be set and used when building the app. 
+First, we tell the CI where it should deploy the app after building and then the environment the should be set and used when building the app. 
 
 ```
 738af0 Fixed stuff [ci testflight staging]
