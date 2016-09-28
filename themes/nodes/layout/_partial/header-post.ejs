@@ -34,7 +34,13 @@
 			<div class="article-meta__right">
 				<% if(page.author) { %>
 				<div class="article-meta__author">
-					<%- page.author.name %>
+					<% if(page.author.twitter) { %>
+						<a href="https://www.twitter.com/<%- page.author.twitter %>" target="_blank">
+							<%- page.author.name %>
+						</a>
+					<% } else { %>
+						<%- page.author.name %>
+					<% } %>
 				</div>
 				<% } %>
 
