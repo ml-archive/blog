@@ -19,7 +19,7 @@
 	@include flex-align($y: middle);
 	padding-left: $whitespace-medium;
 	padding-right: $whitespace-medium;
-	@include breakpoint(large) {
+	@include breakpoint(medium) {
 		@include flex-grid-column($columns: 6);
 	}
 }
@@ -29,7 +29,9 @@
 	color: $warm-pink;
 }
 .article-meta__right {
-
+	@include breakpoint(medium) {
+		justify-content: flex-end;
+	}
 }
 
 .article-meta__category {
@@ -56,7 +58,7 @@
 
 }
 .article-meta__date {
-	margin-left: auto;
+
 }
 .article-meta__dot {
 	margin-right: auto;

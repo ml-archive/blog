@@ -23,6 +23,9 @@
 	.article-meta__left,
 	.article-meta__right {
 		@include flex-grid-column($columns: 12);
+		@include breakpoint(medium) {
+			@include flex-grid-column($columns: 6);
+		}
 	}
 	.article-meta__date {
 		margin-left: 0;

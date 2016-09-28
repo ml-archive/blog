@@ -9,6 +9,10 @@ before_prepare:
 
 prepare:
 
+shared_dir:
+    - host_dir: 'public'
+      container_dir: 'public/test-upload'
+
 config:
 
 docker_template: "clean-default"
