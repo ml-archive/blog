@@ -11,6 +11,7 @@
 	}
 	.content__article {
 		@include flex-grid-column($columns: 12);
-		max-width: 700px;
+		padding-left: $whitespace-medium;
+		padding-right: $whitespace-medium;
 	}
 }
