@@ -38,7 +38,6 @@
 	margin-right: $whitespace-base;
 
 	font-weight: $fontweight-bold;
-	text-transform: uppercase;
 	ul {
 		list-style: none;
 		margin: 0;
@@ -55,7 +54,9 @@
 	color: $black-60;
 }
 .article-meta__author {
-
+	a {
+		color: $black-60;
+	}
 }
 .article-meta__date {
 
