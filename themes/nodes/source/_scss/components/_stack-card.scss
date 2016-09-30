@@ -14,6 +14,7 @@
 
 .stack-card__title {
 	@include size($type: margin, $side: top, $size: $whitespace-medium);
+	font-family: $header-font-family;
 }
 
 .stack-card__icon {
@@ -47,6 +48,6 @@
 	}
 
 	.stack-card__icon--operations path {
-		fill: $amazon;
+		fill: $linux;
 	}
 }
