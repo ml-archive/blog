@@ -6,3 +6,5 @@ node_modules/
 public/
 .deploy*/
 .tmp
+_ide_helper.php
+/.idea
