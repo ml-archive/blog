@@ -1,0 +1,52 @@
+.stack-card {
+	@include size($type: padding, $side: horizontal, $size: $whitespace-small);
+}
+.stack-card__content {
+
+}
+.stack-card__link {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	@include callout-base();
+}
+
+.stack-card__title {
+	@include size($type: margin, $side: top, $size: $whitespace-medium);
+}
+
+.stack-card__icon {
+	width: 60px;
+	height: 60px;
+}
+.stack-card__icon path {
+	fill: $black-60;
+}
+
+// Hovers
+.stack-card__link:hover,
+.stack-card__link:active,
+.stack-card__link:focus {
+	color: $body-font-color;
+
+	.stack-card__icon--android path {
+		fill: $android;
+	}
+
+	.stack-card__icon--ios path {
+		fill: $apple;
+	}
+
+	.stack-card__icon--frontend path {
+		fill: $angular;
+	}
+
+	.stack-card__icon--backend path {
+		fill: $laravel;
+	}
+
+	.stack-card__icon--operations path {
+		fill: $amazon;
+	}
+}
