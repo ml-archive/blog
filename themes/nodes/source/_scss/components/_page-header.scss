@@ -22,17 +22,16 @@
 	}
 }
 .page-header__brand {
-	padding-right: $whitespace-medium;
-	padding-left: $whitespace-medium;
-	@include breakpoint(large) {
-		padding-right: rem-calc($whitespace-base * 6);
-		padding-left: rem-calc($whitespace-base * 6);
+	@include breakpoint(medium) {
+		padding-right: $whitespace-medium;
+		padding-left: $whitespace-medium;
 	}
 }
 .page-header__navigation {
-	padding-right: $whitespace-medium;
 	text-align: right;
-	@include breakpoint(large) {
-		padding-right: rem-calc($whitespace-base * 6);
+	padding-left: 0;
+	@include breakpoint(medium) {
+		padding-right: $whitespace-medium;
+		padding-left: $whitespace-medium;
 	}
 }

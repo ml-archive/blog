@@ -1,4 +1,4 @@
-.content.post {
+.content.our-stacks {
 	@include flex-grid-row();
 	@include flex-align($x: center);
 
@@ -8,8 +8,7 @@
 		margin-left: $whitespace-medium;
 	}
 
-	.content__article,
-	.author-card {
+	.content__article {
 		@include flex-grid-column($columns: 12);
 		@include breakpoint(medium) {
 			@include flex-grid-column($columns: 10);
@@ -18,8 +17,9 @@
 			@include flex-grid-column($columns: 8);
 		}
 	}
-	.content__article > p:first-of-type {
-		margin-top: 0;
-		@extend .lead;
+
+	.stack-cards {
+		@include flex-grid-row();
+		@include flex-grid-layout($n: 3, $selector: '.stack-card');
 	}
 }
