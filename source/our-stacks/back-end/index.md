@@ -5,13 +5,14 @@ The separation of software systems into front and back ends simplifies developme
 Backend developers in Nodes build APIs with documentation & Backends 
 
 ###Tasks
+ - Writing tests, all backend development is TDD, we write a lot of tests!
  - Database architecture
  - Building custom APIs for mobile applications & web sites
  - Building Backends for admins to manage their app
  - Integrating a bunch of services
  - Integrating with clients internal APIs
 
-###IDEA
+###IDE
 PHP Storm is the preferred IDEA
 
 ###Other tools
@@ -56,7 +57,24 @@ Nodes was using [CakePHP](http://cakephp.org/) until 2013 where we moved to [Lar
  - [S3](https://aws.amazon.com/documentation/s3/) - Storage
  - [CloudFront](https://aws.amazon.com/cloudfront/) - CDN, with our own image scaling system in front (?w=100&h=100)
  - [ImgIX](https://http://imgix.com/) - CDN with image scaling / optimization 
+ - [Bugsnag](https://bugsnag.com/) - A tool for collecting errors in production 
 
 ### Libraries
-
+ - [PHP unit](https://phpunit.de/) - Unit testing
+ - [Dingo](https://github.com/dingo/api) - Build awesome APIs easier for Laravel
+ - [Ide helper](https://github.com/barryvdh/laravel-ide-helper) - Easy way to get @property attributes on models and your facades linked to the repositories. Auto complete is your friend
+ - [Debug](https://github.com/orchestral/debug) - A really sweet library for monitoring you SQL queries and make better performance for our apps
+ - [Cors](https://github.com/barryvdh/laravel-cors) - Easy CORS integration
+ - [Excel](https://github.com/Maatwebsite/Laravel-Excel) - Awesome library for import/export xls/csv files
+ 
 ### Open source
+The backend team in Nodes have some packages we have created to ease our daily work. We don't want to spend time on building the same thing over and over. And it's borring!
+[Nodes-PHP](https://github.com/orgs/nodes-php/)
+
+ - Backend
+ - API
+ - Assets
+ - Push
+ - Cache
+ - Counter cache
+ - API Scaffolding
