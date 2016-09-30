@@ -26,7 +26,7 @@
 
 		</div>
 		<div class="article-meta__right">
-			<% if(!latest) { %>
+
 				<% if(post.author) { %>
 					<div class="article-meta__author">
 						<%- post.author.name %>
@@ -36,7 +36,7 @@
 				<% if(post.author && post.date) { %>
 					&nbsp;·&nbsp;
 				<% } %>
-			<% } %>
+
 			<% if(post.date) { %>
 				<div class="article-meta__date">
 					<%- post.date.format('MMMM Do YYYY') %>

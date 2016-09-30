@@ -7,10 +7,6 @@ categories:
 - iOS
 ---
 
-
-# Continuous Integration With Deployment to TestFlight and HockeyApp
-
-
 We've recently revised our development process on the iOS team and set up a continuous integration server to make and deploy our builds faster, easier and more consistently. This post should shed some light on what we chose and how we set it up.
 
 

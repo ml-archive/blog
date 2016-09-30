@@ -1,0 +1,26 @@
+<div class="author-card">
+	<div class="author-card__image">
+		<img src="<%- page.author.image %>" alt="<%- page.author.name %>">
+	</div>
+
+	<div class="author-card__info">
+		<h3 class="author-card__author-name">
+			<%- page.author.name %>
+		</h3>
+		<p class="author-card__author-bio">
+			<%- page.author.about %>
+		</p>
+		<div class="author-card__author-links">
+			<% if(page.author.twitter) { %>
+			<a class="author-card__author-link author-card__author-link--twitter" href="https://www.twitter.com/<%- page.author.twitter %>" target="_blank">
+				Twitter
+			</a>
+			<% } %>
+			<% if(page.author.github) { %>
+			<a class="author-card__author-link author-card__author-link--github" href="https://www.github.com/<%- page.author.github %>" target="_blank">
+				Github
+			</a>
+			<% } %>
+		</div>
+	</div>
+</div>

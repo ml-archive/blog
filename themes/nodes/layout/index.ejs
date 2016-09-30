@@ -14,7 +14,7 @@
 			<div class="articles-latest__list">
 				<% site.categories.each(function(c, cI) { %>
 					<div class="articles-latest__article">
-						<h2>Latest in <span class="articles-latest__category"><%- c.name %></span>:</h2>
+						<h4>Latest in <span class="articles-latest__category"><%- c.name %></span>:</h4>
 
 						<% site.categories.findOne({name: c.name}).posts.each(function(post, i) { %>
 							<% if(i === 0) { %>

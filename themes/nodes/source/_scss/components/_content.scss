@@ -1,9 +1,15 @@
 .content {
-	margin-right: $whitespace-medium;
-	margin-bottom: $whitespace-medium;
-	margin-left: $whitespace-medium;
+	min-height: calc(100vh - 80px);
 
 	background-color: $white;
+
+	@include breakpoint(medium) {
+		min-height: calc(100vh - 100px);
+
+		margin-right: $whitespace-medium;
+		margin-bottom: $whitespace-medium;
+		margin-left: $whitespace-medium;
+	}
 }
 
 .content__article {
@@ -11,7 +17,7 @@
 	padding-bottom: $whitespace-medium;
 
 	@include breakpoint(large) {
-		padding-top: $whitespace-xlarge;
+		padding-top: $whitespace-larger;
 		padding-bottom: $whitespace-medium;
 	}
 }

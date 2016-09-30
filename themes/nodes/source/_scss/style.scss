@@ -60,6 +60,7 @@
 
 @import "elements/background-lines";
 @import "elements/dot-seperator";
+@import "elements/icon";
 
 @import "components/article";
 @import "components/article-meta";
@@ -67,9 +68,12 @@
 @import "components/article-header";
 @import "components/article-divider";
 @import "components/articles-latest";
+@import "components/author-card";
 @import "components/content";
 @import "components/hero-unit";
 @import "components/pagination";
+@import "components/stack-card";
+
 
 @import "components/page-header";
 @import "components/navigation";
@@ -79,3 +83,4 @@
 @import "layouts/archive";
 @import "layouts/page";
 @import "layouts/post";
+@import "layouts/our-stacks";

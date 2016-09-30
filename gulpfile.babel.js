@@ -150,6 +150,7 @@ gulp.task('images', () => {
 		.pipe(size({title: 'images'}));
 });
 
+// Could be used for inlining...
 gulp.task('html', () => {
 	return gulp.src(PATHS.html.inFiles)
 		.pipe(inlineSource({
@@ -267,6 +268,22 @@ gulp.task('serve:static', () => {
 
 gulp.task('default', ['serve']);
 
-gulp.task('build', ['clean', 'styles', 'scripts', 'images']);
+// gulp.task('build', ['clean', 'styles', 'scripts', 'images']);
+gulp.task('build', (cb) => {
+	runSequence(
+		'clean',
+		'styles',
+		'scripts',
+		'images',
+		cb
+	);
+});
 
-gulp.task('build:post', ['copy', 'generate-service-worker', 'html']);
+// gulp.task('build:post', ['copy', 'generate-service-worker', 'html']);
+gulp.task('build:post', (cb) => {
+	runSequence(
+		'copy',
+		'generate-service-worker',
+		cb
+	);
+});

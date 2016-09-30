@@ -10,13 +10,13 @@
 	.article {
 		@include flex-grid-column($columns: 12);
 		@include breakpoint(medium) {
-			@include flex-grid-column($columns: 8);
+			@include flex-grid-column($columns: 10);
 
 			padding-top: $whitespace-medium;
 			padding-bottom: $whitespace-base * 5;
 		}
 		@include breakpoint(large) {
-			@include flex-grid-column($columns: 6);
+			@include flex-grid-column($columns: 8);
 		}
 	}
 }
