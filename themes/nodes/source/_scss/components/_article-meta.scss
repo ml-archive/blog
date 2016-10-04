@@ -17,8 +17,6 @@
 	@include flex-grid-column($columns: 12);
 	@include flex;
 	@include flex-align($y: middle);
-	//padding-left: $whitespace-medium;
-	//padding-right: $whitespace-medium;
 	@include breakpoint(medium) {
 		@include flex-grid-column($columns: 6);
 	}
