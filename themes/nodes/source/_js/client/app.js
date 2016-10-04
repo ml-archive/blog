@@ -1,14 +1,17 @@
 'use strict';
 
-(function() {
-	// Remove the no-js tag from the html node if we do support javascript.
-	document.querySelector('html').classList.remove('no-js');
+document.querySelector('html').classList.remove('no-js');
+
+var NEB = {};
+
+NEB.ServiceWorkerRegistration = (function() {
 	
-	// Check to make sure service workers are supported in the current browser,
-	// and that the current page is accessed from a secure origin. Using a
-	// service worker from an insecure origin will trigger JS console errors. See
-	// http://www.chromium.org/Home/chromium-security/prefer-secure-origins-for-powerful-new-features
-	var isLocalhost = Boolean(window.location.hostname === 'localhost' ||
+	let isAlreadyRegistered = false;
+	
+	const URL = '/service-worker.js';
+	const SCOPE = '/';
+	
+	const isLocalhost = Boolean(window.location.hostname === 'localhost' ||
 		// [::1] is the IPv6 localhost address.
 		window.location.hostname === '[::1]' ||
 		// 127.0.0.1/8 is considered localhost for IPv4.
@@ -17,47 +20,64 @@
 		)
 	);
 	
-	if ('serviceWorker' in navigator &&
-		(window.location.protocol === 'https:' || isLocalhost)) {
-		navigator.serviceWorker.register('/service-worker.js', {scope: '/'})
-			.then(function(registration) {
-				// updatefound is fired if service-worker.js changes.
-				registration.onupdatefound = function() {
-					// updatefound is also fired the very first time the SW is installed,
-					// and there's no need to prompt for a reload at that point.
-					// So check here to see if the page is already controlled,
-					// i.e. whether there's an existing service worker.
-					if (navigator.serviceWorker.controller) {
-						// The updatefound event implies that registration.installing is set:
-						// https://slightlyoff.github.io/ServiceWorker/spec/service_worker/index.html#service-worker-container-updatefound-event
-						var installingWorker = registration.installing;
+	const register = function() {
+		if(!isAlreadyRegistered) {
+			
+			isAlreadyRegistered = true;
+			
+			if('serviceWorker' in navigator && (window.location.protocol === 'https:' || isLocalhost)) {
+				navigator.serviceWorker.register('/service-worker.js', {scope: '/'}).then(function(registration) {
+					
+					registration.onupdatefound = function() {
+						const installingWorker = registration.installing;
 						
 						installingWorker.onstatechange = function() {
 							switch (installingWorker.state) {
 								case 'installed':
-									// At this point, the old content will have been purged and the
-									// fresh content will have been added to the cache.
-									// It's the perfect time to display a "New content is
-									// available; please refresh." message in the page's interface.
+									if(!navigator.serviceWorker.controller) {
+										var siteCachedToast = new Toast('#swCachedToast', {timeout: 4000});
+										siteCachedToast.enter();
+									}
 									break;
 								
 								case 'redundant':
-									throw new Error('The installing ' +
-										'service worker became redundant.');
-								
-								default:
-								// Ignore
+									throw Error('The installing service worker became reduntant.');
+									break;
 							}
 						};
+					};
+					
+				}).catch(function(e) {
+					console.error('Service worker registration failed:', e);
+				});
+			}
+			
+		}
+	};
+	
+	if(navigator.serviceWorker && navigator.serviceWorker.controller) {
+		navigator.serviceWorker.controller.onstatechange = function(event) {
+			if(event.target.state === 'redundant') {
+				var siteCacheUpdatedToast = new Toast('#swCacheExpiredToast', {
+					timeout: -1,
+					onClose: () => {
+						window.location.reload();
 					}
-				};
-			}).catch(function(e) {
-			console.error('Error during service worker registration:', e);
-		});
+				});
+				siteCacheUpdatedToast.enter();
+			}
+		};
 	}
+	
+	return {
+		register
+	};
+	
 })();
 
 $(document).ready(function() {
+	
+	NEB.ServiceWorkerRegistration.register();
 	
 	var $articleBackButton = $('.article-header__back-button');
 	if($articleBackButton.length > 0) {
