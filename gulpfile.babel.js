@@ -44,6 +44,9 @@ const PATHS = {
 	scripts: {
 		inFiles: [
 			'./themes/nodes/source/_js/vendor/jquery.min.js',
+			'./themes/nodes/source/_js/vendor/TweenLite.min.js',
+			'./themes/nodes/source/_js/vendor/CSSPlugin.min.js',
+			'./themes/nodes/source/_js/client/toast.js',
 			'./themes/nodes/source/_js/client/app.js',
 			'./themes/nodes/source/_js/client/file.js'
 		],

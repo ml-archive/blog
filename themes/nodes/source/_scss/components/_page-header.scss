@@ -22,6 +22,7 @@
 	}
 }
 .page-header__brand {
+	padding-right: 0;
 	@include breakpoint(medium) {
 		padding-right: $whitespace-medium;
 		padding-left: $whitespace-medium;
