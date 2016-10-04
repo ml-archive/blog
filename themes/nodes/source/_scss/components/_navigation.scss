@@ -48,7 +48,6 @@ html.no-js .page-header__mobile-toggle {
 }
 .page-header__mobile-toggle {
 	margin-left: auto;
-	margin-right: -$whitespace-medium;
 
 	line-height: $page-header-height / 2;
 	@include breakpoint(large) {
@@ -56,7 +55,7 @@ html.no-js .page-header__mobile-toggle {
 	}
 
 	button {
-		padding-right: $whitespace-medium;
+		padding-right: $whitespace-small;
 		padding-left: $whitespace-medium;
 		&:focus {
 			outline: none;
