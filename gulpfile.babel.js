@@ -181,9 +181,9 @@ gulp.task('clean', () => {
 // Service worker related tasks. If you are unsure what this is - don't modify it.
 gulp.task('copy-sw-scripts', () => {
 	return gulp.src([
-		'node_modules/sw-toolbox/sw-toolbox.js',
-		'themes/nodes/source/_js/sw/runtime-caching.js'
-	])
+			'node_modules/sw-toolbox/sw-toolbox.js',
+			'themes/nodes/source/_js/sw/runtime-caching.js'
+		])
 		.pipe(gulp.dest('themes/nodes/source/js/sw'));
 });
 gulp.task('generate-service-worker', ['copy-sw-scripts'], () => {
