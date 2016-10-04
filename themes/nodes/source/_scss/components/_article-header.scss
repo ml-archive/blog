@@ -16,7 +16,7 @@
 			padding-bottom: $whitespace-base * 5;
 		}
 		@include breakpoint(large) {
-			@include flex-grid-column($columns: 6);
+			@include flex-grid-column($columns: 8);
 		}
 	}
 }

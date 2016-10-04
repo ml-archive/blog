@@ -8,10 +8,25 @@ $black-60: rgba(0, 0, 0, 0.6);
 $black-30: rgba(0, 0, 0, 0.3);
 $real-white: #ffffff;
 
+$twitter: #1DA1F2;
+$github: #2a2c2e;
+
+$amazon: #F7A80D;
+$android: #A4C439;
+$angular: #C4473A;
+$apple: #2a2c2e;
+$laravel: #FD4F31;
+
+$php: #6181B6;
+$javascript: #F0DB4F;
+$html: #E44D26;
+$css: #1572B6;
+
 $whitespace-base: rem-calc(10);
 $whitespace-small: $whitespace-base; // 10px
 $whitespace-medium: $whitespace-base * 2; // 20px
 $whitespace-large: $whitespace-base * 4; // 40px
+$whitespace-larger: $whitespace-base * 6; // 60px
 $whitespace-xlarge: $whitespace-base * 8; //80px
 $whitespace-xxlarge: $whitespace-base * 16; // 160px
 

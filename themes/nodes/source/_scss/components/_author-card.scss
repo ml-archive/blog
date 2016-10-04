@@ -1,0 +1,58 @@
+.author-card {
+	@include flex-grid-row();
+	@include flex-align($x: null, $y: middle);
+
+	@include callout-base;
+	margin-bottom: $whitespace-large;
+}
+
+
+.author-card__image {
+	@include flex-grid-column($columns: 3);
+}
+.author-card__info {
+	@include flex-grid-column($columns: 9);
+}
+
+.author-card__author-name {
+	margin-top: 0;
+}
+
+.author-card__author-bio {
+	margin-top: 1em;
+	margin-bottom: 1em;
+}
+
+.author-card__author-links {
+
+}
+
+.author-card__author-link {
+	@include button-base;
+	border: 1px solid;
+
+	margin-bottom: 0;
+	margin-right: $whitespace-small;
+
+	font-family: $header-font-family;
+
+	&--twitter {
+		color: $twitter;
+		border-color: $twitter;
+
+		&:hover, &:focus, &:active {
+			color: $twitter;
+			border-color: $twitter;
+		}
+	}
+
+	&--github {
+		color: $github;
+		border-color: $github;
+
+		&:hover, &:focus, &:active {
+			color: $github;
+			border-color: $github;
+		}
+	}
+}

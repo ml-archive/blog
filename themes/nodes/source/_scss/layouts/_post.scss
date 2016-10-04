@@ -1,16 +1,25 @@
 .content.post {
-	position: relative; // Enable background-lines
 	@include flex-grid-row();
 	@include flex-align($x: center);
 
-	.background-lines:after {
+	@include breakpoint(medium) {
+		margin-right: $whitespace-medium;
+		margin-bottom: $whitespace-medium;
+		margin-left: $whitespace-medium;
+	}
+
+	.content__article,
+	.author-card {
 		@include flex-grid-column($columns: 12);
 		@include breakpoint(medium) {
+			@include flex-grid-column($columns: 10);
+		}
+		@include breakpoint(large) {
 			@include flex-grid-column($columns: 8);
 		}
 	}
-	.content__article {
-		@include flex-grid-column($columns: 12);
-		max-width: 700px;
+	.content__article > p:first-of-type {
+		margin-top: 0;
+		@extend .lead;
 	}
 }

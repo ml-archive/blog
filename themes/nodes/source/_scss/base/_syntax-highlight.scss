@@ -1,6 +1,10 @@
 .highlight {
 	margin-left: auto;
 	margin-right: auto;
+
+	table tbody td, table tbody th {
+		padding: 0;
+	}
 }
 
 .highlight figcaption {
