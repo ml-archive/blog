@@ -72,11 +72,6 @@ Mostly used systems in our stack
 A simple ruby gem to make it easy to update ruby systems.
 https://github.com/nodes-cloud/ncupdater
 
-# NCApi will be removed in first version until released
-NCApi
-A simple ruby gem to make API calls a bit more simple
-https://github.com/nodes-cloud/ncapi
-
-Infrastructure drawing
+###Infrastructure drawing
 
 ![Infrastructure](https://d1gwekl0pol55k.cloudfront.net/image/baas/translate_values/nodes-cloud-v0-5_IcTvrdDdNo.png)
