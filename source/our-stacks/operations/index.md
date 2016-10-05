@@ -62,9 +62,6 @@ Mostly used systems in our stack
 - MongoDB
 - ElasticSearch
 - Open source
-- NCUpdater
-- A simple ruby gem to make it easy to update ruby systems.
-- https://github.com/nodes-cloud/ncupdater
 
 ###Open source
 **NCUpdater**
