@@ -69,3 +69,7 @@ Mostly used systems in our stack
 
 A simple ruby gem to make it easy to update ruby systems.
 https://github.com/nodes-cloud/ncupdater
+
+###Infrastructure drawing
+
+![Infrastructure](https://d1gwekl0pol55k.cloudfront.net/image/baas/translate_values/pub-nodes-cloud-v0-6_pZn4iLV5KK.png)
