@@ -28,7 +28,7 @@ Most of our custom-built systems are developed in Ruby and Bash
 
 **Building client setups**
 
-We sometimes have client's who want us to configure servers that conform to their cases, in their own environments. This includes Windows server, RedHat, Oracle Linux and more.
+We sometimes have clients who want us to configure servers that conform to their cases, in their own environments. This includes Windows server, RedHat, Oracle Linux and more.
 In these cases, we work closely with the client IT team, so get our implementations running smoothly in their own datacenters.
 
 ###IDE
