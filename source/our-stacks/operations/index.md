@@ -7,28 +7,29 @@ layout: stack
 Building and maintaining our server setup with AWS.
 
 ###Product
-We strive to build a flexible, stable and secure server setup, and have the right tools to quickly find problems.
-Besides this we build tools to automate tasks for both Operations and developers. We see it as an important task to let developers do common tasks and solve most problems themselves.
+We strive to build a flexible, stable and secure server setup, where we have the right tools to quickly find problems.
+
+Because of this we build tools to automate tasks for both operations- and web-developers. We see it as an important goal to let developers do common tasks and solve most problems themselves.
 
 ###Tasks
 **AWS Maintenance**
 
-Our main task is to make sure our AWS environment is running, and optimized. Tasks varies from implementing new systems, optimizing our systems to monitoring and fixing problems in our setup.
-Our setup is automated through Puppet, for configuration management.
+Our main task is to make sure our AWS environment is running, and optimized for performance. Tasks vary, but includes implementing new systems, opimizing our systems, monitoring and fixing problems in our setup. In order for us to facilitate automation, we use puppet, which streamlines server configurations.
 
 **Building systems for automation**
 
-We want to automate as much as possible. Some of the systems we have are:
-- Akira - CI/CD tool for our developers
-- Exeter - Let our developers run commands, create cronjobs and queues
-- Autoscale - We use AWS Autoscale for our servers, with some additions to make sure new servers are properly configured
+We want to automate as much as possible. Some of the systems we have built to facilitate this are:
 
-Most of our custom built systems are developed in Ruby and Bash
+- Akira - Continuous Integration and deployment tool for our developers.
+- Exeter - Gives our developers the ability to run commands, create cronjobs and manage queues.
+- Autoscal - We use AWS Autoscaling for our servers, with some additions to make sure new servers are properly configured
+
+Most of our custom-built systems are developed in Ruby and Bash
 
 **Building client setups**
 
-We sometime have clients who want us to build servers to their standard in their own hosting setup. This can for example be Windows server, RedHat, Oracle Linux etc.
-In these cases, we are working close together with the client IT team, so get our API’s running smoothly in their own datacenters.
+We sometimes have client's who want us to configure servers that conform to their cases, in their own environments. This includes Windows server, RedHat, Oracle Linux and more.
+In these cases, we work closely with the client IT team, so get our implementations running smoothly in their own datacenters.
 
 ###IDE
 The IDE’s we use mostly are:
