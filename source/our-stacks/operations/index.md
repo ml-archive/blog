@@ -14,7 +14,7 @@ Because of this we build tools to automate tasks for both operations- and web-de
 ###Tasks
 **AWS Maintenance**
 
-Our main task is to make sure our AWS environment is running, and optimized for performance. Tasks vary, but includes implementing new systems, opimizing our systems, monitoring and fixing problems in our setup. In order for us to facilitate automation, we use puppet, which streamlines server configurations.
+Our main task is to make sure our AWS environment is running, and optimized for performance. Tasks vary, but include implementing new systems, optimizing our systems, monitoring and fixing problems in our setup. In order for us to facilitate automation, we use puppet, which streamlines server configuration.
 
 **Building systems for automation**
 
