@@ -29,7 +29,7 @@ Most of our custom-built systems are developed in Ruby and Bash
 **Building client setups**
 
 We sometimes have clients who want us to configure servers that conform to their cases, in their own environments. This includes Windows server, RedHat, Oracle Linux and more.
-In these cases, we work closely with the client IT team, so get our implementations running smoothly in their own datacenters.
+In these cases, we work closely with the client's IT team, to get our implementations running smoothly in their own datacenters.
 
 ###IDE
 The IDE’s we use mostly are:
@@ -69,7 +69,3 @@ Mostly used systems in our stack
 
 A simple ruby gem to make it easy to update ruby systems.
 https://github.com/nodes-cloud/ncupdater
-
-###Infrastructure drawing
-
-![Infrastructure](https://d1gwekl0pol55k.cloudfront.net/image/baas/translate_values/nodes-cloud-v0-5_IcTvrdDdNo.png)
