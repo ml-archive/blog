@@ -22,7 +22,7 @@ We want to automate as much as possible. Some of the systems we have built to fa
 
 - Akira - Continuous Integration and deployment tool for our developers.
 - Exeter - Gives our developers the ability to run commands, create cronjobs and manage queues.
-- Autoscal - We use AWS Autoscaling for our servers, with some additions to make sure new servers are properly configured
+- Autoscale - We use AWS Autoscaling for our servers, with some additions to make sure new servers are properly configured
 
 Most of our custom-built systems are developed in Ruby and Bash
 
