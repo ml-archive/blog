@@ -42,7 +42,7 @@ Android has an excellent selection of available libraries for everything. These 
 
 - [OkHttp](https://github.com/square/okhttp) - An HTTP+HTTP/2 client for Android and Java applications.
 - [Retrofit](https://github.com/square/retrofit) - Used together with OkHttp as a "frontend" for API interfaces
-- [OkHttp Logging interceptor](https://github.com/square/okhttp/tree/master/okhttp-logging-interceptor) - Great logging for quick http debugging
+- [OkHttp Logging interceptor](https://github.com/square/okhttp/tree/master/okhttp-logging-interceptor) - Great logging for quick HTTP debugging
 - [Picasso](http://square.github.io/picasso/) - Image loading library by the infamous Jake Wharton
 - [Glide](https://github.com/bumptech/glide) - Memory efficient and fast image loading - our default choice at the moment
 - [Realm](https://realm.io/) - Persistence layer with ORM like features
