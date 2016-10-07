@@ -22,7 +22,7 @@ Custom designs are important to Nodes and helping the client get the best possib
 ### Language
 
 ##### Java
-Java 1.0 was released in 1995 and is still being used widely today - in part because of Android. Being an old language the toolchain is mature, and features like annotation processing, instant-run and an excellent Java SDK provides a nice tool set for development.
+Java 1.0 was released in 1995 and is still being used widely today - in part because of Android. Being an old language the toolchain is mature, and features like annotation processing, instant-run and an excellent Java SDK provides a nice toolset for development.
 
 ### IDE
 Android Studio is the natural choice on the platform with all the bells and whistles it brings. 
