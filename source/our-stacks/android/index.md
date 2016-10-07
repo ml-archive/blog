@@ -6,7 +6,7 @@ layout: stack
 
 Android developers at Nodes strive to build awesome apps using the Material Design Guidelines and Google provided design tools. 
 
-Custom designs are important to Nodes and helping client get the best possible Android experience are high priority for the Android devs.
+Custom designs are important to Nodes and helping the client get the best possible Android experience is a high priority for the Android devs.
 
 ### Tasks
 - Maintain internal frameworks  
@@ -22,7 +22,7 @@ Custom designs are important to Nodes and helping client get the best possible A
 ### Language
 
 ##### Java
-Java 1.0 was released in 1995 and is still being used widely today - in part because of Android. Being an old language the toolchain is mature and features like annotation processing, instant-run and an excellent Java SDK provides a nice tool set for development.
+Java 1.0 was released in 1995 and is still being used widely today - in part because of Android. Being an old language the toolchain is mature, and features like annotation processing, instant-run and an excellent Java SDK provides a nice tool set for development.
 
 ### IDE
 Android Studio is the natural choice on the platform with all the bells and whistles it brings. 
