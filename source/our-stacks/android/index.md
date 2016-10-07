@@ -48,8 +48,8 @@ Android has an excellent selection of available libraries for everything. These 
 - [Realm](https://realm.io/) - Persistence layer with ORM like features
 - [ButterKnife](http://jakewharton.github.io/butterknife/) - View binding made easy
 - [LeakCanary](https://github.com/square/leakcanary) - Leak detection library for getting rid of those leaks with excellent logging and UI 
-- [UrbanAirshipSDK](https://github.com/urbanairship/android-library) - integrates with Urban Airship to register for and handle push notifications
-- [HockeySDK](https://github.com/bitstadium/HockeySDK-Android) - integrates with HockeyApp to collect crash reports and show application updates during testing
+- [UrbanAirshipSDK](https://github.com/urbanairship/android-library) - integrates with [Urban Airship](https://www.urbanairship.com/) to register for and handle push notifications
+- [HockeySDK](https://github.com/bitstadium/HockeySDK-Android) - integrates with [HockeyApp](https://hockeyapp.net/#s) to collect crash reports and show application updates during testing
 - [GoogleAnalytics](https://developers.google.com/analytics/devguides/collection/android/v4/) - analytics and tracking library from Google
 - [Mixpanel](https://github.com/mixpanel/mixpanel-android) - advanced analytics and user tracking library with features like A/B testing and push notifications
 
