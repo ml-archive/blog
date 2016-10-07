@@ -29,7 +29,7 @@ Android Studio is the natural choice on the platform with all the bells and whis
 
 ### Android Studio plugins
 - [android-butterknife-zelezny](https://github.com/avast/android-butterknife-zelezny) - Generate view bindings from the XML file directly
-- *Markdown support* - Preview the markdown layout directly in AS
+- [Markdown support](https://plugins.jetbrains.com/plugin/7793?pr=idea) - Preview the markdown layout directly in AS
 
 ### Other tools
 - [Charles Proxy](https://www.charlesproxy.com/) - effectively serves as a MitM proxy which captures all network traffic and helps us debug network issues
