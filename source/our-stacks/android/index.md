@@ -28,7 +28,7 @@ Java 1.0 was released in 1995 and is still being used widely today - in part bec
 Android Studio is the natural choice on the platform with all the bells and whistles it brings. 
 
 ### Android Studio plugins
-- [android-butterknife-zelezny](https://github.com/avast/android-butterknife-zelezny) - Generate view bindings from the xml file directly
+- [android-butterknife-zelezny](https://github.com/avast/android-butterknife-zelezny) - Generate view bindings from the XML file directly
 - *Markdown support* - Preview the markdown layout directly in AS
 
 ### Other tools
