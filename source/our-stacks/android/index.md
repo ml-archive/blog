@@ -54,7 +54,7 @@ Android has an excellent selection of available libraries for everything. These 
 - [Mixpanel](https://github.com/mixpanel/mixpanel-android) - advanced analytics and user tracking library with features like A/B testing and push notifications
 
 ### Open source
-We try to do as much knowledge sharing as we can inside the Android team, and the result of that are libraries that contain code for our most common implemented tasks. 
+We try to do as much knowledge sharing as we can inside the Android team, the result of this being our libraries that contain code for our most common implemented tasks. 
 
 - [nstack](https://github.com/nodes-android/nstack) - Inhouse mobile platform for in-app data and translations
 - [gutenberg](https://github.com/nodes-android/gutenberg) - Font library for applying custom fonts easily
