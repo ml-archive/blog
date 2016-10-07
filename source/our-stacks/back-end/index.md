@@ -8,18 +8,18 @@ layout: stack
 The separation of software systems into front and back ends simplifies development and separates maintenance. A rule of thumb is that the front (or "client") side is any component manipulated by the user. The server-side (or "back end") code resides on the server.
 
 ###Product
-Backend developers in Nodes build APIs with documentation & Backends 
+Backend developers in Nodes build APIs with documentation & Admin panels / CMS 
 
 ###Tasks
  - Writing tests, all backend development is TDD, we write a lot of tests!
- - Database architecture
+ - Architecting databases, setting up relations, handling migrations
  - Building custom APIs for mobile applications & web sites
  - Building Backends for admins to manage their app
- - Integrating a bunch of services
- - Integrating with clients internal APIs
+ - Integrating with a bunch of services
+ - Integrating with client's internal APIs
 
 ###IDE
-PHP Storm is the preferred IDEA
+PHP Storm is the preferred IDE
 
 ###Other tools
  - Terminal is heavily used during the day
@@ -49,8 +49,8 @@ We have missed the strictness you see from other languages, for bigger projects.
 
 ### Framework - [Laravel](https://laravel.com/)
 
-Today there is almost no one, which are writing web applications in pure PHP.
-In Nodes we use [Laravel](https://laravel.com/) and are extremely happy with it. Very easy to get started with. Much more object orientated than competitors (at that time at least) 
+Today, there is almost no one who is writing web applications in pure PHP.
+In Nodes we use [Laravel](https://laravel.com/) and are extremely happy with it. Very easy to get started with. Much more object oriented than competitors (at that time at least) 
 Massive community which brings a lot of really good open source projects and rapid bug fixes.
 Laravel is also the biggest PHP framework today, which is never a bad thing!
  
@@ -69,12 +69,12 @@ Nodes was using [CakePHP](http://cakephp.org/) until 2013 where we moved to [Lar
  - [PHP unit](https://phpunit.de/) - Unit testing
  - [Dingo](https://github.com/dingo/api) - Build awesome APIs easier for Laravel
  - [Ide helper](https://github.com/barryvdh/laravel-ide-helper) - Easy way to get @property attributes on models and your facades linked to the repositories. Auto complete is your friend
- - [Debug](https://github.com/orchestral/debug) - A really sweet library for monitoring you SQL queries and make better performance for our apps
+ - [Debug](https://github.com/orchestral/debug) - A really sweet library for monitoring you SQL queries and improving performance for our apps
  - [Cors](https://github.com/barryvdh/laravel-cors) - Easy CORS integration
  - [Excel](https://github.com/Maatwebsite/Laravel-Excel) - Awesome library for import/export xls/csv files
  
 ### Open source
-The backend team in Nodes have some packages we have created to ease our daily work. We don't want to spend time on building the same thing over and over. And it's borring!
+The backend team in Nodes has some packages we have created to ease our daily work. We don't want to spend time on building the same thing over and over. And it's boring!
 [Nodes-PHP](https://github.com/orgs/nodes-php/)
 
  - Backend
