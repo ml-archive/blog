@@ -8,7 +8,7 @@ We build web apps, hybrid apps and websites using [Angular](https://www.angular.
 
 ### Tasks
  - Writing and maintaining UI libraries for client and internal use
- - Building responsive layouts for a of modern browsers
+ - Building responsive layouts for a range of modern browsers
  - Writing business and view logic
  - Integrating with in-house or external APIs and services 
  - Work closely with our UX and Design teams
