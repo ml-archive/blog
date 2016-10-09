@@ -23,7 +23,7 @@ PHP Storm is the preferred IDE
 
 ###Other tools
  - Terminal is heavily used during the day
- - PHP my admin or Sequel pro is used for quick access to MySql
+ - phpMyAdmin or Sequel pro is used for quick access to MySQL
  - [Postman](https://www.getpostman.com/) All our APIs are documented through Postman. It is the perfect tool for big teams to work together on APIs
 
 ## Stack
