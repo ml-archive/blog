@@ -22,10 +22,10 @@ Custom designs are important to Nodes and helping the client get the best possib
 ### Language
 
 ##### Java
-Java 1.0 was released in 1995 and is still being used widely today - in part because of Android. Being an old language the toolchain is mature, and features like annotation processing, instant-run and an excellent Java SDK provides a nice toolset for development.
+Java 1.0 was released in 1995 and is still being used widely today - in part because of Android. Being an old language the toolchain is mature, and features like annotation processing, instant-run and an excellent Java SDK provide a nice toolset for development.
 
 ### IDE
-Android Studio is the natural choice on the platform with all the bells and whistles it brings. 
+Android Studio is the natural choice for the platform with all the bells and whistles it brings. 
 
 ### Android Studio plugins
 - [android-butterknife-zelezny](https://github.com/avast/android-butterknife-zelezny) - Generate view bindings from the XML file directly
@@ -54,10 +54,10 @@ Android has an excellent selection of available libraries for everything. These 
 - [Mixpanel](https://github.com/mixpanel/mixpanel-android) - advanced analytics and user tracking library with features like A/B testing and push notifications
 
 ### Open source
-We try to do as much knowledge sharing as we can inside the Android team, the result of this being our libraries that contain code for our most common implemented tasks. 
+We try to do as much knowledge sharing as we can within the Android team, the result of this being our libraries that contain code for our most common implemented tasks. 
 
 - [nstack](https://github.com/nodes-android/nstack) - Inhouse mobile platform for in-app data and translations
 - [gutenberg](https://github.com/nodes-android/gutenberg) - Font library for applying custom fonts easily
-- [nstack-gradle](https://github.com/nodes-android/nstack-gradle) - Compile time gradle plugin for generation Translation classes
+- [nstack-gradle](https://github.com/nodes-android/nstack-gradle) - Compile time gradle plugin generation of Translation classes
 - [nutils](https://github.com/nodes-android/nutils) - Utility framework with minor helpers
 - [nfusion](https://github.com/nodes-android/nfusion) - REST HTTP API Endpoint Abstraction Library with pluggable auth
