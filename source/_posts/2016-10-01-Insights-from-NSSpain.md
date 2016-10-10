@@ -7,19 +7,19 @@ categories:
 - iOS
 ---
 
-We've recently attended NSSpain, a developer conference with most focus on iOS. This was our experience, in three different perspectives.
+We've recently attended NSSpain, a developer conference focusing mostly on iOS. This was our experience, in three different perspectives.
 
 ## Jakob Mygind
 
-The main point that stuck out for me during the NSSpain conference were the increased focus on and need for testable code in App development. The pattern Apple has encouraged is not necessarily the best for writing decoupled, testable code and in turn employing controlled dependency injection. It seems it may be time for taking a different approach in order to attain these traits. Several speakers touched on this subject and had suggestions as to how these goals might be accomplished. 
+The main points that stuck out for me during the NSSpain conference were the increased focus on and need for testable code in App development. The pattern Apple has encouraged is not necessarily the best for writing decoupled, testable code and in turn employing controlled dependency injection. It seems it may be time for taking a different approach in order to attain these traits. Several speakers touched on this subject and had suggestions as to how these goals might be accomplished. 
 
-Also an eye opening talk about app security made clear how in how many ways an app and the networked communication can be tampered with and that it probably is something we need to take steps to remedy. 
+Also an eye-opening talk about app security made clear how in how many ways an app and the networked communication can be tampered with and that it probably is something we need to take steps to remedy. 
 
 **Favorite Talk**  
 I can’t single out any specific talk as there were a lot of good ones, which put together paint a picture of where iOS development is going, however the ones about Clean Architecture and security are the ones that made the biggest lasting impression.
 
 **Favorite Wine**  
-Which ever one it was at lunch. Every day. 
+Whichever one it was at lunch. Every day. 
 
 ## Marius Constantinescu
 
@@ -53,6 +53,6 @@ And last but not least, it was in Spain - land of tapas, vino and mañana! ☀�
 
 ## Summary
 
-What I like about conferences is that when get back, you just want to do things, try all the stuff you learned about, play with new frameworks and SDKs, you feel full of energy, very motivated and very productive. 
+NSSpain was a great conference. What sets it apart from other conferences is that the city it's in, Logroño, is the capital of the Rioja region, a world famous wine region. And the day after NSSpain starts the 1-week long San Mateo wine festival 🍷, where NSSpain participants can join the festivities and enjoy the local products and atmosphere.
 
-Another great thing about NSSpain is that the city it's in, Logroño, is the capital of the Rioja region, a world famous wine region. And the day after NSSpain starts the 1-week long San Mateo wine festival. 🍷 
+Probably the best part about conferences is that when you get back, you just want to do things, try all the stuff you learned, play with new frameworks and SDKs, you feel full of energy, very motivated and very productive. We feel that our team has gained a lot by taking part in NSSpain, and we'll try to keep the practice of attending conferences for the following years.
