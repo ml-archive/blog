@@ -6,7 +6,7 @@ layout: stack
 
 iOS developers at Nodes build user-centric applications and extensions which are distributed on the App Store or through enterprise distribution platforms.
 
-We deliver a range of applications for different platforms and devices like the iPhone, iPad, Apple Watch or Apple TV. 
+We deliver a range of applications for different platforms and devices like the iPhone, iPad, Apple Watch and Apple TV. 
 
 ### Tasks
  - Writing business and view logic with testability in mind
@@ -20,7 +20,7 @@ We deliver a range of applications for different platforms and devices like the 
 ### Language
 
 ##### Swift
-We've started as soon as Swift 1.0 was released and since then we have migrated all our projects through Swift 2 up to Swift 3 and we make sure all our frameworks and dependencies support all versions of the language.
+We've started with Swift as soon as version 1.0 was released and since then we have migrated all our projects through Swift 2 up to Swift 3 and we make sure all our frameworks and dependencies support all versions of the language.
 
 ##### Objective-C
 Objective-C is a thing of the past for us, but occasionally we do maintain projects or update applications still written in Objective-C.
