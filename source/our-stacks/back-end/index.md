@@ -44,12 +44,12 @@ We are using MySQL as a persistent database for all of our projects.
 
 ### PHP 
 
-We have been developing in PHP since 2010 and like the language for it's rapid and easy flow
-We have missed the strictness you see from other languages, for bigger projects. But now with PHP 7 it's starting to be much better
+We have been developing in PHP since 2010 and like the language for its rapid and easy flow
+We have missed the strictness you see in other languages, for bigger projects. But now with PHP 7 it's starting to be much better
 
 ### Framework - [Laravel](https://laravel.com/)
 
-Today, there is almost no one who is writing web applications in pure PHP.
+Today almost no one writes web applications in pure PHP.
 In Nodes we use [Laravel](https://laravel.com/) and are extremely happy with it. Very easy to get started with. Much more object oriented than competitors (at that time at least) 
 Massive community which brings a lot of really good open source projects and rapid bug fixes.
 Laravel is also the biggest PHP framework today, which is never a bad thing!
@@ -69,12 +69,12 @@ Nodes was using [CakePHP](http://cakephp.org/) until 2013 where we moved to [Lar
  - [PHP unit](https://phpunit.de/) - Unit testing
  - [Dingo](https://github.com/dingo/api) - Build awesome APIs easier for Laravel
  - [Ide helper](https://github.com/barryvdh/laravel-ide-helper) - Easy way to get @property attributes on models and your facades linked to the repositories. Auto complete is your friend
- - [Debug](https://github.com/orchestral/debug) - A really sweet library for monitoring you SQL queries and improving performance for our apps
+ - [Debug](https://github.com/orchestral/debug) - A really sweet library for monitoring your SQL queries and improving performance for our apps
  - [Cors](https://github.com/barryvdh/laravel-cors) - Easy CORS integration
  - [Excel](https://github.com/Maatwebsite/Laravel-Excel) - Awesome library for import/export xls/csv files
  
 ### Open source
-The backend team in Nodes has some packages we have created to ease our daily work. We don't want to spend time on building the same thing over and over. And it's boring!
+The backend team at Nodes has some packages we have created to ease our daily work. We don't want to spend time on building the same thing over and over. And it's boring!
 [Nodes-PHP](https://github.com/orgs/nodes-php/)
 
  - Backend
