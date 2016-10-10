@@ -14,7 +14,7 @@ Custom designs are important to Nodes and helping the client get the best possib
 - Implement and tweak iOS designs to the _true Android way_
 - Help the UX and UI team with the ever-changing design language on Android
 - Estimate changes and feature requests on ongoing projects
-- Refactor common used code into libraries/utilities
+- Refactor commonly used code into libraries/utilities
 - Work closely together with the QA team
 
 ## Stack
