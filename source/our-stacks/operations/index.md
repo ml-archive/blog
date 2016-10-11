@@ -5,12 +5,12 @@ layout: stack
 ---
 Building and maintaining our server setup with AWS.
 
-###Product
+### Product
 We strive to build a flexible, stable and secure server setup, where we have the right tools to quickly find problems.
 
 Because of this we build tools to automate tasks for both operations- and web-developers. We see it as an important goal to let developers do common tasks and solve most problems themselves.
 
-###Tasks
+### Tasks
 **AWS Maintenance**
 
 Our main task is to make sure our AWS environment is running, and optimized for performance. Tasks vary, but include implementing new systems, optimizing our systems, and monitoring and fixing problems in our setup. In order for us to facilitate automation, we use puppet, which streamlines server configuration.
@@ -30,12 +30,12 @@ Most of our custom-built systems are developed in Ruby and Bash
 We sometimes have clients who want us to configure servers that conform to their cases, in their own environments. This includes Windows server, RedHat, Oracle Linux and more.
 In these cases, we work closely with the client's IT team, to get our implementations running smoothly in their own datacenters.
 
-###IDE
+### IDE
 The IDE’s we use mostly are:
 - PHPStorm
 - RubyMine
 
-###Other tools
+### Other tools
 - VIM
 - Atom
 - Terminator (Terminal for ubuntu desktop)
@@ -44,7 +44,7 @@ The IDE’s we use mostly are:
 - Postman - For testing APIs
 - GITLab
 
-###Stack
+### Stack
 Most used systems in our stack
 
 - AWS
@@ -63,12 +63,12 @@ Most used systems in our stack
 - ElasticSearch
 - Open source
 
-###Open source
+### Open source
 **NCUpdater**
 
 A simple ruby gem to make it easy to update ruby systems.
 https://github.com/nodes-cloud/ncupdater
 
-###Infrastructure drawing
+### Infrastructure drawing
 
 ![Infrastructure](https://d1gwekl0pol55k.cloudfront.net/image/baas/translate_values/pub-nodes-cloud-v0-6_pZn4iLV5KK.png)
