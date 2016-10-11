@@ -3,7 +3,6 @@ title: iOS
 date: 2016-09-29 15:27:11
 layout: stack
 ---
-
 iOS developers at Nodes build user-centric applications and extensions which are distributed on the App Store or through enterprise distribution platforms.
 
 We deliver a range of applications for different platforms and devices like the iPhone, iPad, Apple Watch and Apple TV. 
