@@ -2,7 +2,9 @@
 title: Insights from NSSpain
 date: 2016-10-01 10:00:00
 tags: ios,nsspain,conference,meetup,security,burnout,clean,architecture
-authorId: doha
+authorId: 
+- doha
+- dhni
 categories:
 - iOS
 ---

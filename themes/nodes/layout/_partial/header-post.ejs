@@ -30,6 +30,11 @@
 
 			</div>
 			<div class="article-meta__right">
+				<% if(page.authors) { %>
+					<% page.authors.forEach(function(author) { %>
+						<%- author.name %>
+					<% }); %>
+				<% } %>
 				<% if(page.author) { %>
 				<div class="article-meta__author">
 					<% if(page.author.twitter) { %>
