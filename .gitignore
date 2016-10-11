@@ -7,3 +7,4 @@ public/
 .deploy*/
 .tmp
 .idea
+_ide_helper.php
