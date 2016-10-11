@@ -3,7 +3,6 @@ title: Android
 date: 2016-10-06 17:37:40
 layout: stack
 ---
-
 Android developers at Nodes strive to build awesome apps using the Material Design Guidelines and Google provided design tools. 
 
 Custom designs are important to Nodes and helping the client get the best possible Android experience is a high priority for the Android devs.

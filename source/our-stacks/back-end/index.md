@@ -3,8 +3,6 @@ title: Backend
 date: 2016-09-29 15:27:11
 layout: stack
 ---
-
-# Backend
 The separation of software systems into front and back ends simplifies development and separates maintenance. A rule of thumb is that the front (or "client") side is any component manipulated by the user. The server-side (or "back end") code resides on the server.
 
 ### Product
