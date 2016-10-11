@@ -11,7 +11,7 @@ We build web apps, hybrid apps and websites using [Angular](https://www.angular.
  - Building responsive layouts for a range of modern browsers
  - Writing business and view logic
  - Integrating with in-house or external APIs and services 
- - Work closely with our UX and Design teams
+ - Working closely with our UX and Design teams
 
 ## Stack
 
@@ -31,18 +31,18 @@ HTML is a given but we also use the blade templating language when working on PH
 #### Angular
 [Angular](https://www.angularjs.org) is an open-source MV* framework for building single-page applications (SPAs). It has great features like Dependency Injection(DI), Two-way Bindings (model<-->view), Routing, Animation support built-in, Superb control over forms and much much more.
   
-We have been using Angular since version 1.1 for production and have released a slew of SPAs with this framework over the years. We feel that this framework has a enterprise level quality, and will continue to build our products with the latest 2.0 version.
+We have been using Angular since version 1.1 for production and have released a slew of SPAs with this framework over the years. We feel that this framework has enterprise level quality, and will continue to build our products with the latest 2.0 version.
 
 #### Ionic
 The [Ionic](https://www.ionicframework.com) framework builds on top of Angular and gives us a set of tools to build both Native Apps as well as progressive web apps (PWAs). It offers a beautiful UI and access to native features like Cameras, File systems and more through Cordova.
   
-Being experienced with Angular, this framework was a natural choice for us as we were already familiar with the structures and syntax of Angular which is heavily utilized in Ionic. Through their CLI tools we can easily build apps ready to be deployed to the app stores as well as offering companion web apps sharing most of the same code base.
+Being experienced with Angular, this framework was a natural choice for us as we were already familiar with the structures and syntax of Angular which is heavily utilized in Ionic. Through their CLI tools we can easily build apps ready to be deployed to the app stores as well as offer companion web apps sharing most of the same code base.
 
 ### IDE
 Our IDE of choice is WebStorm/PHPStorm. Before we made the switch to actual IDEs (and boy are we glad we did), we used Sublime Text 2.
 
 ### Other tools
- - [Yeoman](http://yeoman.io/)* - He calls himself your friendly buttler, Yeoman is a CLI scaffolding tool that is easy to extend. We use this every day to scaffold out new parts of our applications using well defined templates. 
+ - [Yeoman](http://yeoman.io/)* - He calls himself your friendly butler, Yeoman is a CLI scaffolding tool that is easy to extend. We use this every day to scaffold out new parts of our applications using well defined templates. 
  - [Gulp](http://gulpjs.com/)* - A task runner, we are currently working on moving all of our tasks from Grunt to Gulp because of its extensibility and tasks in parallel features.
  - [Grunt](http://gruntjs.com/)* - A task runner, Grunt in our case is currently used with our boilerplate for client products. 
  - [Webpack](https://webpack.github.io/) - An amazing module bundler.
@@ -62,7 +62,7 @@ These are the 3rd party libraries we primarily use in our projects.
  - [Angular.js](https://www.angularjs.org) - Read more about Angular in the Frameworks of choice section further up on this page.
  - [Ionic](https://www.ionicframework.com) - Read more about Ionic in the Frameworks of choice section further up on this page. 
  - [Foundation for sites](https://foundation.zurb.com/sites/docs/) - Our favorite CSS framework and the perfect starter point for our client facing products, the modular structure and clean starting point makes it easy for us to go from prototypes to polished products.   
- - [Foundation for emails](https://foundation.zurb.com/emails/docs) - Building the proper markup for emails is a nightmare, but this frameworks takes out most of that hazzle by providing an easy to use templating language and a set of tested UI components.
+ - [Foundation for emails](https://foundation.zurb.com/emails/docs) - Building the proper markup for emails is a nightmare, but this frameworks takes out most of that hassle by providing an easy to use templating language and a set of tested UI components.
  - [Bootstrap](https://www.getbootstrap.com) - Used on internal web apps not running on Angular, this framework is well known by both our front-end and back-end teams and gives us a great starter point for working together with our coworkers on internal products.
  - [Angular Material](https://material.angularjs.org) - Used on internal web apps running on Angular, Material for Angular is a set of amazing UI components and tools for quickly scaffolding great looking web apps.
  - [ui.router](https://angular-ui.github.io/ui-router/site/) - The best routing solution for Angular.
@@ -72,7 +72,7 @@ To support our daily work we maintain a range of open source libraries, ranging 
 
  - [generator-nodes](https://www.github.com/nodes-frontend/generator-nodes) - Our opinionated Yeoman CLI, and the boilerplate for all of our Angular projects.
  - [nodes-component-starter](https://www.github.com/nodes-front-end/nodes-component-starter) - Not every project ends up being an actual product, we often build isolated UI components and small libraries to use in our projects. This is our starting point for Open Source projects and comes with Angular, Typescript, semantic-release and slew of other awesome features.
- - [nImage](https://www.github.com/nodes-frontend/nImage) - We use images, alot. This module enhances images with (lazy-)loading, fallbacks, aspect-ratios and cropping/resizing.
+ - [nImage](https://www.github.com/nodes-frontend/nImage) - We use images, a lot. This module enhances images with (lazy-)loading, fallbacks, aspect-ratios and cropping/resizing.
  - [nExceptionHandler](https://www.github.com/nodes-frontend/nExceptionHandler) - This module helps us send errors to external sources so we can keep track of the state of our Angular apps.  
  - [nMessages](https://www.github.com/nodes-frontend/) - Just like images, we often need to provide feedback messages for our end users when asyncronous tasks takes place. This UI component lets us easliy create toasts or any other kind of messages by providing a manageable LIFO que and the UI to go along. 
  - [The setup behind this blog](https://www.github.com/nodesagency/blog) - Built with Hexo, this repository should be interesting for anyone looking for an advanced Hexo setup with lots of great front-end features such as ES6 support, Offline Sync through service-workers, and a lot of preconfigured Hexo speciffic settings.
