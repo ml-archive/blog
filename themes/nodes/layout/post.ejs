@@ -1,11 +1,15 @@
-<%- partial('_partial/header-post') %>
+<%- partial('_partial/navigation') %>
+<%- partial('_partial/hero-unit-post') %>
+<div class="page-content page-content--post">
+	<div class="page-content__block">
+		<div class="page-content__article">
+			<article>
+				<%- page.content %>
+			</article>
 
-<div class="content post">
-	<article class="article content__article apply-typography">
-		<%- page.content %>
-	</article>
-
-	<% if(page.author) { %>
-		<%- partial('_partial/widgets/author-card') %>
-	<% } %>
+			<% if(page.author) { %>
+				<%- partial('_partial/widgets/author-card') %>
+			<% } %>
+		</div>
+	</div>
 </div>
