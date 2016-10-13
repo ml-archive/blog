@@ -1,12 +1,12 @@
-<%- partial('_partial/header-page') %>
+<%- partial('_partial/navigation') %>
+<%- partial('_partial/hero-unit-page') %>
+<div class="page-content page-content--categories">
+	<div class="page-content__article">
+		<div class="page-subheader">
+			<h3>Viewing all posts in category: <%- page.category %></h3>
+		</div>
 
-<div class="content-wrapper">
-	<div class="content">
-		<div class="content__article">
-			<div class="page-subheader">
-				<h3>Viewing all posts in category: <%- page.category %></h3>
-			</div>
-
+		<div class="articles">
 			<% page.posts.each(function(post){ %>
 				<%- partial('_partial/article-list-item', {post: post, latest: false}) %>
 
@@ -17,19 +17,19 @@
 						</g>
 					</svg>
 				</div>
-				<% }); %>
+			<% }); %>
 
-				<% if(page.total > 1) { %>
-					<%- f_paginator({
-						prev_text: "Previous",
-						next_text: "Next",
-						end_size: 2,
-						mid_size: 4,
-						class: 'text-center'
-					}) %>
+			<% if(page.total > 1) { %>
+				<%- f_paginator({
+					prev_text: "Previous",
+					next_text: "Next",
+					end_size: 2,
+					mid_size: 4,
+					class: 'text-center'
+				}) %>
 			<% } %>
 		</div>
 	</div>
-	<%- partial('_partial/widgets/sticky-categories') %>
 </div>
+<%- partial('_partial/widgets/sticky-categories') %>
 

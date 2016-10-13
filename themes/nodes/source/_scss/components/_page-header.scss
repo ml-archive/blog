@@ -1,18 +1,13 @@
 .page-header {
-	//display: flex;
-	//align-items: center;
-	//justify-content: space-between;
-	@include flex-grid-row();
-	@include flex-align($x: spaced);
-
 	font-family: $header-font-family;
 
 	a {
 		color: $black;
 	}
-
-	@include breakpoint(large) {
-	}
+}
+.page-header__block {
+	@include flex-grid-row();
+	@include flex-align($x: spaced);
 }
 .page-header__brand,
 .page-header__navigation {
