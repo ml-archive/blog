@@ -11,7 +11,7 @@ If you're an iOS developer, most likely you've had to deal with code signing. An
 
 <p align=center><img src="https://d1gwekl0pol55k.cloudfront.net/image/baas/translate_values/hbikk_ospmSpNLyW.gif" /></p>
 
-The goal of this article is to help junior iOS developers understand code signing on a higher level. This will not be a step-by-step tutorial on how to code sign your app. Ideally, after reading this article, you would be able to code sign your app without following any tutorials.
+The goal of this article is to help junior iOS developers understand code signing on a higher level. This will not be a step-by-step tutorial on how to code sign your app. Ideally, after reading this article, you will be able to code sign your app without following any tutorials.
 
 I don't plan to go into lower level details, but we will talk a bit about asymmetric cryptography. 
 
@@ -43,7 +43,7 @@ There can be multiple types of certificates. The most common are:
 You can add up to 100 devices per product family per membership year to your account. 100 iPhones, 100 iPads, 100 iPod Touch, 100 Apple Watches and 100 Apple TVs. To add a device to your account, you need to add its unique device ID. You can easily find that in Xcode, or (a bit more complicated) in iTunes. A detailed guide on how to add devices to your account can be found [here](https://developer.apple.com/library/content/documentation/IDEs/Conceptual/AppDistributionGuide/MaintainingProfiles/MaintainingProfiles.html#//apple_ref/doc/uid/TP40012582-CH30-SW10).
 
 ### Provisioning profiles
-The provisioning profile is the one that associates an app id with a certificate and, for development or ad hoc distribution, with some devices. You create the provisioning profiles on the Apple developer portal and you download them in Xcode.
+The provisioning profile is what associates an app id with a certificate and, for development or ad hoc distribution, with some devices. You create the provisioning profiles on the Apple developer portal and you download them in Xcode.
 
 ### Usage
 
@@ -55,7 +55,7 @@ Over the years working in iOS development, I've asked and I've been asked many q
 
 - 
   **Q**: I have downloaded the provisioning profiles and certificates from the developer portal, but I can't sign the app. 
-  **A**: Yes, because you don't have the private key, the one that was in the certificate signing request. Most likely, another team member created those certificates and provisioning profiles before. Either regenerate the certificate (which will break all provisioning profiles associated with that certificate, but not any App Store apps using those) or create a new one if possible.
+  **A**: Yes, because you don't have the private key, the one that was in the certificate signing request. Most likely, another team member created those certificates and provisioning profiles before. You can get the private key from the original developer, revoke the certificate and generate a new one (which will break all provisioning profiles associated with that certificate, but not any App Store apps using those) or create a new one if possible (currently, there's a maximum of 3 distribution certificates allowed per account).
 
 - **Q**: What about the push certificates? I want my app to receive push notifications. Shouldn't I create a provisioning profile that uses the APNS certificate?
   **A**: No. When you create an APNS (Apple Push Notification Service) certificate, you associate that with an app id. So, first you have your CSR, then you create a new APNS certificate with that CSR, download it, open it in Keychain and export it as .p12, which you later upload to your push notification provider. The .p12 file will know that it's associated with that app, and it will send pushes to that app only. That's also a reason why you can't associate an APNS certificate with a wildcard app id (com.youcompany.*). The push notification server needs to know to which app it sends the notifications.
