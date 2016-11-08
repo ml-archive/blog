@@ -35,6 +35,10 @@ If I remember correctly Facebook commits up to 3500 times a week, and due to the
 
 To further improve that, Facebook has created a custom build tool called _Buck_ around the module structure they depend on for fast deployment.
 
+Going over all the tools Facebook uses, Infer got a mention as well. I head about this a year or so ago, but now that we at Nodes are beginning to integrate CI on client apps, this is super relevant. 
+
+[Infer](http://fbinfer.com/) is a static code analyzer and will correct and point out issues and possible runtime crashes. Definately something we want in our CI toolchain.
+
 Fun side story at the lunch tables: Facebook apparently had so many commits on their repo that they had a hash collision between two commits.
 
 
