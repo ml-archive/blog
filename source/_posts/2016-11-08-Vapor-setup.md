@@ -99,7 +99,7 @@ Before we can make any good use of our new Controller then we have to update our
 
 So jump back into the ```Car.swift``` file and update the fill to have the following:
 
-```
+```swift
 //Importing the Vapor framework to make the model support dependencies
 import Vapor
 //Importing Fluent which is Vapors powering of databases and tables
