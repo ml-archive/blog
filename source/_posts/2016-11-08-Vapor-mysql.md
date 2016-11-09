@@ -151,6 +151,7 @@ Now try to run the 'get' endpoint in your browser (or Postman, or cURL, etc).
 
 And volia!, you should now see a JSON response of objects from the database.
 
+
 ```javascript
 [
 	{
