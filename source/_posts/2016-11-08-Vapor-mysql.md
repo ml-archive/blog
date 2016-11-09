@@ -99,7 +99,7 @@ connection("Can\'t connect to MySQL server on \'127.0.0.1\' (61)")``` in the con
 
 But after that's run and you have MySQL running then you should see this in the consol in Xcode:
 
-```jconsole
+```sh
 Preparing Car
 Prepared Car
 Database prepared
@@ -127,7 +127,7 @@ func create(request: Request) throws -> ResponseRepresentable {
 ```
 Now try to run the 'post' cURL (or use Postman, still an awesome tool).
 
-```jconsole
+```sh
 curl -H "Content-Type: application/json" -X POST -d '{"name":"Fiat"}' http://0.0.0.0:8080/api/cars
 ```
 
