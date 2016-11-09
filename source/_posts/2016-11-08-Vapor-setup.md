@@ -9,7 +9,7 @@ categories:
 
 6 simple steps to setup your first Vapor JSON response. We will cover the initial setup and how to make both POST and GET with controllers and models. 
 
-This tutorial will assume that you already have installed Vapor and Xcode 8 and are farmiliar with Swift 3.
+This tutorial will assume that you already have installed [Vapor](https://vapor.github.io/documentation/getting-started/install-swift-3-macos.html) and [Xcode 8](https://developer.apple.com/xcode/) and are farmiliar with Swift 3.
 
 ### 1. Creating your project
 
