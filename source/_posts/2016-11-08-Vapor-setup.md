@@ -17,7 +17,7 @@ Now open your terminal and cd into the place you want your project.
 
 Now run
 
-```
+```javascript
 vapor new --ProjectName
 ```
 
@@ -25,7 +25,7 @@ Vapor will now ask you if you want to open the project. (Just go 'y')
 
 If you get 
 
-```
+```jconsole
 ld: library not found for -lCLibreSSL for architecture x86_64
 clang: error: linker command failed with exit code 1 (use -v to see invocation)
 ```
@@ -82,7 +82,7 @@ drop.get("get_a_car") { request in
 ```
 Now Run your Xcode project. You should now see this in your console in Xcode
 
-```
+```jconsole
 No command supplied, defaulting to serve...
 No preparations.
 Server 'default' starting at 0.0.0.0:8080
@@ -207,7 +207,7 @@ drop.group("api") { api in
 
 Now try to open your browser and run ```http://0.0.0.0:8080/api/cars``` you should now see:
 
-```json
+```javascript
 {
 	color: "SpaceGrey",
 	id: null,
@@ -282,7 +282,7 @@ curl -H "Content-Type: application/json" -X POST -d '{"name":"Fiat"}' http://0.0
 
 And volia! we have stored our first (only in session object (and should ofc see our stored car object as JSON response). Try running the curl (or postman action) a couple of times with different names, and then  run the 'get' in the browser..
 
-```json
+```javascript
 [
 	{
 		color: "Red",
