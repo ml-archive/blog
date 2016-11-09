@@ -145,10 +145,7 @@ func index(request: Request) throws -> ResponseRepresentable {
 
 (You can also remove the ```let cars:[Cars] = []``` session property if you have that in from earlier tutorial)
 
-Now try to run the 'get' endpoint in your browser (or Postman, or cURL, etc).
-
-```http://0.0.0.0:8080/api/cars```
-
+Now try to run the 'get' endpoint in your browser (or Postman, or cURL, etc). ```http://0.0.0.0:8080/api/cars```
 
 And volia!, you should now see a JSON response of objects from the database.
 
