@@ -155,7 +155,7 @@ extension Car: Preparation {
 ```
 So now our model should be ready for some cool controller action. Please now open our ```CarController.swift``` and add the following code:
 
-```
+```swift
 import Vapor
 //Import HTTP for getting all our response types, codes, etc..
 import HTTP
@@ -185,7 +185,7 @@ This is how some of the simplest controllers will look in Vapor. Now let's try t
 
 Are you ready to see some magic? Ok, now open the ```main.swift``` let's start by do some house cleaning, delete the following lines from the file:
 
-```
+```swift
 drop.get { req in
     return try drop.view.make("welcome", [
     	"message": drop.localization[req.lang, "welcome", "title"]
@@ -197,7 +197,7 @@ drop.resource("posts", PostController())
 
 and add the following lines of code:
 
-```
+```swift
 //Creating a route group, in this way you won't have to add the same slugs over and over again
 drop.group("api") { api in
     //Adding a sub slug to our URL and redirecting all requests to the CarController we just build..
@@ -207,7 +207,7 @@ drop.group("api") { api in
 
 Now try to open your browser and run ```http://0.0.0.0:8080/api/cars``` you should now see:
 
-```
+```json
 {
 	color: "SpaceGrey",
 	id: null,
@@ -221,7 +221,7 @@ The id will still be null because the object wasn't instanciet from the db.
 
 Ok cool, let's make our API accutally hold some data (remember this will only be held untill you have run the project again. Open your ```CarController.swift``` file and update the code to this:
 
-```
+```swift
 import Vapor
 import HTTP
 
@@ -271,7 +271,7 @@ curl -H "Content-Type: application/json" -X POST -d '{}' http://0.0.0.0:8080/api
 ```
 
 This should return our error response (response code 412):
-```
+```javascript
 {"error":true,"message":"Missing name"}
 ```
 
