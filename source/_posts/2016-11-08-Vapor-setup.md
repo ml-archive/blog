@@ -266,7 +266,7 @@ Now Run your Xcode project again. If you start by opening your browser at our 'g
 
 So let's now try to make a post request to our 'post endpoint' witch is basicly the same slug ```http://0.0.0.0:8080/api/cars``` (you can use whatever API testing tool, I normally uses [Postman](https://www.getpostman.com/). If you don't have any tools like that then just use this cURL:
 
-```
+```jconsole
 curl -H "Content-Type: application/json" -X POST -d '{}' http://0.0.0.0:8080/api/cars
 ```
 
@@ -276,7 +276,8 @@ This should return our error response (response code 412):
 ```
 
 Let's now add our name param to the cURL:
-```
+
+```jconsole
 curl -H "Content-Type: application/json" -X POST -d '{"name":"Fiat"}' http://0.0.0.0:8080/api/cars
 ```
 
