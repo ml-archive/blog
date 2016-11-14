@@ -67,3 +67,27 @@
 	margin-right: auto;
 	margin-left: auto;
 }
+
+.article-meta__authors {
+	ul {
+		margin: 0;
+		padding: 0;
+		list-style: none;
+	}
+	li {
+		display: inline-block;
+		&:first-of-type {
+			margin-right: 10px;
+			padding: 0;
+		}
+		&:last-of-type {
+			.article-meta__author__seperator {
+				display: none;
+			}
+		}
+	}
+	.article-meta__author__seperator {
+		padding-left: $whitespace-small;
+		padding-right: $whitespace-small;
+	}
+}
