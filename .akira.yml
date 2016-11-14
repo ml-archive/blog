@@ -17,4 +17,6 @@ config:
 
 docker_template: "clean-default"
 
+docker_beta: true
+
 slack_channel: "#nodesengineeringblog"
