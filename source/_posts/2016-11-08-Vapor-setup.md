@@ -9,38 +9,93 @@ categories:
 
 6 simple steps to setup your first Vapor JSON response. We will cover the initial setup and how to make both POST and GET with controllers and models. 
 
-This tutorial will assume that you already have installed [Vapor](https://vapor.github.io/documentation/getting-started/install-swift-3-macos.html) and [Xcode 8](https://developer.apple.com/xcode/) and are farmiliar with Swift 3.
+This tutorial will assume that you already have installed [Vapor](https://vapor.github.io/documentation/getting-started/install-swift-3-macos.html) and [Xcode 8](https://developer.apple.com/xcode/) and are familiar with Swift 3.
 
 ### 1. Creating your project
 
 Now open your terminal and cd into the place you want your project.
 
-Now run
+Now run (also in the terminal, of course change the ProjectName to your actual project name)
 
 ```javascript
-vapor new --ProjectName
+vapor new ProjectName
+```
+You should now see an ASCII art of the Vapor logo. Like so:
+
+```javascript
+
+    												**
+                                                 **~~**
+                                               **~~~~~~**
+                                             **~~~~~~~~~~**
+                                           **~~~~~~~~~~~~~~**
+                                         **~~~~~~~~~~~~~~~~~~**
+                                       **~~~~~~~~~~~~~~~~~~~~~~**
+                                      **~~~~~~~~~~~~~~~~~~~~~~~~**
+                                     **~~~~~~~~~~~~~~~~~~~~~~~~~~**
+                                    **~~~~~~~~~~~~~~~~~~~~~~~~~~~~**
+                                    **~~~~~~~~~~~~~~~~~~~~~~~~~~~~**
+                                    **~~~~~~~~~~~~~~~~~~~~~++++~~~**
+                                     **~~~~~~~~~~~~~~~~~~~++++~~~**
+                                      ***~~~~~~~~~~~~~~~++++~~~***
+                                        ****~~~~~~~~~~++++~~****
+                                           *****~~~~~~~~~*****
+                                              *************
+                                     
+                                     _       __    ___   ___   ___
+                                    \ \  /  / /\  | |_) / / \ | |_)
+                                     \_\/  /_/--\ |_|   \_\_/ |_| \
+                                       a web framework for Swift
+
+                                 Project "ProjectName" has been created.
+                          Type `cd ProjectName ` to enter the project directory.
+                                                 Enjoy!
+
 ```
 
-Vapor will now ask you if you want to open the project. (Just go 'y')
+Congratulations you have succesfully created your first Vapor project. Let's now try to run the project. First cd into your project (```cd ProjectName```) and after run:
 
-If you get 
+```javascript
+vapor xcode
+```
+
+Vapor will then fetch the dependencies and run the project. Vapor will now ask you if you want to open the project, and yes, yes we do! (So type y to open)
+
+```javascript
+Select the `App` scheme to run.
+Open Xcode project?
+y/n>
+```
+
+You should now have your Xcode project open. Let's check if we have everything running correctly.
+So in Xcode press the 'Run' button in the top left corner of the UI (or cmd+r). You should now see this in your console in Xcode (Make sure that you switch target from the framework to App, just next to the stop button)
+
+```javascript
+No command supplied, defaulting to serve...
+No preparations.
+Server 'default' starting at 0.0.0.0:8080
+```
+
+Now c+p ```0.0.0.0:8080``` into your browser. If you see the 'It works.' screen then you have successfully run your first local Vapor 
+
+Note: Beacuse Vapor is constantly updating and new versions pushed out frequently then you might have this error in your Xcode project after running for the first time.
 
 ```jconsole
 ld: library not found for -lCLibreSSL for architecture x86_64
 clang: error: linker command failed with exit code 1 (use -v to see invocation)
 ```
 
-Then just open terminal and run 
-```vapor build --clean```, after that run a ```vapor xcode``` that should do the trick.
+If you didn't get that error then just go to section two of this article. If you did then open your terminal and first run 
+```vapor build --clean```, after that run a ```vapor xcode``` that should do the trick. (This basically cleans the project and compiles it again)
 
 And hopefully you should be ready to rock and roll.
 
 ### 2. Creating a model
 
 Open the terminal again, and run 
-```touch Source/App/Models/Car.swift```
+```touch Sources/App/Models/Car.swift```
 
-After that run ```vapor xcode``` this will make sure that you get the correct path for the model. You should now be able to see your model in the Models folder.
+After that run ```vapor xcode``` this will make sure that you get the correct path for the model. If you open Xcode then you should be able to see your model in the Models folder.
 
 Fill the model with the code below:
 
@@ -62,6 +117,8 @@ final class Car {
 ```
 ### 3. Returning some JSON baby
 
+Vapor is using a class called ```Droplet```, the Droplet is the main entry point on the server (If you are familiar with iOS development then this would be our AppDelegate class or your entry point in Storyboard). The Droplet instance will contain all providers, routes and making sure that everything has been linked correctly to run the different functionalities in the run time. The line ```drop.run()``` in the ```main.swift``` is where the server actually gets booted, so everything you need to add have to be before this line.
+
 Now open the ```main.swift``` file and add the following code right above the ```drop.run()```
 
 ```swift
@@ -80,7 +137,7 @@ drop.get("get_a_car") { request in
 }
 
 ```
-Now Run your Xcode project. You should now see this in your console in Xcode
+Now Run your Xcode project. You should now see this in your console in Xcode (Make sure that you switch target from the framework to App, just next to the stop button) 
 
 ```jconsole
 No command supplied, defaulting to serve...
@@ -89,15 +146,15 @@ Server 'default' starting at 0.0.0.0:8080
 ```
 Now open your browser and type in ```0.0.0.0:8080/get_a_car```, you should now have returned your first JSON feed! 
 
-Ofc Vapor is way smarter than this. So please go ahead an delete the code you added in step 3.
+Of course, Vapor is way smarter than this. So please go ahead an delete the code you added in step 3.
 
 ### 4. Creating a Controller
 
 Now go back to your terminal and run ```touch Sources/App/Controllers/CarController.swift``` and again ```vapor xcode```, the Controllers folder should now contain your newly created CarController.swift
 
-Before we can make any good use of our new Controller then we have to update our ```Car.swift``` model to accutally get some of Vapors awesome magic.
+Before we can make any good use of our new Controller then we have to update our ```Car.swift``` model to actually get some of Vapors awesome magic.
 
-So jump back into the ```Car.swift``` file and update the fill to have the following:
+So jump back into the ```Car.swift``` file and update the file to have the following:
 
 ```swift
 //Importing the Vapor framework to make the model support dependencies
@@ -108,7 +165,7 @@ import Fluent
 //Subclassing our Car model from 'Model' (Vapors magic model object)
 final class Car: Model {
     
-    //Vapor uses 'Node' as their Model id's. This is the datatype that they use to make lookup and look at the primary key in the DB's.
+    //Vapor uses 'Node' as their Model ids. This is the datatype that they use to make lookup and look at the primary key in the DB's.
     var id:Node?
     
     var name:String
@@ -121,7 +178,7 @@ final class Car: Model {
         self.milesDriven = milesDriven
     }
     
-    //Adding one of Vapors protocols to conform to the 'Model' object. This basicly makes sure that data is mapped correctly when getting extracted from a data source such as a DB.  
+    //Adding one of Vapors protocols to conform to the 'Model' object. This basically makes sure that data is mapped correctly when getting extracted from a data source such as a DB.  
     init(node: Node, in context: Context) throws {
         id = try node.extract("id")
         name = try node.extract("name")
@@ -183,7 +240,7 @@ This is how some of the simplest controllers will look in Vapor. Now let's try t
 
 ### 5. Grouped routes and Controller bindings
 
-Are you ready to see some magic? Ok, now open the ```main.swift``` let's start by do some house cleaning, delete the following lines from the file:
+Are you ready to see some magic? Ok, now open the ```main.swift``` let's start by doing some house cleaning, delete the following lines from the file:
 
 ```swift
 drop.get { req in
@@ -219,7 +276,7 @@ The id will still be null because the object wasn't instanciet from the db.
 
 ### 6. Adding some more magic
 
-Ok cool, let's make our API accutally hold some data (remember this will only be held untill you have run the project again. Open your ```CarController.swift``` file and update the code to this:
+Ok cool, let's make our API actually holds some data (remember this will only be held until you have run the project again. Open your ```CarController.swift``` file and update the code to this:
 
 ```swift
 import Vapor
@@ -239,7 +296,7 @@ final class CarController: ResourceRepresentable {
     //This is where the 'post' request gets redirected to
     func create(request: Request) throws -> ResponseRepresentable {
         
-        //Guard statement to make sure we are validating the data correct (we ofc should also later quard for the color etc)
+        //Guard statement to make sure we are validating the data correct (we of course should also later guard for the color etc)
         guard let name = request.data["name"]?.string else {
             //Throw a Abort response, I like using the custom status to make sure the frontends have the correct message and response code
             throw Abort.custom(status: Status.preconditionFailed, message: "Missing name")
@@ -264,7 +321,7 @@ final class CarController: ResourceRepresentable {
 ```
 Now Run your Xcode project again. If you start by opening your browser at our 'get' endpoint ```http://0.0.0.0:8080/api/cars``` for the cars then you will ofc be able to see that it's returning an empty array.
 
-So let's now try to make a post request to our 'post endpoint' witch is basicly the same slug ```http://0.0.0.0:8080/api/cars``` (you can use whatever API testing tool, I normally uses [Postman](https://www.getpostman.com/). If you don't have any tools like that then just use this cURL:
+So let's now try to make a post request to our 'post endpoint' which is basically the same slug ```http://0.0.0.0:8080/api/cars``` (you can use whatever API testing tool, I normally use [Postman](https://www.getpostman.com/). If you don't have any tools like that then just use this cURL:
 
 ```jconsole
 curl -H "Content-Type: application/json" -X POST -d '{}' http://0.0.0.0:8080/api/cars
@@ -281,7 +338,7 @@ Let's now add our name param to the cURL:
 curl -H "Content-Type: application/json" -X POST -d '{"name":"Fiat"}' http://0.0.0.0:8080/api/cars
 ```
 
-And volia! we have stored our first (only in session object (and should ofc see our stored car object as JSON response). Try running the curl (or postman action) a couple of times with different names, and then  run the 'get' in the browser..
+And voila! we have stored our first (only in session object (and should ofc see our stored car object as JSON response). Try running the curl (or postman action) a couple of times with different names, and then run the 'get' in the browser.
 
 ```javascript
 [
@@ -308,4 +365,4 @@ And volia! we have stored our first (only in session object (and should ofc see 
 
 ### What's next
 
-So as you could see it's pretty easy to get up running with Vapor and basic stuff. In the next blog post I will add on a MySQL database and show how you CRUD objects. (If you have followed this tutorial then it's only a small amount of lines of code that needs to be added). Sign up to the blog to make sure you get the latests tutorials and tech posts from our engeniering team.
+So as you could see it's pretty easy to get up running with Vapor and basic stuff. In the next blog post, I will add on a MySQL database and show how you CRUD objects. (If you have followed this tutorial then it's only a small amount of lines of code that needs to be added). Sign up to the blog to make sure you get the latest tutorials and tech posts from our engineering team.
