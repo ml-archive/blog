@@ -22,7 +22,7 @@ vapor new ProjectName
 ```
 You should now see an ASCII art of the Vapor logo. Like so:
 
-```javascript
+```bash
 
     												**
                                                  **~~**
