@@ -9,7 +9,7 @@ categories:
 
 In this tutorial we will walk through how to add a database layer to a [Vapor](vapor.codes) project. We will be using MySQL and will assume that you have set it up on your local machine [(guide here)](https://dev.mysql.com/doc/refman/5.6/en/osx-installation-pkg.html).
 
-We are continuing on our 'Car' project. You don't necacery have to have read that tutorial if you already are a Vapor rock star. If not then please find it here [LINK WILL COME WHEN FIRST PART IT UP]().
+We are continuing on our 'Car' project. You don't necacery have to have read that tutorial if you already are a Vapor rock star. If not then please find it [here](https://engineering.nodesagency.com/articles/Vapor/6-simple-steps-to-setup-vapor/).
 
 ### 1. Adding the MySQL package
 
