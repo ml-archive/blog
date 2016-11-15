@@ -24,7 +24,7 @@ Also the first time I heard about the SafetyNet API. A Google API that checks fo
 [https://github.com/scottyab/safetynethelper](https://github.com/scottyab/safetynethelper)
 
 Further info:
-[https://developer.android.com/training/safetynet/index.html]
+[Android Training docs]
 (https://developer.android.com/training/safetynet/index.html)
 
 In Android 7.0 Google introduced Network Security Configuration, which is a way to describe what protocols and endpoints are allowed to connect to.
