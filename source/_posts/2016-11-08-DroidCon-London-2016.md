@@ -36,7 +36,7 @@ Commonsguy have backported this tool to Android 4.2 here, which is super awesome
 
 __Scaling Android @Facebook__ _by Marco Cova & Balazs Balazs_
 
-Impressive talk about the insane numbers behind the facebook app and what kind of process it takes to support that.
+Impressive talk about the insane numbers behind the Facebook app and what kind of process it takes to support that.
 
 If I remember correctly Facebook commits up to 3500 times a week, and due to the massive codebase - everything is split into modules to avoid unnecessary recompiles.
 
