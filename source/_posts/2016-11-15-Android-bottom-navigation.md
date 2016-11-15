@@ -29,10 +29,10 @@ Let's start with a quick reminder on [Google and Material Design recommendations
 	- 3 items: if using 3 items all the items should be visible all time with Icon and Text
 	- 3+ items: if using more than 3 items only the active item should have visible text
 
-<table width="100%" style="border:0px">
+<table width="100%">
 <tr>
-<td align="center"><img src="https://d1gwekl0pol55k.cloudfront.net/image/nstack/default/3buttonsscreenshot1_XToNZrXuvc.png" width="200"></td>
-<td align="center"><img src="https://d1gwekl0pol55k.cloudfront.net/image/nstack/translate_values/4buttonsscreenshot1_ePCWRdtsm9.png" width="200"></td></tr>
+<td align="center"><img src="https://d1gwekl0pol55k.cloudfront.net/image/nstack/default/3buttonsscreenshot1_XToNZrXuvc.png" width="300"></td>
+<td align="center"><img src="https://d1gwekl0pol55k.cloudfront.net/image/nstack/translate_values/4buttonsscreenshot1_ePCWRdtsm9.png" width="300"></td></tr>
 <tr><td align="center">3 menu items</td><td align="center">4 menu items</td></tr>
 </table>
 
@@ -177,12 +177,12 @@ First we get references to the BottomNavigation Widget and the TextView from the
 
 Then we add the OnNavigationItemSelectedListener to the widget and just use a switch to detect with menu item was tapped and update the TextView with the corresponding fragment title.
 
-And it's done. Super simple right? Here's the final result:
+And it's done. Super simple right? Here's the final result with all the animations given for free:
 
 <table width="100%" style="border:0px">
 <tr>
-<td align="center"><img src="https://d1gwekl0pol55k.cloudfront.net/image/nstack/translate_values/3buttonsgif_VtILFZWqWD.gif" width="200"></td>
-<td align="center"><img src="https://d1gwekl0pol55k.cloudfront.net/image/nstack/translate_values/4buttonsgif_n1Avgls13h.gif" width="200"></td></tr>
+<td align="center"><img src="https://d1gwekl0pol55k.cloudfront.net/image/nstack/translate_values/3buttonsgif_VtILFZWqWD.gif" width="300"></td>
+<td align="center"><img src="https://d1gwekl0pol55k.cloudfront.net/image/nstack/translate_values/4buttonsgif_n1Avgls13h.gif" width="300"></td></tr>
 <tr><td align="center">3 menu items</td><td align="center">4 menu items</td></tr>
 </table>
 Having implemented a custom bottom navigation view myself in previous projects I can say this is a really nice addition to the support library. The amount of benefits you get from free and boilerplate code you don't have to do is quite good.
