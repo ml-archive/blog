@@ -24,7 +24,7 @@ You should now see an ASCII art of the Vapor logo. Like so:
 
 ```bash
 
-    												**
+    											
                                                  **~~**
                                                **~~~~~~**
                                              **~~~~~~~~~~**
@@ -53,7 +53,7 @@ You should now see an ASCII art of the Vapor logo. Like so:
 
 ```
 
-Congratulations, you have succesfully created your first Vapor project. Let's now try to run the project. First cd into your project (```cd ProjectName```) and after that run:
+Congratulations, you have succesfully created your first Vapor project. Let's now try to run the project. First cd into your project (`cd ProjectName`) and after that run:
 
 ```bash
 vapor xcode
@@ -76,7 +76,7 @@ No preparations.
 Server 'default' starting at 0.0.0.0:8080
 ```
 
-Now c+p ```0.0.0.0:8080``` into your browser. If you see the 'It works.' screen then you have successfully run your first local Vapor.
+Now c+p `0.0.0.0:8080` into your browser. If you see the 'It works.' screen then you have successfully run your first local Vapor.
 
 Note: Beacuse Vapor is constantly updating and new versions pushed out frequently then you might have this error in your Xcode project after running for the first time.
 
@@ -86,16 +86,19 @@ clang: error: linker command failed with exit code 1 (use -v to see invocation)
 ```
 
 If you didn't get that error then just go to section two of this article. If you did then open your terminal and first run 
-```vapor build --clean```, after that run a ```vapor xcode``` that should do the trick. (This basically cleans the project and compiles it again)
+`vapor build --clean`, after that run a `vapor xcode` that should do the trick. (This basically cleans the project and compiles it again)
 
 And hopefully you should be ready to rock and roll.
 
 ### 2. Creating a model
 
 Open the terminal again, and run: 
-```touch Sources/App/Models/Car.swift```
 
-After that run ```vapor xcode``` this will make sure that you get the correct path for the model. If you open Xcode then you should be able to see your model in the Models folder.
+```
+touch Sources/App/Models/Car.swift
+```
+
+After that run `vapor xcode` this will make sure that you get the correct path for the model. If you open Xcode then you should be able to see your model in the Models folder.
 
 Fill the model with the code below:
 
@@ -117,9 +120,9 @@ final class Car {
 ```
 ### 3. Returning some JSON baby
 
-Vapor is using a class called ```Droplet```, the Droplet is the main entry point on the server (If you are familiar with iOS development then this would be our AppDelegate class or your entry point in Storyboard). The Droplet instance will contain all providers, routes and makes sure that everything has been linked correctly to run the different functionalities in the run time. The line ```drop.run()``` in the ```main.swift``` is where the server actually gets booted, so everything you need to add has to be before this line.
+Vapor is using a class called `Droplet`, the Droplet is the main entry point on the server (If you are familiar with iOS development then this would be our AppDelegate class or your entry point in Storyboard). The Droplet instance will contain all providers, routes and makes sure that everything has been linked correctly to run the different functionalities in the run time. The line `drop.run()` in the `main.swift` is where the server actually gets booted, so everything you need to add has to be before this line.
 
-Now open the ```main.swift``` file and add the following code right above the ```drop.run()```
+Now open the `main.swift` file and add the following code right above the `drop.run()`
 
 ```swift
 //Declaring our first route, this will be a 'get' (could also be 'post' etc..)
@@ -133,7 +136,7 @@ drop.get("get_a_car") { request in
         "name" : car.name,
         "color" : car.color,
         "miles_driven" : car.milesDriven
-        ])
+	])
 }
 
 ```
@@ -144,17 +147,18 @@ No command supplied, defaulting to serve...
 No preparations.
 Server 'default' starting at 0.0.0.0:8080
 ```
-Now open your browser and type in ```0.0.0.0:8080/get_a_car```, you should now have returned your first JSON feed! 
 
+Now open your browser and type in `0.0.0.0:8080/get_a_car`, you 
+should now have returned your first JSON feed! 
 Of course, Vapor is way smarter than this. So please go ahead an delete the code you added in step 3.
 
 ### 4. Creating a Controller
 
-Now go back to your terminal and run ```touch Sources/App/Controllers/CarController.swift``` and again ```vapor xcode```, the Controllers folder should now contain your newly created CarController.swift
+Now go back to your terminal and run `touch Sources/App/Controllers/CarController.swift` and again `vapor xcode`, the Controllers folder should now contain your newly created CarController.swift
 
-Before we can make any good use of our new Controller then we have to update our ```Car.swift``` model to actually get some of Vapors awesome magic.
+Before we can make any good use of our new Controller then we have to update our `Car.swift` model to actually get some of Vapors awesome magic.
 
-So jump back into the ```Car.swift``` file and update the file to have the following:
+So jump back into the `Car.swift` file and update the file to have the following:
 
 ```swift
 //Importing the Vapor framework to make the model support dependencies
@@ -210,7 +214,7 @@ extension Car: Preparation {
     }
 }
 ```
-So now our model should be ready for some cool controller action. Please now open our ```CarController.swift``` and add the following code:
+So now our model should be ready for some cool controller action. Please now open our `CarController.swift` and add the following code:
 
 ```swift
 import Vapor
@@ -236,11 +240,11 @@ final class CarController: ResourceRepresentable {
     }
 }
 ```
-This is how some of the simplest controllers will look in Vapor. Now let's try to see how we will use them in our 'Droplet'.
+This is how some of the simplest controllers will look in Vapor. Now let's try to see how we will use them in our `Droplet`.
 
 ### 5. Grouped routes and Controller bindings
 
-Are you ready to see some magic? Ok, now open the ```main.swift``` let's start by doing some house cleaning, delete the following lines from the file:
+Are you ready to see some magic? Ok, now open the `main.swift` let's start by doing some house cleaning, delete the following lines from the file:
 
 ```swift
 drop.get { req in
@@ -262,7 +266,7 @@ drop.group("api") { api in
 }
 ```
 
-Now try to open your browser and run ```http://0.0.0.0:8080/api/cars``` you should now see:
+Now try to open your browser and run `http://0.0.0.0:8080/api/cars` you should now see:
 
 ```bash
 {
@@ -276,7 +280,7 @@ The id will still be null because the object wasn't instantiated from the db.
 
 ### 6. Adding some more magic
 
-Ok cool, let's make our API actually hold some data (remember this will only be held until you have run the project again. Open your ```CarController.swift``` file and update the code to this:
+Ok cool, let's make our API actually hold some data (remember this will only be held until you have run the project again. Open your `CarController.swift` file and update the code to this:
 
 ```swift
 import Vapor
@@ -319,9 +323,9 @@ final class CarController: ResourceRepresentable {
     } 
 }
 ```
-Now Run your Xcode project again. If you start by opening your browser at our 'get' endpoint ```http://0.0.0.0:8080/api/cars``` for the cars then you will of course be able to see that it's returning an empty array.
+Now Run your Xcode project again. If you start by opening your browser at our 'get' endpoint `http://0.0.0.0:8080/api/cars` for the cars then you will of course be able to see that it's returning an empty array.
 
-So let's now try to make a post request to our 'post endpoint' which is basically the same slug ```http://0.0.0.0:8080/api/cars``` (you can use whatever API testing tool, I normally use [Postman](https://www.getpostman.com/). If you don't have any tools like that then just use this cURL:
+So let's now try to make a post request to our 'post endpoint' which is basically the same slug `http://0.0.0.0:8080/api/cars` (you can use whatever API testing tool, I normally use [Postman](https://www.getpostman.com/). If you don't have any tools like that then just use this cURL:
 
 ```bash
 curl -H "Content-Type: application/json" -X POST -d '{}' http://0.0.0.0:8080/api/cars
