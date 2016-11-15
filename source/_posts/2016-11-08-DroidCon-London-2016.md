@@ -33,11 +33,11 @@ Impressive talk about the insane numbers behind the facebook app and what kind o
 
 If I remember correctly Facebook commits up to 3500 times a week, and due to the massive codebase - everything is split into modules to avoid unnecessary recompiles.
 
-To further improve that, Facebook has created a custom build tool called _Buck_ around the module structure they depend on for fast deployment.
+To further improve on that, Facebook has created a custom build tool called _Buck_ around the module structure they depend on for fast deployment.
 
 Going over all the tools Facebook uses, Infer got a mention as well. I head about this a year or so ago, but now that we at Nodes are beginning to integrate CI on client apps, this is super relevant. 
 
-[Infer](http://fbinfer.com/) is a static code analyzer and will correct and point out issues and possible runtime crashes. Definately something we want in our CI toolchain.
+[Infer](http://fbinfer.com/) is a static code analyzer and will correct and point out issues and possible runtime crashes. Definitely something we want in our CI toolchain.
 
 Fun side story at the lunch tables: Facebook apparently had so many commits on their repo that they had a hash collision between two commits.
 
@@ -46,7 +46,7 @@ Fun side story at the lunch tables: Facebook apparently had so many commits on t
 
 __What's New in Android__ _by Chet Haase_
 
-(Chet Haase is one of the main public facing Google employees and Lead on the Android UI Toolkit team -  for the unknowing)
+(Chet Haase is one of the main public facing Google employees and Lead on the Android UI Toolkit team)
 
 This talk was kind of funny, not because Chet is a funny guy - but because Chet was _really_ pitching the Google Pixel phone. It almost felt like too much.
 
@@ -65,7 +65,7 @@ I've been reading a lot of documentation on encryption via the KeyStore, but Dar
 
 In short (if I remember correctly):
 
-*Android 7*: iOS level security
+*Android 7*: iOS level security (on the Google Pixel at least)
 
 *Android 6*: Almost iOS level, but you cant besure that encryption keys are protected in hardware. Also new API's for file encryption/device protected storage are not available.
 
@@ -87,12 +87,12 @@ The actual talk was kind of quick, because David and Jose wanted to focus on que
 
 Strong opinions were voiced and since David and Jose are funny guys, the talk ended up being the perfect closing for the conference for us.
 
-Side note: Chet Haase were attending this talk, and the guys had a couple of very Google specific questions - like _"Is the platform team considering any of the new patterns?"_ - and everytime they were going to answer, they looked at Chet for confirmation. You probably had to be there.
+Side note: Chet Haase were attending this talk, and the guys received a couple of very Google specific questions - like _"Is the platform team considering any of the new patterns?"_ - and everytime they were going to answer, they looked at Chet for confirmation. You probably had to be there.
 
 ###Summary
 
 Great talks this year, and since it was located so close to our London office, we walked over there and watched the Apple MacBook keynote!
 
-All the security talks kind kind of gave me the impression that we need a wrapper or a framework around the encryption/decryption on Android.
+All the security talks kind of gave me the impression that we need a wrapper or a framework around the encryption/decryption on Android. We see more and more demand for it on client apps, and having all that code floating around on different projects is annoying.
 
 I looked into facebook's conceal library - but it seems to priotize speed too much over security. We'll see, maybe material for another blog post :fire:
