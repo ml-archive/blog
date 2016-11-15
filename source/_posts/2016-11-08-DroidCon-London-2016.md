@@ -17,7 +17,7 @@ DroidCon London is located super close to our London office, so our Android deve
 
 __What's NNNNNNNNew in Android Security?__ _by Scott Alexander-Bown_
 
-Turned out to be a great talk! Very obvious that Scott have spent some time with the nitpicks and dark corners of implementing security and encryption on Android. Followed him on twitter after this talk! (@scottyab)
+Turned out to be a great talk! Very obvious that Scott have spent some time with the nitpicks and dark corners of implementing security and encryption on Android. Followed him on twitter after this talk! ([@scottyab](https://twitter.com/scottyab))
 
 Also the first time I heard about the SafetyNet API. A Google API that checks for a device's security state and whether it's rooted or not. Scott created a helper around that:
 
