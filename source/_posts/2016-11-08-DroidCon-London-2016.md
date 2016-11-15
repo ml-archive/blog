@@ -1,4 +1,11 @@
-# DroidCon London 2016
+---
+title: Droidcon London 2016
+date: 2016-11-15 17:26:43
+tags: ios,ci,continuous integration,fastlane,
+authorId: joso
+categories:
+- Android
+---
 
 DroidCon London is located super close to our London office, so our Android developer Mario attended as a volunteer this year! Awesome!
 
