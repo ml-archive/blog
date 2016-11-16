@@ -1,4 +1,6 @@
 ---
 title: {{ title }}
-tags:
+date: {{ date }}
+authorIds:
+- 
 ---

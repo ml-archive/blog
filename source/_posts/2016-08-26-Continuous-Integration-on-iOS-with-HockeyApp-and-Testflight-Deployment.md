@@ -2,7 +2,8 @@
 title: Continuous Integration With Deployment to TestFlight and HockeyApp
 date: 2016-08-26 10:00:00
 tags: ios,ci,continuous integration,fastlane,
-authorId: doha
+authorIds: 
+- doha
 categories:
 - iOS
 ---

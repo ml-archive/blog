@@ -27,7 +27,7 @@ html, body {
 .hero-unit__article {
 	@include flex-grid-column($columns: 12);
 	@include breakpoint(medium) {
-		@include flex-grid-column($columns: 10);
+		@include flex-grid-column($columns: 8);
 	}
 }
 
