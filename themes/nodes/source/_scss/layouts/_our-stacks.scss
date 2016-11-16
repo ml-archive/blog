@@ -1,23 +1,4 @@
-.content.our-stacks {
-	@include flex-grid-row();
-	@include flex-align($x: center);
-
-	@include breakpoint(medium) {
-		margin-right: $whitespace-medium;
-		margin-bottom: $whitespace-medium;
-		margin-left: $whitespace-medium;
-	}
-
-	.content__article {
-		@include flex-grid-column($columns: 12);
-		@include breakpoint(medium) {
-			@include flex-grid-column($columns: 10);
-		}
-		@include breakpoint(large) {
-			@include flex-grid-column($columns: 8);
-		}
-	}
-
+.page-content--stacks {
 	.stack-cards {
 		@include flex-grid-row();
 		@include flex-grid-layout($n: 1, $selector: '.stack-card');

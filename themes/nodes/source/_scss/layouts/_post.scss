@@ -1,20 +1,14 @@
 .content.post {
-	@include flex-grid-row();
-	@include flex-align($x: center);
-
-	@include breakpoint(medium) {
-		margin-right: $whitespace-medium;
-		margin-bottom: $whitespace-medium;
-		margin-left: $whitespace-medium;
+	.content__article,
+	.article-header {
+		position: relative; // Enable background-lines
+		@include flex-grid-row();
+		@include flex-align($x: center);
 	}
 
-	.content__article,
-	.author-card {
+	.article-header {
 		@include flex-grid-column($columns: 12);
 		@include breakpoint(medium) {
-			@include flex-grid-column($columns: 10);
-		}
-		@include breakpoint(large) {
 			@include flex-grid-column($columns: 8);
 		}
 	}

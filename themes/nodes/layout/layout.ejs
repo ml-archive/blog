@@ -26,7 +26,7 @@
   %>
 
   <%
-  var featured_image = page.featured_image || 'https://nodesagency.github.io/blog/img/logo.svg';
+  var featured_image = page.featured_image || 'https://engineering.nodesagency.com/img/logo.png';
   %>
 
   <%
@@ -94,13 +94,16 @@
   <link rel="icon" type="image/png" sizes="96x96" href="/img/touch/favicon-96x96.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/img/touch/favicon-16x16.png">
   <link rel="manifest" href="/manifest.json">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 
   <link rel="stylesheet" href="/css/style.css">
 
 </head>
 <body>
 
-  <%- body %>
+  <div class="page">
+    <%- body %>
+  </div>
 
   <div class="toasts toasts--bottom toasts--left">
     <%- partial('_partial/widgets/sw-cache-expired-toast') %>

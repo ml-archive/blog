@@ -1,6 +1,8 @@
 // Make sure the charset is set appropriately
 @charset "UTF-8";
 
+@import "base/system-font-faces";
+
 @import "variables";
 
 @import "foundation";
@@ -67,9 +69,7 @@
 @import "components/article-summary";
 @import "components/article-header";
 @import "components/article-divider";
-@import "components/articles-latest";
 @import "components/author-card";
-@import "components/content";
 @import "components/hero-unit";
 @import "components/pagination";
 @import "components/stack-card";
@@ -79,8 +79,10 @@
 @import "components/navigation";
 @import "components/brand";
 
-@import "layouts/index";
-@import "layouts/archive";
-@import "layouts/page";
-@import "layouts/post";
+@import "layouts/core";
+//@import "layouts/index";
+//@import "layouts/archive";
+//@import "layouts/categories";
+//@import "layouts/page";
+//@import "layouts/post";
 @import "layouts/our-stacks";

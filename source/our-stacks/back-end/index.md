@@ -3,14 +3,12 @@ title: Backend
 date: 2016-09-29 15:27:11
 layout: stack
 ---
-
-#Backend
 The separation of software systems into front and back ends simplifies development and separates maintenance. A rule of thumb is that the front (or "client") side is any component manipulated by the user. The server-side (or "back end") code resides on the server.
 
-###Product
+### Product
 Backend developers in Nodes build APIs with documentation & Admin panels / CMS 
 
-###Tasks
+### Tasks
  - Writing tests, all backend development is TDD, we write a lot of tests!
  - Architecting databases, setting up relations, handling migrations
  - Building custom APIs for mobile applications & web sites
@@ -18,10 +16,10 @@ Backend developers in Nodes build APIs with documentation & Admin panels / CMS
  - Integrating with a bunch of services
  - Integrating with client's internal APIs
 
-###IDE
+### IDE
 PHP Storm is the preferred IDE
 
-###Other tools
+### Other tools
  - Terminal is heavily used during the day
  - phpMyAdmin or Sequel pro is used for quick access to MySQL
  - [Postman](https://www.getpostman.com/) All our APIs are documented through Postman. It is the perfect tool for big teams to work together on APIs
