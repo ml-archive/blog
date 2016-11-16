@@ -13,7 +13,7 @@ Despite being part of the Material Design recommendations for a while, Google on
 
 I created a sample project on GitHub with all the source code for this article. You can check it out [here](https://github.com/jcmsalves/bottomNavigationSample) later if you want.
 
-### 1. How and when to use the Bottom Navigation 
+## 1. How and when to use the Bottom Navigation 
 
 Let's start with a quick reminder on [Google and Material Design recommendations](https://material.google.com/components/bottom-navigation.html) when using the bottom navigation:
 
@@ -28,17 +28,13 @@ Let's start with a quick reminder on [Google and Material Design recommendations
 - Menu items style: this is how it works by default
 	- 3 items: if using 3 items all of them should have Icon and Text visible all the time
 	- 3+ items: if using more than 3 items only the active item should have visible text
+  
+  
+3 menu items             |  4 menu items
+:-------------------------:|:-------------------------:
+<img src="https://d1gwekl0pol55k.cloudfront.net/image/nstack/default/3buttonsscreenshot1_XToNZrXuvc.png" width="300">  |  <img src="https://d1gwekl0pol55k.cloudfront.net/image/nstack/translate_values/4buttonsscreenshot1_ePCWRdtsm9.png" width="300">
 
-
-
-<table width="100%" style="border:0px">
-<tr>
-<td align="center"><img src="https://d1gwekl0pol55k.cloudfront.net/image/nstack/default/3buttonsscreenshot1_XToNZrXuvc.png" width="200"></td>
-<td align="center"><img src="https://d1gwekl0pol55k.cloudfront.net/image/nstack/translate_values/4buttonsscreenshot1_ePCWRdtsm9.png" width="200"></td></tr>
-<tr><td align="center">3 menu items</td><td align="center">4 menu items</td></tr>
-</table>
-
-### 2. Now for the fun part. Let's build this!
+## 2. Now for the fun part. Let's build this!
 
 We’ve covered some of the most important recommendations when using the bottom navigation widget, let's move on to the interesting part and implement it in our app.
 
@@ -56,7 +52,7 @@ Now we can start using the component straight away. Here’s a quick list on wha
 4. Implement a listener to detect when we tap each item
 
 
-####1. Add the bottom navigation widget:
+### 2.1 Add the bottom navigation widget:
 
   Let's add the widget as follows to the MainActivity layout file:
 	
@@ -81,7 +77,7 @@ As you can see, there are some properties on the widget. Let's take a look at th
 - **app:itemTextColor -** the colour to be used in the menu item text
 - **app:menu -** reference to the menu layout file that we're creating in the next step
 
-####2. Create a menu layout:
+### 2.2 Create a menu layout:
 
 There are no hidden tricks here, we can simply create a menu file like we would usually for any other Android menu. The menu file should have id, a reference for the drawable and the text to display.
 
@@ -114,12 +110,12 @@ There are no hidden tricks here, we can simply create a menu file like we would 
 
 Easy right?
 
-####3. Create a state drawable:
+### 2.3 Create a state drawable:
 At this stage we have created a functional bottom navigation, but we all know the importance of great UX/UI, so let’s customise this.
 
 Right now all the icons and corresponding text are the same colour, no matter if they are selected or not.
 
-You may have noticed that in the Widget xml definition in part 1 there was already a reference for ```@drawable/menu_item_selector``` in the itemIconTint and itemTextColor properties.
+You may have noticed that in the Widget xml definition in part 1 there was already a reference for `@drawable/menu_item_selector` in the itemIconTint and itemTextColor properties.
 
 So, we just need to create this to make everything work as expected. Create the file with the following content:
 
@@ -133,7 +129,7 @@ So, we just need to create this to make everything work as expected. Create the 
  
 As you can see it's a really simple selector returning 2 different colours for state checked and non-checked. Feel free to extended it to cover other states.
 
-####4. Implement NavigationItemSelected listener:
+### 2.4 Implement NavigationItemSelected listener:
 
 To complete our sample we need to listen to the tap events on each menu item. The activity layout from the sample contains a simple Frame Layout with a centered text view emulating the Fragment title.
  
@@ -180,12 +176,9 @@ Then we add the OnNavigationItemSelectedListener to the widget and use a switch 
 
 And it's done. Super simple, right? Here's the final result:
 
-<table width="100%" style="border:0px">
-<tr>
-<td align="center"><img src="https://d1gwekl0pol55k.cloudfront.net/image/nstack/translate_values/3buttonsgif_VtILFZWqWD.gif" width="200"></td>
-<td align="center"><img src="https://d1gwekl0pol55k.cloudfront.net/image/nstack/translate_values/4buttonsgif_n1Avgls13h.gif" width="200"></td></tr>
-<tr><td align="center">3 menu items</td><td align="center">4 menu items</td></tr>
-</table>
+3 menu items             |  4 menu items
+:-------------------------:|:-------------------------:
+<img src="https://d1gwekl0pol55k.cloudfront.net/image/nstack/translate_values/3buttonsgif_VtILFZWqWD.gif" width="300">  |  <img src="https://d1gwekl0pol55k.cloudfront.net/image/nstack/translate_values/4buttonsgif_n1Avgls13h.gif" width="300">
 
 Having implemented a custom bottom navigation view myself in previous projects, I think the new Android Bottom Navigation component is a brilliant addition to the support library. As well as not having to do any boilerplate code, there are numerous benefits you get for free from this new component.
 
