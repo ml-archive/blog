@@ -4,7 +4,6 @@ date: 2016-08-26 10:00:00
 tags: ios,ci,continuous integration,fastlane,
 authorIds: 
 - doha
-- josc
 categories:
 - iOS
 ---
