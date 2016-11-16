@@ -2,7 +2,8 @@
 title: Adding MySQL to your Vapor project
 date: 2016-11-08 21:31:21
 tags: vapor,mysql
-authorId: olha
+authorIds: 
+- olha
 categories:
 - Vapor
 ---

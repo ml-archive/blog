@@ -1,24 +1,23 @@
 <div class="article article-summary apply-typography">
 	<div class="article-meta">
 		<div class="article-meta__left">
-			<% if(!latest) { %>
-				<% if(post.categories && post.categories.length > 0) { %>
-					<div class="article-meta__category">
-						<%- list_categories(post.categories, {
-							show_count: false
-						}) %>
-					</div>
-				<% } else { %>
-					<div class="article-meta__category">
-						Uncategorized
-					</div>
-				<% }%>
+			<% if(showCategory !== false) { %>
+				<% if(!latest) { %>
+					<% if(post.categories && post.categories.length > 0) { %>
+						<div class="article-meta__category">
+							<%- list_categories(post.categories, {
+								show_count: false
+							}) %>
+						</div>
+					<% } else { %>
+						<div class="article-meta__category">
+							Uncategorized
+						</div>
+					<% }%>
+				<% } %>
 			<% } %>
 
 			<% if(post.readingTime) { %>
-				<% if(!latest) { %>
-					<div class="seperator-line seperator-line--60"></div>
-				<% } %>
 				<div class="article-meta__reading-time">
 					<%- post.readingTime.text %>
 				</div>

@@ -5,9 +5,9 @@
 		<div class="page-content__article">
 			<div class="articles-list">
 				<% site.categories.each(function(c) { %>
-					<h4>Latest in <span class="articles-latest__category"><%- c.name %></span>:</h4>
+					<h4>Latest in <span class="articles-latest__category"><a href="<%- url_for(c.path) %>"><%- c.name %></a></span>:</h4>
 					<% site.categories.findOne({name: c.name}).posts.sort('date', -1).limit(1).each(function(post) { %>
-						<%- partial('_partial/article-list-item', {post: post, latest: true}) %>
+						<%- partial('_partial/article-list-item', {post: post, latest: true, showCategory: true}) %>
 					<% }); %>
 				<% }); %>
 			</div>

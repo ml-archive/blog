@@ -1,23 +1,13 @@
 <%- partial('_partial/navigation') %>
-<%- partial('_partial/hero-unit-page') %>
-<div class="page-content page-content--categories">
-	<div class="page-content__article">
-		<div class="page-subheader">
-			<h3>Viewing all posts in category: <%- page.category %></h3>
-		</div>
-
-		<div class="articles">
-			<% page.posts.each(function(post){ %>
-				<%- partial('_partial/article-list-item', {post: post, latest: false}) %>
-
-				<div class="article-divider">
-					<svg viewBox="0 0 20 20">
-						<g>
-							<path d="M11,9 L11,2 L10,2 L10,9 L3,9 L3,10 L10,10 L10,17 L11,17 L11,10 L18,10 L18,9 L11,9 Z" id="Plus" fill="#CCCCCC"></path>
-						</g>
-					</svg>
-				</div>
-			<% }); %>
+<%- partial('_partial/hero-unit-category') %>
+<div class="page-content page-content--index">
+	<div class="page-content__block">
+		<div class="page-content__article">
+			<div class="articles-list">
+				<% page.posts.each(function(post){ %>
+					<%- partial('_partial/article-list-item', {post: post, latest: false, showCategory: false}) %>
+				<% }); %>
+			</div>
 
 			<% if(page.total > 1) { %>
 				<%- f_paginator({
@@ -31,5 +21,5 @@
 		</div>
 	</div>
 </div>
-<%- partial('_partial/widgets/sticky-categories') %>
+<!--<%- partial('_partial/widgets/sticky-categories') %>-->
 
