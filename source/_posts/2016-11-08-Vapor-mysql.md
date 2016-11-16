@@ -7,7 +7,29 @@ categories:
 - Vapor
 ---
 
-In this tutorial we will walk through how to add a database layer to a [Vapor](vapor.codes) project. We will be using MySQL and will assume that you have set it up on your local machine [(guide here)](https://dev.mysql.com/doc/refman/5.6/en/osx-installation-pkg.html).
+In this tutorial we will walk through how to add a database layer to a [Vapor](vapor.codes) project. We will be using MySQL and will assume that you have set it up on your local machine. 
+
+Follow these 3 steps if you don't already have MySQL on your machine.
+
+1. Install [Homebrew](http://brew.sh/):
+
+	```bash
+	/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+	```
+
+2. Install MySQL: 
+
+	```bash
+	brew install mysql
+	```
+
+3. Start the MySQL server:
+
+	```bash
+	mysql.server start
+	```
+
+More info about MySQL setup [here](https://dev.mysql.com/doc/refman/5.6/en/osx-installation-pkg.html)
 
 We are continuing on our 'Car' project. You don't necacery have to have read that tutorial if you already are a Vapor rock star. If not then please find it [here](https://engineering.nodesagency.com/articles/Vapor/6-simple-steps-to-setup-vapor/).
 
@@ -36,13 +58,13 @@ let package = Package(
     ]
 )
 ```
-Now open your terminal (make sure you are cd into the project) and run `vapor build --mysql` and after that `vapor xcode --mysql`, this will make sure everything is compiled correctly with Vapor and linked with MySQL on your local machine. 
+Now open your terminal (make sure you are cd into the project) and run `vapor xcode --mysql`, this will make sure everything is compiled correctly with Vapor and linked with MySQL on your local machine. 
 
 You should now be able to see some of the new dependencies in the `Dependencies` folder in your project. (MySQL, VaporMySQL, FluentMySQL etc).
 
-### 2. Setting up the DropLet to support the provider
+### 2. Setting up the Droplet to support the provider
 
-Now open your main.swift file and add the following lines of code:
+Now open your `main.swift` file and add the following lines of code:
 
 ```swift
 ...
@@ -61,7 +83,7 @@ drop.preparations.append(Car.self)
 
 drop.run()
 ```
-Now lets jump into our `Car.swift` file (and down in the extension of the model) add some actual Preparation code. 
+Now lets jump into our `Car.swift` file (and down in the extension of the model) add some actual preparation code. Preparation is also know as migrations in other server side coding frameworks. (More info on how Laravel uses it [here](https://laravel.com/docs/5.3/migrations)) 
 
 ```swift
 extension Car: Preparation {
@@ -70,8 +92,8 @@ extension Car: Preparation {
         //Adding our actual migration table and attributes. We are first defining the name of the database table and afterwards what attributes the table should have.
         try database.create("cars") { cars in
             cars.id()
-            cars.data("name")
-            cars.data("color")
+            cars.string("name")
+            cars.string("color")
             cars.int("miles_driven")
         }
     }
@@ -83,7 +105,7 @@ extension Car: Preparation {
 }
 ```
 
-If you now Run the project then it will compile correct but crash right after it has started. This is due to we are missing a MySQL config file. 
+If you now Run the project then it will compile correctly but crash right after it has started. This is because we are missing a MySQL config file. 
 
 So now open terminal again and run:
 
@@ -118,9 +140,9 @@ Database prepared
 Server 'default' starting at 0.0.0.0:8080
 ```
 
-The consol are here telling you that the model Car is getting setup in the database as a table. You will only get this message(s) the first time you Run the project where you don't have the tables setup in the database. 
+The console is telling you that the model Car is getting setup in the database as a table. You will only get this message(s) the first time you Run the project where you don't have the tables setup in the database. 
 
-And boom, we are up and running. Now check your database interface if you are using any (I'm using [SequelPro](https://www.sequelpro.com/)), you should now be able to see our Car model as a database table (cars). You will also see a table called 'fluent', this is Vapors way of keeping track of what models should be linked to what tables.
+And boom, we are up and running. Now check your database interface if you are using any (I'm using [SequelPro](https://www.sequelpro.com/)), you should now be able to see our Car model as a database table (cars). You will also see a table called 'fluent', this is Vapors way of keeping track of what tables should be created and which already have been created.
 
 ### 3. Saving and retreving our models
 
@@ -192,4 +214,4 @@ And voila!, you should now see a JSON response of objects from the database.
 
 ### So what's next?
 
-Well you now know how to create routes for controllers and work with models, you know how to store and retreive from the database. Now go explore and maybe get a job at Nodes if you mean you have the skills and what it takes.
+Well you now know how to create routes for controllers and work with models, you know how to store and retreive from the database. Now go explore and maybe get a job at [Nodes](https://www.nodesagency.com/careers/) if you think you have the skills and what it takes.
