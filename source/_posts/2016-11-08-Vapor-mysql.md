@@ -31,11 +31,11 @@ Follow these 3 steps if you don't already have MySQL on your machine.
 
 More info about MySQL setup [here](https://dev.mysql.com/doc/refman/5.6/en/osx-installation-pkg.html)
 
-We are continuing on our 'Car' project. You don't necacery have to have read that tutorial if you already are a Vapor rock star. If not then please find it [here](https://engineering.nodesagency.com/articles/Vapor/6-simple-steps-to-setup-vapor/).
+We are continuing on our 'Car' project. You don't necessary have to have read that tutorial if you already are a Vapor rock star. If not then please find it [here](https://engineering.nodesagency.com/articles/Vapor/6-simple-steps-to-setup-vapor/).
 
 ### 1. Adding the MySQL package
 
-Open your Vapor project and open the `Package.swift` file and add the extra dependecy under the main vapor dependency:
+Open your Vapor project and open the `Package.swift` file and add the extra dependency under the main Vapor dependency:
 
 ```swift
 import PackageDescription
@@ -73,7 +73,7 @@ import VaporMySQL
 
 let drop = Droplet()
 
-// Add providers. This tells Vapor that we are using the VaporMySQL provider, this will bind the data to the database and the models automaticlly down the line
+// Add providers. This tells Vapor that we are using the VaporMySQL provider, this will bind the data to the database and the models automatically down the line
 try drop.addProvider(VaporMySQL.Provider.self)
 
 //Making sure that Vapor runs our migrations / preperations for our model(s) 
@@ -83,7 +83,7 @@ drop.preparations.append(Car.self)
 
 drop.run()
 ```
-Now lets jump into our `Car.swift` file (and down in the extension of the model) add some actual preparation code. Preparation is also know as migrations in other server side coding frameworks. (More info on how Laravel uses it [here](https://laravel.com/docs/5.3/migrations)) 
+Now let's jump into our `Car.swift` file (and down in the extension of the model) add some actual preparation code. Preparation is also know as migrations in other server side coding frameworks. (More info on how Laravel uses it [here](https://laravel.com/docs/5.3/migrations)) 
 
 ```swift
 extension Car: Preparation {
@@ -142,11 +142,11 @@ Server 'default' starting at 0.0.0.0:8080
 
 The console is telling you that the model Car is getting setup in the database as a table. You will only get this message(s) the first time you Run the project where you don't have the tables setup in the database. 
 
-And boom, we are up and running. Now check your database interface if you are using any (I'm using [SequelPro](https://www.sequelpro.com/)), you should now be able to see our Car model as a database table (cars). You will also see a table called 'fluent', this is Vapors way of keeping track of what tables should be created and which already have been created.
+And boom, we are up and running. Now check your database interface if you are using any (I'm using [SequelPro](https://www.sequelpro.com/)), you should now be able to see our Car model as a database table (cars). You will also see a table called 'fluent', this is Vapor's way of keeping track of what tables should be created and which already have been created.
 
-### 3. Saving and retreving our models
+### 3. Saving and retrieving our models
 
-Ok, the fun part starts now. Open your controller `CarController.swift` and update our create function to this:
+Ok, the fun part starts now. Open your controller `CarController.swift` and update our `create` function to this:
 
 ```swift
 func create(request: Request) throws -> ResponseRepresentable {
@@ -178,7 +178,7 @@ Now let's return our stored data, by updating the index function to the followin
 ```swift
 func index(request: Request) throws -> ResponseRepresentable {
         
-	//So get all our car objects from the database (Of course we should in the real world add some pagination, sorting, filtering etc), we are chaining our formatter method after our query method, this automaticly converts the whole thing into JSON
+	//So get all our car objects from the database (Of course we should in the real world add some pagination, sorting, filtering etc), we are chaining our formatter method after our query method, this automatically converts the whole thing into JSON
 	return try Car.all().makeNode().converted(to: JSON.self)
 }
 ```
@@ -214,4 +214,4 @@ And voila!, you should now see a JSON response of objects from the database.
 
 ### So what's next?
 
-Well you now know how to create routes for controllers and work with models, you know how to store and retreive from the database. Now go explore and maybe get a job at [Nodes](https://www.nodesagency.com/careers/) if you think you have the skills and what it takes.
+Well, you now know how to create routes for controllers and work with models, you know how to store and retrieve from the database. Now go explore and maybe get a job at [Nodes](https://www.nodesagency.com/careers/) if you think you have the skills and what it takes.
