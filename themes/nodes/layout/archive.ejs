@@ -5,7 +5,7 @@
 		<div class="page-content__article">
 			<div class="articles-list">
 				<% page.posts.each(function(post){ %>
-				<%- partial('_partial/article-list-item', {post: post, latest: false}) %>
+				<%- partial('_partial/article-list-item', {post: post, latest: false, showCategory: true}) %>
 				<% }); %>
 
 				<% if(page.total > 1) { %>
