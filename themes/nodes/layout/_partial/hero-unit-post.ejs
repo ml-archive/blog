@@ -1,0 +1,81 @@
+<div class="hero-unit">
+	<div class="hero-unit__block">
+		<div class="hero-unit__article">
+			<div class="article-header">
+				<div class="article">
+					<div class="article-meta">
+						<div class="article-meta__left">
+							<% if(page.categories && page.categories.length > 0) { %>
+							<div class="article-meta__category">
+								<%- list_categories(page.categories, {
+									show_count: false
+								}) %>
+							</div>
+							<% } else { %>
+							<div class="article-meta__category">
+								Uncategorized
+							</div>
+							<% }%>
+
+							<% if(page.readingTime) { %>
+							<div class="article-meta__reading-time">
+								<%- page.readingTime.text %>
+							</div>
+							<% } %>
+
+						</div>
+						<div class="article-meta__right">
+							<% if(page.date) { %>
+							<div class="article-meta__date">
+								<%- page.date.format('MMMM Do YYYY') %>
+							</div>
+							<% } %>
+						</div>
+					</div>
+
+					<div class="article-meta__authors">
+						<% if(page.authors) { %>
+							<ul>
+								<li>
+									<% if(page.authors.length === 1) { %>
+										Author:
+									<% } else { %>
+										Authors:
+									<% } %>
+								</li>
+								<% page.authors.forEach(function(author) { %>
+									<li class="article-meta__author">
+										<% if(author.twitter) { %>
+											<a href="https://www.twitter.com/<%- author.twitter %>" target="_blank">
+												<i class="icon icon--twitter">
+													<svg viewBox="0 0 250 204" width="12" height="12" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+														<g id="twitter">
+															<path d="M78.6,203.6 C172.9,203.6 224.5,125.4 224.5,57.7 C224.5,55.5 224.5,53.3 224.4,51.1 C234.4,43.9 243.1,34.8 250,24.5 C240.8,28.6 230.9,31.3 220.5,32.6 C231.1,26.3 239.2,16.2 243.1,4.2 C233.2,10.1 222.2,14.3 210.5,16.6 C201.1,6.6 187.8,0.4 173.1,0.4 C144.8,0.4 121.8,23.4 121.8,51.7 C121.8,55.7 122.3,59.6 123.1,63.4 C80.5,61.3 42.7,40.8 17.4,9.8 C13,17.4 10.5,26.2 10.5,35.6 C10.5,53.4 19.6,69.1 33.3,78.3 C24.9,78 17,75.7 10.1,71.9 L10.1,72.6 C10.1,97.4 27.8,118.2 51.2,122.9 C46.9,124.1 42.4,124.7 37.7,124.7 C34.4,124.7 31.2,124.4 28.1,123.8 C34.6,144.2 53.6,159 76,159.4 C58.4,173.2 36.3,181.4 12.3,181.4 C8.2,181.4 4.1,181.2 0.1,180.7 C22.7,195.1 49.7,203.6 78.6,203.6" id="Shape"></path>
+														</g>
+													</svg>
+												</i>
+												<%- author.name %>
+											</a>
+										<% } else { %>
+											<%- author.name %>
+										<% } %>
+										<span class="article-meta__author__seperator">
+										-
+										</span>
+									</li>
+								<% }); %>
+							</ul>
+						<% } %>
+					</div>
+
+
+					<div class="article__title">
+						<h1>
+							<%- page.title %>
+						</h1>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

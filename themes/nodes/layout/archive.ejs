@@ -1,26 +1,23 @@
-<%- partial('_partial/header-page') %>
-<div class="content archive">
-	<div class="content__article">
-		<% page.posts.each(function(post){ %>
-			<%- partial('_partial/article-list-item', {post: post, latest: false}) %>
+<%- partial('_partial/navigation') %>
+<%- partial('_partial/hero-unit-page') %>
+<div class="page-content page-content--archive">
+	<div class="page-content__block">
+		<div class="page-content__article">
+			<div class="articles-list">
+				<% page.posts.each(function(post){ %>
+				<%- partial('_partial/article-list-item', {post: post, latest: false, showCategory: true}) %>
+				<% }); %>
 
-			<div class="article-divider">
-				<svg viewBox="0 0 20 20">
-					<g>
-						<path d="M11,9 L11,2 L10,2 L10,9 L3,9 L3,10 L10,10 L10,17 L11,17 L11,10 L18,10 L18,9 L11,9 Z" id="Plus" fill="#CCCCCC"></path>
-					</g>
-				</svg>
+				<% if(page.total > 1) { %>
+				<%- f_paginator({
+					prev_text: "Previous",
+					next_text: "Next",
+					end_size: 2,
+					mid_size: 4,
+					class: 'text-center'
+				}) %>
+				<% } %>
 			</div>
-		<% }); %>
-
-		<% if(page.total > 1) { %>
-			<%- f_paginator({
-				prev_text: "Previous",
-				next_text: "Next",
-				end_size: 2,
-				mid_size: 4,
-				class: 'text-center'
-			}) %>
-		<% } %>
+		</div>
 	</div>
 </div>

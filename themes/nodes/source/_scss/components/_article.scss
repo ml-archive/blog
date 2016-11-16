@@ -1,4 +1,5 @@
 .article {
+
 	img {
 
 		margin: 1em auto;
@@ -38,14 +39,14 @@
 }
 
 .article__title {
-	padding-left: $whitespace-medium;
-	padding-right: $whitespace-medium;
+	//padding-left: $whitespace-medium;
+	//padding-right: $whitespace-medium;
 	@include breakpoint(large) {
 		padding-left: 0;
 		padding-right: 0;
 	}
 
-	h2 {
+	h1, h2 {
 		font-weight: $fontweight-regular;
 		margin-bottom: 0;
 	}

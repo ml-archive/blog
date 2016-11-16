@@ -2,6 +2,7 @@
 menu:
   Home: /
   Articles: articles/
+  Our Stacks: our-stacks/
 rss: /atom.xml
 
 # Content

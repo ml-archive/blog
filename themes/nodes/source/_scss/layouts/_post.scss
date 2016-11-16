@@ -1,16 +1,19 @@
 .content.post {
-	position: relative; // Enable background-lines
-	@include flex-grid-row();
-	@include flex-align($x: center);
+	.content__article,
+	.article-header {
+		position: relative; // Enable background-lines
+		@include flex-grid-row();
+		@include flex-align($x: center);
+	}
 
-	.background-lines:after {
+	.article-header {
 		@include flex-grid-column($columns: 12);
 		@include breakpoint(medium) {
 			@include flex-grid-column($columns: 8);
 		}
 	}
-	.content__article {
-		@include flex-grid-column($columns: 12);
-		max-width: 700px;
+	.content__article > p:first-of-type {
+		margin-top: 0;
+		@extend .lead;
 	}
 }

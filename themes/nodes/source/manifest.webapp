@@ -1,0 +1,25 @@
+{
+	"version": "1.0.0",
+	"name": "Nodes Engineering Blog",
+	"launch_path": "/index.html",
+	"description": "The Nodes Engineering blog is where we write about technical things and showcase our Open Source projects.",
+	"icons": {
+		"128": "/images/touch/icon-128x128.png"
+	},
+	"developer": {
+		"name": "",
+		"url": ""
+	},
+	"installs_allowed_from": [
+		"*"
+	],
+	"default_locale": "en",
+	"permissions": {
+	},
+	"locales": {
+		"en": {
+			"name": "Nodes Engineering Blog",
+			"description": "The Nodes Engineering blog is where we write about technical things and showcase our Open Source projects."
+		}
+	}
+}

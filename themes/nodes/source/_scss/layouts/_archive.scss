@@ -1,8 +1,4 @@
 .content.archive {
-	position: relative; // Enable background-lines
-	@include flex-grid-row();
-	@include flex-align($x: center);
-
 	.background-lines:after {
 		@include flex-grid-column($columns: 12);
 		@include breakpoint(medium) {
@@ -10,7 +6,14 @@
 		}
 	}
 	.content__article {
+		position: relative; // Enable background-lines
+		@include flex-grid-row();
+		@include flex-align($x: center);
+	}
+	.articles {
 		@include flex-grid-column($columns: 12);
-		max-width: 700px;
+		@include breakpoint(medium) {
+			@include flex-grid-column($columns: 8);
+		}
 	}
 }

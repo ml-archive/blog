@@ -1,0 +1,10 @@
+.page-content--stacks {
+	.stack-cards {
+		@include flex-grid-row();
+		@include flex-grid-layout($n: 1, $selector: '.stack-card');
+
+		@include breakpoint(medium) {
+			@include flex-grid-layout($n: 3, $selector: '.stack-card');
+		}
+	}
+}

@@ -93,8 +93,8 @@ $breakpoint-classes: (small medium large);
 $grid-row-width: $global-width;
 $grid-column-count: 12;
 $grid-column-gutter: (
-		small: 1px,
-		medium: 1px,
+		small: 20px,
+		medium: 20px,
 );
 $grid-column-align-edge: true;
 $block-grid-max: 8;
@@ -102,27 +102,35 @@ $block-grid-max: 8;
 // 4. Base Typography
 // ------------------
 
-$header-font-family: 'Roboto', sans-serif;
+$header-font-family: system, sans-serif;
 $header-font-weight: $global-weight-normal;
 $header-font-style: normal;
 $font-family-monospace: 'Roboto Mono', monospace;
 $header-sizes: (
 		small: (
-				'h1': 47,
-				'h2': 32,
-				'h3': 20,
-				'h4': 25,
-				'h5': 16,
+				'h1': 32,
+				'h2': 26,
+				'h3': 22,
+				'h4': 18,
+				'h5': 17,
 				'h6': 16,
 		),
 		medium: (
-				'h1': 47,
+				'h1': 40,
 				'h2': 32,
-				'h3': 20,
-				'h4': 25,
-				'h5': 16,
+				'h3': 24,
+				'h4': 18,
+				'h5': 17,
 				'h6': 16,
 		),
+		large: (
+				'h1': 48,
+				'h2': 36,
+				'h3': 28,
+				'h4': 18,
+				'h5': 17,
+				'h6': 16,
+		)
 );
 $header-color: inherit;
 $header-lineheight: 1.2;

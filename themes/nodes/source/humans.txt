@@ -1,0 +1,15 @@
+# humanstxt.org/
+# The humans responsible & technology colophon
+
+# TEAM
+
+  Dennis Haulund Nielsen -- Lead Front-end Developer -- @dennishnielsen
+  Jonas Schwartz -- Operations Lead
+
+# THANKS
+
+  Thanks to technology! Thanks to our amazing coworkers!
+
+# TECHNOLOGY COLOPHON
+
+  HTML5, CSS3, ES5, ES2015, Hexo, Gulp, and so much more awesome stuff

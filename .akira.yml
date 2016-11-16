@@ -5,11 +5,18 @@ project:
 before_prepare:
     - command: '/usr/bin/npm install -g hexo'
     - command: '/usr/bin/npm install'
-    - command: '/usr/local/bin/gulp styles'
-    - command: '/usr/local/bin/hexo generate'
+    - command: '/usr/bin/npm run build'
 
 prepare:
+
+shared_dir:
+    - host_dir: 'public'
+      container_dir: 'public/test-upload'
 
 config:
 
 docker_template: "clean-default"
+
+docker_beta: true
+
+slack_channel: "#nodesengineeringblog"

@@ -1,24 +1,22 @@
 .article-header {
-	@include flex-grid-row();
-	@include flex-align($x: center);
-
-
-	position: relative;
-	padding-top: $whitespace-base;
-	padding-bottom: $whitespace-medium;
-
-	.article {
-		@include flex-grid-column($columns: 12);
-		@include breakpoint(medium) {
-			@include flex-grid-column($columns: 8);
-
-			padding-top: $whitespace-medium;
-			padding-bottom: $whitespace-base * 5;
-		}
-		@include breakpoint(large) {
-			@include flex-grid-column($columns: 6);
-		}
-	}
+	//@include flex-grid-row();
+	//@include flex-align($x: center);
+	//
+	//padding-top: $whitespace-base;
+	//padding-bottom: $whitespace-medium;
+	//
+	//.article {
+	//	@include flex-grid-column($columns: 12);
+	//	@include breakpoint(medium) {
+	//		@include flex-grid-column($columns: 8);
+	//
+	//		padding-top: $whitespace-medium;
+	//		padding-bottom: $whitespace-base * 5;
+	//	}
+	//	@include breakpoint(large) {
+	//		//@include flex-grid-column($columns: 8);
+	//	}
+	//}
 }
 
 .article-header__back-button {

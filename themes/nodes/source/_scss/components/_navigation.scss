@@ -1,20 +1,16 @@
-html:not(.no-js) {
-	//height: 0;
-	.page-header__navigation {
-		height: 0;
-		overflow: hidden;
 
-		transition: height 0.7s;
-		will-change: height;
-		@include breakpoint(large) {
-			height: auto;
-			overflow: auto;
-		}
-	}
-	.navigation {
+.page-header__navigation {
+	height: 0;
+	overflow: hidden;
 
+	transition: height 0.7s;
+	will-change: height;
+	@include breakpoint(large) {
+		height: auto;
+		overflow: auto;
 	}
 }
+
 .navigation__item {
 	display: block;
 
@@ -43,13 +39,8 @@ html:not(.no-js) {
 	}
 }
 
-html.no-js .page-header__mobile-toggle {
-	display: none;
-}
 .page-header__mobile-toggle {
 	margin-left: auto;
-	padding-right: $whitespace-medium;
-	padding-left: $whitespace-medium;
 
 	line-height: $page-header-height / 2;
 	@include breakpoint(large) {
@@ -57,6 +48,8 @@ html.no-js .page-header__mobile-toggle {
 	}
 
 	button {
+		padding-right: $whitespace-small;
+		padding-left: $whitespace-medium;
 		&:focus {
 			outline: none;
 		}
