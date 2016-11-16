@@ -1,11 +1,12 @@
 .content.post {
-	.content__article {
+	.content__article,
+	.article-header {
 		position: relative; // Enable background-lines
 		@include flex-grid-row();
 		@include flex-align($x: center);
 	}
 
-	article {
+	.article-header {
 		@include flex-grid-column($columns: 12);
 		@include breakpoint(medium) {
 			@include flex-grid-column($columns: 8);

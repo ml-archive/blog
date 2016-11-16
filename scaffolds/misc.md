@@ -3,5 +3,7 @@ title: {{ title }}
 date: {{ date }}
 tags:
 categories:
-- misc
+- Misc
+authorIds:
+- 
 ---

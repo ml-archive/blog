@@ -2,7 +2,8 @@
 title:  Understanding code signing for iOS apps
 date: 2016-10-27 23:10:57
 tags: ios,code,signing,security,certificates,apns
-authorId: maco
+authorIds: 
+- maco
 categories:
 - iOS
 ---
