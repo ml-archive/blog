@@ -166,7 +166,6 @@ gulp.task('html', () => {
 gulp.task('copy', () => {
 	gulp.src([
 			'themes/nodes/source/*.*',
-			'!themes/nodes/source/*.html',
 			'node_modules/apache-server-configs/dist/.htaccess'
 		], {dot: true})
 		.pipe(gulp.dest('public'))

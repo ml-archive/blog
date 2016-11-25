@@ -15,6 +15,7 @@
     "foundation-sites": "^6.2.3",
     "gsap": "^1.19.0",
     "hexo": "^3.2.0",
+    "hexo-auto-canonical": "^0.1.0",
     "hexo-deployer-git": "^0.1.0",
     "hexo-featured-image": "^0.1.1",
     "hexo-generator-archive": "^0.1.4",
