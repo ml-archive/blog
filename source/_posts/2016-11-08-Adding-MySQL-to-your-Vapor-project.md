@@ -8,7 +8,7 @@ categories:
 - Vapor
 ---
 
-In this tutorial we will walk through how to add a database layer to a [Vapor](vapor.codes) project. We will be using MySQL and will assume that you have set it up on your local machine. 
+In this tutorial we will walk through how to add a database layer to a [Vapor](http://vapor.codes) project. We will be using MySQL and will assume that you have set it up on your local machine. 
 
 Follow these 3 steps if you don't already have MySQL on your machine.
 
