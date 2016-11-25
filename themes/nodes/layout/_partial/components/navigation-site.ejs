@@ -2,5 +2,5 @@
 	<% for (var i in theme.menu){ %>
 		<a class="navigation__item <%= nIsCurrent(theme.menu[i]) ? 'navigation__item--active' : '' %> <%= (theme.menu[i] === 'articles/' && is_category()) ? 'navigation__item--active' : '' %>" href="<%- url_for(theme.menu[i]) %>"><%= i %></a>
 	<% } %>
-	<a href="https://www.nodesagency.com/" class="navigation__item" target="_blank" rel="nofollow">Back to Nodes</a>
+	<a href="https://www.nodesagency.com/" class="navigation__item" target="_blank">Back to Nodes</a>
 </nav>

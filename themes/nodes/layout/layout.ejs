@@ -44,6 +44,8 @@
   }
   %>
 
+  <%- autoCanonical(config, page) %>
+
   <title><% if (title){ %><%= title %> | <% } %><%= config.title %></title>
 
   <meta property="og:title" content="<% if (title){ %><%= title %> | <% } %><%= config.title %>">
@@ -79,7 +81,7 @@
   <% } %>
 
 
-  <link rel="icon" href="favicon.ico">
+  <link rel="icon" href="/favicon.ico">
   <link rel="apple-touch-icon" sizes="57x57" href="/img/touch/apple-icon-57x57.png">
   <link rel="apple-touch-icon" sizes="60x60" href="/img/touch/apple-icon-60x60.png">
   <link rel="apple-touch-icon" sizes="72x72" href="/img/touch/apple-icon-72x72.png">
