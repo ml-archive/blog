@@ -59,6 +59,7 @@ The actual talk was kind of quick, because David and Jose wanted to focus on que
 Side note: Chet Haase were attending this talk, and the guys received a couple of very Google specific questions - like _"Is the platform team considering any of the new patterns?"_ - and everytime they were going to answer, they looked at Chet for confirmation. You probably had to be there.
 
 ### Summary
+
 Great talks this year, and since it was located so close to our London office, we walked over there and watched the Apple MacBook keynote!
 
 All the security talks kind of gave me the impression that we need a wrapper or a framework around the encryption/decryption on Android. We see more and more demand for it on client apps, and having all that code floating around on different projects is annoying.
