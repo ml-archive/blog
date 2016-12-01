@@ -7,7 +7,7 @@ categories:
 - iOS
 ---
 
-<p align=center><img src="https:\/\/d1gwekl0pol55k.cloudfront.net\/image\/nstack\/translate_values\/Serpent_icon_MKPKLwKrTM.png" width=50%/></p>
+<p align=center><img src="https://d1gwekl0pol55k.cloudfront.net/image/nstack/translate_values/Serpent_icon_MKPKLwKrTM.png" width=50%/></p>
 
 At [Nodes](https://nodesagency.com), we develop apps that rely a lot on complex backend APIs. The need for a fast and fully featured JSON mapping framework was obvious.
 
@@ -31,9 +31,9 @@ We built Serpent to make the developers' life as easy as possible when creating 
 
 We made the [Serpent Xcode File Template](https://github.com/nodes-ios/SerpentXcodeFileTemplate), which adds a new file template for Xcode. No more typing `import Serpent` manually. It sounds small, but when you have to create 10-20 models, it saves you from a lot of annoyance. 
 
-<p align=center><img src="https:\/\/d1gwekl0pol55k.cloudfront.net\/image\/nstack\/translate_values\/687474703a2f2f692e696d6775722e636f6d2f6a75647a614a5a2e706e67_JSsVywYm5H.png" width=50%/></p>
+<p align=center><img src="https://d1gwekl0pol55k.cloudfront.net/image/nstack/translate_values/687474703a2f2f692e696d6775722e636f6d2f6a75647a614a5a2e706e67_JSsVywYm5H.png" width=50%/></p>
 
-#### <img src="https:\/\/d1gwekl0pol55k.cloudfront.net\/image\/nstack\/translate_values\/ModelBoiler_1281_Hkq7ey3ZGo.png" width=4%/> ModelBoiler 
+#### <img src="https://d1gwekl0pol55k.cloudfront.net/image/nstack/translate_values/ModelBoiler_1281_Hkq7ey3ZGo.png" width=4%/> ModelBoiler 
 
 The most annoying part when working with JSONs in Swift is typing all the parsing code. We made a tool that works with Serpent that does that for you. The [ModelBoiler](https://github.com/nodes-ios/ModelBoiler) is a small mac app that lives in your mac's menu bar. In Xcode (or your favourite editor), select the code for the model and its properties, and press the ⌘§ shortcut, and the ModelBoiler will generate the necessary code for parsing to your Clipboard. You can just paste the parsing code in your model. And that's it.
 
