@@ -27,7 +27,7 @@ Since February 2016 we moved the project to a [public GitHub repo](https://githu
 
 We built Serpent to make the developers' life as easy as possible when creating models. So we also built a few goodies around Serpent, which allow the developer to save a lot of time when creating the models for the app. 
 
-#### <img src = "https:\/\/d1gwekl0pol55k.cloudfront.net\/image\/nstack\/translate_values\/TemplateIcon_ma6gVMOOZ7.png" width=4%/> Serpent Xcode File Template
+#### <img src = "https://d1gwekl0pol55k.cloudfront.net/image/nstack/translate_values/TemplateIcon_ma6gVMOOZ7.png" width=4%/> Serpent Xcode File Template
 
 We made the [Serpent Xcode File Template](https://github.com/nodes-ios/SerpentXcodeFileTemplate), which adds a new file template for Xcode. No more typing `import Serpent` manually. It sounds small, but when you have to create 10-20 models, it saves you from a lot of annoyance. 
 
