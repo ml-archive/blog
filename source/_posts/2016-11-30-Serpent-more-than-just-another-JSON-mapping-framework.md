@@ -7,29 +7,36 @@ categories:
 - iOS
 ---
 
+<p align=center><img src="https:\/\/d1gwekl0pol55k.cloudfront.net\/image\/nstack\/translate_values\/Serpent_icon_MKPKLwKrTM.png" width=50%/></p>
+
 At [Nodes](https://nodesagency.com), we develop apps that rely a lot on complex backend APIs. The need for a fast and fully featured JSON mapping framework was obvious.
 
 We had been using our own internal parsing framework for Objective-C for a long time, but when Swift came out we decided to create a new one, in Swift, taking advantage of protocol-oriented programming. 
 
-After many iterations and a renaming (Serpent was previously known as Serializable), we are proud to announce that our JSON mapping framework has finally reached version 1.0.
+After many iterations and a renaming (our JSON mapping framework was previously known as Serializable), we are proud to announce that Serpent has finally reached version 1.0.
+
+
 
 ### Another JSON mapping framework?
 
 Yes, there are lots of other JSON mapping frameworks out there. But when we started developing Serpent, there was only SwiftyJSON, which wasn't exactly what we wanted. So we needed to build our own. 
 
-Since February 2016 we moved the project to a [public GitHub repo](https://github.com/nodes-ios/Serpent) and kept developing in the open. In the meantime, we were already using this framework in all our apps. At the moment, we can say that ***various versions of Serpent are part of apps that are used by more than 1.3 million users every month***.
+Since February 2016 we moved the project to a [public GitHub repo](https://github.com/nodes-ios/Serpent) and kept developing in the open. In the meantime, we were already using this framework in all our apps. At the moment, we can say that ***various versions of Serpent are part of apps used by more than 1.3 million users every month***.
 
 ### Working with Serpent
 
 We built Serpent to make the developers' life as easy as possible when creating models. So we also built a few goodies around Serpent, which allow the developer to save a lot of time when creating the models for the app. 
 
-#### Serpent Xcode File Template
+#### <img src = "https:\/\/d1gwekl0pol55k.cloudfront.net\/image\/nstack\/translate_values\/TemplateIcon_ma6gVMOOZ7.png" width=4%/> Serpent Xcode File Template
 
 We made the [Serpent Xcode File Template](https://github.com/nodes-ios/SerpentXcodeFileTemplate), which adds a new file template for Xcode. No more typing `import Serpent` manually. It sounds small, but when you have to create 10-20 models, it saves you from a lot of annoyance. 
 
-#### ModelBoiler 
+<p align=center><img src="https:\/\/d1gwekl0pol55k.cloudfront.net\/image\/nstack\/translate_values\/687474703a2f2f692e696d6775722e636f6d2f6a75647a614a5a2e706e67_JSsVywYm5H.png" width=50%/></p>
+
+#### <img src="https:\/\/d1gwekl0pol55k.cloudfront.net\/image\/nstack\/translate_values\/ModelBoiler_1281_Hkq7ey3ZGo.png" width=4%/> ModelBoiler 
 
 The most annoying part when working with JSONs in Swift is typing all the parsing code. We made a tool that works with Serpent that does that for you. The [ModelBoiler](https://github.com/nodes-ios/ModelBoiler) is a small mac app that lives in your mac's menu bar. In Xcode (or your favourite editor), select the code for the model and its properties, and press the ⌘§ shortcut, and the ModelBoiler will generate the necessary code for parsing to your Clipboard. You can just paste the parsing code in your model. And that's it.
+
 
 
 Together with the Xcode file template and with the ModelBoiler, Serpent is (in our opinion) the easiest and most pleasant to use JSON mapping framework for Swift.
