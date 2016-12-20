@@ -222,7 +222,7 @@ import Vapor
 //Import HTTP for getting all our response types, codes, etc..
 import HTTP
 
-//Subclass our Controller from ResourceRepresentable
+//Adopt the ResourceRepresentable protocol in our Controller
 final class CarController: ResourceRepresentable {
     
     //This will get called if the index in 'makeResource()' below will be called.
