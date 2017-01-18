@@ -35,7 +35,9 @@ We made the [Serpent Xcode File Template](https://github.com/nodes-ios/SerpentXc
 
 #### <img src="https://d1gwekl0pol55k.cloudfront.net/image/nstack/translate_values/ModelBoiler_1281_Hkq7ey3ZGo.png" width=4%/> ModelBoiler 
 
-The most annoying part when working with JSONs in Swift is typing all the parsing code. We made a tool that works with Serpent that does that for you. The [ModelBoiler](https://github.com/nodes-ios/ModelBoiler) is a small mac app that lives in your mac's menu bar. In Xcode (or your favourite editor), select the code for the model and its properties, and press the ⌘§ shortcut, and the ModelBoiler will generate the necessary code for parsing to your Clipboard. You can just paste the parsing code in your model. And that's it.
+The most annoying part when working with JSONs in Swift is typing all the parsing code. We made a tool that works with Serpent that does that for you. The [ModelBoiler](https://github.com/nodes-ios/ModelBoiler) is a small macOS app that lives in your mac's menu bar. In Xcode (or your favourite editor), select the code for the model and its properties, and press the ⌘§ shortcut, and the ModelBoiler will generate the necessary code for parsing to your Clipboard. You can just paste the parsing code in your model. And that's it.
+
+<img src = "https://d1gwekl0pol55k.cloudfront.net/image/nstack/translate_values/modelboiler_QFktJAlXOv.gif" width=80%/>
 
 
 
@@ -49,7 +51,6 @@ Here's a short list of all the advantages that Serpent has:
 * Its own code generator: [ModelBoiler](https://github.com/nodes-ios/ModelBoiler)
 * The best balance between speed and features. We did some [performance tests](https://github.com/nodes-ios/Serpent/wiki/Performance-tests) back in March
 * [100% test coverage](https://codecov.io/github/nodes-ios/Serpent)
-* [100% documented](http://cocoadocs.org/docsets/Serpent/)
 * Carthage, CocoaPods and Swift Package Manager support
 * Different versions of it are used in apps used by more than 1.3 million users every month (based on analytics data for some of our apps).
 
