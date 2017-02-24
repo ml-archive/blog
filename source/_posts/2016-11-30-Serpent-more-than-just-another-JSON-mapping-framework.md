@@ -49,7 +49,7 @@ We made the [Serpent Xcode File Template](https://github.com/nodes-ios/SerpentXc
 
 #### <img src="https://d1gwekl0pol55k.cloudfront.net/image/nstack/translate_values/ModelBoiler_1281_Hkq7ey3ZGo.png" width=4%/> Model Boiler 
 
-The most annoying part when working with JSONs in Swift is typing all the parsing code. We made a tool that works with Serpent that does that for you. The [<img src="https://d1gwekl0pol55k.cloudfront.net/image/nstack/translate_values/ModelBoiler_1281_Hkq7ey3ZGo.png" width=4%/> Model Boiler](https://github.com/nodes-ios/ModelBoiler) is a small macOS app that lives in your mac's menu bar. In Xcode (or your favourite editor), select the code for the model and its properties, and press a keyboard shortcut, and the <img src="https://d1gwekl0pol55k.cloudfront.net/image/nstack/translate_values/ModelBoiler_1281_Hkq7ey3ZGo.png" width=4%/> Model Boiler will generate the necessary code for parsing to your Clipboard. You can just paste the parsing code in your model. And that's it.
+The most annoying part when working with JSONs in Swift is typing all the parsing code. We made a tool that works with Serpent that does that for you. The [Model Boiler](https://github.com/nodes-ios/ModelBoiler) is a small macOS app that lives in your mac's menu bar. In Xcode (or your favourite editor), select the code for the model and its properties, and press a keyboard shortcut, and the Model Boiler will generate the necessary code for parsing to your Clipboard. You can just paste the parsing code in your model. And that's it.
 
 <img src = "https://d1gwekl0pol55k.cloudfront.net/image/nstack/translate_values/modelboiler_QFktJAlXOv.gif" width=80%/>
 
