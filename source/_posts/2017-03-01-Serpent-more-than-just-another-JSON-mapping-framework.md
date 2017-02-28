@@ -51,7 +51,7 @@ We made the [Serpent Xcode File Template](https://github.com/nodes-ios/SerpentXc
 
 The most annoying part when working with JSONs in Swift is typing all the parsing code. We made a tool that works with Serpent that does that for you. The [Model Boiler](https://github.com/nodes-ios/ModelBoiler) is a small macOS app that lives in your mac's menu bar. In Xcode (or your favourite editor), select the code for the model and its properties, and press a keyboard shortcut, and the Model Boiler will generate the necessary code for parsing to your Clipboard. You can just paste the parsing code in your model. And that's it.
 
-<p align=center><img src = "https://d1gwekl0pol55k.cloudfront.net/image/nstack/translate_values/modelboiler_QFktJAlXOv.gif" width=80%/></p>
+<p align=center><img src = "https://d1gwekl0pol55k.cloudfront.net/image/nstack/translate_values/modelboiler_QFktJAlXOv.gif" width=40%/></p>
 
 
 
