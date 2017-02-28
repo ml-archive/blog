@@ -35,11 +35,11 @@ We made a tool that goes hand in hand with Serpent: with <img src="https://d1gwe
 ### But why build a new one?
 Yes, there are lots of other JSON mapping frameworks out there. But when we started developing Serpent, there was only SwiftyJSON, which wasn't exactly what we wanted. So we needed to build our own. 
 
-Since February 2016 we moved the project to a [public GitHub repo](https://github.com/nodes-ios/Serpent) and kept developing in the open. In the meantime, we were already using this framework in all our apps. At the moment, we can say that ***various versions of Serpent are part of apps with more than 1.3 million monthly users***.
+In February 2016, we moved the project to a [public GitHub repo](https://github.com/nodes-ios/Serpent) and began developing in the open. At the same time, we started using this framework in all our apps, and at the moment, we can say that **Serpent is used in apps with more than 1.3 million monthly users**.
 
 ### Working with Serpent
 
-We built Serpent to make the developers' life as easy as possible when creating models. So we also built a few goodies around Serpent, which allow the developer to save a lot of time when creating the models for the app. 
+We built Serpent to make developers' life as easy as possible when creating models. So we also built a few goodies around Serpent, which allow the developer to save a lot of time when creating the models for the app. 
 
 #### <img src = "https://d1gwekl0pol55k.cloudfront.net/image/nstack/translate_values/TemplateIcon_ma6gVMOOZ7.png" width=4%/> Serpent Xcode File Template
 
