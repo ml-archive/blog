@@ -1,6 +1,6 @@
 ---
 title:  Serpent - more than just another JSON mapping framework
-date: 2017-02-27 10:10:57
+date: 2017-03-01 10:10:57
 tags: ios,JSON,mapping,parsing,framework
 authorIds: 
 - maco
