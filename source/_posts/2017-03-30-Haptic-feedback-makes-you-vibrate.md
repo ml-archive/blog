@@ -28,7 +28,7 @@ Due to the inherent difficulties of showing vibrations through a blog post, we a
 This one can be used when the user has to select from multiple discrete values, as he scrolls through them. For example, it's used in the `UIPickerView`. It feels like a light tap with each selection change. This is not to be used for example when selecting one of 4 radio button choices.
 
 <video width="400" controls>
-  <source src="res/haptic/selection.mp4" type="video/mp4">
+  <source src="http://nodesmanager.io//haptic/selection.mp4" type="video/mp4">
   Your browser does not support HTML5 video.
 </video>
 
@@ -44,7 +44,7 @@ The impact type of feedback is to be used to enhance a visual experience. For ex
 **Light**
 
 <video width="400" controls>
-  <source src="res/haptic/impact_light.mp4" type="video/mp4">
+  <source src="http://nodesmanager.io//haptic/impact_light.mp4" type="video/mp4">
   Your browser does not support HTML5 video.
 </video>
 
@@ -57,7 +57,7 @@ lightImpactFeedbackGenerator.impactOccurred()
 **Medium**
 
 <video width="400" controls>
-  <source src="res/haptic/impact_medium.mp4" type="video/mp4">
+  <source src="http://nodesmanager.io//haptic/impact_medium.mp4" type="video/mp4">
   Your browser does not support HTML5 video.
 </video>
 
@@ -69,7 +69,7 @@ mediumImpactFeedbackGenerator.impactOccurred()
 **Heavy**
 
 <video width="400" controls>
-  <source src="res/haptic/impact_heavy.mp4"" type="video/mp4">
+  <source src="http://nodesmanager.io//haptic/impact_heavy.mp4"" type="video/mp4">
   Your browser does not support HTML5 video.
 </video>
 
@@ -86,7 +86,7 @@ The notification type of feedback should be used to indicate to the user that a 
 **Success**
 
 <video width="400" controls>
-  <source src="res/haptic/success.mp4"" type="video/mp4">
+  <source src="http://nodesmanager.io//haptic/success.mp4"" type="video/mp4">
   Your browser does not support HTML5 video.
 </video>
 
@@ -98,7 +98,7 @@ successNotificationFeedbackGenerator.notificationOccurred(.success)
 **Warning**
 
 <video width="400" controls>
-  <source src="res/haptic/warning.mp4"" type="video/mp4">
+  <source src="http://nodesmanager.io//haptic/warning.mp4"" type="video/mp4">
   Your browser does not support HTML5 video.
 </video>
 
@@ -110,7 +110,7 @@ warningNotificationFeedbackGenerator.notificationOccurred(.warning)
 **Failure**
 
 <video width="400" controls>
-  <source src="res/haptic/error.mp4"" type="video/mp4">
+  <source src="http://nodesmanager.io//haptic/error.mp4"" type="video/mp4">
   Your browser does not support HTML5 video.
 </video>
 
