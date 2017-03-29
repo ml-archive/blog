@@ -25,7 +25,7 @@ Due to the inherent difficulties of showing vibrations through a blog post, we a
 
 ### Selection
 
-This one can be used when the user has to select from multiple discrete values, as he scrolls through them. For example, it's used in the UIPickerView. It feels like a light tap with each selection change. This is not to be used for example when selecting one of 4 radio button choices.
+This one can be used when the user has to select from multiple discrete values, as he scrolls through them. For example, it's used in the `UIPickerView`. It feels like a light tap with each selection change. This is not to be used for example when selecting one of 4 radio button choices.
 
 <video width="400" controls>
   <source src="res/haptic/selection.mp4" type="video/mp4">
@@ -120,7 +120,7 @@ errorNotificationFeedbackGenerator.notificationOccurred(.error)
 ```
 
 
-Using the UIFeedbackGenerator may have a little latency. If you want to use it to match some sound or visual effects, you can call the `prepare()` method on the generator to put the Taptic Engine in a prepared state and reduce the latency. It will stau prepared a few seconds, or until the next feedback is triggered.
+Using the `UIFeedbackGenerator` may have a little latency. If you want to use it to match some sound or visual effects, you can call the `prepare()` method on the generator to put the Taptic Engine in a prepared state and reduce the latency. It will stau prepared a few seconds, or until the next feedback is triggered.
 
 
 ## When to use haptic feedback
