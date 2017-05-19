@@ -1,0 +1,4 @@
+type: "blank"
+webroot: "/dist"
+
+build_type: "hexo"
