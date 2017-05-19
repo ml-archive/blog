@@ -1,4 +1,4 @@
 type: "blank"
-webroot: "/dist"
+webroot: "/public"
 
 build_type: "hexo"
