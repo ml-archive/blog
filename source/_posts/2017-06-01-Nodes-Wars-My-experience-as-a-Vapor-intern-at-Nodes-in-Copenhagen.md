@@ -4,7 +4,6 @@ date: 2017-06-01 12:00:00
 tags: swift,vapor,nodes,agency,spain,git,opensource,testing,intern,internship
 authorIds:
 - vaga
-
 categories:
 - Vapor
 ---
