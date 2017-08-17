@@ -8,13 +8,13 @@ categories:
 - Vapor
 ---
 
-[Bugsnag](https://www.bugsnag.com) is a convenient service for reporting and catching bugs and crashes that Nodes has been using for a long time. When we moved our backend stack over to Swift, we noticed that there was not a Linux-friendly package. So, we built [our own](https://github.com/nodes-vapor/bugsnag)! Doing so led us down quite a huge rabbit hole: stack traces.
+[Bugsnag](https://www.bugsnag.com) is a convenient service for reporting and catching bugs and crashes that Nodes has been using for a long time. When we moved our backend stack over to Swift, we noticed that there was not a Linux-friendly package. So, we built [our own](https://github.com/nodes-vapor/bugsnag)! Doing so led us down quite a deep rabbit hole: stack traces.
 
 From our stack traces, we wanted a system with clean output that gracefully handles the differences between macOS and Linux. We started our search with Foundation.
 
-Foundation in Swift provides a convenient `Thread.callStackReturnAddresses()`, but, like most things, this API is not available on Linux. To get around this, we have to write the implementation in C and then expose the implementation to Swift using a [modulemap](https://clang.llvm.org/docs/Modules.html). Doing so is not that complicated, but we ended up hitting a few roadblocks on the Linux side.
+Foundation in Swift provides a convenient `Thread.callStackReturnAddresses()`, but, like most things in Foundation, this API is not available on Linux. To get around this, we have to write the implementation in C and then expose the implementation to Swift using a [module map](https://clang.llvm.org/docs/Modules.html). Doing so is not that complicated, but we ended up hitting a few roadblocks on the Linux side.
 
-We started out the implementation by taking advantage of [backtrace(3)](http://man7.org/linux/man-pages/man3/backtrace.3.html) that's available to *nix systems. Backtrace is a convenient function that just takes a buffer and its size and spits out a an array of pointers that is `<= BUFF_LEN` in length. There is even an equally convenient function `backtrace_symbols ` that can take these array of pointers and translate them into strings. The downside of `backtrace_symbols` is that its output is not defined by the standard. So, the resulting stack traces aren't the same across all implementations. On top of that, the output contains a lot of extra noise, such as address and offset information.
+We started out the implementation by taking advantage of [backtrace(3)](http://man7.org/linux/man-pages/man3/backtrace.3.html) that's available to *nix systems. Backtrace is a convenient function that just takes a buffer and its size and spits out a an array of pointers that is `<= BUFF_LEN` in length. There is even an equally convenient function `backtrace_symbols ` that can take this array of pointers and translate them into strings. The downside of `backtrace_symbols` is that its output is not defined by the standard. So, the resulting stack traces aren't the same across all implementations. On top of that, the output contains a lot of extra noise, such as address and offset information.
 
 ## Getting a stack trace
 
