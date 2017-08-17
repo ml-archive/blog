@@ -1,7 +1,7 @@
 ---
 title:  Getting Stack Traces in Swift on Linux
 date: 2017-08-16 13:00:00
-tags: vapor,swift,linux,stack,trace,4
+tags: vapor,swift,linux,stack,trace,swift4
 authorIds:
 - brto
 categories:
@@ -44,11 +44,11 @@ char ** get_symbols_for_backtrace(void * const *buffer, int size) {
 }
 ```
 
-On Linux the symbol `dladdr` is a non-standard extension; therefore, it is only exposed by the feature test macro `_GNU_SOURCE`. Sadly, Swift imports glibc before you have the opportunity to define it ([SR-328](https://bugs.swift.org/browse/SR-328)). This can be worked around by invoking the Swift compiler with `-Xcc -D_GNU_SOURCE`. We ran into some issues when trying defining this macro on some versions of Linux and decide to build the stack trace library independent of the Swift package and then dynamically link it.
+On Linux the symbol `dladdr` is a non-standard extension; therefore, it is only exposed by the feature test macro `_GNU_SOURCE`. Sadly, Swift imports glibc before you have the opportunity to define it ([SR-328](https://bugs.swift.org/browse/SR-328)). This can be worked around by invoking the Swift compiler with `-Xcc -D_GNU_SOURCE`. We ran into some issues when trying defining this macro on some versions of Linux and decided to build the stack trace library independent of the Swift package and then dynamically link it.
 
 ## Distributing our stack trace library
 
-We started building the dynamic library by pulling the stack module out of SPM and gave it its own git repo. Then, we added a [simple Makefile](https://github.com/nodes-vapor/stack/blob/master/Makefile) that has a target for both macOS and Linux. Now that we are able to build stack independent of the Swift module, we need to distribute the binaries we just built and a header. We use APT to distribute on Debian-based systems and Homebrew on macOS. By default Homebrew does not install the libraries and headers in a place that is in Swift's search path. To resolve this, we added a [pkg-config](https://en.wikipedia.org/wiki/Pkg-config) on the MacOS target that points to Homebrew's install location.
+We started building the dynamic library by pulling the stack module out of SPM and gave it its own git repo. Then, we added a [simple Makefile](https://github.com/nodes-vapor/stack/blob/master/Makefile) that has a target for both macOS and Linux. Now that we are able to build stack independent of the Swift module, we need to distribute the binaries we just built and a header. We use APT to distribute on Debian-based systems and Homebrew on macOS. By default Homebrew does not install the libraries and headers in a place that is in Swift's search path. To resolve this, we added a [pkg-config](https://en.wikipedia.org/wiki/Pkg-config) on the macOS target that points to Homebrew's install location.
 
 Now we are ready to get our first stack trace!
 
@@ -120,6 +120,6 @@ We now have our beautiful stack traces!
 | 3 | StackedTests.StackedTests.testExample() -> () |
 | 4 | @objc StackedTests.StackedTests.testExample() -> () |
 
-## Consclusion
+## Conclusion
 
 Getting stack traces in Linux was much more involved than we had expected. We ended up touching nearly every part of the system and were plagued with issues. That being said, it was worth the effort and will greatly ease debugging. Hopefully Foundation and Vapor will add native support for stack traces and remove the burden of having to install a 3rd party repository and passing in build flags on Linux. 
