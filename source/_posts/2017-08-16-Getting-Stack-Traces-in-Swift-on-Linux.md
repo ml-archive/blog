@@ -122,4 +122,4 @@ We now have our beautiful stack traces!
 
 ## Conclusion
 
-Getting stack traces in Linux was much more involved than we had expected. We ended up touching nearly every part of the system and were plagued with issues. That being said, it was worth the effort and will greatly ease debugging. Hopefully Foundation and Vapor will add native support for stack traces and remove the burden of having to install a 3rd party repository and passing in build flags on Linux. 
+Getting stack traces in Linux was much more involved than we had expected. We ended up touching nearly every part of the system and were plagued with issues. That being said, it was worth the effort and will greatly ease debugging. Hopefully Foundation and Vapor will add native support for stack traces and remove the burden of having to install a 3rd party repository and passing in build flags on Linux. If you are interested in getting stack traces in your Swift application, check out our [Stacked](https://github.com/nodes-vapor/stacked) package. As for bug reporting with server-side-Swift, check out our [Bugsnag](https://github.com/nodes-vapor/bugsnag) package.
