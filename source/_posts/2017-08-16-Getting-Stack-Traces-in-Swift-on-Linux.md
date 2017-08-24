@@ -14,13 +14,13 @@ From our stack traces, we wanted a system with clean output that gracefully hand
 
 Foundation in Swift provides a convenient `Thread.callStackReturnAddresses()`, but, like most things in Foundation, this API is not available on Linux. To get around this, we have to write the implementation in C and then expose the implementation to Swift using a [module map](https://clang.llvm.org/docs/Modules.html). Doing so is not that complicated, but we ended up hitting a few roadblocks on the Linux side.
 
-We started out the implementation by taking advantage of [backtrace(3)](http://man7.org/linux/man-pages/man3/backtrace.3.html) that's available to *nix systems. Backtrace is a convenient function that just takes a buffer and its size and spits out a an array of pointers that is `<= BUFF_LEN` in length. There is even an equally convenient function `backtrace_symbols ` that can take this array of pointers and translate them into strings. The downside of `backtrace_symbols` is that its output is not defined by the standard. So, the resulting stack traces aren't the same across all implementations. On top of that, the output contains a lot of extra noise, such as address and offset information.
+We started out the implementation by taking advantage of [backtrace(3)](http://man7.org/linux/man-pages/man3/backtrace.3.html) that's available to *nix systems. Backtrace is a convenient function that just takes a buffer and its size and spits out an array of pointers that is `<= BUFF_LEN` in length. There is even an equally convenient function `backtrace_symbols ` that can take this array of pointers and translate them into strings. The downside of `backtrace_symbols` is that its output is not defined by the standard. So, the resulting stack traces aren't the same across all implementations. On top of that, the output contains a lot of extra noise, such as address and offset information.
 
 ## Getting a stack trace
 
 Our implementation of `backtrace_symbols` is relatively straightforward. We just map over the buffer using [dladdr(3)](http://man7.org/linux/man-pages/man3/dladdr.3.html) to get information about the address. If there is no metadata for the given symbol, the name defaults to `???`. The implementation could be more performant by iterating over the collection twice and using the first pass to calculate how much memory we need and then allocate a single buffer big enough to fit all of this information. Then iterate over the buffer again `memcpy`ing the strings into our pool. We did not use this approach because extracting strings from a single, pool-allocated, buffer is much more involved than extracting them from a nested pointer.
 
-```
+```C
 char ** get_symbols_for_backtrace(void * const *buffer, int size) {
     int i;
     char ** result;
@@ -62,7 +62,7 @@ Now we are ready to get our first stack trace!
 
 She's a beauty, ain't she?
 
- What you are looking at is a mangled symbol. It is a common way for modern languages/features to disambiguate names and preserve a symbol's meta-information. Here is an example of a simple struct and how it and its members are mangled.
+What you are looking at is a mangled symbol. It is a common way for modern languages/features to disambiguate names and preserve a symbol's meta-information. Here is an example of a simple struct and how it and its members are mangled.
 
 ```swift
 $ xcrun swiftc -o example -
@@ -89,12 +89,12 @@ Now, when we try to run again, we are faced with another issue.
 
 By default, dynamic symbols are not exported on Linux. That means that all Swift functions in the stack trace will not have their name displayed, just like in the table below.
 
-|     | Symbol                                                 | Address        |
-| --- | -------------------------------------------------------| -------------- |
-| 0   | .build/release/libFrameAddress.so(get_stack_trace+0x2d)| 0x7f03ad5ca6ad |
-| 1   | .build/release/App()                                   | 0x7f17b0       |
-| 2   | .build/release/App()                                   | 0x7fb3fa       |
-| ... |              
+|      | Symbol                                   | Address          |
+| ---- | ---------------------------------------- | ---------------- |
+| 0    | `.build/release/libFrameAddress.so(get_stack_trace+0x2d)` | `0x7f03ad5ca6ad` |
+| 1    | `.build/release/App()`                   | `0x7f17b0`       |
+| 2    | `.build/release/App()`                   | `0x7fb3fa`       |
+| ...  |                                          |                  |
 
 ```c
 libFrameAddress.so(get_stack_trace+0x2d)
@@ -112,13 +112,13 @@ App()
 
 We now have our beautiful stack traces!
 
-| | Symbol |
-| --- | --- |
-| 0 | get_stack_trace |
-| 1 | static Stacked.FrameAddress.getStackTrace(maxStackSize: Swift.Int) -> Swift.Array<Swift.String> |
-| 2 | StackedTests.StackedTests.anotherExample() -> Swift.Array<Swift.String> |
-| 3 | StackedTests.StackedTests.testExample() -> () |
-| 4 | @objc StackedTests.StackedTests.testExample() -> () |
+|      | Symbol                                   |
+| ---- | ---------------------------------------- |
+| 0    | `get_stack_trace`                        |
+| 1    | `static Stacked.FrameAddress.getStackTrace(maxStackSize: Swift.Int) -> Swift.Array<Swift.String>` |
+| 2    | `StackedTests.StackedTests.anotherExample() -> Swift.Array<Swift.String>` |
+| 3    | `StackedTests.StackedTests.testExample() -> ()` |
+| 4    | `@objc StackedTests.StackedTests.testExample() -> ()` |
 
 ## Conclusion
 
