@@ -89,12 +89,12 @@ Now, when we try to run again, we are faced with another issue.
 
 By default, dynamic symbols are not exported on Linux. That means that all Swift functions in the stack trace will not have their name displayed, just like in the table below.
 
-|      | Symbol                                   | Address        |
-| ---- | ---------------------------------------- | -------------- |
-| 0    | .build/release/libFrameAddress.so(get_stack_trace+0x2d) | 0x7f03ad5ca6ad |
-| 1    | .build/release/App()                     | 0x7f17b0       |
-| 2    | .build/release/App()                     | 0x7fb3fa       |
-| ...  |                                          |                |
+|      | Symbol                                   | Address          |
+| ---- | ---------------------------------------- | ---------------- |
+| 0    | `.build/release/libFrameAddress.so(get_stack_trace+0x2d)` | `0x7f03ad5ca6ad` |
+| 1    | `.build/release/App()`                   | `0x7f17b0`       |
+| 2    | `.build/release/App()`                   | `0x7fb3fa`       |
+| ...  |                                          |                  |
 
 ```c
 libFrameAddress.so(get_stack_trace+0x2d)
@@ -114,11 +114,11 @@ We now have our beautiful stack traces!
 
 |      | Symbol                                   |
 | ---- | ---------------------------------------- |
-| 0    | get_stack_trace                          |
-| 1    | static Stacked.FrameAddress.getStackTrace(maxStackSize: Swift.Int) -> Swift.Array<Swift.String> |
-| 2    | StackedTests.StackedTests.anotherExample() -> Swift.Array<Swift.String> |
-| 3    | StackedTests.StackedTests.testExample() -> () |
-| 4    | @objc StackedTests.StackedTests.testExample() -> () |
+| 0    | `get_stack_trace`                        |
+| 1    | `static Stacked.FrameAddress.getStackTrace(maxStackSize: Swift.Int) -> Swift.Array<Swift.String>` |
+| 2    | `StackedTests.StackedTests.anotherExample() -> Swift.Array<Swift.String>` |
+| 3    | `StackedTests.StackedTests.testExample() -> ()` |
+| 4    | `@objc StackedTests.StackedTests.testExample() -> ()` |
 
 ## Conclusion
 
