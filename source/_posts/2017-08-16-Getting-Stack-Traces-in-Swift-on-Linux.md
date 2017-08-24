@@ -1,5 +1,5 @@
 ---
-title:  Getting Stack Traces in Swift on Linux
+title: Getting stack traces in Swift on Linux
 date: 2017-08-16 13:00:00
 tags: vapor,swift,linux,stack,trace,swift4
 authorIds:
