@@ -56,7 +56,11 @@ Now we are ready to get our first stack trace!
 
 **And...**
 
-`__T04Core15BuiltinFunctionC4makeACSS_SayAA4Type_pG2inAF3outSb10isVariadic4LLVM7IRValue_pAC_SayAA4Expr_pGAA11IRGeneratorVztc3genAaE_pAA7CheckerVz_AA4CallCtcSg02onP5ChecktFZfA4_`
+```
+__T04Core15BuiltinFunctionC4makeACSS_SayAA4Type_pG2inAF3outSb10isVariadic4LLVM7IRValue
+_pAC_SayAA4Expr_pGAA11IRGeneratorVztc3genAaE_pAA7CheckerVz_AA4CallCtcSg02
+onP5ChecktFZfA4_
+```
 
 ![eek!](https://www.filepicker.io/api/file/P0yc1BheSwgKi6GE6Iys)
 
@@ -94,7 +98,7 @@ By default, dynamic symbols are not exported on Linux. That means that all Swift
 | 0    | `.build/release/libFrameAddress.so(get_stack_trace+0x2d)` | `0x7f03ad5ca6ad` |
 | 1    | `.build/release/App()`                   | `0x7f17b0`       |
 | 2    | `.build/release/App()`                   | `0x7fb3fa`       |
-| ...  |                                          |                  |
+| ...  | ...                                      | ...              |
 
 ```c
 libFrameAddress.so(get_stack_trace+0x2d)
