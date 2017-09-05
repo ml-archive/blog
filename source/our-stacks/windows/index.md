@@ -24,8 +24,14 @@ C# has been the go to language in Windows App development for over a decade. Sin
 ##### Other languages
 Visual Basic and JavaScript can also be used in UWP but are not as as popular as C#.
 
+### Architecture
+
+##### MVVM
+MVVM (Model-View-ViewModel) is a software architectural pattern that was designed to make use of the data binding functions in WPF, and now UWP, and facilitates the separation of development of the UI from the business logic. This decoupling of the View ensures that the ViewModel will not only handle user interaction, but also most of the business logic; it will retrieve data from the model, and manipulate it in some way that makes it simpler for the view to handle. This is how we can easily bind elements in a view to data and translations from [NStack](https://github.com/nodes-projects/nstack-sdk-winrt).
+MVVM will also typically be used alongside Inversion-of-Control (IoC) and Dependency Injection (DI) patterns, particularly in larger projects, as it supports the loose-coupling between the View and ViewModel
+
 ### IDE
-Visual Studio is the de facto IDE for development on Microsoft platforms. When targeting UWP (Universal Windows Platform) features such as the Live Property Explorer, Edit and Continue, and the Remote Debugger make Visual Studio indispensable.
+Visual Studio is the de facto IDE for development on Microsoft platforms. When targeting UWP features such as the Live Property Explorer, Edit and Continue, and the Remote Debugger make Visual Studio indispensable.
 
 ### Other tools
 - [Fiddler](http://www.telerik.com/fiddler) - effectively serves as a MitM proxy which captures all network traffic and helps us debug network issues
