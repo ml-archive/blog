@@ -47,7 +47,7 @@ These are the 3rd party libraries we use in out projects.
 - [UrbanAirshipSDK](https://bintray.com/urbanairship/windows/urbanairship-sdk) - integrates with [Urban Airship](https://www.urbanairship.com/) to register for and handle push notifications
 - [HockeySDK](https://github.com/bitstadium/HockeySDK-Windows) to collect crash reports and show application updates during testing
 - [GoogleAnalytics](https://github.com/dotnet/windows-sdk-for-google-analytics) - analytics and tracking library from Google
-- [Mixpanel](hhttps://github.com/eealeivan/mixpanel-csharp) - advanced analytics and user tracking library with features like A/B testing and push notifications
+- [Mixpanel](https://github.com/eealeivan/mixpanel-csharp) - advanced analytics and user tracking library with features like A/B testing and push notifications
 
 ### Continuous Integration
 
