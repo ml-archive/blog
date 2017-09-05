@@ -23,6 +23,14 @@ Custom designs are important to Nodes and helping the client get the best possib
 ##### Java
 Java 1.0 was released in 1995 and is still being used widely today - in part because of Android. Being an old language the toolchain is mature, and features like annotation processing, instant-run and an excellent Java SDK provide a nice toolset for development.
 
+##### Kotlin
+
+*TODO*
+
+### Architecture
+
+*TODO*
+
 ### IDE
 Android Studio is the natural choice for the platform with all the bells and whistles it brings. 
 
@@ -55,6 +63,7 @@ Android has an excellent selection of available libraries for everything. These 
 ### Open source
 We try to do as much knowledge sharing as we can within the Android team, the result of this being our libraries that contain code for our most common implemented tasks. 
 
+- [kotlin-template](https://github.com/nodes-android/kotlin-template) - Kotlin basic template project with KStack integration, retrofit and some basic MVP plumbing, written as clean architecture
 - [nstack](https://github.com/nodes-android/nstack) - Inhouse mobile platform for in-app data and translations
 - [gutenberg](https://github.com/nodes-android/gutenberg) - Font library for applying custom fonts easily
 - [nstack-gradle](https://github.com/nodes-android/nstack-gradle) - Compile time gradle plugin generation of Translation classes
