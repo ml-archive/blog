@@ -25,7 +25,7 @@ Java 1.0 was released in 1995 and is still being used widely today - in part bec
 
 ##### Kotlin
 
-*TODO*
+Kotlin first appeared in 2011 and is created by JetBrains, the makers behind the base of Android Studio, IntelliJ. Kotlin is designed to interoperate with Java code, which makes the transition to Kotlin easier. Kotlin reached stable 1.0 in February 2016, but got interesting when Google at I/O 2017 announced first class support for Kotlin. Going forward all projects will start in Kotlin.
 
 ### Architecture
 
