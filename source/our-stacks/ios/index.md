@@ -24,6 +24,10 @@ We've started with Swift as soon as version 1.0 was released and since then we h
 ##### Objective-C
 Objective-C is a thing of the past for us, but occasionally we do maintain projects or update applications still written in Objective-C.
 
+### Architecture
+
+Clean architecture (known as VIPER when applied to iOS development) is our new standard on the iOS team. We also still maintain many apps that use MVC. Our clean architecture implementation is adapted to better fit our needs, with the goals being consistency, quality, and testability. 
+
 ### IDE
 Xcode is the IDE that is widely used amongst iOS developers and we also use it at Nodes. 
 
