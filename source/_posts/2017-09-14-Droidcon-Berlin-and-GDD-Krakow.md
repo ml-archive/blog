@@ -27,7 +27,7 @@ For more info on the presentation check out the [slides](https://speakerdeck.com
 ###Home Improvement: Architecture & Kotlin
 by Jorge D. Ortiz-Fuentes
 
-Being Android Architecture Components and Kotlin the two biggest announcements in the last Google I/O this was one of my top pics for day one. Interestingly, I had the chance to meet Jorge early in the morning before the opening keynote.
+Being Android Architecture Components and Kotlin the two biggest announcements in the last Google I/O this was one of my top picks for day one. Interestingly, I had the chance to meet Jorge early in the morning before the opening keynote.
 During the talk, Jorge shared some insight of real and relevant scenarios where he explained how to improve our apps using Kotlin. Similarly to Florina Muntenescu’s talk, the room was not big enough, but this time I managed to get a sweet spot.
 ###Keynote: Designing for Trust: User Experience + Privacy
 by Ame Elliott
