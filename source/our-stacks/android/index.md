@@ -29,9 +29,9 @@ Kotlin first appeared in 2011 and is created by JetBrains, the makers behind the
 
 ### Architecture
 
-During 2016, MVP gained a lot of attention. MVP enforces a split between the view and the presentation layer, which makes the view as dumb as possible and the presentation layer as decoupled as possible. The issue is that the presentation layer can get too bloated. [Clean Architecture](https://8thlight.com/blog/uncle-bob/2012/08/13/the-clean-architecture.html) takes the decoupling to the next level. It forces a *dependency rule* which says that dependencies can only point inwards. I.e. the view can only know about the presenter. The presenter can only know of the interactors and so on.
+During 2016, MVP gained a lot of attention. MVP enforces a split between the view and the presentation layer, which makes the view as dumb as possible and the presentation layer as decoupled as possible. [Clean Architecture](https://8thlight.com/blog/uncle-bob/2012/08/13/the-clean-architecture.html) takes the decoupling to the next level. It forces a *dependency rule* which says that dependencies can only point inwards. I.e. the view can only know about the presenter. The presenter can only know of the interactors and so on.
 
-MVP and Clean Arch enforces patterns that makes our code high testable *and* more maintainable.
+MVP and Clean Arch enforces patterns that makes our code high testable *and* more maintainable. We use a good base of MVP together with Clean Arch depending of the scope of the projects. 
 
 ### IDE
 Android Studio is the natural choice for the platform with all the bells and whistles it brings. 
