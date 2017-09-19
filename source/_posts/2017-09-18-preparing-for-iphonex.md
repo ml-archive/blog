@@ -1,6 +1,6 @@
 ---
 title: Preparing for iPhone X 
-date: 2017-09-18 15:00:00
+date: 2017-09-19 13:00:00
 tags: ios,iphonex,iphone,apple,layout,ui
 categories:
 - iOS
