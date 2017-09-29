@@ -67,7 +67,7 @@ Probably the most impressive part of the keynote was the demo on Artificial Inte
 ### Architecture Components
 by Florina Muntenescu
 
-Finally, I had the chance to attend Florina’s talk. There she talked about Architecture and best practice. She also introduced some of the latest additions to the Android Architecture Components library such as the new Paging library that is not yet released by the time I am writing this lines.
+Finally, I had the chance to attend Florina’s talk. There she talked about Architecture and best practice. She also introduced some of the latest additions to the Android Architecture Components library such as the new Paging library that is not yet released by the time I am writing these lines.
 I also had the chance to talk with Florina about architecture with MVP, MVVM and how the new ViewModel works with different architectures plus some insights in Room. Overall, an outstanding and valuable know-how for our future projects.
 
 ### Deep dive into Constraint Layout
