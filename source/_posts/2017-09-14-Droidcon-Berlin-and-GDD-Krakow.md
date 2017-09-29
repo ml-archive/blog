@@ -44,7 +44,7 @@ Check the slides [here](https://simplysecure.org/resources//Elliott-DroidCon-UXa
 #### Developing a Streaming Android App for TV in Minutes
 by Mario Viviani
 
-I had the pleasure to meet Mario in my first Android meetup in London back in 2015. He is a Technology Evangelist in Amazon and former GDE. Therefore, I was looking forward to attending his talk and learn more about everything that Amazon is doing. 
+I had the pleasure of meeting Mario at my first Android meetup in London back in 2015. He is a Technology Evangelist at Amazon and former GDE, so I was looking very forward to attending his talk and learning more about everything that Amazon is doing. 
 I was particularly impressed to see how things have evolved during the last years and how they have listened to the developers to make things easier with integrations that are incredibly simple and straight forward.
 
 ### Reactive, Clean Architecture and Android Architecture Components, a Solid Formula for a MVVM Based Architecture
@@ -79,3 +79,9 @@ Training sessions during the event were completely packed, and some people found
 by Ben Weiss
 
 During his talk, Ben showed how to improve our app discoverability using Instant Apps where the key is modularising our apps. The primary constraint here seems to be the size of our modules which should be smaller than four megabytes. Also recommended tools to deal with this are the apk analyzer and configuration splits on top of the usual minification, shrinking and proguard obfuscation.
+
+# Final thoughts
+
+Droidcon Berlin was great to find out more about a wide range of topics related to Android and meet interesting people. GDD Krakow was a very big event where I have the opportunity to help in a training session, meet some of my mentees at Udacity and discuss different topics with Google Developer Advocates. 
+
+Taking three flights for two conferences in a row in different countries is probably as tiring as it seems. Nevertheless, it was an awesome experience and I could not be happier about it.
