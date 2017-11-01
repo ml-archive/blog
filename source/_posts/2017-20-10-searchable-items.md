@@ -9,10 +9,10 @@ authorIds:
 ---
 
 ## Motivation
-App search has been here since iOS9. This feature seems to go largely unused. Maybe this is because both developers and people selling features have forgotten it exists. This is quick guide for less technical people, and a semi quick guide for developers.
+App search has been here since iOS9. This feature seems to go largely unused. Maybe this is because both developers and people selling features have forgotten it exists. This is a quick guide for less technical people, and a semi quick guide for developers.
 ## What you need to know (TL;DR for everyone)
 
-* ###### An app can index content in your app, such that it will show up in search results when the user searches in spotlight
+* #### An app can index content in your app, such that it will show up in search results when the user searches in spotlight
   * Content in the app can either be indexed by user activity (e.g. opening an article or detail page of a contact), by indexing fetched data (e.g. a newsfeed), or combining the two.
 
   * For an app that has a web counterpart it is possible to add markup to the website, such that the marked items may show up in Spotlight on your phone. This in conjunction with Universal Links, can add the ability to deep link to content in your app without ever having opened the app or manually indexed any content (Not described further here)
@@ -214,9 +214,6 @@ func application(_ application: UIApplication, continue userActivity: NSUserActi
         return false
     }
 ```
-## Not described
-
-* Manipulating and deleting specific searchable items or item groups
 
 ## Links
 
