@@ -1,6 +1,6 @@
 ---
 title: How we debug with Charles
-date: 2017-08-11 00:00:00
+date: 2017-11-08 00:00:00
 tags: charles,QA,testing
 categories:
 - QA
