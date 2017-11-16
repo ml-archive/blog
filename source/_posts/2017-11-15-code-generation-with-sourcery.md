@@ -116,18 +116,20 @@ As you can see, it's quite a bit of code. Sadly, it doesn't get much better from
 Taken from the GitHub repository:
 > Sourcery is a code generator for Swift language, built on top of Apple's own SourceKit. It extends the language abstractions to allow you to generate boilerplate code automatically.
 
-Just give Sourcery a few templates using the [Stencil](https://github.com/kylef/Stencil) template language and it'll solve all of your problems.
+Just give Sourcery a few templates using the [Stencil](https://github.com/kylef/Stencil) template language and it'll solve all your problems.
 
-Armed with this amazing tool, we built a collection of templates that eliminate virtually all of Vapor's boilerplate. For example, we can replace all of the previous code with the following:
-```swift
+Armed with this amazing tool, we built a collection of templates that eliminate virtually all of Vapor's boilerplate. The overall guidelines for our templates are that they should be easy to opt-in and out of, easy to mix and match between generated code and user-wrote code and they should cover the common cases, but not all cases; edge cases should be solved by opting out of Sourcery for the specific case. An example of what our templates provide is model generation. To define the previously defined model, all you need to write is the following:
+  ```swift
 final class AppUser: Model, Timestampable, SoftDeletable {
-    public var email: String
+    public var email: String    
     public var name: String?
     public var password: String
     public var companyId: Identifier
 }
 ```
 
-and then run `sourcery` in the project directory and it will generate all of the initializers; `Node`, `JSON` and `Row` representable conformance and the database preparations. You can learn more about our templates [here](https://github.com/nodes-vapor/sourcery-templates).
+and then run `sourcery` in the project directory. The templates will generate all of the boilerplate for the initializers, `RowConvertible`, `NodeRepresentable`, `JSONConvertible` and `Preparation`. The templates also include helpers for enumerations, route collections and unit testing. If you're curious, you can learn more about them [here](https://github.com/nodes-vapor/sourcery-templates).
+
+Templating the Vapor interfaces has some not-so-obvious advantages. For instance, when the Vapor APIs are updated we can, theoretically, update the templates and the rest of the project will get updated automatically. That being said, Vapor 3 looks like it's going to completely redefine the framework and we're not sure how realistic this is.
 
 Thankfully, the future of server side Swift looks promising. Swift 4 brings codeable and Vapor 3 will fully embrace it. Until Vapor 3's release and we update all of our projects, we will continue to enjoy the quality of life improvement Sourcery brings to Vapor.
