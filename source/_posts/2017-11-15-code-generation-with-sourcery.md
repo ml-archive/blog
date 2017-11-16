@@ -110,7 +110,7 @@ extension AppUser {
 }
 ```
 
-As you can see, it's quite a bit of code. Sadly, it doesn't get much better from here. The more Vapor features you opt-in to the more boilerplate you're going to have to write. At Nodes, we noticed that most of our day was spent writing boilerplate and we began to search for solutions. After doing some research, we ended up going with [Sourcery](https://github.com/krzysztofzablocki/Sourcery).
+As you can see, it's quite a bit of code. The `makeRow` and `init(row:)` are for serialization and deserialization of database entries, `makeJSON` is for JSON serialization, `makeNode(context:)` is for legacy libraries and rendering viwes and finally, `prepare(database:)` and `revert(database:)` are for setting up and tearing down the database schema. This is the minimum amount of boilerplate required in most cases, but there are many cases where you can conform to more protocols. After spending most of our days duplicating this relatively static data, we started looking for ways to automate it. This is where [Sourcery](https://github.com/krzysztofzablocki/Sourcery) comes in.
 
 ## Sourcery
 Taken from the GitHub repository:
