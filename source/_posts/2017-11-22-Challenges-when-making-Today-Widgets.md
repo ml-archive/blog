@@ -32,7 +32,7 @@ I like to rename the files from TodayExtension to Widget as that makes more sens
 ## Widget Creation
 
 Creating the UI for a widget should also be very simple for any developer that has used storyboards and auto-layout before.
-Simply add the UI elements you wish to the storyboard and create the necessary outlets in the ViewController.
+Just add the UI elements you wish to use to the storyboard and create the necessary outlets in the ViewController.
 
 This is what the storyboard could look like.
 
@@ -61,7 +61,7 @@ extension WidgetViewController: NCWidgetProviding {
             return
         }
 
-        // Update your UI
+        // Update UI
         updateUI() // just a method that updates the widgets labels etc.
 
         // Return completion handler with new data
@@ -70,7 +70,7 @@ extension WidgetViewController: NCWidgetProviding {
 }
 ```
 The isRequiredToUpdate is a simple boolean that I use to see whether the widget needs to be updated with new data (see Implementing Widget Data Manager).
-If there is no new widget data than we should return the completion handler with .noData. Otherwise if we have new date we should return it with .newData after we have updated the UI.
+If there is no new widget data than we should return the completion handler with .noData. Otherwise if we have new data we should return it with .newData after we have updated the UI.
 
 ## Use ViewWillAppear
 
@@ -89,7 +89,7 @@ override func viewWillAppear(_ animated: Bool) {
 Widgets can even have buttons that for example will launch the app when pressed. This can be achieved very easily with the following line
 
 ```
-func didPressButton() {
+private func didPressButton() {
     guard let url = URL(string: “yourappURL://“) else { return }
     extensionContext?.open(url)
 }
@@ -227,7 +227,7 @@ extension WidgetViewController: NCWidgetProviding {
             return
         }
 
-        // Update your UI
+        // Update UI
         updateUI()
 
         // Return completion handler with new data
