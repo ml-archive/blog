@@ -112,7 +112,7 @@ So how do we move data between the two targets?. The answer is app groups and NS
 
 To set up app groups for both targets we need to do the following
 
-1. Click on your Xcode iOS target and go to capabilities. Turn on app groups and give it a unique identifier. Also make sure the checkbox is selected. For best practices the identifier should look something like this “group.yourcompany.yourappname”.
+1. Click on your Xcode iOS target and go to capabilities. Turn on app groups and give it a unique identifier. Also make sure the checkbox is selected and that all entitlements are set. For best practices the identifier should look something like this “group.com.yourcompany.yourappname”.
 
 2. Repeat step 1 but this time for your widget target. Make sure you use the same app group identifier created above and that its checkmark is also selected.
 
@@ -125,7 +125,7 @@ The actual logic and coding style is up to you but this is how it could look. Le
 ```
 enum WidgetDataManager {
 
-    private static let userDefaults = UserDefaults(suiteName: “group.yourcompany.yourappname”)
+    private static let userDefaults = UserDefaults(suiteName: “group.com.yourcompany.yourappname”)
 
     static var label1Text: String {
         get { return userDefaults?.value(forKey: .label1) as? String ?? "-" }
