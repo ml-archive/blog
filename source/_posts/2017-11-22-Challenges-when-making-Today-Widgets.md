@@ -104,6 +104,7 @@ There is basically 2 ways to provide widgets with data.
 2. More commonly use data that is coming from your iOS target.
 
 The main challenge with widgets is moving existing data across your targets.
+Even though an app extension bundle is nested within its containing app’s bundle, the running app extension and containing app have no direct access to each other’s containers.
 
 ## App Groups
 
@@ -117,7 +118,7 @@ To set up app groups for both targets we need to do the following
 
 ## Widget Data Manager
 
-I like to create a basic WidgetDataManager that I can use to share my data. Create a new swift file and call it whatever you would like. Make sure that it has both iOS and TodayExtension/Widget selected as its target membership.
+I like to create a basic WidgetDataManager that I can use to share my data between targets. Create a new swift file and call it whatever you would like. Make sure that it has both iOS and TodayExtension/Widget selected as its target membership.
 
 The actual logic and coding style is up to you but this is how it could look. Lets imagine our widget only has 1 UILabel for simplicity sake.
 
@@ -167,7 +168,7 @@ I am simply checking if the text of the widgets label(s) matches the data from t
 
 The last step is to make sure that every time you are changing data that is to be displayed in your widget that you update the WidgetDataManager.
 
-For example in a game you might want to show the latest score/high score in the widget. So in your code where you update the score/highscore
+For example in a game you might want to show the latest score in the widget. So in your code where you update the score
 
 ```
 GameDataManager.score = newScore
