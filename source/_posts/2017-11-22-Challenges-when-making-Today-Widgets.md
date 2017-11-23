@@ -41,7 +41,7 @@ This is what the storyboard could look like.
 
 ## NSWidgetProviding
 
-After you have set up your outlets we need to add some logic to our WidgetViewController. This comes mainly in the form of the   ```NCWidgetProviding``` delegate. This delegate has 1 method which handles the logic of when to update the widget.
+After you have set up your outlets we need to add some logic to our WidgetViewController. This comes mainly in the form of the ```NCWidgetProviding``` delegate. This delegate has 1 method which handles the logic of when to update the widget.
 
 This is what it could look like.
 
