@@ -15,28 +15,20 @@ Gestures are the magic behind those accelerators that can make your app more use
 You can have many accelerators build with the swipe gesture as it is discrete and you can have many combinations as you can select the direction of the swipe and the number of touches required. Even if we have the possibility to set up a high number of touches, a maximum of 3 is still user friendly. You should also make sure you keep some sort of consistency when defining the gestures, if swipe right with 2 fingers goes to the previous conversation in a messaging app, swiping left with 2 fingers should probably go to the next conversation.
 
 ### Using the storyboard
-<video width="400" controls>
-<source src="https://cdn-laravel.vapor.cloud/image/nstack/translate_values/accelerators-2-storyboard-add-gesture_mST8xNXFEu.mp4" type="video/mp4">
-Your browser does not support HTML5 video.
-</video>
+
+{% vimeo 244338896 %}
 
 1. Search for the swipe gesture in the objects library
 2. Drag it into your view controller
 3. Set the view of your choice as a delegate to the swipe gesture recognizer (by pressing “Ctrl” on the keyboard and click-drag from the view to the swipe gesture recognizer and selecting Outlet Collections - `gestureRecognizers` )
 4. Setup your gesture recogniser by selecting the direction and the number of touches required
 
-<video width="400" controls>
-<source src="https://cdn-laravel.vapor.cloud/image/nstack/translate_values/accelerators-2-storyboard-add-gesture-action_ui5ZwnqEt1.mp4" type="video/mp4">
-Your browser does not support HTML5 video.
-</video>
+{% vimeo 244338890 %}
 
 5. Connect your Swipe Gesture Recognizer to the code by pressing “Ctrl” in your keyboard and click-drag from the gesture recognizer to the ViewController.
 6. Chose the connection to be an action, name your action and implement the functionality you would want for this specific gesture. In this example we are simply printing in the console to test it all works well.
 
-<video width="400" controls>
-<source src="https://cdn-laravel.vapor.cloud/image/nstack/translate_values/accelerators-2-simulator-swipe_HGjOpA9rxy.mp4" type="video/mp4">
-Your browser does not support HTML5 video.
-</video>
+{% vimeo 244338872 %}
 
 Remember that your view should be user interaction enabled. You can either do that from code by setting `view.isUserInteractionEnabled = true`, or from the storyboard editor - Attributes Inspector - making sure that the `User Interaction Enabled` is checked.
 
@@ -100,3 +92,4 @@ view.addGestureRecognizer(longPressGestureRecognizer)
 ## Links/Resources
 * [Apple’s gesture guidelines](https://developer.apple.com/ios/human-interface-guidelines/user-interaction/gestures/)
 * [Apple’s Handing pinch gestures documentation](https://developer.apple.com/documentation/uikit/touches_presses_and_gestures/handling_uikit_gestures/handling_pinch_gestures)
+
