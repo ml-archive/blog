@@ -1,6 +1,6 @@
 ---
 title:  Adding Peek and Pop to your View Controllers
-date: 2017-11-22 10:10:57
+date: 2017-11-27 10:10:57
 tags: ios,peek,pop,3dtouch,forceTouchCapability
 authorIds:
 - dori
@@ -25,7 +25,7 @@ This interaction proceeds through three phases.
 
 ## Setup
 
-Lets imagine that we have 2 `UIViewControllers` in our app. One has a `UICollectionView` as its main UI, for example to show a list of images, we shall call it ImageViewController. The 2nd one is a detail view controller that will be presented if one of the images is pressed. This should a very common scenario in most apps.
+Lets imagine that we have 2 `UIViewControllers` in our app. One has a `UICollectionView` as its main UI, for example to show a list of images, we shall call it ImageViewController. The 2nd one is a DetailViewController that will be presented if one of the images is pressed. This should a very common scenario in most apps.
 
 If we want to use Peek and Pop we first have to check wether 3D touch is supported and if it is, register the previewing delegate.
 
@@ -74,7 +74,7 @@ extension ImageViewController: UIViewControllerPreviewingDelegate {
       let image = images[indexPath.row]
       detailVC.image = image
 
-      // Set the content size for the detail view controller when peeking
+      // Set the content size for the detail view controller
       detailVC.preferredContentSize = CGSize(width: 0, height: 300)
 
       // Set the source rect of the previewing context
@@ -89,7 +89,7 @@ extension ImageViewController: UIViewControllerPreviewingDelegate {
         showViewController(viewControllerToCommit, sender: self)
     }
 }
-```
+``` 
 
 For peeking the logic is almost similar to using Segues. We need to get a reference to the cell we are touching and instantiate the DetailViewController and update its data source. We also need to set a preferred content size of the detail view controller and finally we need to set the sourceRect of the previewing context to the frame of the cell we are touching.
 
@@ -97,7 +97,7 @@ Popping on the other hand is very straightforward, simply show the view controll
 
 ## Previewing Actions
 
-If you now run your app and you force touch on an image you should be able to get a preview of the detail view controller.
+If you now run your app and you force touch on an image you should be able to get a preview of the DetailViewController.
 
 <p align=center>
 <img src=https://cdn-laravel.vapor.cloud/image/nstack/translate_values/peek-pop_PgLJZtnHgg.jpg?width=280 style=";margin:20px;">
@@ -105,7 +105,7 @@ If you now run your app and you force touch on an image you should be able to ge
 
 At this stage we can also add some custom button actions to this view, for example a like or delete action. This allows a user to do some action in the DetailViewController while peeking without actually navigating to the ViewController.
 
-Implementation of these actions are also very easy. Go to your DetailViewController and add your actions. Its quite similar to using `UIAlertController`.
+Implementing these actions is also very easy. Go to your DetailViewController and add your actions. Its quite similar to using `UIAlertController`.
 
 
 ```
