@@ -41,7 +41,7 @@ This is what the storyboard could look like.
 
 ## NSWidgetProviding
 
-After you have set up your outlets we need to add some logic to our WidgetViewController. This comes mainly in the form of the ```NCWidgetProviding``` delegate. This delegate has 1 method which handles the logic of when to update the widget.
+After you have set up your outlets we need to add some logic to our WidgetViewController. This comes mainly in the form of the `NCWidgetProviding` delegate. This delegate has 1 method which handles the logic of when to update the widget.
 
 This is what it could look like.
 
@@ -69,12 +69,12 @@ extension WidgetViewController: NCWidgetProviding {
     }
 }
 ```
-The ```isRequiredToUpdate``` is a simple boolean that I use to see whether the widget needs to be updated with new data (see [Implementing Widget Data Manager](#implementing-widget-data-manager)).
-If there is no new widget data we should return the completion handler with ```.noData```. Otherwise if we have new data we should return it with ```.newData``` after we have updated the UI.
+The `isRequiredToUpdate` is a simple boolean that I use to see whether the widget needs to be updated with new data (see [Implementing Widget Data Manager](#implementing-widget-data-manager)).
+If there is no new widget data we should return the completion handler with `.noData`. Otherwise if we have new data we should return it with `.newData` after we have updated the UI.
 
 ## Use ViewWillAppear
 
-I like to use ```ViewWillAppear``` in the WidgetViewController to manually push an UI update, as I was sometimes having issues with the widget not updating immediately.
+I like to use `ViewWillAppear` in the WidgetViewController to manually push an UI update, as I was sometimes having issues with the widget not updating immediately.
 
 ```
 override func viewWillAppear(_ animated: Bool) {
@@ -108,7 +108,7 @@ Even though an app extension bundle is nested within its containing app’s bund
 
 ## App Groups
 
-So how do we move data between the two targets?. The answer is app groups and ```NSUserDefaults```.
+So how do we move data between the two targets?. The answer is app groups and `NSUserDefaults`.
 
 To set up app groups for both targets we need to do the following
 
@@ -140,12 +140,12 @@ private extension String {
 }
 ```
 
-You first need to create a new ```NSUserDefault``` object. As you probably noticed we cannot use the default singleton instance, we have to create a custom suite instance for this to work correctly. The name is what you have set up in your app group.
-I then simply added a getter/setter property to set/fetch the latest string from this ```NSUserDefault``` object.
+You first need to create a new `NSUserDefaults` object. As you probably noticed we cannot use the default singleton instance, we have to create a custom suite instance for this to work correctly. The name is what you have set up in your app group.
+I then simply added a getter/setter property to set/fetch the latest string from this `NSUserDefaults` object.
 
 ## Implementing Widget Data Manager
 
-Remember the ```isRequiredToUpdate``` property from the ```NSWidgetProviding``` step above? The actual logic for this boolean would be the following
+Remember the `isRequiredToUpdate` property from the `NSWidgetProviding` step above? The actual logic for this boolean would be the following
 
 ```
 final class WidgetViewController {
