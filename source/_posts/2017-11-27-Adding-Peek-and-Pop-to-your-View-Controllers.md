@@ -137,7 +137,7 @@ extension DetailViewController {
 
 ## Conclusion
 
-That is all there is to peek and pop. Its a very powerful feature that should dramatically improve the flow of an app that implements it. It allows you to use the app in such a way where you can get glances and previews of screens without having to actually navigating those screens. This should make any app more productive, efficient and thus is a feature that should be supported by all app makers.
+That is all there is to peek and pop. Its a very powerful feature that should dramatically improve the flow of an app that implements it. It allows you to use the app in such a way where you can get glances and previews of screens without having to navigate to those screens. This should make any app more productive and efficient and therefore is a feature that should be supported by all app makers.
 
 ## Resources
 
