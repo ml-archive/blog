@@ -25,7 +25,7 @@ This interaction proceeds through three phases.
 
 ## Setup
 
-Lets imagine that we have 2 `UIViewControllers` in our app. One has a `UICollectionView` as its main UI, for example to show a list of images, we shall call it ImageViewController. The 2nd one is a DetailViewController that will be presented if one of the images is pressed. This should be a very common scenario in most apps.
+Lets imagine that we have 2 `UIViewControllers` in our app. One has a `UICollectionView` as its main UI, for example to show a list of images, we shall call it ImageViewController. The other one is a DetailViewController that will be presented if one of the images is pressed. This should be a very common scenario in most apps.
 
 If we want to use Peek and Pop we first have to check wether 3D touch is supported and if it is, register the previewing delegate.
 
