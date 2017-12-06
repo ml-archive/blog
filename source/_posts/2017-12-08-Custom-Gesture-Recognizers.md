@@ -176,7 +176,7 @@ Then we implement what should happen when the touch ended. We verify that the la
 ```swift
 view.addGestureRecognizer(CustomGestureRecognizer(target: self, action: #selector(openPhotoLibrary)))
 ```
-<add gif with simulator>
+<p align=center><img width=40%; src = "https://cdn-laravel.vapor.cloud/image/nstack/translate_values/custom-gesture-simulator_8LPWcpLqKA.gif"/></p>
 
 ## Links/Resources:
 * [Apple - Gesture Recognizer State Machine](https://developer.apple.com/documentation/uikit/touches_presses_and_gestures/implementing_a_custom_gesture_recognizer/about_the_gesture_recognizer_state_machine)
