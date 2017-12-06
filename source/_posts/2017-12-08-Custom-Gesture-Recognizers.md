@@ -180,7 +180,7 @@ view.addGestureRecognizer(CustomGestureRecognizer(target: self, action: #selecto
 ```
 <p align=center><img width=40%; src = "https://cdn-laravel.vapor.cloud/image/nstack/translate_values/custom-gesture-simulator_8LPWcpLqKA.gif"/></p>
 
-## Links/Resources:
+## Links/Resources
 * [Apple - Gesture Recognizer State Machine](https://developer.apple.com/documentation/uikit/touches_presses_and_gestures/implementing_a_custom_gesture_recognizer/about_the_gesture_recognizer_state_machine)
 * [Apple - Implementing a Discrete Gesture Recognizer](https://developer.apple.com/documentation/uikit/touches_presses_and_gestures/implementing_a_custom_gesture_recognizer/implementing_a_discrete_gesture_recognizer)
 * [Apple - Implementing a Continuous Gesture Recognizer](https://developer.apple.com/documentation/uikit/touches_presses_and_gestures/implementing_a_custom_gesture_recognizer/implementing_a_continuous_gesture_recognizer)
