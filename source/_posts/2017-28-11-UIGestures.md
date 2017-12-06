@@ -90,6 +90,6 @@ view.addGestureRecognizer(longPressGestureRecognizer)
 ```
 
 ## Links/Resources
-* [Apple’s gesture guidelines](https://developer.apple.com/ios/human-interface-guidelines/user-interaction/gestures/)
-* [Apple’s Handing pinch gestures documentation](https://developer.apple.com/documentation/uikit/touches_presses_and_gestures/handling_uikit_gestures/handling_pinch_gestures)
+* [Apple - Gesture guidelines](https://developer.apple.com/ios/human-interface-guidelines/user-interaction/gestures/)
+* [Apple - Handing pinch gestures documentation](https://developer.apple.com/documentation/uikit/touches_presses_and_gestures/handling_uikit_gestures/handling_pinch_gestures)
 
