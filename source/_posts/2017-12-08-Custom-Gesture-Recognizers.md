@@ -125,6 +125,7 @@ Next we implement the `touchesMoved` which holds the main logic of our gesture t
             }
         }
     }
+    //Continue below
 ```
 
 Then we implement what should happen when the touch ended. We verify that the last stroke phase was `leftDownStroke` and that the final points is below the initial point. If all is good, we set the state to `recogznied`, if not to `failed`.
@@ -183,7 +184,7 @@ view.addGestureRecognizer(CustomGestureRecognizer(target: self, action: #selecto
 * [Apple - Gesture Recognizer State Machine](https://developer.apple.com/documentation/uikit/touches_presses_and_gestures/implementing_a_custom_gesture_recognizer/about_the_gesture_recognizer_state_machine)
 * [Apple - Implementing a Discrete Gesture Recognizer](https://developer.apple.com/documentation/uikit/touches_presses_and_gestures/implementing_a_custom_gesture_recognizer/implementing_a_discrete_gesture_recognizer)
 * [Apple - Implementing a Continuous Gesture Recognizer](https://developer.apple.com/documentation/uikit/touches_presses_and_gestures/implementing_a_custom_gesture_recognizer/implementing_a_continuous_gesture_recognizer)
-* [UITouch](https://developer.apple.com/documentation/uikit/uitouch)
+* [Apple - UITouch](https://developer.apple.com/documentation/uikit/uitouch)
 
 If you are looking for more inspiration you might want to check out those other custom gesture recogniser tutorials:
 * [Checkmark tutorial from Apple](https://developer.apple.com/documentation/uikit/touches_presses_and_gestures/implementing_a_custom_gesture_recognizer/implementing_a_discrete_gesture_recognizer)
