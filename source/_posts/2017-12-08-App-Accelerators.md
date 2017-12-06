@@ -1,6 +1,6 @@
 ---
 title:  App accelerators
-date: 2017-11-28 13:00:00
+date: 2017-12-08 13:00:00
 tags: ios,accelerators,gestures,3d touch
 authorIds:
 - roju
@@ -40,7 +40,7 @@ Here are some examples of how popular apps use quick actions powered by the 3d t
 
 <p align=center><img src = "https://cdn-laravel.vapor.cloud/image/nstack/translate_values/accelerators-app-icon-shortcuts_oYKfUvAOe4.png"/></p>
 
-### Nodes example
+### [Nodes](https://www.nodesagency.com/) example
 
 In the Fitness DK app we provide a faster switch between Weekly and Monthly stats in the Tracker by letting the user tap on the background of the screen:
 
@@ -55,9 +55,9 @@ Checkout our accelerators code examples:
 * App icon shortcuts (coming 🔜)
 
 ## Links/Resources
-* [Apple’s gesture guidelines](https://developer.apple.com/ios/human-interface-guidelines/user-interaction/gestures/)
-* [Apple Developer : Take advantage of 3D Touch](https://developer.apple.com/ios/3d-touch/)
-* [UX Design pattern for Mobile Apps: Which and Why by Luis Abreu (raywenderlich.com)](https://www.raywenderlich.com/167174/design-patterns-mobile-apps-which-why)
+* [Apple - Gesture guidelines](https://developer.apple.com/ios/human-interface-guidelines/user-interaction/gestures/)
+* [Apple Developer - Take advantage of 3D Touch](https://developer.apple.com/ios/3d-touch/)
+* [UX Design pattern for Mobile Apps - Which and Why by Luis Abreu (raywenderlich.com)](https://www.raywenderlich.com/167174/design-patterns-mobile-apps-which-why)
 * [Extra depth of Interaction: 3D Touch Icons for iOS](https://stories.uplabs.com/extra-depth-of-interaction-3d-touch-icons-for-ios-7b0d90c81576)
 * [Slack for iOS Shortcuts Article](https://get.slack.help/hc/en-us/articles/208401947-Slack-for-iOS)
 * [Iphone Wireframes by Al Rayhan - PsdBoom](http://psdboom.com/downloads/free-iphone-6-psd-wireframe)
