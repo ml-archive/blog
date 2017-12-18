@@ -1,6 +1,6 @@
 ---
 title: How we debug with Charles
-date: 2017-11-17 00:00:00
+date: 2017-12-18 00:00:00
 tags: charles,QA,testing
 categories:
 - QA
@@ -32,9 +32,11 @@ The most common thing you can do with Charles, is to have a peek underneath the 
 * If you are making changes in the app and the changes are not applied – you need to check if the app is sending the data correctly or whether you are receiving the processed data from the server unexpectedly.
 * Any other scenario that involves the app making or receiving network calls – you need to check your Charles!
 
-With Charles, we are not only able to monitor the implementation of API, we can also monitor the implementation of third party providers such as push providers, Google Analytics, Hockey and furthermore we can monitor the order in which they are implemented. To ensure an agile workflow and a quick response to the issues that are found. Charles sessions can be exported and shared across the team. This 'comes in handy' when a tester is discovering an issue and wants to show the developer what is happening without the aforementioned steps to reproduce the issue. By exporting the session from Charles and adding it as an attachment in the ticket, it becomes very easy for the developer to reproduce the problem. Charles also has a built in way to publish gists to Github. The gist will automatically contain all required information in order to reproduce the issue such as auth token, request headers, API path, API environment, etc, etc.. This makes the workflow around discovering and reporting bugs in API or API implementation very quick and agile.
+With Charles, we are not only able to monitor the implementation of API, we can also monitor the implementation of third party providers such as push providers, Google Analytics, Hockey and furthermore we can monitor the order in which they are implemented. To ensure an agile workflow and a quick response to the issues that are found, Charles sessions can be exported and shared across the team. This 'comes in handy' when a tester is discovering an issue and wants to show the developer what is happening without the aforementioned steps to reproduce the issue. By exporting the session from Charles and adding it as an attachment in the ticket, it becomes very easy for the developer to reproduce the problem. 
 
-The attached example beneath, is a screenshot of a Charles session, in which I am recording the traffic in the Apple Store App for iOS. On app open, we can for example see that the app calls a Content Delivery Network to get a feature graphic of an iPhone X.
+Charles also has a built in way to publish gists to Github. The gist will automatically contain all required information in order to reproduce the issue such as auth token, request headers, API path, API environment, etc. This makes the workflow around discovering and reporting bugs in API or API implementation very quick and agile.
+
+The attached example beneath is a screenshot of a Charles session, in which I am recording the traffic in the Apple Store App for iOS. On app open we can for example see that the app calls a Content Delivery Network to get a feature graphic of an iPhone X.
 
 For testers the recording tool in Charles is the most important tool in the Charles toolbox. It gives us an insight into how mobile applications are built and furthermore allows us to identify issues on a lower level than otherwise possible.
 
@@ -45,7 +47,9 @@ For testers the recording tool in Charles is the most important tool in the Char
 
 ### 2. Simulating network conditions
 
-One of the built-in-tools that we use while testing is 'Throttle'. Throttle is used to adjust the bandwidth and latency of the current internet connection. This enables us to simulate a 3G network condition using a high-speed connection. By simulating poor network conditions, we can make sure that our mobile applications handle poor internet connectivity and that timeouts are correctly implemented in the app. We can check if assets are served to app in a suited file size as well as checking if assets are being cached correctly. This gives us, developers and testers, an insight into how the user experience will be in that scenario. Testing on slow connection speeds is an often forgotten aspect to test for, since most of the apps out there are developed and maintained on high-speed internet connections. However doing so gives us a more realistic sense of the end user experience. The throttle functionality is quickly enabled and disabled from the Charles toolbar by clicking on the icon of a turtle. Charles offers a few options for speed restrictions to simulate different network connections, as shown in the screenshots below:
+One of the built-in-tools that we use while testing is 'Throttle'. Throttle is used to adjust the bandwidth and latency of the current internet connection. This enables us to simulate a 3G network condition using a high-speed connection. By simulating poor network conditions, we can make sure that our mobile applications handle poor internet connectivity and that timeouts are correctly implemented in the app. We can check if assets are served to the app in a suited file size as well as checking if assets are being cached correctly. This gives us, developers and testers, an insight into how the user experience will be in that scenario. Testing on slow connection speeds is an often forgotten aspect to test for, since most of the apps out there are developed and maintained on high-speed internet connections. However doing so gives us a more realistic sense of the end user experience. 
+
+The throttle functionality is quickly enabled and disabled from the Charles toolbar by clicking on the icon of a turtle. Charles offers a few options for speed restrictions to simulate different network connections, as shown in the screenshots below:
 
 
 
@@ -54,13 +58,17 @@ One of the built-in-tools that we use while testing is 'Throttle'. Throttle is u
 
 ### 3. Rewriting the API
 
-When developing mobile applications sometimes the requests made by the app or the responses made by the API are not exactly what we need them to be. With the Charles 'Rewrite' tool we can manipulate an url request on the fly (change the header, modify query params, etc). The rewrite tool can be useful for doing various tricks such as rewriting the authentication token, rewriting the API environment (by modifying the API path), as well as rewriting the status codes of the response. Another known trick is to inject a custom request header to be able to trace our request in the server logs seperately from the rest. We use rewrite as a mean to quickly give us access to view the app as a specific user by rewriting the authentication headers. This will allow us to test the app as that type of user, without having to spent time entering username and password. During development of the app, the developer might want to quickly change the API environment. He or she is then able to rewrite the API url from development to production environment without having to recompile or reconfigure either client or server. We make sure to always test for error handling when it comes to status codes returned by API. In some projects, it may be difficult to simulate certain status codes no matter how hard you try breaking things. In that case we can use rewrite. In the screenshots below I am rewriting the landing page of the iOS Apple Store App by changing the url of the iPhone X image to a an image of a Samsung Galaxy S8.
+When developing mobile applications sometimes the requests made by the app or the responses made by the API are not exactly what we need them to be. With the Charles 'Rewrite' tool we can manipulate an url request on the fly (change the header, modify query params, etc). The rewrite tool can be useful for doing various tricks such as rewriting the authentication token, rewriting the API environment (by modifying the API path), as well as rewriting the status codes of the response. 
+
+Another known trick is to inject a custom request header to be able to trace our request in the server logs seperately from the rest. We use rewrite as a mean to quickly give us access to view the app as a specific user by rewriting the authentication headers. This will allow us to test the app as that type of user, without having to spent time entering username and password. 
+
+During development of the app, the developer might want to quickly change the API environment. He or she is then able to rewrite the API url from development to production environment without having to recompile or reconfigure either client or server. We make sure to always test for error handling when it comes to status codes returned by API. In some projects, it may be difficult to simulate certain status codes no matter how hard you try breaking things. In that case we can use rewrite. In the screenshots below I am rewriting the landing page of the iOS Apple Store App by changing the url of the iPhone X image to a an image of a Samsung Galaxy S8.
 
 
 
 }![rewrite1](https://cdn-laravel.vapor.cloud/image/nstack/translate_values/tool_rewrite1_3CeaIAAvHJ.png)
 
-_First we create a rewrite rule inorder to replace the URL of the iPhone X image_
+_First we create a rewrite rule in order to replace the URL of the iPhone X image_
 
 
 ![rewrite2](https://cdn-laravel.vapor.cloud/image/nstack/translate_values/tool_rewrite2_hljikhsImW.jpeg)
@@ -73,7 +81,7 @@ _We then reopen the app to force the app to make the request again_
 _Checking in our session, we can now see that the rewrite rule has been applied to the request_
 
 
-All request can be applied the rewrite functionality, and multiple rewrites can be configured at the same time. Rewrites are encapsulated into rule sets, which can be saved in your Charles config for future use. Rewrite rules can be disabled and enabled as you please along the testing. As you can see, the options of rewriting are many. There are various reasons for why you might need to add rewrite rules, but these are the most common use cases for us:
+We can use the rewrite functionality on any requests, and multiple rewrites can be configured at the same time. Rewrites are encapsulated into rule sets, which can be saved in your Charles config for future use. Rewrite rules can be disabled and enabled as you please along the testing. As you can see, the options of rewriting are many. There are various reasons for why you might need to add rewrite rules, but these are the most common use cases for us:
 
 * Rewriting status codes
 * Rewriting API url
@@ -86,7 +94,10 @@ All request can be applied the rewrite functionality, and multiple rewrites can 
 
 ### 4. Simulating API responses
 
-With the 'Map local' tool testers have the ability to modify the responses on the fly. The 'Map local' tool changes the response of the request, per the configured mappings, so that the response is transparently served from the new location locally as if that was the original request. In other words the map local will allow testers to simulate responses from each request. We use this tool to quickly modify the response body locally in order to test how app reacts to it. The simplest example could be modifying a response from an API call to see if the app UI can handle longer text values. Another use case, is when testers or developers are not getting the expected response from the API either due to new features not being deployed or bugs in the API. In that case we can modify the API response locally to the expected in order to be able to continue testing or developing. We often see that logic, which depends on certain properties/values in the response from the API, is difficult to test for. Sometimes testers will need to go through complicated flows in the app in order to have the response properties updated accordingly. Here the map local comes in handy, as we can quickly modify the response and change the required parameter to what we need, in order to be able to test.
+With the 'Map local' tool testers have the ability to modify the responses on the fly. The 'Map local' tool changes the response of the request, per the configured mappings, so that the response is transparently served from the new location locally as if that was the original request. In other words the map local will allow testers to simulate responses from each request. 
+
+We use this tool to quickly modify the response body locally in order to test how app reacts to it. The simplest example could be modifying a response from an API call to see if the app UI can handle longer text values. Another use case, is when testers or developers are not getting the expected response from the API either due to new features not being deployed or bugs in the API. In that case we can modify the API response locally to the expected in order to be able to continue testing or developing. We often see that logic, which depends on certain properties/values in the response from the API, is difficult to test for. 
+Sometimes, testers will need to go through complicated flows in the app in order to have the response properties updated accordingly. Here the map local comes in handy, as we can quickly modify the response and change the required parameter to what we need, in order to be able to test.
 
 
 ### 5. Interrupting API calls
