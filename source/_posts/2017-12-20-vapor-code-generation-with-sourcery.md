@@ -1,6 +1,6 @@
 ---
 title: Vapor code generation with Sourcery
-date: 2017-12-19 13:00:00
+date: 2017-12-20 13:00:00
 tags: vapor,swift,linux,sourcery,swift4,metaprogramming
 authorIds:
 - brto
