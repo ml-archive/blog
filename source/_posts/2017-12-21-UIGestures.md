@@ -1,6 +1,6 @@
 ---
 title:  UIGestures
-date: 2017-12-08 13:00:00
+date: 2017-12-21 13:00:00
 tags: ios,accelerators,gestures
 authorIds:
 - roju
@@ -8,7 +8,7 @@ categories:
 - iOS
 ---
 
-Gestures are the magic behind those accelerators that can make your app more user friendly. We will show now a few examples on how to implement them in your code.
+Gestures are the magic behind those accelerators that can make your app more user friendly. We will now show a few examples on how to implement them in your code.
 
 ## [Swipe Gestures](https://developer.apple.com/documentation/uikit/uiswipegesturerecognizer)
 
