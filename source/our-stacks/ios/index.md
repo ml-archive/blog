@@ -24,6 +24,10 @@ We've started with Swift as soon as version 1.0 was released and since then we h
 ##### Objective-C
 Objective-C is a thing of the past for us, but occasionally we do maintain projects or update applications still written in Objective-C.
 
+### Architecture
+
+Clean architecture (known as VIPER when applied to iOS development) is our new standard on the iOS team. We also still maintain many apps that use MVC. Our clean architecture implementation is adapted to better fit our needs, with the goals being consistency, quality, and testability. 
+
 ### IDE
 Xcode is the IDE that is widely used amongst iOS developers and we also use it at Nodes. 
 
@@ -48,9 +52,9 @@ These are the 3rd party libraries we usually use in all our projects. If there a
  - [Mixpanel](https://github.com/mixpanel/mixpanel-iphone) - advanced analytics and user tracking library with features like A/B testing and push notifications
  
 ### Open source
-The iOS team at Nodes strives to deliver the best and nicest product and to allow us to do so, we've created many open source frameworks to make the development process faster, easier and safer. All our repositories are being maintained on [Github](https://github.com/nodes-ios/).
+The iOS team at Nodes strives to deliver the best and nicest product and to allow us to do so, we've created many open source frameworks to make the development process faster, easier and safer. All of our repositories are maintained on [Github](https://github.com/nodes-ios/).
 
- - [Serializable](https://github.com/nodes-ios/Serializable) - fastest and most feature complete serialization library
+ - [Serpent](https://github.com/nodes-ios/Serpent) - fastest and most feature complete serialization library
  - [Blobfish](https://github.com/nodes-ios/Blobfish) - unified and abstracted visual handling of errors
  - [KeyboardHelper](https://github.com/nodes-ios/KeyboardHelper) - easy to use interface for handling keyboard events
  - [NStackSDK](https://github.com/nodes-ios/NStack) - integration with NStack for translations, version updates and more
@@ -61,6 +65,5 @@ The iOS team at Nodes strives to deliver the best and nicest product and to allo
 
 ### Continuous Integration
 
-We have setup a continuous integration server using GitLab Pipelines and Fastlane suite, so that our builds, tests and deployments are easy, fast and consistent. 
+We have setup a continuous integration server using Bitrise.io, so that our builds, tests and deployments are easy, fast and consistent. Our Bitrise workflow uses Fastlane for building, signing, and uploading builds to both Hockey and Testflight. We also have some custom Ruby scripts for validation and reporting. 
 
-You can read more about our setup in detail in [this article](https://engineering.nodes.dk/articles/iOS/Continuous-Integration-on-iOS-with-HockeyApp-and-Testflight-Deployment/).
