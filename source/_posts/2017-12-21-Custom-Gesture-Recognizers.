@@ -1,6 +1,6 @@
 ---
 title:  Custom Gesture Recognizers
-date: 2017-12-08 13:00:00
+date: 2017-12-21 13:00:00
 tags: ios,accelerators,gestures
 authorIds:
 - roju
@@ -18,14 +18,12 @@ There are 2 types of custom gesture recognisers you can define yourself:
 ## Discrete Gesture Recognizer example
 For learning purposes we chose a simple example of recognising a right chevron and open the photo library. In real apps, you might want to look into other standard gestures for an accelerator for opening the photo library.
 
-<Add photo with gesture image>
-
 ### State machine
-Before we get into it we should understand the state machine. This will be a recognizer for a discrete gesture (a specific pattern) so we will look into how we manage transitions for this case only. If you want to learn more about the state machine for continuous gestures you can check out [Apple’s documentation](https://developer.apple.com/documentation/uikit/touches_presses_and_gestures/implementing_a_custom_gesture_recognizer/implementing_a_continuous_gesture_recognizer).
+Before we get into it we should understand the state machine. This will be a recognizer for a discrete gesture (a specific pattern) so we will look into how we manage transitions for this case only. If you want to learn more about the state machine for continuous gestures you can check out [Apple's documentation](https://developer.apple.com/documentation/uikit/touches_presses_and_gestures/implementing_a_custom_gesture_recognizer/implementing_a_continuous_gesture_recognizer).
 
-A gesture recognizer always starts in the **possible** state, that tells us that we are ready to process events. Based on the user’s input we can end up in a **failed** (unsuccessful) state or **ended** (successful) state. You have to check if the user is following your pattern and at any deviation from that you should set the state to failed. If the user did indeed followed the expected pattern, UIKit will call the action method associated to the target object.
+A gesture recognizer always starts in the **possible** state, that tells us that we are ready to process events. Based on the user's input we can end up in a **failed** (unsuccessful) state or **ended** (successful) state. You have to check if the user is following your pattern and at any deviation from that you should set the state to failed. If the user did indeed follow the expected pattern, UIKit will call the action method associated to the target object.
 
-We also have the **cancelled** state that occurs when the current event is interrupted by a system event like receiving a phone call. You can also customise the cancel situations that can happen in your app. This is to make sure that we don’t perform tasks that the user didn’t intend.
+We also have the **cancelled** state that occurs when the current event is interrupted by a system event like receiving a phone call. You can also customise the cancel situations that can happen in your app. This is to make sure that we don't perform tasks that the user didn't intend.
 
 It is also important to implement a **reset()** method that will make sure we are ready to process new event sequences by returning to starting values.
 
@@ -34,7 +32,7 @@ It is also important to implement a **reset()** method that will make sure we ar
 *[Image source](https://developer.apple.com/documentation/uikit/touches_presses_and_gestures/implementing_a_custom_gesture_recognizer/about_the_gesture_recognizer_state_machine)*
 
 ### Custom gesture recognizer
-The more conditions you have for a gesture to be successful the more precise it will be. For this example we expect that the user will use only one finger for the gesture, makes a down stroke from left to right followed by a down stroke from right to left. Those conditions are leaving open possibilities for edge cases but for the sake of this example we won’t look too much into that.
+The more conditions you have for a gesture to be successful the more precise it will be. For this example we expect that the user will use only one finger for the gesture, makes a down stroke from left to right followed by a down stroke from right to left. Those conditions are leaving open possibilities for edge cases but for the sake of this example we won't look too much into that.
 
 What we have to do is first create the custom gesture recogniser and then add it to our view. 
 
