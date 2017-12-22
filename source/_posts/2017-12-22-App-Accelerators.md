@@ -47,7 +47,7 @@ In the Fitness DK app we provide a faster switch between Weekly and Monthly stat
 <p align=center><img width=40%; src = "https://cdn-laravel.vapor.cloud/image/nstack/translate_values/accelerators-fitness-dk_ce9cGyOPEG.gif"/></p>
 
 ## Code examples
-Checkout our accelerators code examples:
+Check out our accelerators code examples:
 
 * [UIGestures](http://engineering.nodes.dk/articles/iOS/UIGestures/)
 * [Custom Gestures](http://engineering.nodes.dk/articles/iOS/Custom-Gesture-Recognizers/)
