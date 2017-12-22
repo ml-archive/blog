@@ -1,6 +1,6 @@
 ---
 title: Searchable Items
-date: 2017-20-10 16:00:00
+date: 2017-10-20 16:00:00
 tags: corespotlight,nsuseractivity,searchable,spotlight
 categories:
 - iOS
