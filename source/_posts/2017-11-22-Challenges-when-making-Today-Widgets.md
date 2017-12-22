@@ -1,6 +1,6 @@
 ---
 title:  Challenges when making Today Widgets
-date: 2017-22-21 10:10:57
+date: 2017-11-22 10:10:57
 tags: ios,widgets,today,extension
 authorIds:
 - dori
