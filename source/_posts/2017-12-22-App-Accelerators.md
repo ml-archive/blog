@@ -1,6 +1,6 @@
 ---
 title:  App accelerators
-date: 2017-12-08 13:00:00
+date: 2017-12-22 13:00:00
 tags: ios,accelerators,gestures,3d touch
 authorIds:
 - roju
@@ -49,10 +49,8 @@ In the Fitness DK app we provide a faster switch between Weekly and Monthly stat
 ## Code examples
 Checkout our accelerators code examples:
 
-* Apple Gestures - **Add link to blog post!**
-* Custom Gestures - **Add link to blog post!**
-* Peek & Pop - **Add link to @dori's blog post!**
-* App icon shortcuts (coming 🔜)
+* [UIGestures](http://engineering.nodes.dk/articles/iOS/UIGestures/)
+* [Custom Gestures](http://engineering.nodes.dk/articles/iOS/Custom-Gesture-Recognizers/)
 
 ## Links/Resources
 * [Apple - Gesture guidelines](https://developer.apple.com/ios/human-interface-guidelines/user-interaction/gestures/)
