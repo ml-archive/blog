@@ -198,7 +198,60 @@ extension Post: Migration {
 
 ### Routing
 
-TODO
+Let's go through some of common use cases for dealing with a `Model`:
+
+- Retrieving all instances of a model.
+- Retriving one specific instance of a model using a unique identifier.
+- Creating a new instance of a model.
+- Updating an instance of a model.
+- Deleting an instance of a model.
+
+Before setting up the functionality for these different cases, we need to do two things first. First let's make our database available through our request (this could e.g. be added to our `configure.swift`):
+
+```swift
+extension Request: DatabaseConnectable {}
+```
+
+This will make it a bit easier to interact with the database by using the request as we will see soon.
+
+Next, we want to make our `Post` model conform to `Parameter` so that it can be used as a type-safe parameter for our routes. Go ahead and add this to `Post.swift`:
+
+```swift
+extension Post: Parameter {}
+```
+
+With that in place, we can now go through the different cases for interacting with our model type. Before we add routes for each case, let's go ahead and a `RouteGroup` to our `routes.swift` which is a `RouteCollection` where we are supposed to register our routes:
+
+```swift
+func boot(router: Router) throws {
+    // Posts
+    RouteGroup(cascadingTo: router).group("posts") { group in
+        let postController = PostController()
+    }
+}
+```
+
+And for now, let's just create an empty controller:
+
+```swift
+import Vapor
+
+final class PostController {
+  
+}
+```
+
+#### Retrieving all instances
+
+To return all posts created, we're going to query for them like this:
+
+```swift
+func all(req: Request) throws -> Future<[Post]> {
+    return Post.query(on: req).all()
+}
+```
+
+There's a couple of things to notice in the above snippet. TODO: Future and query with on.
 
 ### Views
 
