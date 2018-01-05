@@ -1,6 +1,6 @@
 ---
 title:  App accelerators
-date: 2017-01-04 13:00:00
+date: 2018-01-04 13:00:00
 tags: ios,accelerators,gestures,3d touch
 authorIds:
 - roju
