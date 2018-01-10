@@ -243,7 +243,7 @@ final class PostController {
 
 #### Retrieving all instances
 
-To return all posts created, we're going to query for them like this:
+To return all posts created (e.g. by requesting `GET /posts`), we're going to query them like this:
 
 ```swift
 func all(req: Request) throws -> Future<[Post]> {
@@ -251,7 +251,81 @@ func all(req: Request) throws -> Future<[Post]> {
 }
 ```
 
-There's a couple of things to notice in the above snippet. TODO: Future and query with on.
+There's a couple of things to notice in the above snippet when we compare it to Vapor 2. 
+
+First is that we're not specifying what connection to perform the query on. In this case, we're able to use the request itself because we made `Request` conform to `DatabaseConnectable`. This makes it very explicit for who is responsible for performing the lookup. Without having tried it yet, this should help us make tests as well since we should potentially be able mock the database connection and instead of hitting a database, we could return in-memory objects created in our tests.
+
+Next, there's the return type which is now `Future<[Post]>` instead of `[Post]` as you might have expected coming from Vapor 2. [Async, Streams, Futures and Reactive Programming](https://docs.vapor.codes/3.0/async/getting-started/) are central topics in Vapor 3 in order to increase the performance of the framework and it will change the way we work. Without going too much into details, one would of thinking of the concepts could be:
+
+- Futures: Values that at some point in time will exist. The future part is a wrapper that allows us to continue the work we want to do when the value arrives.
+- Streams: If a function returns one value when it's done executing, a stream returns an endless number of values. Think of it as generally always running which might return values once in a while.
+- Reactive Programming: Related to futures and streams are reactive programming. It's a pattern for dealing with these types of data, usually using functional programming. You can think of it as a way of transforming or dealing with data when it comes in through a future or a stream.
+
+If you've worked with any of the reactive programming frameworks, these concepts introduced in Vapor 3 should be familiar.
+
+#### Retriving one specific instance
+
+To return one specific post (e.g. by requesting `GET /posts/:id`), we're going to request that instance like this:
+
+```Swift
+func specific(req: Request) throws -> Future<Post> {
+    return try req.parameter(Post.self)
+}
+```
+
+This is very similar to what we've used to in Vapor 2 with the exception that fetching a parameter from the request now returns a `Future`.
+
+#### Creating a new instance
+
+To create a new post (e.g. by requesting `POST /posts`), we're going to do it like this:
+
+```swift
+func create(req: Request) throws -> Future<Post> {
+    let post = try req.content.decode(Post.self)
+    return post.save(on: req).transform(to: post)
+}
+```
+
+
+
+A couple of things has changed here. In Vapor 2 you might have used `req.data`, `req.form` or `req.json`  for retrieving the body of a request, but in Vapor 3 this is now contained in a `ContentContainer` on the request. Next we can use `decode` to transform the body into the expected type using the `Decodable` protocol from Swift 4. Remember that our `Post` model is conforming to `Codable` in order for this to work.
+
+Since calling `save` won't give us a back a `Post`, we will "transform" the result of calling `save` into the post we just saved. Note that `transform` is a helper coming from Vapor which simply uses `map` under the hood.
+
+#### Updating an instance
+
+To update an existing post (e.g. by requesting `PATCH /posts/:id`), we're going to do it like this:
+
+```Swift
+func update(req: Request) throws -> Future<Post> {
+    let post = try req.parameter(Post.self)
+    let content = try req.content.decode(Post.self)
+
+    return post.flatMap(to: Post.self) { post in
+        post.title = content.title
+        post.body = content.body
+
+        return post.save(on: req).transform(to: post)
+    }
+}
+```
+
+You could choose to do something similar to the code snippet for creating an instance, since Vapor will update the instance if the payload contains an `id` field. For this example, we've chosen to make it more explicit what is going on in the update process. In the above code, we're fetching the post that was specified in the request, we're decoding the post model that was giving in the body of the request and last we're updating the currently saved post. Note how we're using `flatMap` since we're creating a nested future inside of our closure.
+
+#### Deleting an instance
+
+To delete an existing post (e.g. by requesting `PATCH /posts/:id`), we're going to do it like this:
+
+``` Swift
+func delete(req: Request) throws -> Future<HTTPResponse> {
+    let post = try req.parameter(Post.self)
+    return post.flatMap(to: HTTPResponse.self) { post in
+        return post.delete(on: req).transform(to: HTTPResponse(status: .ok))
+    }
+}
+```
+
+The above code is very similar to how we deal with updating a post, with the difference being that instead of returning the updated post, we're 
 
 ### Views
 
