@@ -8,11 +8,11 @@ categories:
 - iOS
 ---
 
-Here at Nodes, we regularly run events and give presentations. We wanted to use technology to make these more accessible and enhance these events for people who attend. Smooth out the event process entirely the only way we know how, making applications!
+Here at Nodes, we regularly run events and give presentations. We wanted to use technology to make these more accessible and enhance these events for people who attend, and smooth out the event process entirely the only way we know how; making applications!
 
-Although we have many ideas for what this application could behold, I decided to focus on the presentation process and in particular, presenting slideshows. I set out to make an application that could display slideshows and "broadcast" them to other local devices running the same application, while making the process as simple for a user as possible. I have developed a prototype application that allows users to give presentations while letting other users view the same presentation on their own devices, while it automatically follows along at real time with the presenter. I’m going to explain how this was made possible by using two mobile platforms from Google, [Firebase](https://firebase.google.com/) & [Nearby Messages](https://developers.google.com/nearby/).
+Although we have many ideas for what this application could encompass, I decided to focus on the presentation process and in particular, presenting slideshows. I set out to make an application that could display slideshows and "broadcast" them to other local devices running the same application, while making the process as simple for a user as possible. I have developed a prototype application that allows users to give presentations while letting other users view the same presentation on their own devices, while it automatically follows along in real time with the presenter. I’m going to explain how this was made possible by using two mobile platforms from Google, [Firebase](https://firebase.google.com/) & [Nearby Messages](https://developers.google.com/nearby/).
 
-The application currently works with PDFs; using a `UIImage` extension, it takes PDF files and turns pages into images. I then use a `UIPageViewController` to create the required number of ViewControllers and display each pdf page in a separate view controller allowing the user to flick through them. In this blog, I want to focus more on the Google platforms. The project including this code is available here. [github/nodes-presenter-iOS](https://github.com/nodes-projects/nodes-presenter-ios/tree/PresentationApp_Development).
+The application currently works with PDFs; using a `UIImage` extension, it takes PDF files and turns pages into images. I then use a `UIPageViewController` to create the required number of ViewControllers and display each pdf page in a separate view controller allowing the user to flick through them. In this blog, I want to focus more on the Google platforms.
 
 All libraries need to be added to your project which can be done using Cocoapods. Google provide simple tutorials in setting these libraries up online.
 
@@ -166,10 +166,6 @@ self.delegate?.slideChanged(manager: self, slideName: pageNumber)
 ## What's next
 I've only recently started exploring the possibilites with these mobile platforms but I've been very impressed. Currently the application I've built only uses a local PDF for testing purposes but it would be really great in the future if we can build a backend where users can upload PDFs and then observers can fetch them from the backend if required & turn to the slide, all triggered by someone else device. There are many more possibilities with this I’m yet to explore but this proof of concept shows that we can use an application in a controlling mode to display and control data on other devices without observer devices having to do anything.
 
-
-## Code
-Check out the github of the project here:
-* [Presentation App](https://github.com/nodes-projects/nodes-presenter-ios/tree/PresentationApp_Development)
 
 
 
