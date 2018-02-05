@@ -1,5 +1,5 @@
 ---
-title:  Adding Peek and Pop to your View Controllers
+title: Adding Peek and Pop to your View Controllers
 date: 2017-11-27 10:10:57
 tags: ios,peek,pop,3dtouch,forceTouchCapability
 authorIds:
@@ -8,24 +8,27 @@ categories:
 - iOS
 ---
 
-With iOS 9, new iPhone models add a third dimension to the user interface.
+With iOS 9, new iPhone models add a third dimension to the user interface, called force touch, or more commonly 3D Touch.
 
 A user can now press your Home screen icon to immediately access functionality provided by your app.
-Within your app, a user can now press views to see previews of additional content and gain accelerated access to features.
+Within your app, a user can now press certain views to see previews of additional content and gain accelerated access to features.
 
 ## Peek and Pop
 
-iOS 9 lets you configure view controllers for the user features of peek, which provides a preview of additional content when a user presses on a specified view, and pop, which commits to viewing that content and navigates to it.
+iOS 9 lets you configure view controllers to allow the use of peek, which provides a preview of additional content when a user presses on a specified view, and pop, which commits to viewing that content and navigates to it.
 
 This interaction proceeds through three phases.
 
 1. Indication that content preview is available
-2. Display of the preview—known as a peek—with options to act on it directly—known as peek quick actions
-3. Optional navigation to the view shown in the preview—known as a pop
+2. Display of the preview, known as a peek, with options to act on it directly, known as peek quick actions
+3. Optional navigation to the view shown in the preview, known as a pop
+
+<p align=center>
+<img src=https://cdn-laravel.vapor.cloud/image/nstack/translate_values/14217-9579-Screenshot-2015-09-11-034807-l_oCe51n1tRJ.jpg?width=280 style=";margin:20px;">
 
 ## Setup
 
-Lets imagine that we have 2 `UIViewControllers` in our app. One has a `UICollectionView` as its main UI, for example to show a list of images, we shall call it ImageViewController. The other one is a DetailViewController that will be presented if one of the images is pressed. This should be a very common scenario in most apps.
+Lets imagine that we have 2 `UIViewController`s in our app. One has a `UICollectionView` as its main UI, for example to show a list of images, we shall call it ImageViewController. The other one is a DetailViewController that will be presented if one of the images is pressed. This should be a very common scenario in most apps.
 
 If we want to use Peek and Pop we first have to check wether 3D touch is supported and if it is, register the previewing delegate.
 
@@ -91,7 +94,7 @@ extension ImageViewController: UIViewControllerPreviewingDelegate {
 }
 ```
 
-For peeking the logic is almost similar to using Segues. We need to get a reference to the cell we are touching and instantiate the DetailViewController and update its data source. We also need to set a preferred content size of the DetailViewController and finally we need to set the sourceRect of the previewing context to the frame of the cell we are touching.
+For peeking, the logic is almost similar to using Segues. We need to get a reference to the cell we are touching and instantiate the DetailViewController and update its data source. We also need to set a preferred content size of the DetailViewController and finally we need to set the `sourceRect` of the previewing context to the frame of the cell we are touching.
 
 Popping on the other hand is very straightforward, simply show the view controller that your are peeking at.
 
@@ -105,7 +108,7 @@ If you now run your app and force touch on an image you should be able to get a 
 
 At this stage we can also add some custom button actions to this view, for example a like or delete action. This allows a user to do some action in the DetailViewController while peeking without actually navigating to it.
 
-Implementing these actions is also very easy. Go to your DetailViewController and add your actions, its quite similar to using `UIAlertController`.
+Implementing these actions is also very easy. Go to your DetailViewController and add your actions, its quite similar to using a `UIAlertController`.
 
 
 ```
@@ -137,7 +140,7 @@ extension DetailViewController {
 
 ## Conclusion
 
-That is all there is to peek and pop. Its a very powerful feature that should dramatically improve the flow of an app that implements it. It allows you to use the app in such a way where you can get glances and previews of screens without having to navigate to those screens. This should make any app more productive and efficient and therefore is a feature that should be supported by all app makers.
+That is all there is to peek and pop. It is a very powerful feature that should dramatically improve the flow of an app that implements it. It allows you to use the app in such a way where you can get glances and previews of screens without having to navigate to those screens. This should make any app more productive and efficient and therefore is a feature that should be supported by all app makers.
 
 ## Resources
 
