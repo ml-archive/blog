@@ -325,7 +325,7 @@ func delete(req: Request) throws -> Future<HTTPResponse> {
 }
 ```
 
-The above code is very similar to how we deal with updating a post, with the difference being that instead of returning the updated post, we're 
+The above code is very similar to how we deal with updating a post, with the difference being that instead of returning the updated post, we're returning a `HTTPResponse` with the HTTP code 200.
 
 ### Views
 
