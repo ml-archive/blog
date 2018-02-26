@@ -44,7 +44,7 @@ And can have an optional URL parameter called `featured`. If featured is present
 ### Composing URLs for Searching
 The stage is set and we are ready to look at how to call our search service in our pre-URLComponents world.
 
-To generate a `URL` we could write some code like this:
+To generate a `URL` in our iOS app, we could write some code like this:
 
 ```swift
 func searchURL(with q: String, optionalParameters: [String: String]? = nil) -> URL? {
@@ -110,7 +110,7 @@ Now, lets look at another example.
 
 Remember the details page and the `featured` parameter?
 
-Here is how we could fetch that from the URL:
+Here is how we could fetch that from the URL in our iOS app:
 
 ```swift
 func receivedUrl(_ url: URL, contains parameter: String) -> String? {
