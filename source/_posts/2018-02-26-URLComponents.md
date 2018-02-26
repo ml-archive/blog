@@ -7,7 +7,9 @@ authorIds:
 categories:
 - iOS
 ---
-When writing mobile apps, more often than not we have to communicate with a backend to get some data to present to the user. The way we communicate with the backend is usually through URLs combined with either a POST body or maybe some URL query parameters, depending on what the backend services uses.
+When writing mobile apps, more often than not we have to communicate with a backend to get some data to present to the user.
+
+The shared language between frontend and backend is usually URLs combined with either a POST body or maybe some URL query parameters, depending on what the backend offers.
 
 In this post we will look at [URLComponents](https://developer.apple.com/documentation/foundation/urlcomponents), a small but very useful helper that will become your new best friend when composing or decomposing URLs (we promise!)
 
@@ -17,13 +19,13 @@ But before we look at `URLComponents`, lets first look at a world without `URLCo
 OK, lets assume that we need to use a backend service for searching and showing details about TV shows.
 
 ### Searching
- Our hard working backend developer friends have made a service for us to use. The base URL looks like this:
+ Our hard working backend developing friends have made a service for us to use. The base URL looks like this:
 
 `https://showsknownfrom.tv/search`
 
 (no...it doesn't exist)
 
-And it can take the following query parameters:
+And it offers the following query parameters:
 
 - q: A query string we would like to search for
 - order (optional parameter): Do we want the search results ascending or descending
@@ -88,7 +90,9 @@ if let url = searchURL(with: "Halt and Catch Fire", optionalParameters: ["order"
 
 That didn't work, why?
 
-Yes, you're right, the spaces! We need to [Percent Encode](https://en.wikipedia.org/wiki/Percent-encoding) our query, so lets encode our query before we try to use it. We add this to the top of our function:
+Yes, you're right, the query contains spaces!
+
+We need to [Percent Encode](https://en.wikipedia.org/wiki/Percent-encoding) our query, so lets do that before we try to use it. We add this to the top of our function:
 
 ```swift
 //Append query
@@ -102,7 +106,9 @@ And now we get `https://showsknownfrom.tv/search?q=Halt%20and%20Catch%20Fire&num
 Great! Our function seems to be working as expected now, but it took some time and some tries to get here.
 
 ### Decomposing URLs
-Now, lets look at another example. Remember the details page and the `featured` parameter.
+Now, lets look at another example.
+
+Remember the details page and the `featured` parameter?
 
 Here is how we could fetch that from the URL:
 
@@ -130,6 +136,7 @@ func receivedUrl(_ url: URL, contains parameter: String) -> String? {
     return String(parametersAfterParameterName.prefix(upTo: rangeOfNextAmpersand))
 }
 
+//test
 if let url = URL(string: "https://showsknownfrom.tv/shows/12345678?featured=true") {
     if let parameter = receivedUrl(url, contains: "featured") {
         print("found \(parameter)") //gives us "found true"
@@ -139,7 +146,9 @@ if let url = URL(string: "https://showsknownfrom.tv/shows/12345678?featured=true
 }
 ```
 
-Granted, it works but...wow! So much going on here, magic values and String gymnastics galore. We could probably make this prettier but...why should we, when something as beautiful as `URLComponents` exists.
+Granted, it works but...wow! So much going on here, magic values and String gymnastics galore.
+
+We could probably make this prettier but...why should we, when something as beautiful as `URLComponents` exists.
 
 ## Composing and Decomposing URLs - The Easy Way
 By now you should be more than ready for `URLComponents` so lets dive in.
@@ -209,7 +218,7 @@ func searchURL(with q: String, optionalParameters: [String: String]? = nil) -> U
 }
 ```
 
-First we use the `urlString` to create a new `URLComponents` object. Note that we create the `urlComponents` as a `var` as we'll need to write to it later on.
+First we use the `urlString` to create a new `URLComponents` object. (Note that we create the `urlComponents` as a `var` as we'll need to write to it later on.)
 
 Next we create an array of `URLQueryItem` objects and append our only required parameter, the `q` parameter.
 
@@ -240,7 +249,9 @@ if let url = searchURL(with: "Halt and Catch Fire", optionalParameters: ["order"
 Perfect!
 
 ### Decomposing URLs
-Remember our example from before, you know, when we lived in the pre-URLComponents world?. Now that we know about `URLQueryItem`s, checking if a query parameter exists is soooo much easier:
+Remember our example from before?
+
+Now that we know about `URLQueryItem`s, checking if a query parameter exists is soooo much easier:
 
 ```swift
 func receivedUrl(_ url: URL, contains parameter: String) -> String? {
@@ -262,12 +273,12 @@ if let url = URL(string: "https://showsknownfrom.tv/shows/12345678?featured=true
 }
 ```
 
-Pretty right? At least compared to the previous version.
+Pretty right? At least compared to the initial version.
 
 ## Composing and Decomposing URLs - The Easier Way
 Well, we made it this far! But can we do better? Of course we can!
 
-Lets write an extension to `URL` so we can append query parameters and also ask if a URL contains a query parameter:
+Lets write an `extension` to `URL` so we can append query parameters and also ask if a URL contains a query parameter:
 
 ```swift
 extension URL {
@@ -294,7 +305,7 @@ extension URL {
 }
 ```
 
-Poetry, nothing less than poetry!
+Poetry, no less!
 
 Lets test it out:
 
@@ -313,7 +324,7 @@ if let url = URL(string: "https://showsknownfrom.tv/shows/12345678?featured=true
 
 ```
 
-Fantastic. We've composed two simple functions that makes our daily work so much easier when we need to append query parameters or ask if a URL contains a query parameter.
+Fantastic. We've composed two simple functions that makes our daily work so much easier when working with URL parameters.
 
 ## Composing and Decomposing URLs - The Easier Way
 Now you might be thinking "Urgh!! Extensions!! Why should I write code myself if I can download something from the internet, written by complete strangers instead!!"
@@ -340,12 +351,16 @@ And if you're more of a Carthage guy, add this to your `Cartfile`
 
 `github "nodes-ios/Codemine" ~> 1.0`
 
-Update and you're done.
+Update and you're done, you can now check if your URL contains specific query parameters or you can build your own `URL` and append parameters easily.
+
+Hey...you're welcome :)
 
 ## Parting Words
 Whew, we made it!
 
-We started out writing a lot of error prone code ourself for managing URLs more or less as expected. That was then replaced with `URLComponents` that does all the hard work for us, and finally we made our own `extension` to add some building blocks to make our daily work easier.
+We started out writing a lot of error prone code ourself for managing URLs more or less as expected.
+
+That was then replaced with `URLComponents` that does all the hard work for us, and finally we made our own `extension` to add some building blocks to make our daily work easier.
 
 If you didn't already know about `URLComponents` we hope to have convinced you that it is an awesome little helper to add to your toolbelt for when you need to work with `URL`s.
 
