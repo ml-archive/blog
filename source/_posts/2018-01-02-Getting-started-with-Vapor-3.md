@@ -8,11 +8,11 @@ categories:
 - Vapor
 ---
 
-Vapor has been our go-to framework when we develop backend solutions at Nodes since January 2017. A lot has happened during the past year, specially when we saw Vapor 2 got released back in May. Our overall opinion is that Vapor 2 has been a mature and a fairly feature-rich framework we've been enjoying working with. That said, there's still some room for improvement, which has made us follow the development of Vapor 3 with excitement.
+Vapor has been our go-to framework when we develop backend solutions at Nodes since January 2017. A lot has happened during the past year, especially when we saw Vapor 2 got released back in May. Our overall opinion is that Vapor 2 has been a mature and a fairly feature-rich framework we've been enjoying working with. That said, there's still some room for improvement, which has made us follow the development of Vapor 3 with excitement.
 
 
 
-As of writing this post, the latest version of the next major version of Vapor is [3.0 Beta 1](https://github.com/vapor/vapor/releases/tag/3.0.0-beta.1). Although the major version hasn't yet hit a stable version, we wanted to take aside some time to have a look at how these changes will affect our daily work. We have developed and help maintain around 25+ customer projects and 30+ open source packages so it's important for us to know the amount of changes needed in order to migrate these projects to Vapor 3.
+As of writing this post, the latest version of the next major version of Vapor is [3.0 Beta 1](https://github.com/vapor/vapor/releases/tag/3.0.0-beta.1). Although the major version hasn't yet hit a stable version, we wanted to take some time to have a look at how these changes will affect our daily work. We have developed and help maintain around 25+ customer projects and 30+ open source packages so it's important for us to know the amount of changes needed in order to migrate these projects to Vapor 3.
 
 ## Our focus areas
 
@@ -44,7 +44,7 @@ And if you don't have the toolbox already installed, then run:
 brew install vapor/tap/vapor
 ```
 
-Also make sure you're running Swift 4 as this is now required in Vapor 3:
+Also make sure you're running Swift 4.1 as this is now required in Vapor 3:
 
 ```bash
 swift --version
@@ -201,7 +201,7 @@ extension Post: Migration {
 Let's go through some of common use cases for dealing with a `Model`:
 
 - Retrieving all instances of a model.
-- Retriving one specific instance of a model using a unique identifier.
+- Retrieving one specific instance of a model using a unique identifier.
 - Creating a new instance of a model.
 - Updating an instance of a model.
 - Deleting an instance of a model.
@@ -288,7 +288,7 @@ func create(req: Request) throws -> Future<Post> {
 
 
 
-A couple of things has changed here. In Vapor 2 you might have used `req.data`, `req.form` or `req.json`  for retrieving the body of a request, but in Vapor 3 this is now contained in a `ContentContainer` on the request. Next we can use `decode` to transform the body into the expected type using the `Decodable` protocol from Swift 4. Remember that our `Post` model is conforming to `Codable` in order for this to work.
+A couple of things have changed here. In Vapor 2 you might have used `req.data`, `req.form` or `req.json`  for retrieving the body of a request, but in Vapor 3 this is now contained in a `ContentContainer` on the request. Next we can use `decode` to transform the body into the expected type using the `Decodable` protocol from Swift 4. Remember that our `Post` model is conforming to `Codable` in order for this to work.
 
 Since calling `save` won't give us a back a `Post`, we will "transform" the result of calling `save` into the post we just saved. Note that `transform` is a helper coming from Vapor which simply uses `map` under the hood.
 
