@@ -223,7 +223,7 @@ Then we loop through our `optionalParameters` dictionary, map the elements to `U
 
 Finally, we ask `URLComponents` to try and return a `URL` for us.
 
-Simple and beautiful, all the hard work has been delegated onwards to `URLComponents` and we don't have to worry about whether to use `?` or `&` any more either.
+Simple and beautiful, all the hard work has been delegated onwards to `URLComponents` and we don't even have to worry about whether to use `?` or `&` any more.
 
 Lets see how it works:
 
@@ -263,6 +263,7 @@ func receivedURL(_ url: URL, contains parameter: String) -> String? {
     return items.first?.value
 }
 
+//test
 if let url = URL(string: "https://showsknownfrom.tv/shows/12345678?featured=true"),
    let parameter = receivedUrl(url, contains: "featured") {
     print("found \(parameter)")
@@ -346,7 +347,7 @@ And if you're more of a Carthage person, add this to your `Cartfile`
 
 `github "nodes-ios/Codemine" ~> 1.0`
 
-Update and you're done, you can now check if your URL contains specific query parameters or you can build your own `URL` and append parameters easily.
+Update and you're done, you can now check if your `URL` object contains specific query parameters or you can build your own `URL` and append parameters easily.
 
 Hey...you're welcome :)
 
