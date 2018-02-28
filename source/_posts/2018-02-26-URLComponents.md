@@ -47,22 +47,22 @@ The stage is set and we are ready to look at how to call our search service in o
 To generate a `URL` in our iOS app, we could write some code like this:
 
 ```swift
-func searchURL(with q: String, optionalParameters: [String: String]? = nil) -> URL? {
+func searchURL(with q: String, optionalParameters: [String: String] = [:]) -> URL? {
     var urlString = "https://showsknownfrom.tv/search"
 
     //Append query
     urlString.append("?q=\(q)")
 
     //Append parameters if any
-    if let optionalParameters = optionalParameters {
-        optionalParameters.forEach({key, value in
-            urlString.append("&\(key)=\(value)")
-        })
-    }
+    optionalParameters.forEach({key, value in
+        urlString.append("&\(key)=\(value)")
+    })
 
     return URL(string: urlString)
 }
 ```
+
+Granted, it could be worse, but note that we have to know about a "magic" `?` if this is the first parameter and `&` if it is any other parameters.
 
 Lets take it for a spin:
 
@@ -113,7 +113,7 @@ Remember the details page and the `featured` parameter?
 Here is how we could fetch that from the URL in our iOS app:
 
 ```swift
-func receivedUrl(_ url: URL, contains parameter: String) -> String? {
+func receivedURL(_ url: URL, contains parameter: String) -> String? {
     let urlString = url.absoluteString
 
     //add = to parameter
@@ -137,12 +137,11 @@ func receivedUrl(_ url: URL, contains parameter: String) -> String? {
 }
 
 //test
-if let url = URL(string: "https://showsknownfrom.tv/shows/12345678?featured=true") {
-    if let parameter = receivedUrl(url, contains: "featured") {
-        print("found \(parameter)") //gives us "found true"
-    } else {
-        print("not found")
-    }
+if let url = URL(string: "https://showsknownfrom.tv/shows/12345678?featured=true"),
+   let parameter = receivedUrl(url, contains: "featured") {
+    print("found \(parameter)")
+} else {
+    print("not found")
 }
 ```
 
@@ -196,7 +195,7 @@ Oh joy! That makes it so much easier for us to append query parameters, or check
 Armed with our new knowledge, lets now look at how we can use `URLComponents` to build a `URL` with parameters for us:
 
 ```swift
-func searchURL(with q: String, optionalParameters: [String: String]? = nil) -> URL? {
+func searchURL(with q: String, optionalParameters: [String: String] = [:]) -> URL? {
     let urlString = "https://showsknownfrom.tv/search"
 
     guard var urlComponents = URLComponents(string: urlString) else {
@@ -205,12 +204,10 @@ func searchURL(with q: String, optionalParameters: [String: String]? = nil) -> U
 
     var queryItems: [URLQueryItem] = [URLQueryItem(name: "q", value: q)]
 
-    if let optionalParameters = optionalParameters {
-        let optionalURLQueryItems = optionalParameters.map{
-            return URLQueryItem(name: $0, value: $1)
-        }
-        queryItems.append(contentsOf: optionalURLQueryItems)
+    let optionalURLQueryItems = optionalParameters.map {
+        return URLQueryItem(name: $0, value: $1)
     }
+    queryItems.append(contentsOf: optionalURLQueryItems)
 
     urlComponents.queryItems = queryItems
 
@@ -226,7 +223,7 @@ Then we loop through our `optionalParameters` dictionary, map the elements to `U
 
 Finally, we ask `URLComponents` to try and return a `URL` for us.
 
-Simple and beautiful, all the hard work has been delegated onwards to `URLComponents`.
+Simple and beautiful, all the hard work has been delegated onwards to `URLComponents` and we don't have to worry about whether to use `?` or `&` any more either.
 
 Lets see how it works:
 
@@ -254,7 +251,7 @@ Remember our example from before?
 Now that we know about `URLQueryItem`s, checking if a query parameter exists is soooo much easier:
 
 ```swift
-func receivedUrl(_ url: URL, contains parameter: String) -> String? {
+func receivedURL(_ url: URL, contains parameter: String) -> String? {
     guard
         let urlComponents = URLComponents(url: url, resolvingAgainstBaseURL: true),
         let queryItems = urlComponents.queryItems
@@ -262,14 +259,15 @@ func receivedUrl(_ url: URL, contains parameter: String) -> String? {
         return nil
     }
 
-    let items = queryItems.filter({ $0.name == parameter })
+    let items = queryItems.filter { $0.name == parameter }
     return items.first?.value
 }
 
-if let url = URL(string: "https://showsknownfrom.tv/shows/12345678?featured=true") {
-  if let value = receivedUrl(url, contains: "featured") {
-    print("found: \(value)")
-  }
+if let url = URL(string: "https://showsknownfrom.tv/shows/12345678?featured=true"),
+   let parameter = receivedUrl(url, contains: "featured") {
+    print("found \(parameter)")
+} else {
+    print("not found")
 }
 ```
 
@@ -287,7 +285,7 @@ extension URL {
           return nil
       }
 
-      let urlQueryItems = queryParameters.map{
+      let urlQueryItems = queryParameters.map {
           return URLQueryItem(name: $0, value: $1)
       }
       urlComponents.queryItems = urlQueryItems
@@ -299,7 +297,7 @@ extension URL {
         let queryItems = urlComponents.queryItems else {
             return nil
     }
-    let items = queryItems.filter({ $0.name == name })
+    let items = queryItems.filter { $0.name == name }
     return items.first?.value
   }
 }
@@ -310,18 +308,15 @@ Poetry, no less!
 Lets test it out:
 
 ```swift
-if let url = URL(string: "https://showsknownfrom.tv") {
-    if let appendedURL = url.append(queryParameters: ["q": "Halt and Catch Fire", "order" : "desc", "number": "100"]) {
+if let url = URL(string: "https://showsknownfrom.tv"),
+   let appendedURL = url.append(queryParameters: ["q": "Halt and Catch Fire", "order" : "desc", "number": "100"]) {
         print(appendedURL) //gives us: https://showsknownfrom.tv?q=Halt%20and%20Catch%20Fire&number=100&order=desc
-    }
 }
 
-if let url = URL(string: "https://showsknownfrom.tv/shows/12345678?featured=true&test=1") {
-    if let value = url.value(forParameter: "featured") {
-        print("found \(value)") //gives us: found true
-    }
+if let url = URL(string: "https://showsknownfrom.tv/shows/12345678?featured=true&test=1"),
+   let value = url.value(forParameter: "featured") {
+     print("found \(value)") //gives us: found true
 }
-
 ```
 
 Fantastic. We've composed two simple functions that makes our daily work so much easier when working with URL parameters.
@@ -347,7 +342,7 @@ So, if you're into Cocoapods, add this to your `podfile`:
 
 `pod 'Codemine', '~>1.0.0'`
 
-And if you're more of a Carthage guy, add this to your `Cartfile`
+And if you're more of a Carthage person, add this to your `Cartfile`
 
 `github "nodes-ios/Codemine" ~> 1.0`
 
