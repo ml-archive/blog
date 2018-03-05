@@ -1,6 +1,6 @@
 ---
 title:  URLComponents
-date: 2018-02-26 10:00:00
+date: 2018-03-05 10:00:00
 tags: ios,urlcomponents
 authorIds:
 - pebo
@@ -272,7 +272,7 @@ if let url = URL(string: "https://showsknownfrom.tv/shows/12345678?featured=true
 }
 ```
 
-Pretty right? At least compared to the initial version.
+Pretty, right? At least compared to the initial version.
 
 ## Composing and Decomposing URLs - The Easier Way
 Well, we made it this far! But can we do better? Of course we can!
