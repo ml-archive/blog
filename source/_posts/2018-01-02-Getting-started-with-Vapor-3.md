@@ -354,10 +354,6 @@ TODO
 
 TODO
 
-## Migrating from Vapor 2 to Vapor 3
-
-TODO - test out project or package
-
 ## Conclusion
 
 TODO
