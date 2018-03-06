@@ -174,7 +174,7 @@ import Vapor
 extension Post: Migration {
     static func prepare(on connection: MySQLConnection) -> Future<Void> {
         return MySQLDatabase.create(self, on: connection) { builder in
-            try builder.field(for: \.id)
+            builder.field(type: Int.mysqlColumn, for: \.id, isIdentifier: true)
             try builder.field(for: \.title)
             builder.field(type: .varChar(length: 191), for: \.body)
         }
@@ -182,7 +182,8 @@ extension Post: Migration {
 }
 ```
 
-Notice how we're using Swift 4's typesafe KeyPath syntax (`\.`) for referring to our Post's properties.
+Notice how we're using Swift 4's typesafe KeyPath syntax (`\.`) for referring to our `Post`'s properties. We can omit the type (so not `\Post.id`) because `builder` is already aware of our model type.
+Another thing to mention here is that we have to specify that the `id` field is an identifier. Because there is no variant of the `field` function that accepts only `KeyPath` and `isIdentifier` we also have to specify the column type (ie. `Int.mysqlColumn`).
 
 ### Routing
 
@@ -217,7 +218,7 @@ func routes(_ router: Router) throws {
 }
 ```
 
-Gor now, let's just create an empty controller:
+For now, let's just create an empty controller:
 
 ```swift
 final class PostController {
@@ -272,8 +273,6 @@ Next, there's the return type which is now `Future<[Post]>` instead of `[Post]` 
 
 If you've worked with any of the reactive programming frameworks, these concepts introduced in Vapor 3 should be familiar.
 
-
-
 #### Retrieving one specific instance
 
 To return one specific post (e.g. by requesting `GET /posts/:id`), we're going to request that instance like this:
@@ -286,7 +285,7 @@ func specific(req: Request) throws -> Future<Post> {
 
 This is very similar to what we've used to in Vapor 2 with the exception that fetching a parameter from the request now returns a `Future`.
 
-The accompanying entry in `routes.swift` should look like this:
+The accompanying entry in `routes.swift` looks like this:
 
 ```swift
 postsGroup.get(Post.parameter, use: postController.specific)
@@ -298,20 +297,23 @@ To create a new post (e.g. by requesting `POST /posts`), we're going to do it li
 
 ```swift
 func create(req: Request) throws -> Future<Post> {
-    let post = try req.content.decode(Post.self)
-    return post.save(on: req).transform(to: post)
+    return try req.content.decode(Post.self).save(on: req)
 }
 ```
 
-A couple of things have changed here. In Vapor 2 you might have used `req.data`, `req.form` or `req.json`  for retrieving the body of a request, but in Vapor 3 this is now contained in a `ContentContainer` on the request. Next we can use `decode` to transform the body into the expected type using the `Decodable` protocol from Swift 4. Remember that our `Post` model is conforming to `Codable` in order for this to work.
+A couple of things have changed here. In Vapor 2 you might have used `req.data`, `req.form` or `req.json` for retrieving the body of a request, but in Vapor 3 this is now contained in a `ContentContainer` on the request. Next we can use `decode` to transform the body into the expected type using the `Decodable` protocol from Swift 4. Remember that our `Post` model conforms to `Codable` in order for this to work.
 
-Since calling `save` won't give us a back a `Post`, we will "transform" the result of calling `save` into the post we just saved. Note that `transform` is a helper coming from Vapor which simply uses `map` under the hood.
+The POST route can be added as follows:
+
+```swift
+postsGroup.post(use: postController.create)
+```
 
 #### Updating an instance
 
 To update an existing post (e.g. by requesting `PATCH /posts/:id`), we're going to do it like this:
 
-```Swift
+```swift
 func update(req: Request) throws -> Future<Post> {
     let post = try req.parameter(Post.self)
     let content = try req.content.decode(Post.self)
@@ -327,9 +329,11 @@ func update(req: Request) throws -> Future<Post> {
 
 You could choose to do something similar to the code snippet for creating an instance, since Vapor will update the instance if the payload contains an `id` field. For this example, we've chosen to make it more explicit what is going on in the update process. In the above code, we're fetching the post that was specified in the request, we're decoding the post model that was giving in the body of the request and last we're updating the currently saved post. Note how we're using `flatMap` since we're creating a nested future inside of our closure.
 
+
+
 #### Deleting an instance
 
-To delete an existing post (e.g. by requesting `PATCH /posts/:id`), we're going to do it like this:
+To delete an existing post (e.g. by requesting `DELETE /posts/:id`), we're going to do it like this:
 
 ``` Swift
 func delete(req: Request) throws -> Future<HTTPResponse> {
