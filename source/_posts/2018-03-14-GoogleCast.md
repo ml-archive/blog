@@ -10,17 +10,17 @@ categories:
 
 Today, on the AppStore, you are able to find a rapidly increasing number of apps that will allow their users to watch video content. There might come a time when you will have to develop such an app, and functionality like GoogleCast and AirPlay is not only nice to have, but also expected by the end user.
 
-In this post we will tackle together the steps required in order to allow your users cast videos to a GoogleCast device.
+In this post we will tackle together the steps required in order to allow your users casting videos to a GoogleCast device
 
 ## Let's get started
 In order to be able to solely focus on integrating the GoogleCast SDK to our app, I have created a demo project that you can use in order to follow along.
 
-The project containt:
+The project containts:
 
 - Added GoogleCast SDK via CocoaPods [Setup Instructions](https://developers.google.com/cast/docs/ios_sender_setup#xcode_setup)
 - An AVPlayer that allows users to play video content locally
 
-As well you will need to register your application to Google Cast SDK Developer Console at: https://cast.google.com/publish/#/signup
+Furthermore you will need to register your application to Google Cast SDK Developer Console at: https://cast.google.com/publish/#/signup
 
 You can download the demo project here: [Started Project](https://github.com/nodes-projects/cast-nodes-ios/tree/cast-demo-start)
 
@@ -31,13 +31,13 @@ To establish a connection with a device we need our app to:
 
 - initialise the GCKCastContext
 - create a GCKSessionManager
-- add a the GCKUICastButton
+- add the GCKUICastButton
 
 For us to be able to do in a nice way the things mentioned above we need to create a CastManager, a Singleton instance in our case.
 
 In our manager we now create  `func initialise()` where we will do the initial setup. Here we will call `func initialiseContext()` and `createSessionManager()`
 
-Go ahead declare your `sessionManager`, which will be in charge of handling the connection to a device, and create the functions as following:
+Go ahead declare your `sessionManager`, which will be in charge of handling the connection to a device, and create the functions as follows:
 
 ```
 private var sessionManager: GCKSessionManager!
@@ -54,8 +54,8 @@ private func createSessionManager() {
 
 //initialises the GCKCastContext
 private func initialiseContext() {
-    //application Id registered from the registered application
-    let options = GCKCastOptions(discoveryCriteria: GCKDiscoveryCriteria.init(applicationID: "EC926046"))
+    //application Id from the registered application
+    let options = GCKCastOptions(discoveryCriteria: GCKDiscoveryCriteria.init(applicationID: "B21B9F3A"))
     GCKCastContext.setSharedInstanceWith(options)
     GCKCastContext.sharedInstance().useDefaultExpandedMediaControls = true
 }
@@ -93,7 +93,7 @@ You should be able at this stage to run the app and tap the GCKUICastButton to c
 
 ### Part 2: Listening to GCKSession changes
 
-Now that we are able to connect to a device, we need to inform our player that a connection is establish and play the video content on the receiving device instead.
+Now that we are able to connect to a device, we need to inform our player that a connection is established and play the video content on the receiving device instead.
 
 The steps required for this process are:
 
@@ -199,7 +199,7 @@ func startSelectedItemRemotely(_ mediaInfo: GCKMediaInformation, at time: TimeIn
 This will take the GCKMediaInformation we will create with the previous created functions and, if a cast session is available, load media on the remote client. Once this happens the completion will return true a cast session exists and false if we can not send a the GCKMediaInformation because there is no active cast session at the moment.
 
 
-Now that we have all the componesnts together to start streaming our first video go ahead and update your `listenForCastConnection` function in the Player class.
+Now that we have all the components to start streaming our first video go ahead and update your `listenForCastConnection` function in the Player class.
 
 ```
 private func listenForCastConnection() {
@@ -216,9 +216,9 @@ private func listenForCastConnection() {
 }
 ```
 
-Run your program, go to the PlayerViewController and start playing the video. Once the video is playing establish a connection with a cast device and see the video loading on the receiver. At this point our video will load on the receiver but our local player will continue playing the content as well. You guessed it, the fine tunning will be handled in the next part. :)
+Run your program, go to the PlayerViewController and start playing the video. Once the video is playing establish a connection with a cast device and see the video loading on the receiver. At this point our video will load on the receiver but our local player will continue playing the content as well. You guessed it, the fine tuning will be handled in the next part. :)
 
-### Part 4: Tunne player
+### Part 4: Tune player
 
 Now that our app is capable of playing content remotely we need to let our local player now that this is happening and stop or start it accordignly.
 
@@ -326,13 +326,13 @@ func getSessionCurrentTime(completion: (TimeInterval?) -> Void) {
 }
 ```
 
-Now in our Player me just need to ask our CastManager for the session current time and update the slider's possition and the current time label.
+Now in our Player we just need to ask our CastManager for the session current time and update the slider's possition and the current time label.
 
 ### Part 6: Adding GCKUIMiniMediaControlsViewController
 
-Now that we can control a cast session from the player while we are presenting the PlayerViewController, we might want to also be able to control the video playback as well if we have returned to the FirstViewController.
+Now that we can control a cast session from the player while we are presenting the PlayerViewController, we might also want  to control the video playback as well if we have returned to the FirstViewController.
 
-This is quite a simple process since most of the functionality is received together with the Google Cast SDK.
+This is a quite simple process since most of the functionality is received together with the Google Cast SDK.
 
 We just need to add a UIView which will play the role of a container for the GCKUIMiniMediaControlsViewController in our FirstViewController and add the GCKUIMiniMediaControlsViewController to it. As well we can be notified when should display the media controls by implementing the GCKUIMiniMediaControlsViewControllerDelegate.
 
