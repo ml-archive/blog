@@ -17,12 +17,12 @@ In order to be able to solely focus on integrating the GoogleCast SDK to our app
 
 The project containt:
 
-- Added GoogleCast SDK via CocoaPods (setup instructions: https://developers.google.com/cast/docs/ios_sender_setup#xcode_setup)
+- Added GoogleCast SDK via CocoaPods [Setup Instructions](https://developers.google.com/cast/docs/ios_sender_setup#xcode_setup)
 - An AVPlayer that allows users to play video content locally
 
 As well you will need to register your application to Google Cast SDK Developer Console at: https://cast.google.com/publish/#/signup
 
-You can download the demo project here:
+You can download the demo project here: [Started Project](https://github.com/nodes-projects/cast-nodes-ios/tree/cast-demo-start)
 
 
 ### Part 1: Connecting to a GoogleCast device
@@ -387,13 +387,15 @@ private func miniControllerStyle() {
 
 You can add this functions in your CastManager and call them inside the `initialise` and voila, you will have all the cast views matching your app's theme.
 
-To read more about this views you can go to Google's documentation here: https://developers.google.com/cast/docs/ios_sender_styles
+To read more about this views you can go to [Google's documentation here](https://developers.google.com/cast/docs/ios_sender_styles)
 
 ## Final notes
 
 You have now made it all the way to the end of this post, by the end of which, hopefully you will have a cleared picture of how to implement and handle interaction to the Google Cast SDK.
 
 Don't forget to download our final project and compare our results. :)
+
+[Final Project](https://github.com/nodes-projects/cast-nodes-ios/tree/cast-demo-final)
 
 Hope to see you next time!
 
