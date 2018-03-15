@@ -307,7 +307,28 @@ In order to do so you will need to stop the local video when a cast session star
 
 Good luck and do not worry if you don't manage to do so. You can check how this is done in the final version of the project.
 
-### Part 5: Adding GCKUIMiniMediaControlsViewController
+### Part 5: Tracking Cast Video progress
+
+Our app is now capable of playing videos both on cast and locally. You might notice though that playing the videos locally make the our UISlider and Current time label update, but this doesn't happen when we are casting a video.
+
+In order to receive information about the current time of the video casted we need to ask our remote client of the current stream possition. This can be done by calling `approximateStreamPosition()` on the remote client. Go ahead and create a function called `getSessionCurrentTime(completion: (TimeInterval?) -> Void)` which takes a closure parameter of TimeInterval, and add it to our CastManager.
+
+```
+func getSessionCurrentTime(completion: (TimeInterval?) -> Void) {
+    let castSession = sessionManager.currentCastSession
+    if castSession != nil {
+        let remoteClient = castSession?.remoteMediaClient
+        let currentTime = remoteClient?.approximateStreamPosition()
+        completion(currentTime)
+    } else {
+        completion(nil)
+    }
+}
+```
+
+Now in our Player me just need to ask our CastManager for the session current time and update the slider's possition and the current time label.
+
+### Part 6: Adding GCKUIMiniMediaControlsViewController
 
 Now that we can control a cast session from the player while we are presenting the PlayerViewController, we might want to also be able to control the video playback as well if we have returned to the FirstViewController.
 
@@ -330,11 +351,11 @@ For a more detailed implementation, including of how and when to present the GCK
 
 Run the app, open a video and a cast session and play the video remotly. Now press the back button in the UINavigationBar and you should be able to see the GCKUIMiniMediaControlsViewController in the bottom of your FirstViewController.
 
-### Part 6: Cutomise style of your default castViews
+### Part 7: Cutomise style of your default castViews
 
-By default when implementing the Google Cast SDK we receive a series of views that will be displayed when the user interacts with the cast funtionality. To read more about this views you can go to Google's documentation here: https://developers.google.com/cast/docs/ios_sender_styles
+With our app's functionality now completed, we can now start thinking about matching our app's theme with the castViews provided by the SDK.
 
-Often we would like this views to match with our app's theme. For us to do so we can modify the style properties of these views as follows:
+Since we would like our castViews to use the same pink color that we use all over out app, we can configure all the castViews to do the same by assining our color to the GCKUIStyle as follows.
 
 ```
 private func style() {
@@ -347,7 +368,11 @@ private func style() {
     castStyle.castViews.iconTintColor = UIColor.nodesColor
     castStyle.apply()
 }
+```
 
+Alternatively you can customise each castView individually the same way we are customising our miniController.
+
+```
 private func miniControllerStyle() {
     let castStyle = GCKUIStyle.sharedInstance()
     castStyle.castViews.mediaControl.miniController.backgroundColor = UIColor.nodesColor
@@ -360,9 +385,9 @@ private func miniControllerStyle() {
 }
 ```
 
-The first function `style` is in charge of customising all the castViews while the second function is customising only the miniController.
-
 You can add this functions in your CastManager and call them inside the `initialise` and voila, you will have all the cast views matching your app's theme.
+
+To read more about this views you can go to Google's documentation here: https://developers.google.com/cast/docs/ios_sender_styles
 
 ## Final notes
 
