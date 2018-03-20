@@ -1,13 +1,12 @@
 ---
-title:  Google Cast
-date: 2018-03-19 10:00:00
+title: Google Cast
+date: 2018-03-20 10:00:00
 tags: ios,google,googlecast
 authorIds:
 - anho
 categories:
 - iOS
 ---
-
 Today, on the App Store, you are able to find a rapidly increasing number of apps that will allow their users to watch video content. There might come a time when you will have to develop such an app, and functionality like Google Cast and AirPlay is not only nice to have, but also expected by the end user.
 
 In this post we will tackle together the steps required in order to allow your users casting videos to a Google Cast device
@@ -17,13 +16,12 @@ In order to be able to solely focus on integrating the Google Cast SDK to our ap
 
 The project containts:
 
-- Added Google Cast SDK via CocoaPods [Setup Instructions](https://developers.google.com/cast/docs/ios_sender_setup#xcode_setup)
-- An AVPlayer that allows users to play video content locally
+- Added Google Cast SDK via `CocoaPods` [Setup Instructions](https://developers.google.com/cast/docs/ios_sender_setup#xcode_setup)
+- An `AVPlayer` that allows users to play video content locally
 
 Furthermore you will need to register your application to Google Cast SDK Developer Console at: https://cast.google.com/publish/#/signup
 
-You can download the demo project here: [Started Project](https://github.com/nodes-ios/GoogleCast-Demo/tree/cast-demo-start)
-
+You can download the demo project here: [Starter Project](https://github.com/nodes-ios/GoogleCast-Demo/tree/cast-demo-start)
 
 ### Part 1: Connecting to a Google Cast device
 
@@ -398,4 +396,3 @@ Don't forget to download our final project and compare our results. :)
 [Final Project](https://github.com/nodes-ios/GoogleCast-Demo/tree/cast-demo-final)
 
 Hope to see you next time!
-
