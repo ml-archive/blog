@@ -21,8 +21,7 @@ The project containts:
 
 Furthermore you will need to register your application to Google Cast SDK Developer Console at: https://cast.google.com/publish/#/signup
 
-You can download the demo project here: [Starter Project](https://github.com/nodes-projects/cast-nodes-ios/tree/cast-demo-start)
-
+You can download the demo project here: [Starter Project](https://github.com/nodes-ios/GoogleCast-Demo/tree/cast-demo-start)
 
 ### Part 1: Connecting to a Google Cast device
 
@@ -394,6 +393,6 @@ You have now made it all the way to the end of this post, by the end of which, h
 
 Don't forget to download our final project and compare our results. :)
 
-[Final Project](https://github.com/nodes-projects/cast-nodes-ios/tree/cast-demo-final)
+[Final Project](https://github.com/nodes-ios/GoogleCast-Demo/tree/cast-demo-final)
 
 Hope to see you next time!
