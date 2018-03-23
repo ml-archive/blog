@@ -22,7 +22,7 @@ The project containts:
 
 Furthermore you will need to register your application to Google Cast SDK Developer Console at: https://cast.google.com/publish/#/signup
 
-You can download the demo project here: [Started Project](https://github.com/nodes-projects/cast-nodes-ios/tree/cast-demo-start)
+You can download the demo project here: [Starter Project](https://github.com/nodes-projects/cast-nodes-ios/tree/cast-demo-start)
 
 
 ### Part 1: Connecting to a Google Cast device
@@ -39,7 +39,7 @@ In our manager we now create `func initialise()` where we will do the initial se
 
 Go ahead and declare your `sessionManager`, which will be in charge of handling the connection to a device, and create the functions as follows:
 
-```
+```swift
 private var sessionManager: GCKSessionManager!
 
 func initialise() {
@@ -65,7 +65,7 @@ Now in your AppDelegate's `didFinishLaunchingWithOptions` call  `CastManager.sha
 
 The last thing needed is a `GCKUICastButton`. For this we need to create a `Castable` protocol that contains a `UIBarButtonItem` for our `UINavigationBar`. This will allow us to get the `GCKUICastButton` and add it to our `UINavigationBar` with just one line of code.
 
-```
+```swift
 import UIKit
 import GoogleCast
 
@@ -85,7 +85,7 @@ extension Castable where Self:UIViewController {
 
 Now go to our ViewControllers and add the following line inside `viewDidLoad`:
 
-```
+```swift
 navigationItem.rightBarButtonItems = [googleCastBarButton]
 ```
 
@@ -103,7 +103,7 @@ The steps required for this process are:
 
 First we will create the `CastSessionStatus` enum. Here we will add all posible states for our `GCKSession`.
 
-```
+```swift
 enum CastSessionStatus {
     case started
     case resumed
@@ -115,7 +115,7 @@ enum CastSessionStatus {
 
 In your `CastManager` declare a closure called `sessionStatusListener` that will be used to send changes back to the player. In order to initialise this we need to create the following:
 
-```
+```swift
 private var sessionStatusListener: ((CastSessionStatus, String) -> Void)?
 
 func addSessionStatusListener(listener: @escaping (CastSessionStatus, String) -> Void) {
@@ -125,7 +125,7 @@ func addSessionStatusListener(listener: @escaping (CastSessionStatus, String) ->
 
 Inside our `Player` class add the following function and call it in the  `init(frame: CGRect)`:
 
-```
+```swift
 private func listenForCastConnection() {
     let sessionStatusListener: (CastSessionStatus) -> Void = { status in
         print(status)
@@ -149,7 +149,7 @@ To do so we need to cover the following steps:
 
 In our `CastManager` add the following functions that together help create a `GCKMediaInformation`, containing `GCKMediaMetadata`, which will be send to the receiving device.
 
-```
+```swift
 func buildMediaInformation(with title: String, with description: String, with studio: String, with duration: TimeInterval, with movieUrl: String, with streamType: GCKMediaStreamType, with thumbnailUrl: String?) -> GCKMediaInformation {
     let metadata = buildMetadata(with: title, with: description, with: studio, with: thumbnailUrl)
 
@@ -178,7 +178,7 @@ Now that we can create a `GCKMediaInformation` we need to create a function that
 
 For this add the following function in your `CastManager`:
 
-```
+```swift
 func startSelectedItemRemotely(_ mediaInfo: GCKMediaInformation, at time: TimeInterval, completion: (Bool) -> Void) {
     let castSession = sessionManager.currentCastSession
 
@@ -201,7 +201,7 @@ This will take the `GCKMediaInformation` we will create with the previous create
 
 Now that we have all the components to start streaming our first video go ahead and update your `listenForCastConnection` function in the `Player` class.
 
-```
+```swift
 private func listenForCastConnection() {
     let sessionStatusListener: (CastSessionStatus) -> Void = { status in
         switch status {
@@ -224,7 +224,7 @@ Now that our app is capable of playing content remotely we need to let our local
 
 Once again update your `listenForCastConnection` function in the `Player` class as follow:
 
-```
+```swift
 private func listenForCastConnection() {
     let sessionStatusListener: (CastSessionStatus) -> Void = { status in
     switch status {
@@ -257,7 +257,7 @@ We will also need to create a few more functions to help us:
 
 Lets add the functions needed to pause or restart the cast session in our `CastManager`. These will let us play or pause the video playing remotely at any time. As the `startSelectedItemRemotely` function does, the following will as well return true in their completion if the cast session is still active and false if there is no cast session active.
 
-```
+```swift
 // MARK: - Play/Resume
 
 func playSelectedItemRemotely(to time: TimeInterval?, completion: (Bool) -> Void) {
@@ -313,7 +313,7 @@ Our app is now capable of playing videos both on cast and locally. You might not
 
 In order to receive information about the current time of the video casted we need to ask our remote client of the current stream possition. This can be done by calling `approximateStreamPosition()` on the remote client. Go ahead and create a function called `getSessionCurrentTime(completion: (TimeInterval?) -> Void)` which takes a closure parameter of `TimeInterval`, and add it to our `CastManager`.
 
-```
+```swift
 func getSessionCurrentTime(completion: (TimeInterval?) -> Void) {
     let castSession = sessionManager.currentCastSession
     if castSession != nil {
@@ -338,7 +338,7 @@ We just need to add a `UIView` which will play the role of a container for the `
 
 After you have created the container `UIView` add the to it `GCKUIMiniMediaControlsViewController` as follows:
 
-```
+```swift
 private func createMiniMediaControl() {
     let castContext = GCKCastContext.sharedInstance()
     miniMediaControlsViewController = castContext.createMiniMediaControlsViewController()
@@ -357,7 +357,7 @@ With our app's functionality now completed, we can now start thinking about matc
 
 Since we would like our castViews to use the same pink color that we use all over out app, we can configure all the castViews to do the same by assining our color to the `GCKUIStyle` as follows.
 
-```
+```swift
 private func style() {
     let castStyle = GCKUIStyle.sharedInstance()
     castStyle.castViews.backgroundColor = .white
@@ -372,7 +372,7 @@ private func style() {
 
 Alternatively you can customise each castView individually the same way we are customising our miniController.
 
-```
+```swift
 private func miniControllerStyle() {
     let castStyle = GCKUIStyle.sharedInstance()
     castStyle.castViews.mediaControl.miniController.backgroundColor = UIColor.nodesColor
