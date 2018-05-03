@@ -1,6 +1,6 @@
 ---
 title: Getting started with Vapor 3
-date: 2018-05-02 13:00:00
+date: 2018-05-03 13:00:00
 tags: vapor,swift,linux,swift4,vapor3
 authorIds:
 - stso
@@ -331,7 +331,7 @@ You could choose to do something similar to the code snippet for creating an ins
 
 To delete an existing post (e.g. by requesting `DELETE /posts/:id`), we're going to do it like this:
 
-``` Swift
+```swift
 func delete(req: Request) throws -> Future<HTTPResponse> {
     let post = try req.parameters.next(Post.self)
     return post.flatMap(to: HTTPResponse.self) { post in
@@ -348,8 +348,99 @@ TODO
 
 ### Commands
 
-TODO
+Creating a command is fairly simple and a bit more structured than in Vapor 2. For this example, let's have a look at how we can make a command that seeds a post. For a command, there's basically four parts you need to consider:
+
+- Arguments: Required input for the command.
+- Options: Optional input for the command.
+- Help: Text to aid the user in how to use the command.
+- Body: The actual work we want to perform when running the command.
+
+Let's start by creating a simple command and make it comform to `Command`:
+
+```swift
+public struct PostCommand: Command {
+
+}
+```
+
+#### Arguments
+
+To satisfy the conformance to `Command`, the first step would be to supply the available arguments for our command. Remember, that this list of commands are required in order to run the command. Go ahead and add the following to your `PostCommand`:
+
+```swift
+public var arguments: [CommandArgument] {
+    return [.argument(name: "title", help: ["Title of the post"])]
+}
+```
+
+This will make our `PostCommand` require a title to be passed in every time the command is run.
+
+#### Options
+
+Options are very similar to arguments:
+
+```swift
+public var options: [CommandOption] {
+    return [
+        .value(name: "body", short: "b", default: "This is a seeded post", help: ["Change post's body"]),
+    ]
+}
+```
+
+Options are optional and the command will run without these options being defined. 
+
+#### Help
+
+We also need to supply a help message to describe what our command does, this is done like this:
+
+```swift
+public var help: [String] {
+    return ["Seeds a post."]
+}
+```
+
+This help text will be included when running our command with `--help`.
+
+#### Command body
+
+The last step is to provide the actual work we want to perform in our command. For this simple command, we will simply create a `Post` based on the input:
+
+```swift
+public func run(using context: CommandContext) throws -> Future<Void> {
+    let title = try context.argument("title")
+    let body = context.options["body"] ?? "Seeded post"
+
+    return context.container.withNewConnection(to: .mysql) { db in
+        let post = Post(title: title, body: body)
+        return post.save(on: db).transform(to: ())
+    }
+}
+```
+
+Let's walk through the steps we take in the above snippet:
+
+- We pull out `title` from the arguments. Since arguments are required, we don't have to unwrap the value.
+- We pull out the `body` option from the dictionary of options and supply a fallback. Another approach would be to do `try context.requireOption("body")` since there's already a fallback defined in the option. However doing this would mean that we would need to always pass in the option flag (in this case `-b`) but we can omit the value for the option if we want to. A way to think of it is to consider the value of the option to be optional, and not the existence of the option.
+- Last we connect to our MySQL database and we create and save the post.
+
+#### Running our command
+
+With the command in place, the last thing to do is to register it in our `configure.swift`:
+
+```swift
+// Commands
+var commandConfig = CommandConfig.default()
+commandConfig.use(PostCommand(), as: "post-seeder")
+services.register(commandConfig)
+```
+
+We can now run our command:
+
+- `swift run Run post-seeder --help`: Outputs the help text
+- `swift run Run post-seeder "My post"`: Creates a post using the title and the default body. The body will be the one defined in `run`.
+- `swift run Run post-seeder "My post" -b`: Creates a post using the title and the default body. The body will be the one defined in the option.
+- `swift run Run post-seeder "My post" -b "My body"`: Creates a post using the title and body.
 
 ## Conclusion
 
-TODO
+Having worked with Vapor 3 for a couple of weeks we think that Vapor has come a long way. There's a steeper learning curve to the framework compared to older versions of the framework mostly due to the async principles adopted in Vapor 3. However, once you get past that, then the framework feels more mature and more fun to use compared to older versions. One example is the fact that using `Codable` heavily reduces boilerplate and introduces some more safety in your code. Overall we're excited about this major version and we can't wait to migrate all of our packages and work on more projects using this new version.
