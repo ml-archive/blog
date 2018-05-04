@@ -1,6 +1,6 @@
 ---
 title: Getting started with Vapor 3
-date: 2018-05-03 13:00:00
+date: 2018-05-07 13:00:00
 tags: vapor,swift,linux,swift4,vapor3
 authorIds:
 - stso
@@ -344,7 +344,67 @@ The above code is very similar to how we deal with updating a post, with the dif
 
 ### Views
 
-TODO
+In order to render views using Leaf, we need to pull in the dependency. Go ahead and update `Package.swift` by adding the following:
+
+```swift
+.package(url: "https://github.com/vapor/leaf.git", from: "3.0.0-rc"),
+```
+
+Next, register the provider in `configure.swift`:
+
+```swift
+try services.register(LeafProvider())
+```
+
+#### Rendering a view
+
+To render a simple a view, try and add a file called `hello.leaf` to your `Resources/Views` folder with the following content:
+
+```html
+Hello #(name)
+```
+
+To render this template file, we will have to do the folowing:
+
+```swift
+func renderHello(_ req: Request) throws -> Future<View> {
+    let leaf = try req.make(LeafRenderer.self)
+    let context: [String: String] = ["name": "VaporMan"]
+    return leaf.render("hello", context)
+}
+```
+
+Opening the route in your browser should output `Hello VaporMan`.
+
+#### Rendering a view with persisted data
+
+Most of the time you need to fetch something from the database using Fluent and then render a view using that data. Earlier we looked at how we can fetch and return a `Post` in a JSON format by doing:
+
+```swift
+func specific(req: Request) throws -> Future<Post> {
+    return try req.parameters.next(Post.self)
+}
+```
+
+Now let's have a look at how we can render a view displaying a single post. First thing is to create a new leaf file with the content:
+
+```html
+<h1>#(title)</h1>
+<p>#(body)</p>
+```
+
+The file will simply output the title and the body of the blog post. The function for rendering the view looks like this:
+
+```swift
+func renderSpecific(req: Request) throws -> Future<Post> {
+    return try req.parameters.next(Post.self)
+        .flatMap(to: View.self) { post in
+            return try req.make(LeafRenderer.self).render("post", post)
+    }
+}
+```
+
+Instead of returning the `Post` directly as in the previous function, this one transforms it to a `View` using `flatMap` since rendering a view returns another `Future`.
 
 ### Commands
 
