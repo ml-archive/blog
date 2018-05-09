@@ -1,6 +1,6 @@
 ---
 title: Getting started with Vapor 3
-date: 2018-05-07 13:00:00
+date: 2018-05-09 13:00:00
 tags: vapor,swift,linux,swift4,vapor3
 authorIds:
 - stso
@@ -11,7 +11,7 @@ categories:
 
 Vapor has been our go-to framework when we develop backend solutions at Nodes since January 2017. A lot has happened during the past year, especially when we saw Vapor 2 got released back in May. Our overall opinion is that Vapor 2 has been a mature and a fairly feature-rich framework we've enjoyed working with. That said, there is still room for improvement and therefore we have been watching the development of Vapor 3 with excitement.
 
-As of the writing of this post, the latest version of the next major version of Vapor is [3.0.0 RC 2.7](https://github.com/vapor/vapor/releases/tag/3.0.0-rc.2.7) and we expect to see the final release within weeks. Although the major version hasn't yet hit a stable version, we wanted to take some time to have a look at how these changes will affect our daily work. We have developed and help maintain around 25+ customer projects and 30+ open source packages so it's important for us to know the amount of changes needed in order to migrate these projects to Vapor 3. Some of these projects are already in the progress of being migrated and some of still to be worked on. Our progress of migrating our open source projects can be found on this [GitHub project board](https://github.com/nodes-vapor/readme/projects/2).
+A couple of days ago, [Vapor released the next major version](https://medium.com/@codevapor/vapor-3-0-0-released-8356fa619a5d) and we've been following along since the betas came out to see how the changes will affect our daily work. We have developed and help maintain around 25+ customer projects and 30+ open source packages so it's important for us to know the amount of changes needed in order to migrate these projects to Vapor 3. Some of these projects are already in the progress of being migrated and some of still to be worked on. Our progress of migrating our open source projects can be found on this [GitHub project board](https://github.com/nodes-vapor/readme/projects/2).
 
 ## Our focus areas
 
@@ -19,13 +19,13 @@ Before diving in and setting up our first Vapor 3 project, let's reflect a bit o
 
 - Configuration: How do we setup providers and middlewares and how do we configure these?
 - Models: How do we create a model and how do we query it?
-- Routing: How do we setup routes for our project and how does these interface with our controllers?
-- Views: How do we setup views for our project?
-- Commands: How do we setup and run commands?
+- Routing: How do we set up routes for our project and how do these interface with our controllers?
+- Views: How do we set up views for our project?
+- Commands: How do we set up and run commands?
 
 ## Getting started with Vapor 3
 
-Please note that this post is based on a release candidate of the framework and things might change before we see the official release of the next major version of Vapor.
+Please note that some some of the dependencies used in this post (e.g. Leaf) is based on release candidates and things might change before we see the official releases.
 
 ### Setting up a project
 
@@ -230,8 +230,8 @@ We'll want to be able to return (arrays of) `Post` instances in our routes. Conf
 extension Post: Content {}
 ```
 
-> The default encoding for `Content` is JSON. This is due to the `defaultMediaType` for Content is set to `.json`:
-> ```
+> The default encoding for `Content` is JSON. This is due to the fact that `defaultMediaType` for Content is set to `.json`:
+> ```swift
 > public static var defaultMediaType: MediaType {
 >     return .json
 > }
@@ -325,7 +325,7 @@ func update(req: Request) throws -> Future<Post> {
 }
 ```
 
-You could choose to do something similar to the code snippet for creating an instance, since Vapor will update the instance if the payload contains an `id` field. For this example, we've chosen to make it more explicit what is going on in the update process. In the above code, we're fetching the post that was specified in the request, we're decoding the post model that was giving in the body of the request and last we're updating the currently saved post. Note how we're using a statically variant of `flatMap` that takes in two futures. We need this variant since getting the `Post` from the parameter and decoding the `Post` from request content returns futures and we want to do a transformation once both values has arrived. Finally we use a `flatMap` since we are returning a `Future` in the closure when calling `save`.
+You could choose to do something similar to the code snippet for creating an instance, since Vapor will update the instance if the payload contains an `id` field. For this example, we've chosen to make it more explicit what is going on in the update process. In the above code, we're fetching the post that was specified in the request, we're decoding the post model that was giving in the body of the request and last we're updating the currently saved post. Note how we're using a static variant of `flatMap` that takes in two futures. We need this variant since getting the `Post` from the parameter and decoding the `Post` from request content both returns futures and we want to do a transformation once their values has arrived. Finally we use a `flatMap` since we are returning a `Future` in the closure when calling `save`.
 
 #### Deleting an instance
 
@@ -481,7 +481,7 @@ Let's walk through the steps we take in the above snippet:
 
 - We pull out `title` from the arguments. Since arguments are required, we don't have to unwrap the value.
 - We pull out the `body` option from the dictionary of options and supply a fallback. Another approach would be to do `try context.requireOption("body")` since there's already a fallback defined in the option. However doing this would mean that we would need to always pass in the option flag (in this case `-b`) but we can omit the value for the option if we want to. A way to think of it is to consider the value of the option to be optional, and not the existence of the option.
-- Last we connect to our MySQL database and we create and save the post.
+- Lastly we connect to our MySQL database and we create and save the post.
 
 #### Running our command
 
