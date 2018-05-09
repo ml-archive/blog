@@ -50,7 +50,7 @@ swift --version
 With that in place, we can now create our Vapor 3 project. For this project, we're going to use the [`api-template`](https://github.com/vapor/api-template/tree/beta) since that has been updated for Vapor 3 (using the `beta` branch):
 
 ```bash
-vapor new vapor-3-test --template=api --branch=beta
+vapor new vapor-3-test --template=api
 ```
 
 As always, let's make the Vapor toolbox generate our Xcode project for us:
@@ -212,7 +212,6 @@ import Vapor
 func routes(_ router: Router) throws {
     let postsGroup = router.grouped("posts")
     let postController = PostController()
-
 }
 ```
 
@@ -261,7 +260,7 @@ postsGroup.get(use: postController.all)
 
 There's a couple of things to notice in the first snippet when we compare it to Vapor 2. 
 
-First is that we're passing the `Request` to the `query` function. This is because `Request` is a (`Container`)[https://docs.vapor.codes/3.0/concepts/services/#container] which has access to the registered services, including the database. This makes it very explicit for who is responsible for performing the lookup. Without having tried it yet, this should help us make tests as well since we should potentially be able mock the database connection and instead of hitting a database, we could return in-memory objects created in our tests.
+First is that we're passing the `Request` to the `query` function. This is because `Request` is a [`Container`](https://docs.vapor.codes/3.0/concepts/services/#container) which has access to the registered services, including the database. This makes it very explicit for who is responsible for performing the lookup. Without having tried it yet, this should help us make tests as well since we should potentially be able mock the database connection and instead of hitting a database, we could return in-memory objects created in our tests.
 
 Next, there's the return type which is now `Future<[Post]>` instead of `[Post]` as you might have expected coming from Vapor 2. [Async, Streams, Futures and Reactive Programming](https://docs.vapor.codes/3.0/async/getting-started/) are central topics in Vapor 3 in order to increase the performance of the framework due to their non-blocking nature and it will change the way we work. Without going too much into details, one way of thinking of the concepts could be:
 
