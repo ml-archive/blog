@@ -49,7 +49,7 @@ Also make sure you're running Swift 4.1 as this is now required in Vapor 3:
 swift --version
 ```
 
-With that in place, we can now create our Vapor 3 project. For this project, we're going to use the [`api-template`](https://github.com/vapor/api-template/tree/beta) since that has been updated for Vapor 3 (using the `beta` branch):
+With that in place, we can now create our Vapor 3 project. For this project, we're going to use the [`api-template`](https://github.com/vapor/api-template):
 
 ```bash
 vapor new vapor-3-test --template=api
