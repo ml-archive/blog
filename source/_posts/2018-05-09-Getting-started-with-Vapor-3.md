@@ -9,7 +9,7 @@ categories:
 - Vapor
 ---
 
-This blog post has been written by [Siemen Sikkema](https://twitter.com/siemensikkema) and [Steffen D. Sommer](https://twitter.com/steffendsommer).
+This blog post has been written by [Steffen D. Sommer](https://twitter.com/steffendsommer) and [Siemen Sikkema](https://twitter.com/siemensikkema).
 
 Vapor has been our go-to framework when we develop backend solutions at Nodes since January 2017. A lot has happened during the past year, especially when we saw Vapor 2 got released back in May. Our overall opinion is that Vapor 2 has been a mature and a fairly feature-rich framework we've enjoyed working with. That said, there is still room for improvement and therefore we have been watching the development of Vapor 3 with excitement.
 
