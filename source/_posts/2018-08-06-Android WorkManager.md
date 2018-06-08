@@ -24,6 +24,8 @@ So let's split up the user story in 3 use cases:
 
 For each use case we will make a `Worker` class. To do that we need to make a class and extend `Worker` which requires us to implement a `doWork()` method with a return type of a `WorkerResult` that can either be `WorkerResult.SUCCESS` or `WorkerResult.FAILURE`
 
+### Creating Workers
+
 #### 1) The first Worker compress our Bitmap into a smaller size, convert the Bitmap to ByteArray passes it in the WorkManager's outputData object and then we return WorkerResult.SUCCESS or WorkerResult.FAILURE.
 
 ```kotlin
@@ -101,7 +103,7 @@ GPS requirement is not yet supported in the `Constraints` class but we will inst
 
 Now lets create new instances of our 3 `Worker` classes: 
 
-```java
+```kotlin
 val imageCompressionTask = OneTimeWorkRequest.Builder(ImageCompressionTask::class.java).build()
 val addStickersTask = OneTimeWorkRequest.Builder(AddStickersTask::class.java).setConstraints(constraint).build()
 val uploadImageTask = OneTimeWorkRequest.Builder(UploadImageTask::class.java).setConstraints(constraint).build()
@@ -111,7 +113,7 @@ We make them as `OneTimeWorkRequest` because we only want these `Worker` to exec
 
 Now we feed our `WorkManager` with our `Worker` instances in the order as described in our user story and we done!
 
-```java
+```kotlin
 WorkManager.getInstance().beginWith(imageCompressionTask).then(addStickersTask).then(uploadImageTask).enqueue()
 ```
 
