@@ -116,7 +116,7 @@ The `WorkManager` is very useful for tasks running in background threads and for
 - Uploading data
 - Download data
 - Bitmap Compression work
-- GPS real time location logging.
+- GPS location logging.
 - Chat apps
 - Playlists apps 
 
