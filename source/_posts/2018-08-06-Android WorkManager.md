@@ -13,7 +13,7 @@ First you have to add the dependency in your `build.gradle` file: </br>
 `implementation "android.arch.work:work-runtime:1.0.0-alpha02"`
 
 We will look at the following:
-##### - How to create a Worker </br>- How to schedule all Worker's to be executed in a particular order </br>- How to give a Worker instance an input and get its output
+##### - How to create a Worker </br>- How to create Constraints</br>- How to schedule all Worker's to be executed in a particular order </br>- How to give a Worker instance an input and get its output
 
 ### User story 
 
