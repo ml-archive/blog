@@ -24,7 +24,7 @@ So let's split up the user story in 3 use cases:
 
 For each use case we will make a `Worker` class. To do that we need to make a class and extend `Worker` which requires us to implement a `doWork()` method with a return type of a `WorkerResult` that can either be `WorkerResult.SUCCESS` or `WorkerResult.FAILURE`
 
-#### 1) Here is the first Worker which compress our image into a smaller size and returns either WorkerResult.SUCCESS or WorkerResult.FAILURE. 
+#### 1) Here is the first Worker which compress our image into a smaller size and returns either WorkerResult.SUCCESS or WorkerResult.FAILURE
 
 ```java
  class ImageCompressionTask extends Worker {
@@ -50,7 +50,7 @@ For each use case we will make a `Worker` class. To do that we need to make a cl
 ```
 
 
-#### 2) The second Worker is the one which add some weather and location stickers on the image:
+#### 2) The second Worker is the one which add some weather and location stickers on the image
 ```java
 class AddStickersTask extends Worker {
    @NonNull
@@ -121,7 +121,8 @@ The `WorkManager` is very useful for tasks running in background threads and for
 - Bitmap Compression work
 - GPS location logging.
 - Chat apps
-- Playlists apps 
+- Playlists apps
+- Repetitive work that needs to run on background threads 
 
 
 Tags: WorkManager, Android, Jetpack, Asynchronous.
