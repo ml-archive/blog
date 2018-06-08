@@ -15,7 +15,7 @@ First you have to add the dependency in your `build.gradle` file: </br>
 ### User story 
 
 To demonstrate how to use `WorkManager` we will start by establishing a made-up user story.
-In our imaginary app QuickSnapper, we press a shutter button and the app will take a picture and apply some stickers on it and upload it all in one automatic process thanks to the WorkerManager.
+In our imaginary app QuickSnapper, we press a shutter button and the app will take a picture and apply some stickers on it and upload it all in one automatic process thanks to the WorkManager.
 
 So let's split up the user story in 3 use cases:
 
@@ -122,7 +122,7 @@ WorkManager.getInstance().beginWith(imageCompressionTask).then(addStickersTask).
 ## When should you use it?
 The `WorkManager` is very useful for tasks running in background threads and for tasks which need to fulfill certain conditions before they can run or automated tasks running in a certain order.
 
-#### Some example of when WorkingManager also can be really useful
+#### Some example of when WorkManager also can be really useful
 
 - Uploading data
 - Download data
@@ -135,13 +135,12 @@ The `WorkManager` is very useful for tasks running in background threads and for
 
 ### Links
 
-A more detailed and advanced tutorial on how to work with WorkMananger from Google:
+A more detailed and advanced tutorial on how to work with WorkManager from Google:
 https://codelabs.developers.google.com/codelabs/android-workmanager/#0
 
 More about WorkManager:
 </br>
 https://developer.android.com/topic/libraries/architecture/workmanager
-
 
 
 <sub>Tags: WorkManager, Android, Jetpack, Threads.</sub>
