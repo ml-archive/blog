@@ -144,4 +144,4 @@ https://developer.android.com/topic/libraries/architecture/workmanager
 
 
 
-<sub>Tags: WorkManager, Android, Jetpack, Asynchronous.</sub>
+<sub>Tags: WorkManager, Android, Jetpack, Threads.</sub>
