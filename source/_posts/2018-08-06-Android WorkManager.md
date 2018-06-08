@@ -135,7 +135,7 @@ The `WorkManager` is very useful for tasks running in background threads and for
 
 ### Links
 
-A more detailed tutorial on how to work with WorkMananger from Google:
+A more detailed and advanced tutorial on how to work with WorkMananger from Google:
 https://codelabs.developers.google.com/codelabs/android-workmanager/#0
 
 More about WorkManager:
