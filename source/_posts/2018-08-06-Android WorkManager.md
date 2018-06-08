@@ -87,9 +87,8 @@ val constraint = Constraints.Builder().setRequiredNetworkType(NetworkType.CONNEC
 
 GPS requirement is not yet supported in the `Constraints` class but we will instead check for enabled GPS in the `AddStickersTask` and if it’s not enabled we will return `FAILURE` and the next `WorkManager` won’t proceed to the next `Worker`
 
-### Putting everything together 
 
-Now lets create new instances of our 3 `Worker` classes: 
+#### Now lets use our Worker classes
 
 ```kotlin
 val imageCompressionTask = OneTimeWorkRequest.Builder(ImageCompressionTask::class.java).build()
@@ -99,7 +98,69 @@ val uploadImageTask = OneTimeWorkRequest.Builder(UploadImageTask::class.java).se
 
 We make them as `OneTimeWorkRequest` because we only want these `Worker` to execute once. `PeriodicWorkRequest` can be used in cases where you want a `Worker` for some repetitive work which can run in intervals you can set.
 
-Now we feed our `WorkManager` with our `Worker` instances in the order as described in our user story and we done!
+### Input data and output data
+
+#### Input data
+
+As it is right now, our `ImageCompressionTask` doesn't have any Bitmap to compress. So we have to give it a `Bitmap` before it begins its work. We can pass a `Bitmap` or any type of data to our `Worker` classes by sending it an instance of a `Data` object from the `WorkerManger` API. 
+
+The `Data` class dosn't support `Bitmap` but it does support `ByteArray`, so we can convert our `Bitmap` to a `ByteArray`
+by using this static method to create a new intance of `Data` containg our `ByteArray`
+
+```kotlin
+val compressionData = Data.fromByteArray(getBitmapByteArray())
+```
+
+Now we just add a `String` tag to identify and retrieve our `Worker` later and we give it the `compressionData` like this:
+
+```kotlin
+ val imageCompressionTask = OneTimeWorkRequest.Builder(ImageCompressionTask::class.java).addTag(TAG_WORKER_1).setInputData(compressionData).build()
+```
+
+#### Working with the input data in the Worker class
+
+Now when we have given our `ImageCompressionTask`  some input data, we can extrat that by just calling the `inputData` object provided from the `Worker` class and when we are finished with our data, we can make it put in the `outputData` object so we can retrieve it outside of the `ImageCompressionTask` class 
+
+```kotlin
+class ImageCompressionTask() : Worker() {
+
+    override fun doWork(): WorkerResult {
+        try {
+             //get the input data
+            val bitmapByteArray = Data.toByteArray(inputData)
+            val bitmap = BitmapFactory.decodeStream(ByteArrayInputStream(bitmapByteArray))
+
+            val newBitmap = Bitmap.createScaledBitmap(bitmap, 500, 500, false)
+
+            //Save the bitmap back to the outputData
+            outputData = Data.fromByteArray(getBitmapByteArrayHelper(newBitmap))
+            return WorkerResult.SUCCESS
+        } catch (e: IllegalArgumentException) {
+            return WorkerResult.FAILURE
+        }
+    }
+
+
+```
+
+#### Output data
+
+Usually we want to get the output data from a `Worker` when it have finished its work. To do that we can listen on a specific `Worker` by retrieving the `Worker` by its tag: 
+
+     WorkManager.getInstance().getStatusesByTag(TAG_WORKER_1).observe(this, Observer { workerStatusList ->
+            val workstatus = workerStatusList?.get(0)
+            workstatus?.let {
+                if (it.state.isFinished) {
+                    val outputData = it.outputData
+                }
+            }
+        }) 
+
+
+
+### Putting everything together
+
+Now we just feed our `WorkManager` with our `Worker`'s  in the order as described in our user story and we done!
 
 ```kotlin
 WorkManager.getInstance().beginWith(imageCompressionTask).then(addStickersTask).then(uploadImageTask).enqueue()
