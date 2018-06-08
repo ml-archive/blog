@@ -2,7 +2,7 @@
 
 ## Introduction
 
-`WorkManager` is a new API in Android Architecture Components introduced in the Google I/O 2018. It simplifies and makes it much easier to do work on background threads. The `WorkManager` schedules tasks as instances of the `Worker` class and can schedule these workers based on certain conditions which you can set by using the provided The `Constraints` class. Examples of conditions you can set from the `Constraints` class, can be things like available internet/wifi connection or if a charger is connected. The `WorkManager` can also schedule all `Worker` instance to launch in any order and pass data from one `Worker` to another `Worker` via its `inputData` and `outputData` objects.
+`WorkManager` is a new API in Android Architecture Components introduced in the Google I/O 2018. It simplifies and makes it much easier to do work on background threads. The `WorkManager` schedules tasks as instances of the `Worker` class and can schedule these workers based on certain conditions which you can set by using the provided The `Constraints` class. Examples of conditions you can set from the `Constraints` class, can be things like available internet/wifi connection or if a charger is connected. The `WorkManager` can also schedule all `Worker` instances to launch in any order and we can also pass input data into a `Worker` and get the output data. 
 </br>
 </br>Also a very important note about [`WorkManager`](https://developer.android.com/topic/libraries/architecture/workmanager): </br> *“WorkManager is intended for tasks that require a guarantee that the system will run them even if the app exits...”*
 
@@ -40,18 +40,10 @@ For each use case we will make a `Worker` class. To do that we need to make a cl
             try {
                 //Create a compressed bitmap
                 newBitmap = Bitmap.createScaledBitmap(bitmap, 500, 500, false)
-                //Save it to the WorkManager's outPutData
-                outputData = Data.fromByteArray(getBitmapByteArray(newBitmap))
                 return WorkerResult.SUCCESS
             } catch (e: IllegalArgumentException) {
                 return WorkerResult.FAILURE
             }
-        }
-
-        fun getBitmapByteArray(bitmap: Bitmap?): ByteArray {
-            val outputByteArray = ByteArrayOutputStream()
-            bitmap?.compress(Bitmap.CompressFormat.PNG, 0, outputByteArray)
-            return outputByteArray.toByteArray()
         }
     }
 ```
@@ -62,20 +54,11 @@ For each use case we will make a `Worker` class. To do that we need to make a cl
     class AddStickersTask : Worker() {
         override fun doWork(): WorkerResult {
             try {
-                val bitmapByteArray = Data.toByteArray(inputData)
-                val bitmap = BitmapFactory.decodeStream(ByteArrayInputStream(bitmapByteArray))
                 //Adding stickers on the bitmap...
-                outputData = Data.fromByteArray(getBitmapByteArray(bitmap))
                 return WorkerResult.SUCCESS
             } catch (e: Exception) {
                 return WorkerResult.FAILURE
             }
-        }
-
-        fun getBitmapByteArray(bitmap: Bitmap?): ByteArray {
-            val outputByteArray = ByteArrayOutputStream()
-            bitmap?.compress(Bitmap.CompressFormat.PNG, 0, outputByteArray)
-            return outputByteArray.toByteArray()
         }
     }
 ```
