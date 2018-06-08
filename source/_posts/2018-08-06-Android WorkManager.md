@@ -88,7 +88,7 @@ For each use case we will make a `Worker` class. To do that we need to make a cl
     }
 ```
 
-## Creating Constraints for workers
+### Creating Constraints for workers
 
 Now we have created 3 `Worker` classes and can chain them together so they run when each previous `Worker` has returned `WorkerResult.SUCCESS`. The `WorkManager` won't proceed if any of the `Worker` instances returns `WorkerResult.FAILURE`.
 
@@ -101,7 +101,7 @@ val constraint = Constraints.Builder().setRequiredNetworkType(NetworkType.CONNEC
 
 GPS requirement is not yet supported in the `Constraints` class but we will instead check for enabled GPS in the `AddStickersTask` and if it’s not enabled we will return `FAILURE` and the next `WorkManager` won’t proceed to the next `Worker`
 
-## Putting everything together 
+### Putting everything together 
 
 Now lets create new instances of our 3 `Worker` classes: 
 
