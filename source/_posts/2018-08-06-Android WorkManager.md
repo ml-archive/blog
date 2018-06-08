@@ -84,11 +84,12 @@ But first we have to make our `Constraints` for our `Worker` instances, so the `
 val constraint = Constraints.Builder().setRequiredNetworkType(NetworkType.CONNECTED).build()
 ```
 
-
 GPS requirement is not yet supported in the `Constraints` class but we will instead check for enabled GPS in the `AddStickersTask` and if it’s not enabled we will return `FAILURE` and the next `WorkManager` won’t proceed to the next `Worker`
 
 
 #### Now lets use our Worker classes
+
+Here we set our `Constraints` for each `Worker` and `build()` will return an instance of `OneTimeWorkRequest`
 
 ```kotlin
 val imageCompressionTask = OneTimeWorkRequest.Builder(ImageCompressionTask::class.java).build()
@@ -117,7 +118,7 @@ Now we just add a `String` tag to identify and retrieve our `Worker` later and w
  val imageCompressionTask = OneTimeWorkRequest.Builder(ImageCompressionTask::class.java).addTag(TAG_WORKER_1).setInputData(compressionData).build()
 ```
 
-#### Working with the input data in the Worker class
+#### Getting the input data in the Worker class
 
 Now when we have given our `ImageCompressionTask`  some input data, we can extrat that by just calling the `inputData` object provided from the `Worker` class and when we are finished with our data, we can make it put in the `outputData` object so we can retrieve it outside of the `ImageCompressionTask` class 
 
@@ -139,14 +140,12 @@ class ImageCompressionTask() : Worker() {
             return WorkerResult.FAILURE
         }
     }
-
-
 ```
 
 #### Output data
 
 Usually we want to get the output data from a `Worker` when it have finished its work. To do that we can listen on a specific `Worker` by retrieving the `Worker` by its tag: 
-
+```kotlin
      WorkManager.getInstance().getStatusesByTag(TAG_WORKER_1).observe(this, Observer { workerStatusList ->
             val workstatus = workerStatusList?.get(0)
             workstatus?.let {
@@ -155,7 +154,7 @@ Usually we want to get the output data from a `Worker` when it have finished its
                 }
             }
         }) 
-
+```
 
 
 ### Putting everything together
