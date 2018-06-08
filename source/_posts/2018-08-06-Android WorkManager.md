@@ -74,7 +74,7 @@ For each use case we will make a `Worker` class. To do that we need to make a cl
     }
 ```
 
-### Creating Constraints for workers
+## Creating Constraints for workers
 
 Now we have created 3 `Worker` classes and can chain them together so they run when each previous `Worker` has returned `WorkerResult.SUCCESS`. The `WorkManager` won't proceed if any of the `Worker` instances returns `WorkerResult.FAILURE`.
 
@@ -99,7 +99,7 @@ val uploadImageTask = OneTimeWorkRequest.Builder(UploadImageTask::class.java).se
 
 We make them as `OneTimeWorkRequest` because we only want these `Worker` to execute once. `PeriodicWorkRequest` can be used in cases where you want a `Worker` for some repetitive work which can run in intervals you can set.
 
-### Input data and output data
+## Input data and output data
 
 #### Input data
 
@@ -157,7 +157,7 @@ Usually we want to get the output data from a `Worker` when it have finished its
 ```
 
 
-### Putting everything together
+## Putting everything together
 
 Now we just feed our `WorkManager` with our `Worker`'s  in the order as described in our user story and we done!
 
