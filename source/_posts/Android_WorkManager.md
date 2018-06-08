@@ -77,8 +77,9 @@ class UploadImageTask extends Worker {
 }
 ```
 
+### Creating Constraints for workers
 
-Now we have created 3 `Worker` classes and want to chain them together so they run when each previous `Worker` has returned `WorkerResult.SUCCESS`. The `WorkManager` won't proceed if any of the `Worker` instances returns `WorkerResult.FAILURE`.
+Now we have created 3 `Worker` classes and can chain them together so they run when each previous `Worker` has returned `WorkerResult.SUCCESS`. The `WorkManager` won't proceed if any of the `Worker` instances returns `WorkerResult.FAILURE`.
 
 But first we have to make our `Constraints` for our `Worker` instances, so the `Worker` only runs if the conditions we have set in the `Constraints` class is met. 
 
@@ -91,6 +92,8 @@ Constraints constraint = new Constraints
 
 
 GPS requirement is not yet supported in the `Constraints` class but we will instead check for enabled GPS in the `AddStickersTask` and if it’s not enabled we will return `FAILURE` and the next `WorkManager` won’t proceed to the next `Worker`
+
+### Putting everything together 
 
 Now lets create new instances of our 3 `Worker` classes: 
 
