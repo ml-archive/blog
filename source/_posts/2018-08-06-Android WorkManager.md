@@ -133,7 +133,7 @@ The `WorkManager` is very useful for tasks running in background threads and for
 - Repetitive work that needs to run on background threads 
 
 
-#### Links
+### Links
 
 A more detailed tutorial on how to work with WorkMananger from Google:
 https://codelabs.developers.google.com/codelabs/android-workmanager/#0
