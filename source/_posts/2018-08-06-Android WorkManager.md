@@ -12,6 +12,8 @@
 First you have to add the dependency in your `build.gradle` file: </br>
 `implementation "android.arch.work:work-runtime:1.0.0-alpha02"`
 
+### User story 
+
 To demonstrate how to use `WorkManager` we will start by establishing a made-up user story.
 In our imaginary app QuickSnapper, we press a shutter button and the app will take a picture and apply some stickers on it and upload it all in one automatic process thanks to the WorkerManager.
 
@@ -129,6 +131,17 @@ The `WorkManager` is very useful for tasks running in background threads and for
 - Chat apps
 - Playlists apps
 - Repetitive work that needs to run on background threads 
+
+
+#### Links
+
+A more detailed tutorial on how to work with WorkMananger from Google:
+https://codelabs.developers.google.com/codelabs/android-workmanager/#0
+
+More about WorkManager:
+</br>
+https://developer.android.com/topic/libraries/architecture/workmanager
+
 
 
 Tags: WorkManager, Android, Jetpack, Asynchronous.
