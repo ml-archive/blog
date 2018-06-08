@@ -2,7 +2,7 @@
 
 ## Introduction
 
-`WorkManager` is a new API in Android Architecture Components introduced in the Google I/O 2018. It simplifies and makes it much easier to do work on background threads. The `WorkManager` schedules tasks as instances of the `Worker` class and can schedule these workers based on certain conditions, which you can set by using the provided The `Constraints` class. Examples of conditions you can set from the `Constraints` class, can be things like available internet/wifi connection or if a charger is connected. The `WorkManager` can also schedule all `Worker` instance you have to launch in any order you wish.
+`WorkManager` is a new API in Android Architecture Components introduced in the Google I/O 2018. It simplifies and makes it much easier to do work on background threads. The `WorkManager` schedules tasks as instances of the `Worker` class and can schedule these workers based on certain conditions, which you can set by using the provided The `Constraints` class. Examples of conditions you can set from the `Constraints` class, can be things like available internet/wifi connection or if a charger is connected. The `WorkManager` can also schedule all `Worker` instance you have to launch in any order you wish and pass data from one `Worker` to another `Worker`.
 </br>
 </br>Also a very important note about [`WorkManager`](https://developer.android.com/topic/libraries/architecture/workmanager): </br> *“WorkManager is intended for tasks that require a guarantee that the system will run them even if the app exits...”*
 
@@ -24,57 +24,64 @@ So let's split up the user story in 3 use cases:
 
 For each use case we will make a `Worker` class. To do that we need to make a class and extend `Worker` which requires us to implement a `doWork()` method with a return type of a `WorkerResult` that can either be `WorkerResult.SUCCESS` or `WorkerResult.FAILURE`
 
-#### 1) Here is the first Worker which compress our image into a smaller size and returns either WorkerResult.SUCCESS or WorkerResult.FAILURE
+#### 1) Here is the first Worker which compress our Bitmap into a smaller size, convert the Bitmap to ByteArray so we can pass it in the WorkManager's outputData which is a data-holder object shared between workers and then we return either WorkerResult.SUCCESS or WorkerResult.FAILURE
 
-```java
- class ImageCompressionTask extends Worker {
+```kotlin
+    class ImageCompressionTask(val bitmap: Bitmap?) : Worker() {
+        override fun doWork(): WorkerResult {
+            val newBitmap: Bitmap?
+            try {
+                //Create a compressed bitmap
+                newBitmap = Bitmap.createScaledBitmap(bitmap, 500, 500, false)
+                //Save it to the WorkManager's OutPutData
+                outputData = Data.fromByteArray(getBitmapByteArray(newBitmap))
+                return WorkerResult.SUCCESS
+            } catch (e: IllegalArgumentException) {
+                return WorkerResult.FAILURE
+            }
+        }
 
-   private Bitmap bitmap;
-
-   public ImageCompressionTask(Bitmap bitmap) {
-       this.bitmap = bitmap;
-   }
-
-   @NonNull
-   @Override
-   public WorkerResult doWork() {
-       Bitmap newBitmap;
-       try {
-           newBitmap = Bitmap.createScaledBitmap(bitmap, 500, 500, false);
-           return WorkerResult.SUCCESS;
-       } catch (IllegalArgumentException e) {
-           return WorkerResult.FAILURE;
-       }
-   }
-}
+        fun getBitmapByteArray(bitmap: Bitmap?): ByteArray {
+            val outputByteArray = ByteArrayOutputStream()
+            bitmap?.compress(Bitmap.CompressFormat.PNG, 0, outputByteArray)
+            return outputByteArray.toByteArray()
+        }
+    }
 ```
 
 
-#### 2) The second Worker is the one which add some weather and location stickers on the image
+#### 2) In the second Worker we retrive the Bitmap from the Workers inputData objec and adds some weather and location stickers on the image
 ```java
-class AddStickersTask extends Worker {
-   @NonNull
-   @Override
-   public WorkerResult doWork() {
-       if(IsGpsEnabled()){
-       return WorkerResult.SUCCESS;
-       }else{
-        WorkerResult.FAILURE
-       }
-   }
-}
+    class AddStickersTask : Worker() {
+        override fun doWork(): WorkerResult {
+            try {
+                val bitmapByteArray = Data.toByteArray(inputData)
+                val bitmap = BitmapFactory.decodeStream(ByteArrayInputStream(bitmapByteArray))
+                //Adding stickers on the bitmap...
+                outputData = Data.fromByteArray(getBitmapByteArray(bitmap))
+                return WorkerResult.SUCCESS
+            } catch (e: Exception) {
+                return WorkerResult.FAILURE
+            }
+        }
+
+        fun getBitmapByteArray(bitmap: Bitmap?): ByteArray {
+            val outputByteArray = ByteArrayOutputStream()
+            bitmap?.compress(Bitmap.CompressFormat.PNG, 0, outputByteArray)
+            return outputByteArray.toByteArray()
+        }
+    }
 ```
 
 
 #### 3) And the last Worker is the one which upload our image to a server
 ```java
-class UploadImageTask extends Worker {
-   @NonNull
-   @Override
-   public WorkerResult doWork() {
-       return WorkerResult.SUCCESS;
-   }
-}
+    class UploadImageTask : Worker() {
+        override fun doWork(): WorkerResult {
+            //Retrive bitmap and upload work here
+            return WorkerResult.SUCCESS
+        }
+    }
 ```
 
 ### Creating Constraints for workers
@@ -84,10 +91,7 @@ Now we have created 3 `Worker` classes and can chain them together so they run w
 But first we have to make our `Constraints` for our `Worker` instances, so the `Worker` only runs if the conditions we have set in the `Constraints` class is met. 
 
 ```java
-Constraints constraint = new Constraints
-       .Builder()
-       .setRequiredNetworkType(NetworkType.CONNECTED)
-       .build();
+        val constraint = Constraints.Builder().setRequiredNetworkType(NetworkType.CONNECTED).build()
 ```
 
 
@@ -98,9 +102,9 @@ GPS requirement is not yet supported in the `Constraints` class but we will inst
 Now lets create new instances of our 3 `Worker` classes: 
 
 ```java
-OneTimeWorkRequest imageCompressionTask = new OneTimeWorkRequest.Builder(ImageCompressionTask.class).build();
-OneTimeWorkRequest AddStickersTask = new OneTimeWorkRequest.Builder(AddStickersTask.class).setConstraints(constraint).build();
-OneTimeWorkRequest UploadImageTask = new OneTimeWorkRequest.Builder(UploadImageTask.class).setConstraints(constraint).build();
+        val imageCompressionTask = OneTimeWorkRequest.Builder(ImageCompressionTask::class.java).build()
+        val addStickersTask = OneTimeWorkRequest.Builder(AddStickersTask::class.java).setConstraints(constraint).build()
+        val uploadImageTask = OneTimeWorkRequest.Builder(UploadImageTask::class.java).setConstraints(constraint).build()
 ```
 
 We make them as `OneTimeWorkRequest` because we only want these `Worker` to execute once. `PeriodicWorkRequest` can be used in cases where you want a `Worker` for some repetitive work which can run in intervals you can set.
@@ -108,7 +112,7 @@ We make them as `OneTimeWorkRequest` because we only want these `Worker` to exec
 Now we feed our `WorkManager` with our `Worker` instances in the order as described in our user story and we done!
 
 ```java
-WorkManager.getInstance().beginWith(imageCompressionTask).then(AddStickersTask).then(UploadImageTask).enqueue();
+        WorkManager.getInstance().beginWith(imageCompressionTask).then(addStickersTask).then(uploadImageTask).enqueue()
 ```
 
 ## When should you use it?
