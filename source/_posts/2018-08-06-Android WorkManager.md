@@ -2,9 +2,9 @@
 
 ## Introduction
 
-`WorkManager` is a new API in Android Architecture Components introduced in the Google I/O 2018. It simplifies and makes it much easier to do work on background threads. The `WorkManager` schedules tasks as instances of the `Worker` class. It can schedule these workers based on certain conditions which you can set by using the provided `Constraints` class. Examples of conditions you can set from `Constraints` class can be things like available internet/wifi connection or if a charger is connected. The `WorkManager` can also schedule all `Worker` instance you have to launch in any order you wish.
+`WorkManager` is a new API in Android Architecture Components introduced in the Google I/O 2018. It simplifies and makes it much easier to do work on background threads. The `WorkManager` schedules tasks as instances of the `Worker` class and can schedule these workers based on certain conditions, which you can set by using the provided The `Constraints` class. Examples of conditions you can set from the `Constraints` class, can be things like available internet/wifi connection or if a charger is connected. The `WorkManager` can also schedule all `Worker` instance you have to launch in any order you wish.
 </br>
-</br>Also a very important note about `WorkManager`: </br> *“WorkManager is intended for tasks that require a guarantee that the system will run them even if the app exits...”* 1
+</br>Also a very important note about [`WorkManager`](https://developer.android.com/topic/libraries/architecture/workmanager): </br> *“WorkManager is intended for tasks that require a guarantee that the system will run them even if the app exits...” 
 
 
 ## How to use it
