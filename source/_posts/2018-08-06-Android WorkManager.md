@@ -51,7 +51,7 @@ For each use case we will make a `Worker` class. To do that we need to make a cl
 
 
 #### 2) In the second Worker we retrive the Bitmap from the Workers inputData object and adds some weather and location stickers on the image
-```java
+```kotlin
     class AddStickersTask : Worker() {
         override fun doWork(): WorkerResult {
             try {
@@ -75,7 +75,7 @@ For each use case we will make a `Worker` class. To do that we need to make a cl
 
 
 #### 3) In the last Worker we just upload our Bitmap to our server
-```java
+```kotlin
     class UploadImageTask : Worker() {
         override fun doWork(): WorkerResult {
             //Retrive bitmap and upload work here
@@ -90,8 +90,8 @@ Now we have created 3 `Worker` classes and can chain them together so they run w
 
 But first we have to make our `Constraints` for our `Worker` instances, so the `Worker` only runs if the conditions we have set in the `Constraints` class is met. 
 
-```java
-        val constraint = Constraints.Builder().setRequiredNetworkType(NetworkType.CONNECTED).build()
+```kotlin
+val constraint = Constraints.Builder().setRequiredNetworkType(NetworkType.CONNECTED).build()
 ```
 
 
@@ -102,9 +102,9 @@ GPS requirement is not yet supported in the `Constraints` class but we will inst
 Now lets create new instances of our 3 `Worker` classes: 
 
 ```java
-        val imageCompressionTask = OneTimeWorkRequest.Builder(ImageCompressionTask::class.java).build()
-        val addStickersTask = OneTimeWorkRequest.Builder(AddStickersTask::class.java).setConstraints(constraint).build()
-        val uploadImageTask = OneTimeWorkRequest.Builder(UploadImageTask::class.java).setConstraints(constraint).build()
+val imageCompressionTask = OneTimeWorkRequest.Builder(ImageCompressionTask::class.java).build()
+val addStickersTask = OneTimeWorkRequest.Builder(AddStickersTask::class.java).setConstraints(constraint).build()
+val uploadImageTask = OneTimeWorkRequest.Builder(UploadImageTask::class.java).setConstraints(constraint).build()
 ```
 
 We make them as `OneTimeWorkRequest` because we only want these `Worker` to execute once. `PeriodicWorkRequest` can be used in cases where you want a `Worker` for some repetitive work which can run in intervals you can set.
@@ -112,7 +112,7 @@ We make them as `OneTimeWorkRequest` because we only want these `Worker` to exec
 Now we feed our `WorkManager` with our `Worker` instances in the order as described in our user story and we done!
 
 ```java
-        WorkManager.getInstance().beginWith(imageCompressionTask).then(addStickersTask).then(uploadImageTask).enqueue()
+WorkManager.getInstance().beginWith(imageCompressionTask).then(addStickersTask).then(uploadImageTask).enqueue()
 ```
 
 ## When should you use it?
