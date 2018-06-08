@@ -2,7 +2,7 @@
 
 ## Introduction
 
-`WorkManager` is a new API in Android Architecture Components introduced in the Google I/O 2018. It simplifies and makes it much easier to schedule tasks in background threads. The `WorkManager` schedules tasks as instances of the `Worker` class. It can schedule these Workers based on certain conditions which you can set by using the provided `Constraints` class. Examples of conditions you can set from `Constraints` class can be things like available internet/wifi connection or if a charger is connected. The `WorkManager` can also schedule all `Worker` instance you have to launch in any order you wish.
+`WorkManager` is a new API in Android Architecture Components introduced in the Google I/O 2018. It simplifies and makes it much easier to do work on background threads. The `WorkManager` schedules tasks as instances of the `Worker` class. It can schedule these workers based on certain conditions which you can set by using the provided `Constraints` class. Examples of conditions you can set from `Constraints` class can be things like available internet/wifi connection or if a charger is connected. The `WorkManager` can also schedule all `Worker` instance you have to launch in any order you wish.
 
 </br> </br>Also a very important note about `WorkManager`: </br> *“WorkManager is intended for tasks that require a guarantee that the system will run them even if the app exits...”* 1
 
@@ -78,7 +78,7 @@ class UploadImageTask extends Worker {
 ```
 
 
-Now we have created 3 `Worker` classes and want to chain them together so they run when each previous `Worker` has returned `WorkerResult.SUCCESS`. 
+Now we have created 3 `Worker` classes and want to chain them together so they run when each previous `Worker` has returned `WorkerResult.SUCCESS`. The `WorkManager` won't proceed if any of the `Worker` instances returns `WorkerResult.FAILURE`.
 
 But first we have to make our `Constraints` for our `Worker` instances, so the `Worker` only runs if the conditions we have set in the `Constraints` class is met. 
 
@@ -109,7 +109,7 @@ WorkManager.getInstance().beginWith(imageCompressionTask).then(AddStickersTask).
 ```
 
 ## When should you use it?
-The `WorkManager` is very useful for tasks running in asynchronously background threads and for tasks which need to fulfill certain conditions before they can run or automated tasks running in a certain order.
+The `WorkManager` is very useful for tasks running in background threads and for tasks which need to fulfill certain conditions before they can run or automated tasks running in a certain order.
 
 #### Some example of when WorkingManager also can be really useful
 
