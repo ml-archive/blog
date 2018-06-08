@@ -33,7 +33,7 @@ For each use case we will make a `Worker` class. To do that we need to make a cl
             try {
                 //Create a compressed bitmap
                 newBitmap = Bitmap.createScaledBitmap(bitmap, 500, 500, false)
-                //Save it to the WorkManager's OutPutData
+                //Save it to the WorkManager's outPutData
                 outputData = Data.fromByteArray(getBitmapByteArray(newBitmap))
                 return WorkerResult.SUCCESS
             } catch (e: IllegalArgumentException) {
