@@ -2,7 +2,7 @@
 
 ## Introduction
 
-`WorkManager` is a new API in Android Architecture Components introduced in the Google I/O 2018. It simplifies and makes it much easier to do work on background threads. The `WorkManager` schedules tasks as instances of the `Worker` class and can schedule these workers based on certain conditions, which you can set by using the provided The `Constraints` class. Examples of conditions you can set from the `Constraints` class, can be things like available internet/wifi connection or if a charger is connected. The `WorkManager` can also schedule all `Worker` instance you have to launch in any order you wish and pass data from one `Worker` to another `Worker`.
+`WorkManager` is a new API in Android Architecture Components introduced in the Google I/O 2018. It simplifies and makes it much easier to do work on background threads. The `WorkManager` schedules tasks as instances of the `Worker` class and can schedule these workers based on certain conditions which you can set by using the provided The `Constraints` class. Examples of conditions you can set from the `Constraints` class, can be things like available internet/wifi connection or if a charger is connected. The `WorkManager` can also schedule all `Worker` instance to launch in any order and pass data from one `Worker` to another `Worker` via its `inputData` and `outputData` objects.
 </br>
 </br>Also a very important note about [`WorkManager`](https://developer.android.com/topic/libraries/architecture/workmanager): </br> *“WorkManager is intended for tasks that require a guarantee that the system will run them even if the app exits...”*
 
@@ -24,7 +24,7 @@ So let's split up the user story in 3 use cases:
 
 For each use case we will make a `Worker` class. To do that we need to make a class and extend `Worker` which requires us to implement a `doWork()` method with a return type of a `WorkerResult` that can either be `WorkerResult.SUCCESS` or `WorkerResult.FAILURE`
 
-#### 1) Here is the first Worker which compress our Bitmap into a smaller size, convert the Bitmap to ByteArray so we can pass it in the WorkManager's outputData which is a data-holder object shared between workers and then we return either WorkerResult.SUCCESS or WorkerResult.FAILURE
+#### 1) The first Worker compress our Bitmap into a smaller size, convert the Bitmap to ByteArray passes it in the WorkManager's outputData object and then we return WorkerResult.SUCCESS or WorkerResult.FAILURE.
 
 ```kotlin
     class ImageCompressionTask(val bitmap: Bitmap?) : Worker() {
@@ -50,7 +50,7 @@ For each use case we will make a `Worker` class. To do that we need to make a cl
 ```
 
 
-#### 2) In the second Worker we retrive the Bitmap from the Workers inputData objec and adds some weather and location stickers on the image
+#### 2) In the second Worker we retrive the Bitmap from the Workers inputData object and adds some weather and location stickers on the image
 ```java
     class AddStickersTask : Worker() {
         override fun doWork(): WorkerResult {
@@ -74,7 +74,7 @@ For each use case we will make a `Worker` class. To do that we need to make a cl
 ```
 
 
-#### 3) And the last Worker is the one which upload our image to a server
+#### 3) In the last Worker we just upload our Bitmap to our server
 ```java
     class UploadImageTask : Worker() {
         override fun doWork(): WorkerResult {
