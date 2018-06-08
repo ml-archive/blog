@@ -49,7 +49,7 @@ For each use case we will make a `Worker` class. To do that we need to make a cl
 ```
 
 
-#### 2) In the second Worker we retrive the Bitmap from the Workers inputData object and adds some weather and location stickers on the image
+#### 2) In the second Worker we retrieve the Bitmap from the Workers inputData object and adds some weather and location stickers on the image
 ```kotlin
     class AddStickersTask : Worker() {
         override fun doWork(): WorkerResult {
@@ -68,7 +68,7 @@ For each use case we will make a `Worker` class. To do that we need to make a cl
 ```kotlin
     class UploadImageTask : Worker() {
         override fun doWork(): WorkerResult {
-            //Retrive bitmap and upload work here
+            //Retrieve bitmap and upload work here
             return WorkerResult.SUCCESS
         }
     }
