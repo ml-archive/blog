@@ -14,7 +14,7 @@ Siri Shortcuts will be available with the release of iOS 12 later this year.
 ## Let's get started
 This tutorial will focus on understanding and developing a basic, which will allow our users to book a test drive with their local car showroom through Siri Shortcuts. 
 
-To speed up the development process and solely focus on understanding Siri Shortcuts, I have prepared for you a sample project that can be downloaded [here](https://www.nodes.dk)
+To speed up the development process and solely focus on understanding Siri Shortcuts, I have prepared for you a sample project that can be downloaded [here](https://github.com/nodes-ios/SiriShortcuts-Demo/tree/starter)
 
 The demo project currently contains 2 ViewControllers, a CatalogViewController for our car list, a BookingConfirmationViewController for our test drive booking confirmation and a DataManager. 
 
@@ -407,12 +407,129 @@ private func handle(_ intent: TestDriveIntent) {
 
 We have added the `handle` function that will present to our user  `BookingConfirmationViewController` if we have received a successful intent of type `TestDriveIntentHandler`.
 
+### Part 6: Add Phrases to Siri
+
+As well another feature that it can be nice to add to our app, is that of adding the option to add phrases to Siri directly from our app. This will make the experience for the user a better one.
+
+For this to happen we will need to create a `VoiceShortcutsManager` that will have as purpose to update and add voice shortcuts to our intents.
+
+```
+import Foundation
+import Intents
+
+public class VoiceShortcutsManager {
+
+    private var voiceShortcuts: [INVoiceShortcut] = []
+
+    public init() {
+        updateVoiceShortcuts(completion: nil)
+    }
+
+    public func voiceShortcut(for order: TestDrive) -> INVoiceShortcut? {
+        let voiceShorcut = voiceShortcuts.first { (voiceShortcut) -> Bool in
+            guard let intent = voiceShortcut.__shortcut.intent as? TestDriveIntent,
+                let testDrive = TestDrive(from: intent) else {
+                return false
+            }   
+            return order == testDrive
+        }
+        return voiceShorcut
+    }
+
+    public func updateVoiceShortcuts(completion: (() -> Void)?) {
+        INVoiceShortcutCenter.shared.getAllVoiceShortcuts { (voiceShortcutsFromCenter, error) in
+        guard let voiceShortcutsFromCenter = voiceShortcutsFromCenter else {
+            if let error = error {
+                print("Failed to fetch voice shortcuts with error: \(error.localizedDescription)")
+            }
+            return
+        }
+            self.voiceShortcuts = voiceShortcutsFromCenter
+            if let completion = completion {
+                completion()
+            }
+        }
+    }
+}
+```
+
+In our `CatalogViewController` go ahead and declare a `private lazy var voiceShortcutManager = VoiceShortcutsManager.init()`. Now let's allow the user set or edit a voice shortcut everytime it clicks on one of our catalog items. This is not an amazing UX but will make it easier for us to play.
+
+In `didSelectRowAt` go ahead and add the following block:
+
+```
+if let shortcut = voiceShortcutManager.voiceShortcut(for: testDrive) {
+    let editVoiceShortcutViewController = INUIEditVoiceShortcutViewController(voiceShortcut: shortcut)
+    editVoiceShortcutViewController.delegate = self
+    present(editVoiceShortcutViewController, animated: true, completion: nil)
+} else if let shortcut = INShortcut(intent: testDrive.intent) {
+    let addVoiceShortcutVC = INUIAddVoiceShortcutViewController(shortcut: shortcut)
+    addVoiceShortcutVC.delegate = self
+    present(addVoiceShortcutVC, animated: true, completion: nil)
+}
+```
+Here we check if the `voiceShortcutManager` knows of a shortcut for our intent and allow the user to create or update the shortcut. As well we need to conform to the delegate methods for `INUIAddVoiceShortcutViewControllerDelegate` and `INUIEditVoiceShortcutViewControllerDelegate`, by adding the following:
+
+```
+func updateVoiceShortcuts() {
+    voiceShortcutManager.updateVoiceShortcuts(completion: nil)
+    dismiss(animated: true, completion: nil)
+}
+```
+
+```
+// MARK: - INUIAddVoiceShortcutViewControllerDelegate
+
+extension ViewController: INUIAddVoiceShortcutViewControllerDelegate {
+
+    func addVoiceShortcutViewController(_ controller: INUIAddVoiceShortcutViewController,
+    didFinishWith voiceShortcut: INVoiceShortcut?,
+    error: Error?) {
+        if let error = error {
+            print("error adding voice shortcut:\(error.localizedDescription)")
+            return
+        }
+        updateVoiceShortcuts()
+    }
+
+    func addVoiceShortcutViewControllerDidCancel(_ controller: INUIAddVoiceShortcutViewController) {
+        dismiss(animated: true, completion: nil)
+    }
+}
+
+// MARK: - INUIEditVoiceShortcutViewControllerDelegate
+
+extension ViewController: INUIEditVoiceShortcutViewControllerDelegate {
+
+    func editVoiceShortcutViewController(_ controller: INUIEditVoiceShortcutViewController,
+    didUpdate voiceShortcut: INVoiceShortcut?,
+    error: Error?) {
+        if let error = error {
+            print("error adding voice shortcut:\(error.localizedDescription)")
+            return
+        }
+        updateVoiceShortcuts()
+    }
+
+    func editVoiceShortcutViewController(_ controller: INUIEditVoiceShortcutViewController,
+    didDeleteVoiceShortcutWithIdentifier deletedVoiceShortcutIdentifier: UUID) {
+        updateVoiceShortcuts()
+    }
+
+    func editVoiceShortcutViewControllerDidCancel(_ controller: INUIEditVoiceShortcutViewController) {
+        dismiss(animated: true, completion: nil)
+    }
+}
+```
+
+Here the `updateVoiceShortcuts` will trigger a re-sync of the shortcuts in the system and dismiss `INUIEditVoiceShortcutViewController` or `INUIAddVoiceShortcutViewController`.
+
 ## Final notes
 
 You have now made it all the way to the end of this post, by the end of which, hopefully you will have a clear picture of how to implement and handle interaction to the Google Cast SDK.
 
 Don't forget to download our final project and compare our results. :)
 
-[Final Project](https://github.com/nodes-ios/GoogleCast-Demo/tree/cast-demo-final)
+[Final Project](https://github.com/nodes-ios/SiriShortcuts-Demo)
 
 Hope to see you next time!
