@@ -22,7 +22,7 @@ The demo project currently contains 2 ViewControllers, a CatalogViewController f
 
 In order to be able to start developing our Siri Shortcuts feature, we need to enable Siri Capabilities in our app. You can do this by opening your project navigator in the "Capabilities" tab. Here you can scroll down to and turn "Siri" on.
 
-[](https://github.com/kjoneandrei/blog/blob/iOS-siri-shortcuts-post/source/_posts-images/2018-07-16-SiriShortcuts/1.png)
+![alt text](https://github.com/kjoneandrei/blog/blob/iOS-siri-shortcuts-post/source/_posts-images/2018-07-16-SiriShortcuts/1.png)
 
 Now that we have enabled Siri, we will need to add the `IntentExtension` and `IntentExtensionUI` targets to our app. To do so, click "File" in the Xcode menu, select "New" -> "Target" and then select the "Intent Extension" target. Name your extension `SiriIntentExtension` and make sure you have checked "Include Intent Extension UI". This will include  `SiriIntentExtensionUI` automatically to our app's targets.
 
