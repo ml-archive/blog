@@ -12,7 +12,7 @@ Earlier this summer at WWDC 2018, Apple announced [Siri Shortcuts](https://devel
 Siri Shortcuts will be available with the release of iOS 12 later this year.
 
 ## Let's get started
-This tutorial will focus on understanding and developing a basic, which will allow our users to book a test drive with their local car showroom through Siri Shortcuts. 
+This tutorial will focus on understanding and developing a basic application, which will allow our users to book a test drive with their local car showroom through Siri Shortcuts. 
 
 To speed up the development process and solely focus on understanding Siri Shortcuts, I have prepared for you a sample project that can be downloaded [here](https://github.com/nodes-ios/SiriShortcuts-Demo/tree/starter)
 
@@ -157,7 +157,7 @@ extension NSUserActivity {
 }
 ```
 
-We have now created a custom `NSUserActivity` what is both eligible for search and prediction, with a custom `suggestedInvocationPhrase` to be suggested later for our users when creating a `Voice Shortcut`. As well we have added  a `contentAttributeSet` to our activity. This will allow our users to find the activity as well via `Core Spotlight`.
+We have now created a custom `NSUserActivity` which is both eligible for search and prediction, with a custom `suggestedInvocationPhrase` to be suggested later for our users when creating a `Voice Shortcut`. As well we have added  a `contentAttributeSet` to our activity. This will allow our users to find the activity as well via `Core Spotlight`.
 
 We are now ready to donate this activity to Siri. For this switch back to our `CatalogViewController` and in our `viewDidLoad` call `userActivity = NSUserActivity.catalogActivity`. By simply assigning our custom activity to the `ViewController` we have now donated it to Siri.
 
@@ -409,7 +409,7 @@ We have added the `handle` function that will present to our user  `BookingConfi
 
 ### Part 6: Add Phrases to Siri
 
-As well another feature that it can be nice to add to our app, is that of adding the option to add phrases to Siri directly from our app. This will make the experience for the user a better one.
+Another feature to add to our app, is the option to add phrases to Siri directly from our app. This will make the experience for the user a better one.
 
 For this to happen we will need to create a `VoiceShortcutsManager` that will have as purpose to update and add voice shortcuts to our intents.
 
