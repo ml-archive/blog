@@ -22,12 +22,11 @@ The demo project currently contains 2 ViewControllers, a CatalogViewController f
 
 In order to be able to start developing our Siri Shortcuts feature, we need to enable Siri Capabilities in our app. You can do this by opening your project navigator in the "Capabilities" tab. Here you can scroll down to and turn "Siri" on.
 
-#### Insert picture 1 here
+[[https://raw.githubusercontent.com/kjoneandrei/blog/blob/iOS-siri-shortcuts-post/source/_posts-images/2018-07-16-SiriShortcuts/1.png]]
 
 Now that we have enabled Siri, we will need to add the `IntentExtension` and `IntentExtensionUI` targets to our app. To do so, click "File" in the Xcode menu, select "New" -> "Target" and then select the "Intent Extension" target. Name your extension `SiriIntentExtension` and make sure you have checked "Include Intent Extension UI". This will include  `SiriIntentExtensionUI` automatically to our app's targets.
 
-#### Insert picture 2 here
-
+[[https://raw.githubusercontent.com/kjoneandrei/blog/blob/iOS-siri-shortcuts-post/source/_posts-images/2018-07-16-SiriShortcuts/2.png]]
 
 ### Part 2: Request Siri permissions
 
@@ -182,7 +181,7 @@ These types define the schema that Siri uses to identify requests the user makes
 
 Your final intent should look like this: 
 
-#### Insert picture 3 here
+[[https://raw.githubusercontent.com/kjoneandrei/blog/blob/iOS-siri-shortcuts-post/source/_posts-images/2018-07-16-SiriShortcuts/3.png]]
 
 Now that we have created our intent, we must inform our `Intent Extensions` that our app will support this custom type.
 
@@ -307,6 +306,8 @@ Now so that we can call our shortcut, we need to go to `Settings` -> `Siri & Sea
 
 Go ahead and ask Siri to book a test drive for you. This is how it should look like when you ask Siri to book a test drive for you.
 
+[[https://raw.githubusercontent.com/kjoneandrei/blog/blob/iOS-siri-shortcuts-post/source/_posts-images/2018-07-16-SiriShortcuts/4.png]]
+
 Something doesn't look quite right here, and that is because our `SiriIntentExtensionUI` does not know to display anything to the user at the moment. For that to change we need to edit `IntentViewController`'s `func configureView(for parameters: Set<INParameter>, of interaction: INInteraction, interactiveBehavior: INUIInteractiveBehavior, context: INUIHostedViewContext, completion: @escaping (Bool, Set<INParameter>, CGSize) -> Void)` that will prepare the interaction to handle and display the corresponding UI. 
 
 In the  `SiriIntentExtensionUI`'s `MainInterface.storyboard` you should be able to find `TestDriveOverview` and `TestDriveBookingCompleted`, two custom views I have already created and added for you to speed up the integration process. We will need to add these custom views as well in `TestDriveBookingCompleted`. 
@@ -360,7 +361,7 @@ switch interaction.intentHandlingStatus {
 
 Bring Siri up on screen again and call your custom phrase again. Now you should be able to see the custom UI which looks something like this: 
 
-#### Insert picture 5 here
+[[https://raw.githubusercontent.com/kjoneandrei/blog/blob/iOS-siri-shortcuts-post/source/_posts-images/2018-07-16-SiriShortcuts/5.png]]
 
 The last thing for us to do before we have completely integrated shortcuts into our app is to handle the intent inside our app as well. 
 
