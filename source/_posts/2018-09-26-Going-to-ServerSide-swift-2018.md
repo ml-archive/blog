@@ -24,8 +24,8 @@ Some quick facts about ServerSide.swift 2018:
 ## Talk highlights
 With 16 talks in total there is a lot of knowledge to digest. Here are some highlights from the different talks we heard:
 
-### Talk TODO
-TODO
+### Vapor State Of The Union (Tanner Nelson)
+Since we at Nodes spend a lot of time using Vapor we were of course interested in the state of the union talk by Vapor's founder, Tanner Nelson. The talk went through the biggest changes from Vapor 2 to Vapor 3, being 1) how we deal with configs (read: no more JSON files), 2) how codable removes a lot of boiler plate code for us and 3) how Vapor is now built on top of SwiftNIO, making it possible for them to delete a lot of code. The talk also gave a quick overview of the different packages that exists within the Vapor eco system and it gave a sneakpeak into what can be expected from Vapor Cloud 2 which [launched in alpha recently](https://medium.com/vapor-cloud/vapor-cloud-2-public-alpha-2d9ee14d0688). Last, the talk also touched upon the [Swift Server Work Group](https://swift.org/server/) and the [Swift Forums](https://forums.swift.org/c/development/server).
 
 ### Talk TODO
 TODO
