@@ -27,8 +27,12 @@ With 16 talks in total there is a lot of knowledge to digest. Here are some high
 ### Vapor State Of The Union (Tanner Nelson)
 Since we at Nodes spend a lot of time using Vapor we were of course interested in the state of the union talk by Vapor's founder, Tanner Nelson. The talk went through the biggest changes from Vapor 2 to Vapor 3, being 1) how we deal with configs (read: no more JSON files), 2) how codable removes a lot of boiler plate code for us and 3) how Vapor is now built on top of SwiftNIO, making it possible for them to delete a lot of code. The talk also gave a quick overview of the different packages that exists within the Vapor eco system and it gave a sneakpeak into what can be expected from Vapor Cloud 2 which [launched in alpha recently](https://medium.com/vapor-cloud/vapor-cloud-2-public-alpha-2d9ee14d0688). Last, the talk also touched upon the [Swift Server Work Group](https://swift.org/server/) and the [Swift Forums](https://forums.swift.org/c/development/server).
 
-### Talk TODO
-TODO
+### From Idea to Production at ING (Ian Partridge and Pim Stolk)
+It's always a good idea to have the finger on the pulse regarding alternative tools, and this split venture talk from Pim from [ING](https://www.ing.com) (Dutch bank) and Ian from [IBM and Kitura](https://www.kitura.io) provided just that.
+
+ING is a bank in The Netherlands where Kitura is playing a big role in their tech stack. The first part of the was given by Pim from ING and, besides presenting ING to the crowd, it revolved around the thoughts behind choosing Kitura, bringing innovative solutions into the banking world.
+
+Ian's talk focused on Kitura, a competitor framework to Vapor, and presented how the latest version has evolved from `2.0` to current `2.5`. A key takeaway was how they managed to integrate [OpenAPI](https://www.openapis.org/) in Kitura by automating their API documentation using auto generated Swagger documentation and examples. A feature that would be very welcome for any API developer out there.
 
 ### Talk TODO
 TODO
@@ -38,3 +42,6 @@ TODO
 
 ## Last remarks
 TODO - final comments on how the conference overall went. Good/bad stuff.
+- Microservice architecture
+- Community collaboration
+- 
