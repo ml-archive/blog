@@ -50,7 +50,7 @@ Helge also demonstrated a more complex setup where the Raspberry Pi hosted both 
 All this potential for cheap and plentiful dedicated cores has some real world uses as well. [Scaleway](https://www.scaleway.com) is a hosting platform that offers ARM based servers. Due to the compactness and low heat they are able to get around 8000 cores in a single server rack.
 
 ## Last remarks
-Although coming from different backgrounds and using different frameworks, the attendees shared an enthusiasm for Swift on the server and it was great to experience the sense of community in real life, outside the chat servers. Bridges were built between the subcommunities and experiences and knowledge were shared.
+In spite of coming from different backgrounds and using different frameworks, the attendees shared an enthusiasm for Swift on the server and it was great to experience the sense of community in real life, outside the chat servers. Bridges were built between the subcommunities, and knowledge and experiences were shared.
 
 On Thursday there was an open bar (sponsored by [Swiftengine](https://swiftengine.io)) which allowed us to mingle and meet speakers and fellow attendees in a relaxed atmosphere. Among the attendees were two people from the SwiftNIO team ([Cory Benfield](https://twitter.com/Lukasaoz) and [Johannes Weiss](https://twitter.com/johannesweiss)). They are not just very approachable and active in their support on the Vapor Discord server (and other frameworks) but equally so in real life and this conference provided a great opportunity to meet some of the minds behind the awesome project that is SwiftNIO.
 
