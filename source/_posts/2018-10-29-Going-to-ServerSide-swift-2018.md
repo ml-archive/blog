@@ -1,6 +1,6 @@
 ---
 title: Going to ServerSide.swift 2018
-date: 2018-10-26 18:00:00
+date: 2018-10-29 18:00:00
 tags: vapor,swift,linux,swift4,vapor3,serversideswift,backend
 authorIds:
 - stso
@@ -55,8 +55,4 @@ In spite of coming from different backgrounds and using different frameworks, th
 
 On Thursday there was an open bar (sponsored by [Swiftengine](https://swiftengine.io)) which allowed us to mingle and meet speakers and fellow attendees in a relaxed atmosphere. Among the attendees were two people from the SwiftNIO team ([Cory Benfield](https://twitter.com/Lukasaoz) and [Johannes Weiss](https://twitter.com/johannesweiss)). They are very approachable and active not just in their support on the Vapor Discord server (and other frameworks), but equally so in real life and this conference provided a great opportunity to meet some of the minds behind the awesome project that is SwiftNIO.
 
-<<<<<<< HEAD
 There were over 80 participants and surely many more would have liked to come but couldn't because of travel or lack of time. It was the first conference focused on server-side Swift but it clearly will not be the last since this topic is very popular. The conference was well-organized - even though the organizers were new at it - and the quality of the talks was very high so we're looking forward to next year's edition!
-=======
-There were over 80 participants and surely many more would have liked to come but couldn't because of travel or time. It was the first conference focused on server-side Swift but it clearly will not be the last since this topic is very popular. The conference was well-organized - even though the organizers were new at it - and the quality of the talks was very high so we're looking forward to next year's edition!
->>>>>>> f19e0d845a807d24eed93fdbaad0d1e038bb8970
