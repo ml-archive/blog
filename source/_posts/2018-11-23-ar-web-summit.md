@@ -40,15 +40,15 @@ CMO of [Magic Leap](https://www.magicleap.com/) Leap Brenda Freeman gave us more
 
 Virtual reality (VR) is a completely immersive vitual experience, augmented reality (AR) overlays virtual objects on the real-work environment, and then there’s mixed reality (MR) which is the merging of real and virtual worlds to produce new environments and visualizations where physical and digital objects co-exist and interact in real time.
 
-Those techonologies will have great applications on communication, entertainment, gaming, e-commerce and many more and that is why early adopters are already developing and investing in them. An example of early experimentation is the collaboration between [Magic Leap, H&M and Warpin Media for the new Moschino collection](https://wwd.com/fashion-news/fashion-scoops/hm-creates-augmented-reality-experience-for-moschino-collab-1202891622/).
+Those techonologies will have great applications on communication, entertainment, gaming, e-commerce and many more and that is why early adopters are already developing and investing in them. An example of early experimentation is the collaboration between Magic Leap, H&M and Warpin Media for the new Moschino collection ([video](https://wwd.com/fashion-news/fashion-scoops/hm-creates-augmented-reality-experience-for-moschino-collab-1202891622/)).
 
 Right now their focus is to get developers and creators to build and test everyday use cases on the platform and then later they will also be able to sell the headseat to consumers. They recently had a [developers conference](https://www.magicleap.com/conference) to showcase what is possible with Magic Leap and inspire new ideas.
 
 When asked about the future of those new technologies, 5-10 years down the road, Brenda Freeman said:
-“We believe this will be the next distruptive computing platform in the generation to come”
+>“We believe this will be the next distruptive computing platform in the generation to come”
 
 Another great take-away from her talk was:
-“We talk so much about future forward. Future is now! If you aren’t thinking of how to distrupt your respective industry then you’re behind.”
+>“We talk so much about future forward. Future is now! If you aren’t thinking of how to distrupt your respective industry then you’re behind.”
 
 ### Our augmented future: What’s next for AR?
 
