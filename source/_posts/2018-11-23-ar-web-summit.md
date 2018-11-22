@@ -8,13 +8,17 @@ categories:
 - iOS
 ---
 
+![Web Summit Stage Image](https://github.com/nodesagency/blog/blob/feature/ar-web-summit/source/_posts-images/2018-11-23-ar-web-summit/stage.JPG)
+
 It has been two weeks since [Web Summit](https://websummit.com) took place in Lisbon, Portugal and we can still feel the energetic vibes. 3 days full of inspirational speakers, current tech trends, coffee astronauts, robots (have you seen the new social robot Furhat revealed at the summit?), diversity in tech and much more. But out of all, I was personally most excited about the interest that big companies are putting more and more into AR, VR and MR technologies.
 
 Augmented reality still seems to be trivial for some, but when industry leaders like Google,  Porche and AliBaba are heavingly investing in this technology, we know it will soon become a normal thing in our daily lives. There were many tech talks and partner exihibitors that were putting focus on it and here are some highlights:
 
 ---
 
-## Eyes on the road: How AR will change the car industry?
+### Eyes on the road: How AR will change the car industry?
+
+![Way Ray Image](https://github.com/nodesagency/blog/blob/feature/ar-web-summit/source/_posts-images/2018-11-23-ar-web-summit/wayray.jpg)
 
 [WayRay](https://wayray.com/)’s Vitaly Ponomarev and Porche AG’s Christian Knörle joined forces to talk about the opportunities and challenges of AR in the car industry. 
 
@@ -28,7 +32,9 @@ Christian Knörle compares that adopting AR in our daily lifes would be similar 
 
 ---
 
-## Magic Leap: from concept to augmented reality
+### Magic Leap: from concept to augmented reality
+
+![Magic Leap Image](https://github.com/nodesagency/blog/blob/feature/ar-web-summit/source/_posts-images/2018-11-23-ar-web-summit/magic-leap.JPG)
 
 CMO of [Magic Leap](https://www.magicleap.com/) Leap Brenda Freeman gave us more insights on one of the most anticipated piece of technology in the AR world. With 5 cameras in the headset, 3 world cameras that mesh the room and 2 cameras for eye tracking, Magic Leap goes a bit further than augmented reality into mixed reality.
 
@@ -44,7 +50,7 @@ When asked about the future of those new technologies, 5-10 years down the road,
 
 “We talk so much about future forward. Future is now! If you aren’t thinking of how to distrupt your respective industry then you’re behind.”
 
-## Our augmented future: What’s next for AR?
+### Our augmented future: What’s next for AR?
 
 ---
 
@@ -56,7 +62,7 @@ Besides those amazing talks we’ve seen artists using AR and VR as a new way of
 
 ---
 
-### Resouces
+#### Resouces
 * You can checkout many of the talks on the [Web Summit’s Youtube Channel](https://www.youtube.com/channel/UCJtkHqH4Qof97TSx7BzE5IQ)
 * You can also checkout [Nodes' Instagram story](https://www.instagram.com/stories/highlights/17990784427005924/)
 * [WayRay.com](https://wayray.com/)
