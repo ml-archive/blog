@@ -12,7 +12,7 @@ categories:
 
 It has been two weeks since [Web Summit](https://websummit.com) took place in Lisbon, Portugal and we can still feel the energetic vibes. 3 days full of inspirational speakers, current tech trends, coffee astronauts, robots (have you seen the new social robot Furhat revealed at the summit?), diversity in tech and much more. But out of all, I was personally most excited about the interest that big companies are putting more and more into AR, VR and MR technologies.
 
-Augmented reality still seems to be trivial for some, but when industry leaders like Google,  Porche and AliBaba are heavingly investing in this technology, we know it will soon become a normal thing in our daily lives. There were many tech talks and partner exihibitors that were putting focus on it and here are some highlights:
+Augmented reality still seems to be trivial for some, but when industry leaders like Google,  Porche and AliBaba are heavingly investing in this technology, we know it will soon become a normal thing in our daily lives. There were many tech talks, startups and partner exihibitors that were putting focus on it and here are some highlights:
 
 ---
 
@@ -20,13 +20,13 @@ Augmented reality still seems to be trivial for some, but when industry leaders 
 
 ![Way Ray Image](https://github.com/nodesagency/blog/blob/feature/ar-web-summit/source/_posts-images/2018-11-23-ar-web-summit/wayray.jpg)
 
-[WayRay](https://wayray.com/)’s Vitaly Ponomarev and Porche AG’s Christian Knörle joined forces to talk about the opportunities and challenges of AR in the car industry. 
+[WayRay](https://wayray.com/)’s Vitaly Ponomarev and [Porche](https://www.porsche.com)’s Christian Knörle joined forces to talk about the opportunities and challenges of AR in the car industry. 
 
 WayRay is a Swiss startups that develops holographic AR technologies for connected cars and managed to raise more than 100$M in investments since they launched in 2012. Today the main application is to assist drivers with the navigation, but with the self driving cars of tomorrow, it could extend to much more.
 
 Ponomarev got the idea of the business after an accident he got into because he was distracted by the GPS navigator. This is a great example of how AR can be used for improving our daily lifes, not just for enterainment purposes. He also has a very interesting point of view regarding self-driving cars, in a sense that AR can be a powerful tool to build the trust between passengers and car. By projecting what the car is seeing and thinking, the passenger can understand that the car makes the right decisions. The biggest challenge of WayRay now is to industrialise the technology.
 
-What is interesting about their business plan is that they don’t just develop the hardware and software, they also offer a True AR SDK for 3rd party developers. This brings endless possibilities. WayRay also had a [True AR Challenge hackathon](https://wayray.com/sdk/challenge) at the beginning of the year and it is interesting to look at the projects to get some inspiration and more understanding of this technology.
+Their business plan to develop the hardware and software, together with a True AR SDK for 3rd party developers which brings endless possibilities. WayRay also had a [True AR Challenge hackathon](https://wayray.com/sdk/challenge) this year and it is interesting to look at the projects to get some inspiration and more understanding of this technology.
 
 Christian Knörle compares that adopting AR in our daily lifes would be similar to the experience of getting prescription glasses when you have vision problems. Looking forward to that!
 
@@ -44,17 +44,30 @@ Those techonologies will have great applications on communication, entertainment
 
 Right now their focus is to get developers and creators to build and test everyday use cases on the platform and then later they will also be able to sell the headseat to consumers. They recently had a [developers conference](https://www.magicleap.com/conference) to showcase what is possible with Magic Leap and inspire new ideas.
 
-When asked about the future of those new technologies, 5-10 years down the road, Brenda said:
-
+When asked about the future of those new technologies, 5-10 years down the road, Brenda Freeman said:
 “We believe this will be the next distruptive computing platform in the generation to come”
 
+Another great take-away from her talk was:
 “We talk so much about future forward. Future is now! If you aren’t thinking of how to distrupt your respective industry then you’re behind.”
 
 ### Our augmented future: What’s next for AR?
 
+Ambarish Mitra from [Blippar](https://www.blippar.com/), a leading augmented reality and computer vision company, came to the Creatiff stage to talk about the evolution and future of augmented reality.
+
+The computing interface started with the **touch** experience though keyboards and touchscreens, then it evolved into the area of **natural language** with AI assistants like Siri and Alexa, and now into the final frontier which is **vision** with augmented reality. Ambarish also explained that even though AR and AI were positioned as separate industries, they are very deeply linked as AR cannot properly scale until computers can understand reality with the help of artificial inteligence.
+
+When looking at the business opportunities of AR, the CEO of Blippar says that AR can be a very profitable industry, way higher than VR. The Gartner Hype Cycle for Emerging Technologies 2018, shows **AR will reach mainstream adoption in 5-10 years**:
+
+![Gartner Hype Cycle of Technologies 2018](https://blogs.gartner.com/smarterwithgartner/files/2018/08/PR_490866_5_Trends_in_the_Emerging_Tech_Hype_Cycle_2018_Hype_Cycle.png)
+
+Ambarish showcased some examples of how AR is already impacting different industies: retailers using AR for magic mirrors to virtually try on clothing or connecting offline content like a coat in a store with online content like reviews and other recommended items ([video](https://www.youtube.com/watch?v=M_eCrueFGHY)). Blippar has a lot more great inspirational videos of AR business ideas on their [Youtube channel](https://www.youtube.com/user/blippar1/videos).
+
+
 ---
 
-Besides those amazing talks we’ve seen artists using AR and VR as a new way of storytelling, startups with new distruptive ideas and partner’s stepping up their exhibition’s game with AR capabilities. A great example was Siemens who used AR to tell employees stories with a new twist.
+Besides those amazing talks, we’ve seen artists using AR and VR as a new way of storytelling, startups with distruptive ideas and partner’s stepping up their exhibition’s game with AR capabilities. A great example was Siemens who used AR to tell employees stories with a new twist.
+
+![Ar Image](https://github.com/nodesagency/blog/blob/feature/ar-web-summit/source/_posts-images/2018-11-23-ar-web-summit/siemens.jpg)
 
 ---
 
@@ -69,5 +82,6 @@ Besides those amazing talks we’ve seen artists using AR and VR as a new way of
 * [WayRay SDK Challenge](https://wayray.com/sdk/challenge)
 * [WayRay Wikipedia](https://en.wikipedia.org/wiki/WayRay)
 * [Mixed reality](https://en.wikipedia.org/wiki/Mixed_reality)
+* [Gartner Hype Cycle](https://www.gartner.com/en/research/methodologies/gartner-hype-cycle)
 
 
