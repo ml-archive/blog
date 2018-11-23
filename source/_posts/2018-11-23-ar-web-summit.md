@@ -29,7 +29,7 @@ Ponomarev got the idea of the business after an accident he got into because he 
 
 Their business plan to develop the hardware and software, together with a [True AR SDK](https://wayray.com/sdk) for 3rd party developers which brings endless possibilities. WayRay also had a [True AR Challenge hackathon](https://wayray.com/sdk/challenge) this year and it's interesting to look at the projects to get some inspiration and more understanding of this technology.
 
-Christian Knörle compares that adopting AR in our daily lives would be similar to the experience of getting prescription glasses when you have vision problems. Looking forward to that!
+Knörle compares that adopting AR in our daily lives would be similar to the experience of getting prescription glasses when you have vision problems. Looking forward to that!
 
 ---
 
@@ -45,7 +45,7 @@ Those technologies will have great applications on communication, entertainment,
 
 Right now their focus is to get developers and creators to build and test everyday use cases on the platform and then later they will be able to sell the headseat to consumers. They recently had a [developers conference](https://www.magicleap.com/conference) to showcase what is possible with Magic Leap and inspire new ideas.
 
-When asked about the future of those new technologies, 5-10 years down the road, Brenda Freeman said:
+When asked about the future of those new technologies, 5-10 years down the road, Freeman said:
 >“We believe this will be the next disruptive computing platform in the generation to come”
 
 Another great take-away from her talk was:
@@ -55,15 +55,15 @@ Another great take-away from her talk was:
 
 Ambarish Mitra from [Blippar](https://www.blippar.com/), a leading augmented reality and computer vision company, came to the Creatiff stage to talk about the evolution and future of augmented reality.
 
-The computing interface started with the **touch** experience though keyboards and touchscreens, then it evolved into the area of **natural language** with AI assistants like Siri and Alexa, and now into the final frontier which is **vision** with augmented reality. Ambarish also explained that even though AR and AI were positioned as separate industries, they are very deeply linked as AR cannot properly scale until computers can understand reality with the help of artificial intelligence.
+The computing interface started with the **touch** experience though keyboards and touchscreens, then it evolved into the area of **natural language** with AI assistants like Siri and Alexa, and now into the final frontier which is **vision** with augmented reality. Mitra also explained that even though AR and AI were positioned as separate industries, they are very deeply linked as AR cannot properly scale until computers can understand reality with the help of artificial intelligence.
 
 When looking at the business opportunities of AR, the CEO of Blippar says that AR can be a very profitable industry, way higher than VR. The [Gartner Hype Cycle](https://www.gartner.com/en/research/methodologies/gartner-hype-cycle) for Emerging Technologies 2018, shows **AR will reach mainstream adoption in 5-10 years**:
 
 ![Gartner Hype Cycle of Technologies 2018](https://blogs.gartner.com/smarterwithgartner/files/2018/08/PR_490866_5_Trends_in_the_Emerging_Tech_Hype_Cycle_2018_Hype_Cycle.png)
 
-Ambarish showcased some examples of how AR is already impacting different industries. For example, retailers are using AR for magic mirrors to virtually try on clothing or connecting offline content like a coat in a store with online content like reviews and other recommended items ([video](https://www.youtube.com/watch?v=M_eCrueFGHY)). Blippar has a lot more great inspirational videos of AR business ideas on their [Youtube channel](https://www.youtube.com/user/blippar1/videos).
+Mitra showcased some examples of how AR is already impacting different industries. For example, retailers are using AR for magic mirrors to virtually try on clothing or connecting offline content like a coat in a store with online content like reviews and other recommended items ([video](https://www.youtube.com/watch?v=M_eCrueFGHY)). Blippar has a lot more great inspirational videos of AR business ideas on their [Youtube channel](https://www.youtube.com/user/blippar1/videos).
 
-On the second part of his presentation, Ambarish gave a few demos of AR applications: a retail environment where you can engage with the products (using the Magic leap headset), a life on Mars experiment, a fitness scanning app and audience coloured butterflies that "come to life".
+On the second part of his presentation, Mitra gave a few demos of AR applications: a retail environment where you can engage with the products (using the Magic leap headset), a life on Mars experiment, a fitness scanning app and audience coloured butterflies that "come to life".
 
 ---
 
