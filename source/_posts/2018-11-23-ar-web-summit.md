@@ -36,7 +36,7 @@ Christian Knörle compares that adopting AR in our daily lives would be similar 
 
 ![Magic Leap Image](https://github.com/nodesagency/blog/blob/feature/ar-web-summit/source/_posts-images/2018-11-23-ar-web-summit/magic-leap.JPG)
 
-CMO of [Magic Leap](https://www.magicleap.com/) Leap Brenda Freeman gave us more insights on one of the most anticipated piece of technology in the AR world. With 5 cameras in the headset, 3 world cameras that mesh the room and 2 cameras for eye tracking, Magic Leap goes a bit further than augmented reality into mixed reality.
+CMO of [Magic Leap](https://www.magicleap.com/) Leap Brenda Freeman gave us more insights on one of the most anticipated piece of technology in the AR world. With 5 cameras in the headset, 3 world cameras that mesh the room and 2 cameras for eye tracking, Magic Leap goes a bit further than augmented reality into [mixed reality](https://en.wikipedia.org/wiki/Mixed_reality).
 
 Virtual reality (VR) is a completely immersive virtual experience, augmented reality (AR) overlays virtual objects on the real-work environment, and then there’s mixed reality (MR) which is the merging of real and virtual worlds to produce new environments and visualisations where physical and digital objects co-exist and interact in real time.
 
@@ -56,7 +56,7 @@ Ambarish Mitra from [Blippar](https://www.blippar.com/), a leading augmented rea
 
 The computing interface started with the **touch** experience though keyboards and touchscreens, then it evolved into the area of **natural language** with AI assistants like Siri and Alexa, and now into the final frontier which is **vision** with augmented reality. Ambarish also explained that even though AR and AI were positioned as separate industries, they are very deeply linked as AR cannot properly scale until computers can understand reality with the help of artificial intelligence.
 
-When looking at the business opportunities of AR, the CEO of Blippar says that AR can be a very profitable industry, way higher than VR. The Gartner Hype Cycle for Emerging Technologies 2018, shows **AR will reach mainstream adoption in 5-10 years**:
+When looking at the business opportunities of AR, the CEO of Blippar says that AR can be a very profitable industry, way higher than VR. The [Gartner Hype Cycle](https://www.gartner.com/en/research/methodologies/gartner-hype-cycle) for Emerging Technologies 2018, shows **AR will reach mainstream adoption in 5-10 years**:
 
 ![Gartner Hype Cycle of Technologies 2018](https://blogs.gartner.com/smarterwithgartner/files/2018/08/PR_490866_5_Trends_in_the_Emerging_Tech_Hype_Cycle_2018_Hype_Cycle.png)
 
@@ -66,7 +66,7 @@ On the second part of his presentation, Ambarish gave a few demos of AR applicat
 
 ---
 
-Besides those amazing talks, we’ve seen artists using AR and VR as a new way of storytelling, startups with disruptive ideas and partner’s stepping up their exhibition’s game with AR capabilities. A great example was Siemens who used AR to tell employees stories with a new twist.
+Besides those amazing talks, we’ve seen artists using AR and VR as a new way of storytelling, startups with disruptive ideas and partner’s stepping up their exhibition’s game with AR capabilities. A great example was [Siemens](https://www.siemens.com) who used AR to tell employees stories with a new twist.
 
 ![Ar Image](https://github.com/nodesagency/blog/blob/feature/ar-web-summit/source/_posts-images/2018-11-23-ar-web-summit/siemens.jpg)
 
@@ -79,10 +79,5 @@ Besides those amazing talks, we’ve seen artists using AR and VR as a new way o
 #### Resouces
 * You can checkout many of the talks on the [Web Summit’s Youtube Channel](https://www.youtube.com/channel/UCJtkHqH4Qof97TSx7BzE5IQ)
 * You can also checkout [Nodes' Instagram story](https://www.instagram.com/stories/highlights/17990784427005924/)
-* [WayRay.com](https://wayray.com/)
-* [WayRay SDK Challenge](https://wayray.com/sdk/challenge)
-* [WayRay Wikipedia](https://en.wikipedia.org/wiki/WayRay)
-* [Mixed reality](https://en.wikipedia.org/wiki/Mixed_reality)
-* [Gartner Hype Cycle](https://www.gartner.com/en/research/methodologies/gartner-hype-cycle)
 
 
