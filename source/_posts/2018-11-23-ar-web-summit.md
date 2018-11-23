@@ -12,7 +12,7 @@ categories:
 
 It has been two weeks since [Web Summit](https://websummit.com) took place in Lisbon, Portugal and we can still feel the energetic vibes. 3 days full of inspirational speakers, current tech trends, coffee astronauts, robots (have you seen the new social robot Furhat revealed at the summit?), diversity in tech and much more. But out of all, I was personally most excited about the interest that big companies are putting more and more into AR, VR and MR technologies.
 
-Augmented reality still seems to be trivial for some, but when industry leaders like Google,  Porsche and AliBaba are heavily investing in this technology, we know it will soon become a normal thing in our daily lives. There were many tech talks, startups and partner exhibitors that were putting focus on it and here are some highlights:
+Augmented reality still seems to be trivial for some, but when industry leaders like Google,  Porsche and AliBaba are heavily investing in this technology, we know it will soon become a commodity in our daily lives. There were many tech talks, startups and partner exhibitors that were putting focus on it and here are some highlights:
 
 ---
 
