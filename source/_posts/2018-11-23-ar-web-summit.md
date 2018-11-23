@@ -60,7 +60,7 @@ When looking at the business opportunities of AR, the CEO of Blippar says that A
 
 ![Gartner Hype Cycle of Technologies 2018](https://blogs.gartner.com/smarterwithgartner/files/2018/08/PR_490866_5_Trends_in_the_Emerging_Tech_Hype_Cycle_2018_Hype_Cycle.png)
 
-Ambarish showcased some examples of how AR is already impacting different industries: retailers using AR for magic mirrors to virtually try on clothing or connecting offline content like a coat in a store with online content like reviews and other recommended items ([video](https://www.youtube.com/watch?v=M_eCrueFGHY)). Blippar has a lot more great inspirational videos of AR business ideas on their [Youtube channel](https://www.youtube.com/user/blippar1/videos).
+Ambarish showcased some examples of how AR is already impacting different industries. For example, retailers are using AR for magic mirrors to virtually try on clothing or connecting offline content like a coat in a store with online content like reviews and other recommended items ([video](https://www.youtube.com/watch?v=M_eCrueFGHY)). Blippar has a lot more great inspirational videos of AR business ideas on their [Youtube channel](https://www.youtube.com/user/blippar1/videos).
 
 On the second part of his presentation, Ambarish gave a few demos of AR applications: a retail environment where you can engage with the products (using the Magic leap headset), a life on Mars experiment, a fitness scanning app and audience coloured butterflies that "come to life".
 
