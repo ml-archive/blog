@@ -1,5 +1,5 @@
 ---
-title:  Augmented reality is here to distrupt the industry: Insights from Web Summit 2018
+title:  Augmented reality is here to disrupt the industry: Insights from Web Summit 2018
 date: 2018-11-23 15:00:00
 tags: ar,vr,mr,augmentedreality,mixedreality,websummit,websummit2018,wayray,magicleap,porche,blippar
 authorIds:
