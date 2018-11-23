@@ -19,6 +19,7 @@ Augmented reality still seems to be trivial for some, but when industry leaders 
 ### Eyes on the road: How AR will change the car industry?
 
 ![Way Ray Image](https://github.com/nodesagency/blog/blob/feature/ar-web-summit/source/_posts-images/2018-11-23-ar-web-summit/wayray.jpg)
+_Image source: [WayRay Presskit](https://wayray.com/pressarea/presskit/sdk)_
 
 [WayRay](https://wayray.com/)’s Vitaly Ponomarev and [Porsche](https://www.porsche.com)’s Christian Knörle joined forces to talk about the opportunities and challenges of AR in the car industry. 
 
@@ -26,7 +27,7 @@ WayRay is a Swiss startup that develops holographic AR technologies for connecte
 
 Ponomarev got the idea of the business after an accident he got into because he was distracted by the GPS navigator. This is a great example of how AR can be used for improving our daily lives, not just for entertainment purposes. He also has a very interesting point of view regarding self-driving cars, in a sense that AR can be a powerful tool to build the trust between passengers and car. By projecting what the car is seeing and thinking, the passenger can understand that the car makes the right decisions. The biggest challenge of WayRay now is to industrialise the technology.
 
-Their business plan to develop the hardware and software, together with a True AR SDK for 3rd party developers which brings endless possibilities. WayRay also had a [True AR Challenge hackathon](https://wayray.com/sdk/challenge) this year and it is interesting to look at the projects to get some inspiration and more understanding of this technology.
+Their business plan to develop the hardware and software, together with a [True AR SDK](https://wayray.com/sdk) for 3rd party developers which brings endless possibilities. WayRay also had a [True AR Challenge hackathon](https://wayray.com/sdk/challenge) this year and it's interesting to look at the projects to get some inspiration and more understanding of this technology.
 
 Christian Knörle compares that adopting AR in our daily lives would be similar to the experience of getting prescription glasses when you have vision problems. Looking forward to that!
 
@@ -42,7 +43,7 @@ Virtual reality (VR) is a completely immersive virtual experience, augmented rea
 
 Those technologies will have great applications on communication, entertainment, gaming, e-commerce and many more and that is why early adopters are already developing and investing in them. An example of early experimentation is the collaboration between Magic Leap, H&M and Warpin Media for the new Moschino collection ([video](https://wwd.com/fashion-news/fashion-scoops/hm-creates-augmented-reality-experience-for-moschino-collab-1202891622/)).
 
-Right now their focus is to get developers and creators to build and test everyday use cases on the platform and then later they will also be able to sell the headseat to consumers. They recently had a [developers conference](https://www.magicleap.com/conference) to showcase what is possible with Magic Leap and inspire new ideas.
+Right now their focus is to get developers and creators to build and test everyday use cases on the platform and then later they will be able to sell the headseat to consumers. They recently had a [developers conference](https://www.magicleap.com/conference) to showcase what is possible with Magic Leap and inspire new ideas.
 
 When asked about the future of those new technologies, 5-10 years down the road, Brenda Freeman said:
 >“We believe this will be the next disruptive computing platform in the generation to come”
