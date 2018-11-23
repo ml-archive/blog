@@ -43,13 +43,13 @@ Virtual reality (VR) is a completely immersive virtual experience, augmented rea
 
 Those technologies will have great applications on communication, entertainment, gaming, e-commerce and many more and that is why early adopters are already developing and investing in them. An example of early experimentation is the collaboration between Magic Leap, H&M and Warpin Media for the new Moschino collection ([video](https://wwd.com/fashion-news/fashion-scoops/hm-creates-augmented-reality-experience-for-moschino-collab-1202891622/)).
 
-Right now their focus is to get developers and creators to build and test everyday use cases on the platform and then later they will be able to sell the headseat to consumers. They recently had a [developers conference](https://www.magicleap.com/conference) to showcase what is possible with Magic Leap and inspire new ideas.
+Right now their focus is to get developers and creators to build and test everyday use cases on the platform and then later they will be able to sell the headset to consumers. They recently had a [developers conference](https://www.magicleap.com/conference) to showcase what is possible with Magic Leap and inspire new ideas.
 
 When asked about the future of those new technologies, 5-10 years down the road, Freeman said:
 >“We believe this will be the next disruptive computing platform in the generation to come”
 
 Another great take-away from her talk was:
->“We talk so much about future forward. Future is now! If you aren’t thinking of how to distrupt your respective industry then you’re behind.”
+>“We talk so much about future forward. Future is now! If you aren’t thinking of how to disrupt your respective industry then you’re behind.”
 
 ### Our augmented future: What’s next for AR?
 
@@ -77,7 +77,7 @@ Besides those amazing talks, we’ve seen artists using AR and VR as a new way o
 
 ---
 
-#### Resouces
+#### Resources
 * You can checkout many of the talks on the [Web Summit’s Youtube Channel](https://www.youtube.com/channel/UCJtkHqH4Qof97TSx7BzE5IQ)
 * You can also checkout [Nodes' Instagram story](https://www.instagram.com/stories/highlights/17990784427005924/)
 
