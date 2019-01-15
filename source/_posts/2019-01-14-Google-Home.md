@@ -8,9 +8,7 @@ categories:
 - Vapor
 ---
 
-A while back I was tasked with integrating DMI’s weather service into Google Home. The goal of the service was to  enable users to ask:  “Hey DMI, what is the weather.” As well as: “Hey DMI, should I bike to work today?” Given my only experience with Google Home was through its advertisements, I went in with the expectations that integration would be quick and painless—just configure a few interests, link it with DMI’s API and start checking the weather. Surprisingly, this was far from actuality. Configuration of the app, dialogues and Cloud Functions is split across 3 different services. The initial clunkiness aside, the services seemed to work well and the tooling was relatively stable. Training intents in DialogFlow was a seamless and enjoyable experience, it just worked. Using the website’s inline code editor, I was able to develop and deploy the fulfillment to Google Cloud Functions.
-
-Overall, the experience with developing an action for the Google Home has been quite positive. The AI consistently works well and creating a new intent was an enjoyable experience. If they manage to fix the clunkiness with the interactions between all of their services there won’t be much left to complain about.
+Within the trend of IoT Google Home is amongst the most popular. Thankfully, Google has made the development of actions quite approachable. To get an overview of the process, let's create a weather integration together.
 
 ## Actions on Google
 Creating your Google Home integration starts at Actions on Google (AoG). Quoting Google: 
@@ -46,9 +44,10 @@ Try it out!
 
 > Ok Google, ask My Test App about the weather
 
-## Key takeaways
-Now that you have your first project setup and running, it's nice to have a little review.
+### Conclusion 
+Creating a Google Home integration and fulfillment is an intuitive and relatively easy process. There is some friction with the integration between the different Google services, but overall everything works nicely.
 
+#### Key takeaways
 - Setting up a Google Action is very easy
 - Intents have to be trained manually for every single language your application supports
 - Localization of fulfillments will take a bit of effort
