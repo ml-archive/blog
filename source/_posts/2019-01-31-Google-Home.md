@@ -1,6 +1,6 @@
 ---
 title: A Guide to Google Home Integrations
-date: 2019-01-14 10:00:00
+date: 2019-01-31 10:00:00
 tags: server,google,home,ai,api,cloud,serverless
 authorIds: 
 - brto
