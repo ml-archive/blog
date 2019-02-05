@@ -1,0 +1,5 @@
+sass:
+  sass_dir: css
+
+exclude:
+  - README.md
