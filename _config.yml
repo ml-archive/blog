@@ -1,5 +1,8 @@
 sass:
   sass_dir: assets/css
 
+source: src
+destination: dist
+
 exclude:
   - README.md
