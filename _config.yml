@@ -1,5 +1,5 @@
 sass:
-  sass_dir: css
+  sass_dir: assets/css
 
 exclude:
   - README.md
