@@ -1,0 +1,109 @@
+---
+layout: post
+title: Continuous Integration With Deployment to TestFlight and HockeyApp
+date: 2016-08-26 10:00:00
+tags: ios,ci,continuous integration,fastlane,
+authorIds:
+- doha
+categories:
+- iOS
+---
+
+<p class="date">2016-08-26 10:00:00</p>
+<p>We’ve recently revised our development process on the iOS team and set up a continuous integration server to make and deploy our builds faster, easier and more consistently. This post should shed some light on what we chose and how we set it up.</p>
+<h2 id="the-requirements">The Requirements</h2>
+<p>Being an agency doing client work only, distributing test builds internally and to clients has always been a challenge.</p>
+<p>For many years, we have exclusively used <a href="http://hockeyapp.com">HockeyApp</a>. As we’re juggling an overwhelming amount of client Apple Developer Accounts, it’s impractical to gather UDIDs from all of our clients and do new builds every time someone new wants to test an app. This is why we have been using our enterprise account to sign the Hockey builds we make with a <a href="https://developer.apple.com/library/ios/documentation/IDEs/Conceptual/AppDistributionGuide/DistributingEnterpriseProgramApps/DistributingEnterpriseProgramApps.html">wildcard In-House provisioning profile</a>.</p>
+<p>The drawback of this approach is that all Apple services like push notifications, iCloud or in-app purchases won’t work. In order to get those working, you need to create an app identifier with a dedicated provisioning profile; and if you want to release the app on the App Store, this means that you will have to use a different bundle ID than the live app otherwise Apple won’t allow you to create the app identifier.</p>
+<p>We’ve chosen to use a combination of <a href="http://hockeyapp.com">HockeyApp</a> and <a href="https://developer.apple.com/testflight/">Testflight</a> for our beta distribution.</p>
+<p>Testflight gives us the most accurate representation of how the app will behave when in production, but the delay between uploading and it being available to test can be pretty big. This is why we opted for a model that uploads to both platforms simultaneously. The client only ever tests on Testflight, but HockeyApp is very handy for quickly making a new build available for internal testing by Q/A and Project Managers.</p>
+<p align="center">
+<img src="https://d32wt9uxwfssua.cloudfront.net/tech-blog/uploads/ci_circle.png" />
+</p>
+<p>The main requirements or features of a CI server are usually the same for any platform:</p>
+<ul>
+<li>Verifying if the project builds</li>
+<li>Running unit tests <em>(future requirement as only our frameworks are tested at the moment)</em></li>
+<li>Deployment</li>
+</ul>
+<p>Other reasons are very dependent on what kind of work you do either alone or as a company. Making one app for 5 years and deploying tens or hundreds of different apps every day will result in completely different needs.</p>
+<p>Apart from those common requirements, we wanted to setup the CI system so that it keeps our deployment consistent and also save time. (Who likes to stare at the screen for 15 minutes while Xcode is archiving?)</p>
+<p>Most likely, you will run into a discussion about how customizable the system should be. Good thing to keep in mind is, that the more customizable the system will be, the more time-consuming it will be to set up each project. We wanted to be able to use a CI system that would give us quick per project setup with minimum manual work needed and some fair amount of customizability. This, of course results in a longer initial setup time of the actual CI system.</p>
+<h2 id="options">Options</h2>
+<p>An <a href="https://en.wikipedia.org/wiki/Comparison_of_continuous_integration_software">increasing number of CI solutions</a> is becoming available and it feels like there is a new one showing up every day. It makes choosing the right one more difficult and you will usually have to experiment with multiple before you find one that has features you need and actually saves you time.</p>
+<p>The current trend seems to be a one-click solution that <em>magically</em> does everything for you. This usually means very low customizability and proprietary source code. We didn’t want to go this way because we like to know what is going on under the hood and how it can be improved or augmented. Also, when <strong>magic</strong> breaks, you’re in for hours and hours of a total nightmare!</p>
+<h2 id="how-did-we-choose">How did we choose?</h2>
+<figure>
+<img src="https://d32wt9uxwfssua.cloudfront.net/tech-blog/uploads/jenkins_logo.png" alt="Jenkins" /><figcaption>Jenkins</figcaption>
+</figure>
+<p>Since a few of us had experience with <strong>Jenkins</strong> it was an obvious first choice and we got our prototype version running in a few days. Jenkins is the king of customizability and features and the industry standard for large projects with complex configurations.</p>
+<p>We were quite happy with our setup, only major issues were the initial setup time for each project and overall <em>scariness</em> of the user interface. <strong>It was important that everybody could customize their project without feeling like they are launching a nuclear missile.</strong></p>
+<figure>
+<img src="https://d32wt9uxwfssua.cloudfront.net/tech-blog/uploads/gitlab.png" alt="GitLab" /><figcaption>GitLab</figcaption>
+</figure>
+<p>We wanted to choose something that would be easy to understand even for our interns or junior developers and since we recently updated our installation of GitLab to the latest version, we’ve been intrigued to try <strong>GitLab’s Pipelines</strong> which are specifically meant for continuous integration.</p>
+<p>Rewriting of some of the scripts from Jenkins was needed, but worth the result. We’ve achieved an extremely easy project setup (just adding one file to the repo) and it’s easy to understand for everyone. For more complex projects we allow overriding the build scripts per project, again by just putting them in the repo.</p>
+<p><strong>TL;DR:</strong> GitLab’s Pipelines won for us. Jenkins is scary.</p>
+<h2 id="our-setup">Our Setup</h2>
+<h3 id="commit-message-trigger">Commit Message Trigger</h3>
+<p>We figured out that the simplest way of triggering a CI build for us will be some magic words in a commit message. We still need to manually increment build and version numbers of our apps, and that’s the perfect commit where to make the CI build the project.</p>
+<p>First, we tell the CI where it should deploy the app after building and then the environment the should be set and used when building the app.</p>
+<pre><code>738af0 Fixed stuff [ci testflight staging]</code></pre>
+<p>To maintain consistency we always make a HockeApp build if you select a Testflight build, but in case uploading to Testflight fails for some reason we do support <code>testflight_only</code> option, which is especially handy when iTunes Connect API fails as it often does.</p>
+<h3 id="gitlab.yml-gitlab-pipelines-config">.gitlab.yml (GitLab Pipelines Config)</h3>
+<p>Used by Gitlab Pipelines to detect if a build/deploy should be done and what exactly should be done. Very similar to how you would configure Travis.</p>
+<p>When run, the YAML file sets project specific environment variables, for example a bundle id or Slack channel name and copies template files, custom ruby scripts and fastlane configuration files into the repository.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb2-1" title="1"><span class="ex">stages</span>:</a>
+<a class="sourceLine" id="cb2-2" title="2">  <span class="ex">-</span> build</a>
+<a class="sourceLine" id="cb2-3" title="3"></a>
+<a class="sourceLine" id="cb2-4" title="4"><span class="ex">build_project</span>:</a>
+<a class="sourceLine" id="cb2-5" title="5">  <span class="ex">stage</span>: build</a>
+<a class="sourceLine" id="cb2-6" title="6">  <span class="ex">script</span>:</a>
+<a class="sourceLine" id="cb2-7" title="7">    <span class="ex">-</span> export</a>
+<a class="sourceLine" id="cb2-8" title="8">      <span class="va">DEVELOPER_DIR=</span><span class="st">&quot;/Applications/Xcode.app/Contents/Developer&quot;</span></a>
+<a class="sourceLine" id="cb2-9" title="9">      <span class="va">FL_SLACK_CHANNEL=</span><span class="st">&quot;ios-ci&quot;</span></a>
+<a class="sourceLine" id="cb2-10" title="10">      <span class="va">SIGH_APP_IDENTIFIER=</span><span class="st">&quot;com.nodes.app&quot;</span></a>
+<a class="sourceLine" id="cb2-11" title="11">      <span class="va">FASTLANE_ITC_TEAM_NAME=</span><span class="st">&quot;Nodes ApS&quot;</span></a>
+<a class="sourceLine" id="cb2-12" title="12">      <span class="va">FASTLANE_ITC_TEAM_ID=</span><span class="st">&quot;123456&quot;</span></a>
+<a class="sourceLine" id="cb2-13" title="13">      <span class="va">HOCKEY_APP_ID=</span><span class="st">&quot;123456eabfc1234e456a34565e41e35e41&quot;</span></a>
+<a class="sourceLine" id="cb2-14" title="14">      <span class="va">MAIN_PLIST_PATH=</span><span class="st">&quot;./YourApp/Info.plist&quot;</span></a>
+<a class="sourceLine" id="cb2-15" title="15"></a>
+<a class="sourceLine" id="cb2-16" title="16">    <span class="ex">-</span> git clone --depth 1 git@yourgitserver.com:ios/ci-template.git</a>
+<a class="sourceLine" id="cb2-17" title="17">    <span class="ex">-</span> ruby ./ci-buildtools/nodes-build/nodes-build.rb</a>
+<a class="sourceLine" id="cb2-18" title="18"></a>
+<a class="sourceLine" id="cb2-19" title="19">  <span class="ex">tags</span>:</a>
+<a class="sourceLine" id="cb2-20" title="20">    <span class="ex">-</span> ios</a></code></pre></div>
+<p>Worth noting is that the copying step only happens if those files don’t already exist in the repository, this way we can override actual build steps for complex projects by including modified version of those files in the repository.</p>
+<p>As the last step, it runs the main Ruby file to start the build.</p>
+<h3 id="ruby-scripts-gems">Ruby Scripts &amp; Gems</h3>
+<p>We are using one custom script and two gems we made to be able to set up and start a build.</p>
+<p><strong><a href="https://github.com/nodes-ios/hockeyver">hockeyver</a></strong> is a small gem that fetches last uploaded version and build from HockeyApp given that you provide an API token and app ID. We use this to be able to fail fast and early as all our Testflight builds have a corresponding build on Hockeyapp so we can check if that version already exists before even starting to build.</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb3-1" title="1">$ <span class="ex">hockeyver</span> --app_id YOUR_APP_ID -t YOUR_TOKEN</a>
+<a class="sourceLine" id="cb3-2" title="2"><span class="ex">26</span></a>
+<a class="sourceLine" id="cb3-3" title="3"></a>
+<a class="sourceLine" id="cb3-4" title="4"><span class="co"># Later when used in fastlane</span></a>
+<a class="sourceLine" id="cb3-5" title="5"><span class="ex">ERROR</span> [2016-08-30 17:12:09.04]: Build failed! Version already exists on hockey.</a></code></pre></div>
+<p><strong><a href="https://github.com/nodes-ios/carthage_cashier">carthage_cashier</a></strong> is another gem which provides an extra layer of caching on top of a dependency manager we use in most projects - Carthage. It caches all the built products, based on their version and also compiler version, so that we can load from cache when we need it, instead of building all dependencies again. This saves us a lot of time and is useful especially for CI builds, where dependencies rarely change.</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb4-1" title="1">$ <span class="ex">carthage_cashier</span> .</a>
+<a class="sourceLine" id="cb4-2" title="2"><span class="ex">Copied</span> dependencies from cache: [<span class="st">&quot;Alamofire&quot;</span>, <span class="st">&quot;Reachability&quot;</span>]</a>
+<a class="sourceLine" id="cb4-3" title="3"><span class="ex">Following</span> dependencies not cached, bootstrapping them now: [<span class="st">&quot;Serializable&quot;</span>, <span class="st">&quot;Blobfish&quot;</span>]</a>
+<a class="sourceLine" id="cb4-4" title="4"><span class="ex">...</span></a>
+<a class="sourceLine" id="cb4-5" title="5"><span class="ex">All</span> dependencies loaded.</a></code></pre></div>
+<h3 id="fastlane">Fastlane</h3>
+<p><a href="https://fastlane.tools/">Fastlane</a> is a newer tool meant for automating various tasks during the development of mobile applications. Think Makefiles on steroids with some nice extra features for iOS. It consists of many different small tools like <code>gym</code>, <code>sigh</code>, <code>spaceship</code> and more that handle all your regular tasks, from (re)signing, deployment to publishing metadata and taking simulator screenshots.</p>
+<p>All is configured in one main file, called the <code>fastfile</code> in <strong>lanes</strong>, which are just separate steps which you can execute. What we decided to do was to create a template fastfile where all the lanes and commands are preconfigured, so that it wouldn’t require any additional setup from the developer on a project. Of course, we made sure it still is possible to provide your own fastfile in projects which would require additional setup.</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb5-1" title="1">$ <span class="ex">bundle</span> exec fastlane test_flight api_env:staging changelog:<span class="st">&quot;Something fixed.&quot;</span></a>
+<a class="sourceLine" id="cb5-2" title="2"><span class="ex">DEBUG</span> [2016-08-21 16:32:29.23]: Using api_env: staging</a>
+<a class="sourceLine" id="cb5-3" title="3"><span class="ex">DEBUG</span> [2016-08-21 16:32:29.23]: Using changelog: Something fixed.</a>
+<a class="sourceLine" id="cb5-4" title="4"><span class="ex">....</span></a>
+<a class="sourceLine" id="cb5-5" title="5"><span class="ex">INFO</span> [2016-08-21 16:33:55.01]: Starting with ipa upload to HockeyApp... this could take some time.</a>
+<a class="sourceLine" id="cb5-6" title="6"><span class="ex">....</span></a>
+<a class="sourceLine" id="cb5-7" title="7"><span class="ex">INFO</span> [2016-08-21 16:44:17.10]: fastlane.tools just saved you 12 minutes! 🎉</a></code></pre></div>
+<h2 id="summary">Summary</h2>
+<p>Continuous integration is awesome and you should be using it. After all, it not only makes it easy, fast and consistent to make builds, but also gives you a point on the <a href="http://www.joelonsoftware.com/articles/fog0000000043.html">Joel Test</a>!</p>
+<p align="center">
+<img src="https://d32wt9uxwfssua.cloudfront.net/tech-blog/uploads/caveman.jpg" />
+</p>
+<p>If you can’t afford an in-house computer to set up as a build server or you prefer an all-in-one solution in the cloud, then your best bet would be <a href="https://buddybuild.com/">BuddyBuild</a>, which offers a tonne of features and has great support where you can communicate directly with the developers!</p>
+<p>On the other hand, if you are producing many apps each with specific requirements you can’t always use a simple solution like that. There might also be legal reasons and non-disclosure agreements preventing you from having an external server clone your repository. Or you just prefer to have your own dedicated servers in your own office, which start builds immediately and give you full control.</p>
+<p>We are still iterating and improving our current setup, but hopefully, this article has at least made you think about having your own CI up and running.</p>

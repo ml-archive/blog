@@ -1,0 +1,169 @@
+---
+layout: post
+title: Android Bottom Navigation
+date: 2016-11-15 10:31:21
+tags: android, ui, ux
+authorIds:
+- joal
+categories:
+- Android
+---
+
+<p class="date">2016-11-15 10:31:21</p>
+<p>This blog post will give a quick introduction on the new Android Bottom Navigation component, how to setup your project to use it and a few tips on how to utilise it to get the best results.</p>
+<p>Despite being part of the Material Design recommendations for a while, Google only recently introduced this on Version 25 of Design Support Library, meaning you no longer have to create your own custom implementations.</p>
+<p>I created a sample project on GitHub with all the source code for this article. You can check it out <a href="https://github.com/jcmsalves/bottomNavigationSample">here</a> later if you want.</p>
+<h2 id="how-and-when-to-use-the-bottom-navigation">1. How and when to use the Bottom Navigation</h2>
+<p>Let’s start with a quick reminder on <a href="https://material.google.com/components/bottom-navigation.html">Google and Material Design recommendations</a> when using the bottom navigation:</p>
+<ul>
+<li><p>Bottom navigation should be used to provide quick navigation between top-level views of an app.</p></li>
+<li>Three to five top-level destinations: this component shouldn’t be used if you have less than 3 or more than 5 options to show.
+<ul>
+<li>2 items: recommend to use a regular tab layout on the top of the page</li>
+<li>5+ items: recommend to use a navigation drawer, or as an alternative you could have one of your 5 items being a <em>More</em> option that takes the user to a separate navigation screen</li>
+</ul></li>
+<li><p>Bottom navigation and tabs: think twice if you want to use both widgets at the same time. If you really have to, take extra caution with navigation and animation to avoid confusing the user</p></li>
+<li>Menu items style: this is how it works by default
+<ul>
+<li>3 items: if using 3 items all of them should have Icon and Text visible all the time</li>
+<li>3+ items: if using more than 3 items only the active item should have visible text</li>
+</ul></li>
+</ul>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;">3 menu items</th>
+<th style="text-align: center;">4 menu items</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><img src="https://d1gwekl0pol55k.cloudfront.net/image/nstack/default/3buttonsscreenshot1_XToNZrXuvc.png" width="300"></td>
+<td style="text-align: center;"><img src="https://d1gwekl0pol55k.cloudfront.net/image/nstack/translate_values/4buttonsscreenshot1_ePCWRdtsm9.png" width="300"></td>
+</tr>
+</tbody>
+</table>
+<h2 id="now-for-the-fun-part.-lets-build-this">2. Now for the fun part. Let’s build this!</h2>
+<p>We’ve covered some of the most important recommendations when using the bottom navigation widget, let’s move on to the interesting part and implement it in our app.</p>
+<p>As with the other support library components you firstly need to add the dependency to your app Gradle file.</p>
+<pre class="gradle"><code>compile ‘com.android.support:design:25.0.0’ </code></pre>
+<p>Now we can start using the component straight away. Here’s a quick list on what we’ll need to do:</p>
+<ol type="1">
+<li>Add the widget to the layout file where we want to show it</li>
+<li>Create a menu layout file with our options</li>
+<li>Create a state drawable file to control the menu item different states</li>
+<li>Implement a listener to detect when we tap each item</li>
+</ol>
+<h3 id="add-the-bottom-navigation-widget">2.1 Add the bottom navigation widget:</h3>
+<p>Let’s add the widget as follows to the MainActivity layout file:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode xml"><code class="sourceCode xml"><a class="sourceLine" id="cb2-1" title="1"><span class="kw">&lt;android.support.design.widget.BottomNavigationView</span></a>
+<a class="sourceLine" id="cb2-2" title="2"><span class="ot">        android:id=</span><span class="st">&quot;@+id/bottomNavigation&quot;</span></a>
+<a class="sourceLine" id="cb2-3" title="3"><span class="ot">        android:layout_width=</span><span class="st">&quot;match_parent&quot;</span></a>
+<a class="sourceLine" id="cb2-4" title="4"><span class="ot">        android:layout_height=</span><span class="st">&quot;wrap_content&quot;</span></a>
+<a class="sourceLine" id="cb2-5" title="5"><span class="ot">        app:itemBackground=</span><span class="st">&quot;@color/colorPrimary&quot;</span></a>
+<a class="sourceLine" id="cb2-6" title="6"><span class="ot">        app:itemIconTint=</span><span class="st">&quot;@drawable/menu_item_selector&quot;</span></a>
+<a class="sourceLine" id="cb2-7" title="7"><span class="ot">        app:itemTextColor=</span><span class="st">&quot;@drawable/menu_item_selector&quot;</span></a>
+<a class="sourceLine" id="cb2-8" title="8"><span class="ot">        app:menu=</span><span class="st">&quot;@menu/bottom_navigation_menu&quot;</span><span class="kw">&gt;</span></a>
+<a class="sourceLine" id="cb2-9" title="9">    <span class="kw">&lt;/android.support.design.widget.BottomNavigationView&gt;</span></a></code></pre></div>
+<p>Remember to make it aligned at the bottom of the screen. You can check the full layout file <a href="https://github.com/jcmsalves/bottomNavigationSample/blob/master/app/src/main/res/layout/activity_main.xml">here</a> for reference.</p>
+<p>As you can see, there are some properties on the widget. Let’s take a look at them in a bit more detail:</p>
+<ul>
+<li><strong>app:itemBackground -</strong> the background colour to be used in the bottom navigation widget. In our case, this is Nodes pink</li>
+<li><strong>app:itemIconTint -</strong> the tint to be used in the menu item icons</li>
+<li><strong>app:itemTextColor -</strong> the colour to be used in the menu item text</li>
+<li><strong>app:menu -</strong> reference to the menu layout file that we’re creating in the next step</li>
+</ul>
+<h3 id="create-a-menu-layout">2.2 Create a menu layout:</h3>
+<p>There are no hidden tricks here, we can simply create a menu file like we would usually for any other Android menu. The menu file should have id, a reference for the drawable and the text to display.</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode xml"><code class="sourceCode xml"><a class="sourceLine" id="cb3-1" title="1"><span class="kw">&lt;?xml</span> version=&quot;1.0&quot; encoding=&quot;utf-8&quot;<span class="kw">?&gt;</span></a>
+<a class="sourceLine" id="cb3-2" title="2"><span class="kw">&lt;menu</span><span class="ot"> xmlns:android=</span><span class="st">&quot;http://schemas.android.com/apk/res/android&quot;</span><span class="kw">&gt;</span></a>
+<a class="sourceLine" id="cb3-3" title="3">    <span class="kw">&lt;item</span></a>
+<a class="sourceLine" id="cb3-4" title="4"><span class="ot">        android:id=</span><span class="st">&quot;@+id/action_home&quot;</span></a>
+<a class="sourceLine" id="cb3-5" title="5"><span class="ot">        android:enabled=</span><span class="st">&quot;true&quot;</span></a>
+<a class="sourceLine" id="cb3-6" title="6"><span class="ot">        android:icon=</span><span class="st">&quot;@drawable/ic_home_white_24dp&quot;</span></a>
+<a class="sourceLine" id="cb3-7" title="7"><span class="ot">        android:title=</span><span class="st">&quot;@string/menu_item_home&quot;</span> <span class="kw">/&gt;</span></a>
+<a class="sourceLine" id="cb3-8" title="8">    <span class="kw">&lt;item</span></a>
+<a class="sourceLine" id="cb3-9" title="9"><span class="ot">        android:id=</span><span class="st">&quot;@+id/action_car&quot;</span></a>
+<a class="sourceLine" id="cb3-10" title="10"><span class="ot">        android:enabled=</span><span class="st">&quot;true&quot;</span></a>
+<a class="sourceLine" id="cb3-11" title="11"><span class="ot">        android:icon=</span><span class="st">&quot;@drawable/ic_directions_car_white_24dp&quot;</span></a>
+<a class="sourceLine" id="cb3-12" title="12"><span class="ot">        android:title=</span><span class="st">&quot;@string/menu_item_car&quot;</span> <span class="kw">/&gt;</span></a>
+<a class="sourceLine" id="cb3-13" title="13">    <span class="kw">&lt;item</span></a>
+<a class="sourceLine" id="cb3-14" title="14"><span class="ot">        android:id=</span><span class="st">&quot;@+id/action_bike&quot;</span></a>
+<a class="sourceLine" id="cb3-15" title="15"><span class="ot">        android:enabled=</span><span class="st">&quot;true&quot;</span></a>
+<a class="sourceLine" id="cb3-16" title="16"><span class="ot">        android:icon=</span><span class="st">&quot;@drawable/ic_directions_bike_white_24dp&quot;</span></a>
+<a class="sourceLine" id="cb3-17" title="17"><span class="ot">        android:title=</span><span class="st">&quot;@string/menu_item_bike&quot;</span> <span class="kw">/&gt;</span></a>
+<a class="sourceLine" id="cb3-18" title="18"></a>
+<a class="sourceLine" id="cb3-19" title="19">    <span class="kw">&lt;item</span></a>
+<a class="sourceLine" id="cb3-20" title="20"><span class="ot">        android:id=</span><span class="st">&quot;@+id/action_walk&quot;</span></a>
+<a class="sourceLine" id="cb3-21" title="21"><span class="ot">        android:enabled=</span><span class="st">&quot;true&quot;</span></a>
+<a class="sourceLine" id="cb3-22" title="22"><span class="ot">        android:icon=</span><span class="st">&quot;@drawable/ic_directions_walk_white_24dp&quot;</span></a>
+<a class="sourceLine" id="cb3-23" title="23"><span class="ot">        android:title=</span><span class="st">&quot;@string/menu_item_walk&quot;</span> <span class="kw">/&gt;</span></a>
+<a class="sourceLine" id="cb3-24" title="24"><span class="kw">&lt;/menu&gt;</span></a></code></pre></div>
+<p>Easy right?</p>
+<h3 id="create-a-state-drawable">2.3 Create a state drawable:</h3>
+<p>At this stage we have created a functional bottom navigation, but we all know the importance of great UX/UI, so let’s customise this.</p>
+<p>Right now all the icons and corresponding text are the same colour, no matter if they are selected or not.</p>
+<p>You may have noticed that in the Widget xml definition in part 1 there was already a reference for <code>@drawable/menu_item_selector</code> in the itemIconTint and itemTextColor properties.</p>
+<p>So, we just need to create this to make everything work as expected. Create the file with the following content:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode xml"><code class="sourceCode xml"><a class="sourceLine" id="cb4-1" title="1"><span class="kw">&lt;?xml</span> version=&quot;1.0&quot; encoding=&quot;utf-8&quot;<span class="kw">?&gt;</span></a>
+<a class="sourceLine" id="cb4-2" title="2"><span class="kw">&lt;selector</span><span class="ot"> xmlns:android=</span><span class="st">&quot;http://schemas.android.com/apk/res/android&quot;</span><span class="kw">&gt;</span></a>
+<a class="sourceLine" id="cb4-3" title="3">    <span class="kw">&lt;item</span><span class="ot"> android:color=</span><span class="st">&quot;@color/colorWhite&quot;</span><span class="ot"> android:state_checked=</span><span class="st">&quot;true&quot;</span> <span class="kw">/&gt;</span></a>
+<a class="sourceLine" id="cb4-4" title="4">    <span class="kw">&lt;item</span><span class="ot"> android:color=</span><span class="st">&quot;@color/colorPrimaryDark&quot;</span><span class="ot"> android:state_checked=</span><span class="st">&quot;false&quot;</span> <span class="kw">/&gt;</span></a>
+<a class="sourceLine" id="cb4-5" title="5"><span class="kw">&lt;/selector&gt;</span></a></code></pre></div>
+<p>As you can see it’s a really simple selector returning 2 different colours for state checked and non-checked. Feel free to extended it to cover other states.</p>
+<h3 id="implement-navigationitemselected-listener">2.4 Implement NavigationItemSelected listener:</h3>
+<p>To complete our sample we need to listen to the tap events on each menu item. The activity layout from the sample contains a simple Frame Layout with a centered text view emulating the Fragment title.</p>
+<p>Add this code to your Activity:</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode java"><code class="sourceCode java"><a class="sourceLine" id="cb5-1" title="1">BottomNavigationView bottomNavigationView = (BottomNavigationView)</a>
+<a class="sourceLine" id="cb5-2" title="2">                <span class="fu">findViewById</span>(R.<span class="fu">id</span>.<span class="fu">bottomNavigation</span>);</a>
+<a class="sourceLine" id="cb5-3" title="3"></a>
+<a class="sourceLine" id="cb5-4" title="4">        <span class="dt">final</span> TextView fragmentNameTv = (TextView)</a>
+<a class="sourceLine" id="cb5-5" title="5">                <span class="fu">findViewById</span>(R.<span class="fu">id</span>.<span class="fu">fragmentName</span>);</a>
+<a class="sourceLine" id="cb5-6" title="6"></a>
+<a class="sourceLine" id="cb5-7" title="7">        fragmentNameTv.<span class="fu">setText</span>(<span class="fu">getResources</span>().<span class="fu">getString</span>(R.<span class="fu">string</span>.<span class="fu">fragment_home_title</span>));</a>
+<a class="sourceLine" id="cb5-8" title="8"></a>
+<a class="sourceLine" id="cb5-9" title="9">        bottomNavigationView.<span class="fu">setOnNavigationItemSelectedListener</span>(<span class="kw">new</span> BottomNavigationView.<span class="fu">OnNavigationItemSelectedListener</span>() {</a>
+<a class="sourceLine" id="cb5-10" title="10">            <span class="at">@Override</span></a>
+<a class="sourceLine" id="cb5-11" title="11">            <span class="kw">public</span> <span class="dt">boolean</span> <span class="fu">onNavigationItemSelected</span>(<span class="at">@NonNull</span> <span class="bu">MenuItem</span> item) {</a>
+<a class="sourceLine" id="cb5-12" title="12"></a>
+<a class="sourceLine" id="cb5-13" title="13">                <span class="kw">switch</span> (item.<span class="fu">getItemId</span>()) {</a>
+<a class="sourceLine" id="cb5-14" title="14">                    <span class="kw">case</span> R.<span class="fu">id</span>.<span class="fu">action_home</span>:</a>
+<a class="sourceLine" id="cb5-15" title="15">                        fragmentNameTv.<span class="fu">setText</span>(<span class="fu">getResources</span>().<span class="fu">getString</span>(R.<span class="fu">string</span>.<span class="fu">fragment_home_title</span>));</a>
+<a class="sourceLine" id="cb5-16" title="16">                        <span class="kw">break</span>;</a>
+<a class="sourceLine" id="cb5-17" title="17"></a>
+<a class="sourceLine" id="cb5-18" title="18">                    <span class="kw">case</span> R.<span class="fu">id</span>.<span class="fu">action_car</span>:</a>
+<a class="sourceLine" id="cb5-19" title="19">                        fragmentNameTv.<span class="fu">setText</span>(<span class="fu">getResources</span>().<span class="fu">getString</span>(R.<span class="fu">string</span>.<span class="fu">fragment_car_title</span>));</a>
+<a class="sourceLine" id="cb5-20" title="20">                        <span class="kw">break</span>;</a>
+<a class="sourceLine" id="cb5-21" title="21"></a>
+<a class="sourceLine" id="cb5-22" title="22">                    <span class="kw">case</span> R.<span class="fu">id</span>.<span class="fu">action_bike</span>:</a>
+<a class="sourceLine" id="cb5-23" title="23">                        fragmentNameTv.<span class="fu">setText</span>(<span class="fu">getResources</span>().<span class="fu">getString</span>(R.<span class="fu">string</span>.<span class="fu">fragment_bike_title</span>));</a>
+<a class="sourceLine" id="cb5-24" title="24">                        <span class="kw">break</span>;</a>
+<a class="sourceLine" id="cb5-25" title="25"></a>
+<a class="sourceLine" id="cb5-26" title="26">                    <span class="kw">case</span> R.<span class="fu">id</span>.<span class="fu">action_walk</span>:</a>
+<a class="sourceLine" id="cb5-27" title="27">                        fragmentNameTv.<span class="fu">setText</span>(<span class="fu">getResources</span>().<span class="fu">getString</span>(R.<span class="fu">string</span>.<span class="fu">fragment_walk_title</span>));</a>
+<a class="sourceLine" id="cb5-28" title="28">                        <span class="kw">break</span>;</a>
+<a class="sourceLine" id="cb5-29" title="29">                }</a>
+<a class="sourceLine" id="cb5-30" title="30">                <span class="kw">return</span> <span class="kw">false</span>;</a>
+<a class="sourceLine" id="cb5-31" title="31">            }</a>
+<a class="sourceLine" id="cb5-32" title="32">        });</a></code></pre></div>
+<p>First we get references to the BottomNavigation Widget and the TextView from the layout.</p>
+<p>Then we add the OnNavigationItemSelectedListener to the widget and use a switch to detect with menu item was tapped and update the TextView with the corresponding fragment title.</p>
+<p>And it’s done. Super simple, right? Here’s the final result:</p>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;">3 menu items</th>
+<th style="text-align: center;">4 menu items</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><img src="https://d1gwekl0pol55k.cloudfront.net/image/nstack/translate_values/3buttonsgif_VtILFZWqWD.gif" width="300"></td>
+<td style="text-align: center;"><img src="https://d1gwekl0pol55k.cloudfront.net/image/nstack/translate_values/4buttonsgif_n1Avgls13h.gif" width="300"></td>
+</tr>
+</tbody>
+</table>
+<p>Having implemented a custom bottom navigation view myself in previous projects, I think the new Android Bottom Navigation component is a brilliant addition to the support library. As well as not having to do any boilerplate code, there are numerous benefits you get for free from this new component.</p>
+<p>If you don’t have any specific requirements or custom UI you need to implement for bottom navigation in an app, give the new Bottom Navigation a try and you’ll see how quickly and easy it is to implement.</p>
+<hr />
+<p>Take a look at some of our Android Libraries <a href="https://github.com/nodes-android">here</a></p>

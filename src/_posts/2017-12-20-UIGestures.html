@@ -1,0 +1,73 @@
+---
+layout: post
+title: UIGestures
+date: 2017-12-20 13:00:00
+tags: ios,accelerators,gestures
+authorIds:
+- roju
+categories:
+- iOS
+---
+
+<p class="date">2017-12-20 13:00:00</p>
+<p>Gestures are the magic behind those accelerators that can make your app more user friendly. We will now show a few examples on how to implement them in your code.</p>
+<h2 id="swipe-gestures"><a href="https://developer.apple.com/documentation/uikit/uiswipegesturerecognizer">Swipe Gestures</a></h2>
+<p>You can have many accelerators build with the swipe gesture as it is discrete and you can have many combinations as you can select the direction of the swipe and the number of touches required. Even if we have the possibility to set up a high number of touches, a maximum of 3 is still user friendly. You should also make sure you keep some sort of consistency when defining the gestures, if swipe right with 2 fingers goes to the previous conversation in a messaging app, swiping left with 2 fingers should probably go to the next conversation.</p>
+<h3 id="using-the-storyboard">Using the storyboard</h3>
+<p>{% vimeo 244338896 %}</p>
+<ol type="1">
+<li>Search for the swipe gesture in the objects library</li>
+<li>Drag it into your view controller</li>
+<li>Set the view of your choice as a delegate to the swipe gesture recognizer (by pressing “Ctrl” on the keyboard and click-drag from the view to the swipe gesture recognizer and selecting Outlet Collections - <code>gestureRecognizers</code> )</li>
+<li>Setup your gesture recogniser by selecting the direction and the number of touches required</li>
+</ol>
+<p>{% vimeo 244338890 %}</p>
+<ol start="5" type="1">
+<li>Connect your Swipe Gesture Recognizer to the code by pressing “Ctrl” in your keyboard and click-drag from the gesture recognizer to the ViewController.</li>
+<li>Chose the connection to be an action, name your action and implement the functionality you would want for this specific gesture. In this example we are simply printing in the console to test it all works well.</li>
+</ol>
+<p>{% vimeo 244338872 %}</p>
+<p>Remember that your view should be user interaction enabled. You can either do that from code by setting <code>view.isUserInteractionEnabled = true</code>, or from the storyboard editor - Attributes Inspector - making sure that the <code>User Interaction Enabled</code> is checked.</p>
+<h3 id="programmatic-swipe-gesture-recognizer">Programmatic Swipe Gesture Recognizer</h3>
+<p>You can also make gesture recognizers fast only from the code as shown below:</p>
+<pre class="swift"><code>let swipeGestureRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(viewSwipedToLeft))
+swipeGestureRecognizer.numberOfTouchesRequired = 2 //The number of fingers required (default is 1)
+swipeGestureRecognizer.direction = .left // The direction of the swipe (default is right)
+view.addGestureRecognizer(swipeGestureRecognizer)</code></pre>
+<h2 id="other-gestures">Other gestures</h2>
+<p>Besides the one mentioned above you can also take advantage of other gestures like: ### <a href="https://developer.apple.com/documentation/uikit/uitapgesturerecognizer">Tap - UITapGestureRecognizer</a></p>
+<pre class="swift"><code>let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(viewTapped))
+tapGestureRecognizer.numberOfTapsRequired = 2 // The number of taps required (default is 1)
+tapGestureRecognizer.numberOfTouchesRequired = 2 // The number of fingers required (default is 1)
+view.addGestureRecognizer(tapGestureRecognizer)</code></pre>
+<h3 id="pinch---uipinchgesturerecognizer"><a href="https://developer.apple.com/documentation/uikit/uipinchgesturerecognizer">Pinch - UIPinchGestureRecognizer</a></h3>
+<pre class="swift"><code>let pinchGestureRecognizer = UIPinchGestureRecognizer(target: self, action: #selector(viewPinched))
+view.addGestureRecognizer(pinchGestureRecognizer)
+// You can get the scale factor relative to the points of the two touches on the screen (pinchGestureRecognizer.scale)
+// and the velocity of the pinch in scale factor/second (pinchGestureRecognizer.velocity)</code></pre>
+<h3 id="rotation-uirotationgesturerecognizer"><a href="https://developer.apple.com/documentation/uikit/uirotationgesturerecognizer">Rotation UIRotationGestureRecognizer</a></h3>
+<pre class="swift"><code>let rotationGestureRecognizer = UIRotationGestureRecognizer(target: self, action: #selector(viewRotated))
+view.addGestureRecognizer(rotationGestureRecognizer)
+// You can get the rotation in radians (rotationGestureRecognizer.rotation)
+// and the velocity of the rotation in radians/second (rotationGestureRecognizer.velocity)</code></pre>
+<h3 id="pan-dragging---uipangesturerecognizer"><a href="https://developer.apple.com/documentation/uikit/uipangesturerecognizer">Pan (dragging) - UIPanGestureRecognizer</a></h3>
+<pre class="swift"><code>let panGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(viewPanned))
+panGestureRecognizer.maximumNumberOfTouches = 2 // Max number of fingers required (default is NSUIntegerMax)
+panGestureRecognizer.minimumNumberOfTouches = 2 // Min number of fingers required (default is 1)
+view.addGestureRecognizer(panGestureRecognizer)</code></pre>
+<h3 id="screen-edge-pan---uiscreenedgepangesturerecognizer"><a href="https://developer.apple.com/documentation/uikit/uiscreenedgepangesturerecognizer">Screen edge pan - UIScreenEdgePanGestureRecognizer</a></h3>
+<pre class="swift"><code>let screenEdgeGestureRecognizer = UIScreenEdgePanGestureRecognizer(target: self, action: #selector(edgePanGestureRecognized))
+screenEdgeGestureRecognizer.edges = .left //The acceptable starting edges for the gesture (UIRectEdge)
+view.addGestureRecognizer(screenEdgeGestureRecognizer)</code></pre>
+<h3 id="long-press---uilongpressgesturerecognizer"><a href="https://developer.apple.com/documentation/uikit/uilongpressgesturerecognizer">Long press - UILongPressGestureRecognizer</a></h3>
+<pre class="swift"><code>let longPressGestureRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(longPressRecognized))
+longPressGestureRecognizer.minimumPressDuration = 2 //The minimum period fingers must press on the view (in seconds, default is 0.5 seconds)
+longPressGestureRecognizer.numberOfTouchesRequired = 2 // The number of fingers that must be pressed on the view (default is 1)
+longPressGestureRecognizer.numberOfTapsRequired = 0 // The number of taps required (default is 0)
+longPressGestureRecognizer.allowableMovement = 10 // The maximum movement of the fingers on the view measured in points (default is 10 points)
+view.addGestureRecognizer(longPressGestureRecognizer)</code></pre>
+<h2 id="linksresources">Links/Resources</h2>
+<ul>
+<li><a href="https://developer.apple.com/ios/human-interface-guidelines/user-interaction/gestures/">Apple - Gesture guidelines</a></li>
+<li><a href="https://developer.apple.com/documentation/uikit/touches_presses_and_gestures/handling_uikit_gestures/handling_pinch_gestures">Apple - Handing pinch gestures documentation</a></li>
+</ul>

@@ -1,0 +1,195 @@
+---
+layout: post
+date: 2017-11-22 10:10:57
+tags: ios,widgets,today,extension
+authorIds:
+- dori
+categories:
+- iOS
+---
+
+<p class="date">2017-11-22 10:10:57</p>
+<p>Apple introduced the Today extension in iOS 9, more commonly called widgets.</p>
+<p>Apple describes widgets like so:</p>
+<p>Widgets give users quick access to information that’s important right now. For example, users open the Today view to check current stock prices or weather conditions, see today’s schedule, or perform a quick task such as marking an item as done. Users tend to open the Today view frequently, and they expect the information they’re interested in to be instantly available.</p>
+<h2 id="setup">Setup</h2>
+<p>Setting up a Today extension in your iOS app is fairly straight forward. In your Xcode project click File-&gt;New-&gt;Target and select today extension.</p>
+<p>Make sure your widget’s bundle id is not the same as your apps bundle id. So if your apps bundle is “com.yourcompany.yourappname” the widgets bundle id should look like this “com.yourcompany.yourappname.widget”.</p>
+<p>This will create a new target in your app and a new folder. The content of this folder should be familiar with any iOS developer. It contains</p>
+<ol type="1">
+<li>TodayExtensionViewController.swift</li>
+<li>Storyboard file</li>
+<li>Plist</li>
+<li>Asset catalogue</li>
+</ol>
+<p>I like to rename the files from TodayExtension to Widget as that makes more sense to me.</p>
+<h2 id="widget-creation">Widget Creation</h2>
+<p>Creating the UI for a widget should also be very simple for any developer that has used storyboards and auto-layout before. Just add the UI elements you wish to use to the storyboard and create the necessary outlets in the ViewController.</p>
+<p>This is what the storyboard could look like.</p>
+<p align=center>
+<p><img src=https://cdn-laravel.vapor.cloud/image/nstack/translate_values/ScreenShot2017-11-22at104935_5ahcPXPuRk.png?width=280 style=";margin:20px;"></p>
+<h2 id="nswidgetproviding">NSWidgetProviding</h2>
+<p>After you have set up your outlets we need to add some logic to our WidgetViewController. This comes mainly in the form of the <code>NCWidgetProviding</code> delegate. This delegate has 1 method which handles the logic of when to update the widget.</p>
+<p>This is what it could look like.</p>
+<pre><code>extension WidgetViewController: NCWidgetProviding {
+
+    func widgetPerformUpdate(completionHandler: @escaping (NCUpdateResult) -&gt; Void) {
+        // Perform any setup necessary in order to update the view.
+        // If an error is encountered, use NCUpdateResult.failed
+        // If there&#39;s no update required, use NCUpdateResult.noData
+        // If there&#39;s an update, use NCUpdateResult.newData
+
+
+        // Make sure we have new data for the widget
+        guard isRequiredToUpdate else {
+            completionHandler(.noData)
+            return
+        }
+
+        // Update UI
+        updateUI() // just a method that updates the widgets labels etc.
+
+        // Return completion handler with new data
+        completionHandler(.newData)
+    }
+}</code></pre>
+<p>The <code>isRequiredToUpdate</code> is a simple boolean that I use to see whether the widget needs to be updated with new data (see <a href="#implementing-widget-data-manager">Implementing Widget Data Manager</a>). If there is no new widget data we should return the completion handler with <code>.noData</code>. Otherwise if we have new data we should return it with <code>.newData</code> after we have updated the UI.</p>
+<h2 id="use-viewwillappear">Use ViewWillAppear</h2>
+<p>I like to use <code>ViewWillAppear</code> in the WidgetViewController to manually push an UI update, as I was sometimes having issues with the widget not updating immediately.</p>
+<pre><code>override func viewWillAppear(_ animated: Bool) {
+    super.viewWillAppear(animated)
+
+    updateUI()
+}</code></pre>
+<h2 id="deep-linking">Deep Linking</h2>
+<p>Widgets can even have buttons that for example will launch the app when pressed. This can be achieved very easily with the following line</p>
+<pre><code>private func didPressButton() {
+    guard let url = URL(string: “yourappURL://“) else { return }
+    extensionContext?.open(url)
+}</code></pre>
+<h2 id="moving-data-between-targets-the-slightly-challenging-part">Moving Data Between Targets (the slightly challenging part)</h2>
+<p>There is basically 2 ways to provide widgets with data.</p>
+<ol type="1">
+<li><p>Treat them as individual entities, which means they have their own logic to fetch data from a service, update a model and present the UI.</p></li>
+<li><p>More commonly use data that is coming from your iOS target.</p></li>
+</ol>
+<p>The main challenge with widgets is moving existing data across your targets. Even though an app extension bundle is nested within its containing app’s bundle, the running app extension and containing app have no direct access to each other’s containers.</p>
+<h2 id="app-groups">App Groups</h2>
+<p>So how do we move data between the two targets?. The answer is app groups and <code>NSUserDefaults</code>.</p>
+<p>To set up app groups for both targets we need to do the following</p>
+<ol type="1">
+<li><p>Click on your Xcode iOS target and go to capabilities. Turn on app groups and give it a unique identifier. Also make sure the checkbox is selected and that all entitlements are set. For best practices the identifier should look something like this “group.com.yourcompany.yourappname”.</p></li>
+<li><p>Repeat step 1 but this time for your widget target. Make sure you use the same app group identifier created above and that its checkmark is also selected.</p></li>
+</ol>
+<h2 id="widget-data-manager">Widget Data Manager</h2>
+<p>I like to create a basic WidgetDataManager that I can use to share my data between targets. Create a new swift file and call it whatever you would like. Make sure that it has both iOS and TodayExtension/Widget selected as its target membership.</p>
+<p>The actual logic and coding style is up to you but this is how it could look. Lets imagine our widget only has 1 UILabel for simplicity sake.</p>
+<pre><code>enum WidgetDataManager {
+
+    private static let userDefaults = UserDefaults(suiteName: “group.com.yourcompany.yourappname”)
+
+    static var label1Text: String {
+        get { return userDefaults?.value(forKey: .label1) as? String ?? &quot;-&quot; }
+        set { userDefaults?.setValue(newValue, forKey: .label1) }
+    }
+}
+
+// MARK: - Keys
+
+private extension String {
+    static let label1 = &quot;WidgetLabel1&quot;
+}</code></pre>
+<p>You first need to create a new <code>NSUserDefaults</code> object. As you probably noticed we cannot use the default singleton instance, we have to create a custom suite instance for this to work correctly. The name is what you have set up in your app group. I then simply added a getter/setter property to set/fetch the latest string from this <code>NSUserDefaults</code> object.</p>
+<h2 id="implementing-widget-data-manager">Implementing Widget Data Manager</h2>
+<p>Remember the <code>isRequiredToUpdate</code> property from the <code>NSWidgetProviding</code> step above? The actual logic for this boolean would be the following</p>
+<pre><code>final class WidgetViewController {
+
+    @IBOutlet private weak var label1: UILabel!
+
+    /// Check if update is needed
+    private var isRequiredToUpdate: Bool {
+        return label1.text != WidgetDataManager.label1Text
+    }
+}
+
+extension WidgetViewController: NCWidgetProviding {
+    …
+}</code></pre>
+<p>I am simply checking if the text of the widgets label(s) matches the data from the WidgetDataManger and if they don’t it means we need to update the widget.</p>
+<h2 id="update-widget-data-manager">Update Widget Data Manager</h2>
+<p>The last step is to make sure that every time you are changing data that is to be displayed in your widget that you update the WidgetDataManager.</p>
+<p>For example in a game you might want to show the latest score in the widget. So in your code where you update the score</p>
+<pre><code>GameDataManager.score = newScore</code></pre>
+<p>simply update the WidgetDataManager as well.</p>
+<pre><code>GameDataManager.score = newScore
+WidgetDataManager.label1Text = newScore</code></pre>
+<h2 id="full-sample-code">Full Sample Code</h2>
+<pre><code>final class WidgetViewController {
+
+    // MARK: - Properties
+
+    /// Outlets  
+    @IBOutlet private weak var label1: UILabel!
+
+    /// Check if update is needed
+    private var isRequiredToUpdate: Bool {
+        return label1.text != WidgetDataManager.label1Text
+    }
+
+    // MARK: - View Controller Life Cycle
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        // Do any additional setup after loading the view
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
+        updateUI()
+    }
+}
+
+// MARK: - NC Widget Providing
+
+extension WidgetViewController: NCWidgetProviding {
+
+    func widgetPerformUpdate(completionHandler: @escaping (NCUpdateResult) -&gt; Void) {
+        // Perform any setup necessary in order to update the view.
+        // If an error is encountered, use NCUpdateResult.failed
+        // If there&#39;s no update required, use NCUpdateResult.noData
+        // If there&#39;s an update, use NCUpdateResult.newData
+
+
+        // Make sure we have new data for the widget
+        guard isRequiredToUpdate else {
+            completionHandler(.noData)
+            return
+        }
+
+        // Update UI
+        updateUI()
+
+        // Return completion handler with new data
+        completionHandler(.newData)
+    }
+}
+
+// MARK: - Update UI
+
+private extension WidgetViewController {
+
+    func updateUI() {
+        label1.text = WidgetDataManager.label1Text
+    }
+}
+</code></pre>
+<h2 id="conclusion">Conclusion</h2>
+<p>Widgets are a great addition to any iOS app. They are very easy to setup and use and most applications should support them in some form or the other.</p>
+<p align=center>
+<p><img src=https://cdn-laravel.vapor.cloud/image/nstack/translate_values/IMG_02842_4tRqdM5GAQ.jpg?width=280 style=";margin:20px;"></p>
+<h2 id="resources">Resources</h2>
+<ul>
+<li>https://developer.apple.com/library/content/documentation/General/Conceptual/ExtensibilityPG/Today.html</li>
+<li>https://www.raywenderlich.com/150953/today-extension-tutorial-getting-started</li>
+</ul>

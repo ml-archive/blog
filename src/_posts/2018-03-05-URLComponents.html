@@ -1,0 +1,256 @@
+---
+layout: post
+title: URLComponents
+date: 2018-03-05 10:00:00
+tags: ios,urlcomponents
+authorIds:
+- pebo
+categories:
+- iOS
+---
+
+<p class="date">2018-03-05 10:00:00</p>
+<p>When writing mobile apps, more often than not we have to communicate with a backend to get some data to present to the user.</p>
+<p>The shared language between frontend and backend is usually URLs combined with either a POST body or maybe some URL query parameters, depending on what the backend offers.</p>
+<p>In this post we will look at <a href="https://developer.apple.com/documentation/foundation/urlcomponents">URLComponents</a>, a small but very useful helper that will become your new best friend when composing or decomposing URLs (we promise!)</p>
+<p>But before we look at <code>URLComponents</code>, lets first look at a world without <code>URLComponents</code> just to make you extra grateful that such a thing exists.</p>
+<h2 id="setting-the-stage">Setting the Stage</h2>
+<p>OK, lets assume that we need to use a backend service for searching and showing details about TV shows.</p>
+<h3 id="searching">Searching</h3>
+<p>Our hard working backend developing friends have made a service for us to use. The base URL looks like this:</p>
+<p><code>https://showsknownfrom.tv/search</code></p>
+<p>(no…it doesn’t exist)</p>
+<p>And it offers the following query parameters:</p>
+<ul>
+<li>q: A query string we would like to search for</li>
+<li>order (optional parameter): Do we want the search results ascending or descending</li>
+<li>number (optional parameter): Max number of search results to return</li>
+</ul>
+<h3 id="showing-details">Showing Details</h3>
+<p>To see details about a TV show, we get a URL to a HTML page from the backend which we then present in a WebView.</p>
+<p>The URL looks like this:</p>
+<p><code>https://showsknownfrom.tv/12345678</code></p>
+<p>And can have an optional URL parameter called <code>featured</code>. If featured is present and is true, we would like to show a flashing red <code>UILabel</code> with the caption “FEATURED” over our <code>WebView</code> (note: this feature has not been cleared with the designer yet!)</p>
+<h2 id="composing-and-decomposing-urls---the-hard-way">Composing and Decomposing URLs - The Hard Way</h2>
+<h3 id="composing-urls-for-searching">Composing URLs for Searching</h3>
+<p>The stage is set and we are ready to look at how to call our search service in our pre-URLComponents world.</p>
+<p>To generate a <code>URL</code> in our iOS app, we could write some code like this:</p>
+<pre class="swift"><code>func searchURL(with q: String, optionalParameters: [String: String] = [:]) -&gt; URL? {
+    var urlString = &quot;https://showsknownfrom.tv/search&quot;
+
+    //Append query
+    urlString.append(&quot;?q=\(q)&quot;)
+
+    //Append parameters if any
+    optionalParameters.forEach({key, value in
+        urlString.append(&quot;&amp;\(key)=\(value)&quot;)
+    })
+
+    return URL(string: urlString)
+}</code></pre>
+<p>Granted, it could be worse, but note that we have to know about a “magic” <code>?</code> if this is the first parameter and <code>&amp;</code> if it is any other parameters.</p>
+<p>Lets take it for a spin:</p>
+<pre class="swift"><code>if let url = searchURL(with: &quot;Sopranos&quot;) {
+    print(url) //gives us: https://showsknownfrom.tv/search?q=Sopranos
+}
+
+if let url = searchURL(with: &quot;Sopranos&quot;, optionalParameters: [&quot;order&quot; : &quot;desc&quot;, &quot;number&quot; : &quot;100&quot;]) {
+    print(url) //gives us: https://showsknownfrom.tv/search?q=Sopranos&amp;number=100&amp;order=desc
+}</code></pre>
+<p>By now you might be thinking “Hey!! What gives! Why are those morons hyping <code>URLComponents</code> so hard? This clearly works!”</p>
+<p>OK, lets look at another example:</p>
+<pre class="swift"><code>if let url = searchURL(with: &quot;Halt and Catch Fire&quot;, optionalParameters: [&quot;order&quot; : &quot;desc&quot;, &quot;number&quot; : &quot;100&quot;]) {
+    print(url)
+} else {
+    print(&quot;no URL&quot;) //We end up here
+}</code></pre>
+<p>That didn’t work, why?</p>
+<p>Yes, you’re right, the query contains spaces!</p>
+<p>We need to <a href="https://en.wikipedia.org/wiki/Percent-encoding">Percent Encode</a> our query, so lets do that before we try to use it. We add this to the top of our function:</p>
+<pre class="swift"><code>//Append query
+guard let encodedQuery = q.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) else { return nil }
+urlString.append(&quot;?q=\(encodedQuery)&quot;)
+...</code></pre>
+<p>And now we get <code>https://showsknownfrom.tv/search?q=Halt%20and%20Catch%20Fire&amp;number=100&amp;order=desc</code></p>
+<p>Great! Our function seems to be working as expected now, but it took some time and some tries to get here.</p>
+<h3 id="decomposing-urls">Decomposing URLs</h3>
+<p>Now, lets look at another example.</p>
+<p>Remember the details page and the <code>featured</code> parameter?</p>
+<p>Here is how we could fetch that from the URL in our iOS app:</p>
+<pre class="swift"><code>func receivedURL(_ url: URL, contains parameter: String) -&gt; String? {
+    let urlString = url.absoluteString
+
+    //add = to parameter
+    let parameterNameWithEqual = &quot;\(parameter)=&quot;
+
+    guard let rangeOfParameterName = urlString.range(of: parameterNameWithEqual) else {
+        return nil
+    }
+
+    //create a substring starting after the parameter name
+    let parametersAfterParameterName = String(urlString[rangeOfParameterName.upperBound...])
+
+    //check if we have more parameters after the one we&#39;re looking for
+    guard let rangeOfNextAmpersand = parametersAfterParameterName.index(of: &quot;&amp;&quot;) else {
+        //we did not, just return the value then
+        return parametersAfterParameterName
+    }
+
+    //cut the substring where the next parameter starts
+    return String(parametersAfterParameterName.prefix(upTo: rangeOfNextAmpersand))
+}
+
+//test
+if let url = URL(string: &quot;https://showsknownfrom.tv/shows/12345678?featured=true&quot;),
+   let parameter = receivedUrl(url, contains: &quot;featured&quot;) {
+    print(&quot;found \(parameter)&quot;)
+} else {
+    print(&quot;not found&quot;)
+}</code></pre>
+<p>Granted, it works but…wow! So much going on here, magic values and String gymnastics galore.</p>
+<p>We could probably make this prettier but…why should we, when something as beautiful as <code>URLComponents</code> exists.</p>
+<h2 id="composing-and-decomposing-urls---the-easy-way">Composing and Decomposing URLs - The Easy Way</h2>
+<p>By now you should be more than ready for <code>URLComponents</code> so lets dive in.</p>
+<h3 id="urlcomponents---an-introduction">URLComponents - An Introduction</h3>
+<p><code>URLComponents</code> was introduced in iOS 7.0 and macOS 10.9 so it has been around for some time.</p>
+<p>To create a <code>URLComponents</code> object you can use either a <code>String</code> or a <code>URL</code>, in both cases you’ll end out with an optional <code>URLComponents</code> object.</p>
+<p>Just a quick note about the <code>init</code> method if you are using a <code>URL</code>. As it says in the <a href="https://developer.apple.com/documentation/foundation/urlcomponents/1780039-init">documentation</a>:</p>
+<blockquote>
+<p>If resolvingAgainstBaseURL is true and url is a relative URL, the components of url.absoluteURL are used. If the url string from the URL is malformed, nil is returned.</p>
+</blockquote>
+<p>To create a new <code>URLComponents</code> object we can write something like this:</p>
+<pre class="swift"><code>let urlString = &quot;https://showsknownfrom.tv/search?q=Sopranos&amp;order=desc&quot;
+
+guard var urlComponents = URLComponents(string: urlString) else {
+    return nil
+}</code></pre>
+<p>Now we have access to all parts of the <code>URL</code> and can probe them as we see fit.</p>
+<p>Here are some examples:</p>
+<pre><code>urlComponents.host   //gives us: showsknownfrom.tv
+urlComponents.scheme //gives us: https
+urlComponents.query  //gives us: q=Sopranos&amp;order=desc</code></pre>
+<p>But the best part is this one:</p>
+<pre class="swift"><code>urlComponents.queryItems</code></pre>
+<p>Which gives us back an array of <code>URLQueryItem</code> objects, where <code>URLQueryItem</code> objects are basically just key/value objects for the individual query items (documented <a href="https://developer.apple.com/documentation/foundation/urlcomponents/1779966-queryitems">here</a>).</p>
+<p>Oh joy! That makes it so much easier for us to append query parameters, or check if a URL contains a query parameter.</p>
+<h3 id="composing-urls-for-searching-1">Composing URLs for Searching</h3>
+<p>Armed with our new knowledge, lets now look at how we can use <code>URLComponents</code> to build a <code>URL</code> with parameters for us:</p>
+<pre class="swift"><code>func searchURL(with q: String, optionalParameters: [String: String] = [:]) -&gt; URL? {
+    let urlString = &quot;https://showsknownfrom.tv/search&quot;
+
+    guard var urlComponents = URLComponents(string: urlString) else {
+        return nil
+    }
+
+    var queryItems: [URLQueryItem] = [URLQueryItem(name: &quot;q&quot;, value: q)]
+
+    let optionalURLQueryItems = optionalParameters.map {
+        return URLQueryItem(name: $0, value: $1)
+    }
+    queryItems.append(contentsOf: optionalURLQueryItems)
+
+    urlComponents.queryItems = queryItems
+
+    return urlComponents.url
+}</code></pre>
+<p>First we use the <code>urlString</code> to create a new <code>URLComponents</code> object. (Note that we create the <code>urlComponents</code> as a <code>var</code> as we’ll need to write to it later on.)</p>
+<p>Next we create an array of <code>URLQueryItem</code> objects and append our only required parameter, the <code>q</code> parameter.</p>
+<p>Then we loop through our <code>optionalParameters</code> dictionary, map the elements to <code>URLQueryItem</code> objects and append them to our existing array.</p>
+<p>Finally, we ask <code>URLComponents</code> to try and return a <code>URL</code> for us.</p>
+<p>Simple and beautiful, all the hard work has been delegated onwards to <code>URLComponents</code> and we don’t even have to worry about whether to use <code>?</code> or <code>&amp;</code> any more.</p>
+<p>Lets see how it works:</p>
+<pre class="swift"><code>if let url = searchURL(with: &quot;Sopranos&quot;) {
+    print(url) //gives us: https://showsknownfrom.tv/search?q=Sopranos
+}
+
+if let url = searchURL(with: &quot;Sopranos&quot;, optionalParameters: [&quot;order&quot; : &quot;desc&quot;, &quot;number&quot; : &quot;100&quot;]) {
+    print(url) //gives us: https://showsknownfrom.tv/search?q=Sopranos&amp;number=100&amp;order=desc
+}
+
+if let url = searchURL(with: &quot;Halt and Catch Fire&quot;, optionalParameters: [&quot;order&quot; : &quot;desc&quot;, &quot;number&quot; : &quot;100&quot;]) {
+    print(url) //gives us: https://showsknownfrom.tv/search?q=Halt%20and%20Catch%20Fire&amp;number=100&amp;order=desc
+} else {
+    print(&quot;no URL&quot;)
+}</code></pre>
+<p>Perfect!</p>
+<h3 id="decomposing-urls-1">Decomposing URLs</h3>
+<p>Remember our example from before?</p>
+<p>Now that we know about <code>URLQueryItem</code>s, checking if a query parameter exists is soooo much easier:</p>
+<pre class="swift"><code>func receivedURL(_ url: URL, contains parameter: String) -&gt; String? {
+    guard
+        let urlComponents = URLComponents(url: url, resolvingAgainstBaseURL: true),
+        let queryItems = urlComponents.queryItems
+    else {
+        return nil
+    }
+
+    let items = queryItems.filter { $0.name == parameter }
+    return items.first?.value
+}
+
+//test
+if let url = URL(string: &quot;https://showsknownfrom.tv/shows/12345678?featured=true&quot;),
+   let parameter = receivedUrl(url, contains: &quot;featured&quot;) {
+    print(&quot;found \(parameter)&quot;)
+} else {
+    print(&quot;not found&quot;)
+}</code></pre>
+<p>Pretty, right? At least compared to the initial version.</p>
+<h2 id="composing-and-decomposing-urls---the-easier-way">Composing and Decomposing URLs - The Easier Way</h2>
+<p>Well, we made it this far! But can we do better? Of course we can!</p>
+<p>Lets write an <code>extension</code> to <code>URL</code> so we can append query parameters and also ask if a URL contains a query parameter:</p>
+<pre class="swift"><code>extension URL {
+  func append(queryParameters: [String: String]) -&gt; URL? {
+      guard var urlComponents = URLComponents(url: self, resolvingAgainstBaseURL: true) else {
+          return nil
+      }
+
+      let urlQueryItems = queryParameters.map {
+          return URLQueryItem(name: $0, value: $1)
+      }
+      urlComponents.queryItems = urlQueryItems
+      return urlComponents.url
+  }
+
+  func value(forParameter name: String) -&gt; String? {
+    guard let urlComponents = URLComponents(url: self, resolvingAgainstBaseURL: true),
+        let queryItems = urlComponents.queryItems else {
+            return nil
+    }
+    let items = queryItems.filter { $0.name == name }
+    return items.first?.value
+  }
+}</code></pre>
+<p>Poetry, no less!</p>
+<p>Lets test it out:</p>
+<pre class="swift"><code>if let url = URL(string: &quot;https://showsknownfrom.tv&quot;),
+   let appendedURL = url.append(queryParameters: [&quot;q&quot;: &quot;Halt and Catch Fire&quot;, &quot;order&quot; : &quot;desc&quot;, &quot;number&quot;: &quot;100&quot;]) {
+        print(appendedURL) //gives us: https://showsknownfrom.tv?q=Halt%20and%20Catch%20Fire&amp;number=100&amp;order=desc
+}
+
+if let url = URL(string: &quot;https://showsknownfrom.tv/shows/12345678?featured=true&amp;test=1&quot;),
+   let value = url.value(forParameter: &quot;featured&quot;) {
+     print(&quot;found \(value)&quot;) //gives us: found true
+}</code></pre>
+<p>Fantastic. We’ve composed two simple functions that makes our daily work so much easier when working with URL parameters.</p>
+<h2 id="composing-and-decomposing-urls---the-easier-way-1">Composing and Decomposing URLs - The Easier Way</h2>
+<p>Now you might be thinking “Urgh!! Extensions!! Why should I write code myself if I can download something from the internet, written by complete strangers instead!!”</p>
+<p>If that is you, then good news pal!</p>
+<p>We have made a collection of helper methods and extensions called <a href="https://github.com/nodes-ios/Codemine">CodeMine</a>. Next to other nuggets of gold you’ll find <a href="https://github.com/nodes-ios/Codemine/blob/master/Codemine/Extensions/NSURL%2BUtilities.swift">two extension methods</a> to <code>URL</code> that looks awfully familiar by now:</p>
+<p><code>public func value(forParameter name: String) -&gt; String?</code></p>
+<p>which will return the value for a query parameter in a <code>URL</code> (if it exists).</p>
+<p>And:</p>
+<p><code>public func append(queryParameters: [String: String]) -&gt; URL?</code></p>
+<p>which will append a <code>String: String</code> dictionary to an already existing <code>URL</code> and return a new <code>URL</code> with the query parameters appended and paramter encoded.</p>
+<p>So, if you’re into Cocoapods, add this to your <code>podfile</code>:</p>
+<p><code>pod 'Codemine', '~&gt;1.0.0'</code></p>
+<p>And if you’re more of a Carthage person, add this to your <code>Cartfile</code></p>
+<p><code>github "nodes-ios/Codemine" ~&gt; 1.0</code></p>
+<p>Update and you’re done, you can now check if your <code>URL</code> object contains specific query parameters or you can build your own <code>URL</code> and append parameters easily.</p>
+<p>Hey…you’re welcome :)</p>
+<h2 id="parting-words">Parting Words</h2>
+<p>Whew, we made it!</p>
+<p>We started out writing a lot of error prone code ourself for managing URLs more or less as expected.</p>
+<p>That was then replaced with <code>URLComponents</code> that does all the hard work for us, and finally we made our own <code>extension</code> to add some building blocks to make our daily work easier.</p>
+<p>If you didn’t already know about <code>URLComponents</code> we hope to have convinced you that it is an awesome little helper to add to your toolbelt for when you need to work with <code>URL</code>s.</p>
+<p>Thank you for reading along.</p>

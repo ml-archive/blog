@@ -1,0 +1,47 @@
+---
+layout: post
+title: A Guide to Google Home Integrations
+date: 2019-01-31 10:00:00
+tags: server,google,home,ai,api,cloud,serverless
+authorIds:
+- brto
+categories:
+- Vapor
+---
+
+<p class="date">2019-01-31 10:00:00</p>
+<p>Within the trend of IoT, Google Home is amongst the most popular. Thankfully, Google has made the development of actions quite approachable. To get an overview of the process, let’s create a weather integration together.</p>
+<h2 id="actions-on-google">Actions on Google</h2>
+<p>Creating your Google Home integration starts with Actions on Google (AoG). Quoting Google: &gt; Actions on Google is the platform for developers to extend the Google Assistant. Join this emerging ecosystem by developing actions to engage users on Google Home, Pixel, and many other surfaces where the Google Assistant will be available.</p>
+<p>Now, it’s time to create your action. Under the <em>Build</em> section, click <em>ADD ACTION</em> and finally select <em>Custom intent</em>. After creating the action, Google will redirect you to their <a href="http://dialogflow.com">Dialogflow</a> service.</p>
+<h2 id="dialogflow">Dialogflow</h2>
+<p>Dialogflow is Google’s intuitive natural language processing (NLP) tool. Here is where you train the AI to recognize intents. This is by far the smoothest part of creating a Google Home integration. Create an intent and just type in a few example phrases to train the AI.</p>
+<ul>
+<li>How’s the weather today?</li>
+<li>What’s the weather?</li>
+<li>How’s the weather in <code>Copenhagen</code>?</li>
+</ul>
+<p>After configuring the training phrases, make sure to check the box <em>Enable webhook call for this intent</em>. Doing so allows you to add fulfillments programmatically.</p>
+<h3 id="fulfillment">Fulfillment</h3>
+<p>A fulfillment is a response to an intent. Programmatic fulfillments allow you to do many things: present a card with information, prompt a user for more information or show an error. Fulfillments use the webhook REST API and can be served through cloud functions or self hosting.</p>
+<h4 id="cloud-functions">Cloud Functions</h4>
+<p>In the <em>Fulfillment</em> tab on Dialogflow you have the option to edit a fulfillment and deploy it to Google Cloud Functions all within the inline editor. If you’re short on time or your project isn’t that large, this is by far the simpler option of the two.</p>
+<h4 id="self-hosting">Self-hosting</h4>
+<p>If you’re working on a larger project or cloud functions aren’t your thing, you can host your server and configure Dialogflow to fulfill all requests using your server. As most major programming languages have a fulfillment library, you have a much wider choice in what to develop your fulfillment in.</p>
+<h2 id="testing">Testing</h2>
+<p>After developing and deploying your fulfillment, it’s time to test. On the Dialogflow website, go to the <em>Integrations</em> section and then click on <em>INTEGRATION SETTINGS</em>. At the bottom of the dialog, you should see the button <em>TEST</em>. If clicking the button gives you the error <code>there was an error completing your request</code> make sure Google selected the correct user in the upper-right corner.</p>
+<p>You should now be in the <code>Simulator</code> where you can test all of your actions and intents. As a bonus, all supported Google devices linked to the same email will be able to test your actions.</p>
+<p>Try it out!</p>
+<blockquote>
+<p>Ok Google, ask My Test App about the weather</p>
+</blockquote>
+<h3 id="conclusion">Conclusion</h3>
+<p>Creating a Google Home integration and fulfillment is an intuitive and relatively easy process. There is some friction with the integration between the different Google services, but overall everything works nicely.</p>
+<h4 id="key-takeaways">Key takeaways</h4>
+<ul>
+<li>Setting up a Google Action is very easy</li>
+<li>Intents have to be trained manually for every single language your application supports</li>
+<li>Localization of fulfillments will take a bit of effort</li>
+<li>NodesJS and Go seem to be the most supported languages</li>
+<li>You can only address your app explicitly. Ex. “Okay Google, ask … about the weather”</li>
+</ul>

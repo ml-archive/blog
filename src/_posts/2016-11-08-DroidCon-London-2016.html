@@ -1,0 +1,40 @@
+---
+layout: post
+title: Droidcon London 2016
+date: 2016-11-15 17:26:43
+tags: android,droidcon,conference,facebook,security
+authorIds:
+- joso
+categories:
+- Android
+---
+
+<p class="date">2016-11-15 17:26:43</p>
+<p>Last year we attended DroidCon London and it was my first Android conference ever. Before that I attended CocoaConf in Las Vegas, as I mostly did iOS back then. DroidCon London 2015 was exciting because at that point I had been doing Android exclusively for a long time - and a lot of interesting speakers were attending. Chet Haase, Google employee, and Jake Wharton to name a few. Overall I liked it very much and the travel time back to Denmark weren’t as long, heh.</p>
+<p>This year Jake and Chet were attending again and the overall program looked more interesting than last year. Security and patterns seems to be the craze this year, and it’s really some of the things that has been a focus area internally here at Nodes as well.</p>
+<p>DroidCon London is located super close to our new London office at St. John Street, so we had the pleasure to see our Android developer Mario attending as a volunteer this year! Awesome!</p>
+<h3 id="day-1">Day 1</h3>
+<p><strong>What’s NNNNNNNNew in Android Security?</strong> <em>by Scott Alexander-Bown</em><br />
+Turned out to be a great talk! Very obvious that Scott have spent some time with the nitpicks and dark corners of implementing security and encryption on Android. Followed him on twitter after this talk(<span class="citation" data-cites="scottyab">[@scottyab]</span>(https://twitter.com/scottyab))! Also the first time I heard about the SafetyNet API. A Google API that checks for a device’s security state and whether it’s rooted or not.<br />
+Scott created a helper around that: <a href="https://github.com/scottyab/safetynethelper">https://github.com/scottyab/safetynethelper</a> Further info: <a href="https://developer.android.com/training/safetynet/index.html">Android Training docs</a></p>
+<p>In Android 7.0 Google introduced Network Security Configuration, which is a way to describe what protocols and endpoints are allowed to connect to. <a href="https://developer.android.com/training/articles/security-config.html">Google has excellent info here.</a> Commonsguy have backported this tool to Android 4.2 here, which is super awesome: <a href="https://github.com/commonsguy/cwac-netsecurity">https://github.com/commonsguy/cwac-netsecurity</a></p>
+<p>__Scaling Android <span class="citation" data-cites="Facebook__">@Facebook__</span> <em>by Marco Cova &amp; Balazs Balazs</em><br />
+Impressive talk about the insane numbers behind the Facebook app and what kind of process it takes to support that. If I remember correctly Facebook commits up to 3500 times a week, and due to the massive codebase - everything is split into modules to avoid unnecessary recompiles. To further improve on that, Facebook has created a custom build tool called <em>Buck</em> around the module structure they depend on for fast deployment.</p>
+<p>Going over all the tools Facebook uses, Infer got a mention as well. I head about this a year or so ago, but now that we at Nodes are beginning to integrate CI on client apps, this is super relevant. <a href="http://fbinfer.com/">Infer</a> is a static code analyzer and will correct and point out issues and possible runtime crashes. Definitely something we want in our CI toolchain.</p>
+<p>Fun side story at the lunch tables: Facebook apparently had so many commits on their repo that they had a hash collision between two commits.</p>
+<h3 id="day-2">Day 2</h3>
+<p><strong>What’s New in Android</strong> <em>by Chet Haase</em><br />
+(Chet Haase is one of the main public facing Google employees and Lead on the Android UI Toolkit team)</p>
+<p>This talk was kind of funny, not because Chet is a funny guy - but because Chet was <em>really</em> pitching the Google Pixel phone. It almost felt like too much. I also got the feeling he was told to do it. Nevertheless, the Android 7.1 walk through was pretty good and it was good with some context around the different new features.</p>
+<p><strong>Android Application Security, The Right Way</strong> <em>by Dario Incalza</em><br />
+I didn’t really intend to watch this one, I wanted to see the Spotify talk <em>“Breaking Spotify’s release cycle by using the backend to drive the UI and feature releases”</em>. I’m glad I did though, because it turned out to be the best talk around security this year. The talk was marked as a beginner talk, but gave so much info and reflection on every library, really valuable info. I’ve been reading a lot of documentation on encryption via the KeyStore, but Dario gave a lot pros and cons about every API level and what it gives us. In short (if I remember correctly): * <em>Android 7</em>: iOS level security (on the Google Pixel at least) * <em>Android 6</em>: Almost iOS level, but you cant besure that encryption keys are protected in hardware. Also new API’s for file encryption/device protected storage are not available. * <em>Android 5</em>: First fingerprint authentication API and KeyStore API supporting user authentication.</p>
+<p><strong>Radical RecyclerView</strong> <em>by Lisa Wray</em><br />
+Most of the time we implement basic RecyclerViews as simple ListViews - and that tends to be a bit annoying. So it was kind of fun to see all the nifty stuff you can do with RecyclerViews. We were also shown a few patterns around common use cases. Really surprised by this talk.</p>
+<p><strong>Android Architecture Blueprints</strong> <em>by David Gonzalez &amp; Jose Alcerreca</em><br />
+MVP is all the craze and having the perfect architecture is the target these days. The guys have implemented a simple To Do-app in 7 different ways: <a href="https://github.com/googlesamples/android-architecture">https://github.com/googlesamples/android-architecture</a></p>
+<p>The actual talk was kind of quick, because David and Jose wanted to focus on questions and having a discussion around patterns in general - perfect. Strong opinions were voiced and since David and Jose are funny guys, the talk ended up being the perfect closing for the conference for us.</p>
+<p>Side note: Chet Haase were attending this talk, and the guys received a couple of very Google specific questions - like <em>“Is the platform team considering any of the new patterns?”</em> - and everytime they were going to answer, they looked at Chet for confirmation. You probably had to be there.</p>
+<h3 id="summary">Summary</h3>
+<p>Great talks this year, and since it was located so close to our London office, we walked over there and watched the Apple MacBook keynote!</p>
+<p>All the security talks kind of gave me the impression that we need a wrapper or a framework around the encryption/decryption on Android. We see more and more demand for it on client apps, and having all that code floating around on different projects is annoying.</p>
+<p>I looked into facebook’s conceal library - but it seems to priotize speed too much over security. We’ll see, maybe material for another blog post 🔥</p>

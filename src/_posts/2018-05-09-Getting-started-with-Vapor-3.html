@@ -1,0 +1,307 @@
+---
+layout: post
+title: Getting started with Vapor 3
+date: 2018-05-09 13:00:00
+tags: vapor,swift,linux,swift4,vapor3
+authorIds:
+- stso
+- sikk
+categories:
+- Vapor
+---
+
+<p class="date">2018-05-09 13:00:00</p>
+<p>This blog post has been written by <a href="https://twitter.com/steffendsommer">Steffen D. Sommer</a> and <a href="https://twitter.com/siemensikkema">Siemen Sikkema</a>.</p>
+<p>Vapor has been our go-to framework when we develop backend solutions at Nodes since January 2017. A lot has happened during the past year, especially when we saw Vapor 2 got released back in May. Our overall opinion is that Vapor 2 has been a mature and a fairly feature-rich framework we’ve enjoyed working with. That said, there is still room for improvement and therefore we have been watching the development of Vapor 3 with excitement.</p>
+<p>A couple of days ago, <a href="https://medium.com/@codevapor/vapor-3-0-0-released-8356fa619a5d">Vapor released the next major version</a> and we’ve been following along since the betas came out to see how the changes will affect our daily work. We have developed and helped maintain around 25+ customer projects and 30+ open source packages so it’s important for us to know the amount of changes needed in order to migrate these projects to Vapor 3. Some of these projects are already in the progress of being migrated and some of them still need to be worked on. Our progress of migrating our open source projects can be found on this <a href="https://github.com/nodes-vapor/readme/projects/2">GitHub project board</a>.</p>
+<h2 id="our-focus-areas">Our focus areas</h2>
+<p>Before diving in and setting up our first Vapor 3 project, let’s reflect a bit on what we want to achieve with this research of Vapor 3. This should guide our exploration and give us some way to categorize our findings and compare it to Vapor 2. These are the following areas we will look into when testing out Vapor 3 for this post:</p>
+<ul>
+<li>Configuration: How do we setup providers and middlewares and how do we configure these?</li>
+<li>Models: How do we create a model and how do we query it?</li>
+<li>Routing: How do we set up routes for our project and how do these interface with our controllers?</li>
+<li>Views: How do we set up views for our project?</li>
+<li>Commands: How do we set up and run commands?</li>
+</ul>
+<h2 id="getting-started-with-vapor-3">Getting started with Vapor 3</h2>
+<p>Please note that some some of the dependencies used in this post (e.g. Leaf) is based on release candidates and things might change before we see the official releases.</p>
+<h3 id="setting-up-a-project">Setting up a project</h3>
+<p>First, make sure you have the recent version of the Vapor toolbox:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb1-1" title="1"><span class="ex">brew</span> upgrade vapor</a></code></pre></div>
+<p>And if you don’t have the toolbox already installed, then run:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb2-1" title="1"><span class="ex">brew</span> install vapor/tap/vapor</a></code></pre></div>
+<p>Also make sure you’re running Swift 4.1 as this is now required in Vapor 3:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb3-1" title="1"><span class="ex">swift</span> --version</a></code></pre></div>
+<p>With that in place, we can now create our Vapor 3 project. For this project, we’re going to use the <a href="https://github.com/vapor/api-template"><code>api-template</code></a>:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb4-1" title="1"><span class="ex">vapor</span> new vapor-3-test --template=api</a></code></pre></div>
+<p>As always, let’s make the Vapor toolbox generate our Xcode project for us:</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb5-1" title="1"><span class="bu">cd</span> vapor-3-test</a>
+<a class="sourceLine" id="cb5-2" title="2"><span class="ex">vapor</span> xcode</a></code></pre></div>
+<p>When it’s done generating the project you should be able to run the project and when visiting <code>http://localhost:8080/hello</code> in your browser you should see the <code>Hello, world!</code> page.</p>
+<p>When looking through the files in our new project, it’s already worth noticing some differences. First up, we don’t have <code>Droplet+Setup.swift</code> and <code>Config+Setup.swift</code>. They are instead replaced by:</p>
+<ul>
+<li><code>boot.swift</code>: The <code>boot</code> function is called after initialization but before it starts running, meaning that it is an ideal place for running code that should run each time the application starts. Speaking of “application”, notice how the signature now names the <code>Droplet</code> an <code>Application</code> now. The signature also implies now that there’s only going to be one <code>Application</code>.</li>
+<li><code>configure.swift</code>: This is where you would configure and set up your application. You can basically think of this as a replacement for your old <code>Config+Setup.swift</code> file (although the way you set up is now different).</li>
+<li><code>routes.swift</code>: This is where your “main” route collection is and this is where you would add individual routes or other route collections.</li>
+</ul>
+<h3 id="configuration">Configuration</h3>
+<p>Let’s go ahead and try and configure something. For this project, we’ll use MySQL as this seems to be very common in Vapor projects. Let’s add the MySQL package to our <code>Package.swift</code> file:</p>
+<pre class="swift"><code>.package(url: &quot;https://github.com/vapor/fluent-mysql.git&quot;, from: &quot;3.0.0-rc&quot;),</code></pre>
+<p>Don’t forget to add <code>FluentMySQL</code> to the list of dependencies for the <code>App</code> target:</p>
+<pre class="swift"><code>.target(name: &quot;App&quot;, dependencies: [&quot;FluentMySQL&quot;, &quot;Vapor&quot;]),</code></pre>
+<p>It’s worth noticing that we’re not adding a <code>mysql-provider</code> package. The concept still exists but <code>Provider</code>s do not come in separate packages anymore.</p>
+<p>Replace the contents of <code>configure.swift</code> with the following to set our project up with MySQL:</p>
+<pre class="swift"><code>import FluentMySQL
+import Vapor
+
+public func configure(
+    _ config: inout Config,
+    _ env: inout Environment,
+    _ services: inout Services
+) throws {
+    // Register providers
+    try services.register(FluentMySQLProvider())
+
+    // Configure and register a MySQL database
+    let config = MySQLDatabaseConfig(
+        username: &quot;vapor3&quot;,
+        password: &quot;password&quot;,
+        database: &quot;vapor3&quot;
+    )
+    let mysql = MySQLDatabase(config: config)
+    var databases = DatabasesConfig()
+    databases.add(database: mysql, as: .mysql)
+    services.register(databases)
+}</code></pre>
+<p>Let’s try and go through the different steps that are happening in the above code:</p>
+<ul>
+<li>We register the <code>FluentMySQLProvider</code> which takes care of setting up database connections and migrations.</li>
+<li>We create a <code>MySQLDatabaseConfig</code> with our MySQL connection settings.</li>
+<li>We create a <code>MySQLDatabase</code> using our config.</li>
+<li>We create a database config object and add our database to it specifying that we will identify this as the MySQL database (<code>as: .mysql</code>) and register it with the services object.</li>
+</ul>
+<p>It takes a little to grasp the notion of “Services” and how you now register providers and use configurations. We are excited to see that there are <strong>no more json configs</strong>.</p>
+<h3 id="models">Models</h3>
+<p>Vapor 2 has been pretty boilerplate-heavy when it comes to models. This is something we have tried to solve using Soucery as described in <a href="https://engineering.nodesagency.com/articles/Vapor/vapor-code-generation-with-sourcery/">this blog post</a>. We’ve been pretty interested in seeing how this would change with Vapor 3 since the framework is now able to leverage on the <a href="https://developer.apple.com/documentation/swift/codable"><code>Codeable</code></a> features of Swift 4.</p>
+<p>Let’s start out by creating a simple model conforming to <code>Codeable</code>:</p>
+<pre class="swift"><code>final class Post: Codable {
+    var id: Int?
+    let title: String
+    let body: String
+
+    init(id: Int? = nil, title: String, body: String) {
+        self.id = id
+        self.title = title
+        self.body = body
+    }
+}</code></pre>
+<p>At this point, there’s nothing Vapor specific. It’s great to see how we are able to keep our raw models independent of the framework and instead use extensions to add the Vapor specific functionality. To make our <code>Post</code> a <code>MySQLModel</code> do:</p>
+<pre class="swift"><code>import FluentMySQL
+
+extension Post: MySQLModel {}</code></pre>
+<p>That’s it! For brevity, you can simply conform your model to <code>MySQLModel</code> directly since it inherits <code>Codable</code>.</p>
+<h4 id="migrations">Migrations</h4>
+<pre class="swift"><code>extension Post: Migration {}</code></pre>
+<p>That’s pretty much it. Using <code>Codable</code> Vapor is now able to convert your Swift types into database field types. To make sure your migration is being run you’ll have to register a migration configuration in your <code>configure.swift</code>:</p>
+<pre class="swift"><code>var migrations = MigrationConfig()
+migrations.add(model: Post.self, database: .mysql)
+services.register(migrations)</code></pre>
+<p>This will obviously not be a solution to all cases, and most of the time you will probably have specific requirements for your database fields. One example could be to lower the length of your <code>VARCHAR</code> since a <code>String</code> in Swift will be turned into a 255 characters long VARCHAR, which might not be what you want if you want <a href="https://github.com/nodes-vapor/readme/blob/master/Documentation/how-to-support-emojis.md">to support emojis</a>. To handle your migration manually, you can instead specify the <code>prepare</code> function yourself:</p>
+<pre class="swift"><code>import Vapor
+
+extension Post: Migration {
+    static func prepare(on connection: MySQLConnection) -&gt; Future&lt;Void&gt; {
+        return MySQLDatabase.create(self, on: connection) { builder in
+            try builder.field(type: Int.mySQLColumnDefinition, for: \.id, isIdentifier: true)
+            try builder.field(for: \.title)
+            builder.field(type: .varChar(length: 191), for: \.body)
+        }
+    }
+}</code></pre>
+<p>Notice how we’re using Swift 4’s typesafe KeyPath syntax (<code>\.</code>) for referring to our <code>Post</code>’s properties. We can omit the type (so not <code>\Post.id</code>) because <code>builder</code> is already aware of our model type. Another thing to mention here is that we have to specify that the <code>id</code> field is an identifier. Because there is no variant of the <code>field</code> function that accepts only <code>KeyPath</code> and <code>isIdentifier</code> we also have to specify the column type (ie. <code>Int.mySQLColumnDefinition</code>).</p>
+<h3 id="routing">Routing</h3>
+<p>Let’s go through some of common use cases for dealing with a <code>Model</code>:</p>
+<ul>
+<li>Retrieving all instances of a model.</li>
+<li>Retrieving one specific instance of a model using a unique identifier.</li>
+<li>Creating a new instance of a model.</li>
+<li>Updating an instance of a model.</li>
+<li>Deleting an instance of a model.</li>
+</ul>
+<p>Before we can begin creating these routes we need a router so let’s add the following to the <code>configure</code> function in <code>configure.swift</code>:</p>
+<pre class="swift"><code>// Register router and routes
+let router = EngineRouter.default()
+try routes(router)
+services.register(router, as: Router.self)</code></pre>
+<p>After creating the router we pass it into the <code>routes</code> function defined in <code>routes.swift</code> before finally registering it with the services object.</p>
+<p>Replace the contents of <code>routes.swift</code> with:</p>
+<pre class="swift"><code>import Vapor
+
+func routes(_ router: Router) throws {
+    let postsGroup = router.grouped(&quot;posts&quot;)
+    let postController = PostController()
+}</code></pre>
+<p>For now, let’s just create an empty controller:</p>
+<pre class="swift"><code>final class PostController {
+
+}</code></pre>
+<p>We’ll want to be able to return (arrays of) <code>Post</code> instances in our routes. Conform your model to <code>Content</code> to enable this:</p>
+<pre class="swift"><code>extension Post: Content {}</code></pre>
+<blockquote>
+<p>The default encoding for <code>Content</code> is JSON. This is due to the fact that <code>defaultMediaType</code> for Content is set to <code>.json</code>:</p>
+<pre class="swift"><code>public static var defaultMediaType: MediaType {
+    return .json
+}</code></pre>
+</blockquote>
+<p>Lastly, we’ll want to make our <code>Post</code> model conform to <code>Parameter</code> so that it can be used as a type-safe parameter for our routes. Go ahead and add this to <code>Post.swift</code>:</p>
+<pre class="swift"><code>extension Post: Parameter {}</code></pre>
+<h4 id="retrieving-all-instances">Retrieving all instances</h4>
+<p>To return all posts created (e.g. by requesting <code>GET /posts</code>), we’re going to query them like this in our <code>PostController</code>:</p>
+<pre class="swift"><code>func all(req: Request) throws -&gt; Future&lt;[Post]&gt; {
+    return Post.query(on: req).all()
+}</code></pre>
+<p>To link it up to our route group we add the following to our <code>routes</code> function:</p>
+<pre class="swift"><code>postsGroup.get(use: postController.all)</code></pre>
+<p>There’s a couple of things to notice in the first snippet when we compare it to Vapor 2.</p>
+<p>First is that we’re passing the <code>Request</code> to the <code>query</code> function. This is because <code>Request</code> is a <a href="https://docs.vapor.codes/3.0/concepts/services/#container"><code>Container</code></a> which has access to the registered services, including the database. This makes it very explicit for who is responsible for performing the lookup. Without having tried it yet, this should help us make tests as well since we should potentially be able mock the database connection and instead of hitting a database, we could return in-memory objects created in our tests.</p>
+<p>Next, there’s the return type which is now <code>Future&lt;[Post]&gt;</code> instead of <code>[Post]</code> as you might have expected coming from Vapor 2. <a href="https://docs.vapor.codes/3.0/async/getting-started/">Async, Streams, Futures and Reactive Programming</a> are central topics in Vapor 3 in order to increase the performance of the framework due to their non-blocking nature and it will change the way we work. Without going too much into details, one way of thinking of the concepts could be:</p>
+<ul>
+<li>Futures: Values that at some point in time will exist. The future part is a wrapper that allows us to continue the work we want to do when the value arrives.</li>
+<li>Streams: If a future produces one value when it’s done executing, a stream can return an endless number of values. Think of it as generally always running which might produce values once in a while.</li>
+<li>Reactive Programming: Related to futures and streams are reactive programming. It’s a pattern for dealing with these types of data, usually using functional programming. You can think of it as a way of transforming or dealing with data when it comes in through a future or a stream.</li>
+</ul>
+<p>If you’ve worked with any of the reactive programming frameworks, these concepts introduced in Vapor 3 should be familiar.</p>
+<h4 id="retrieving-one-specific-instance">Retrieving one specific instance</h4>
+<p>To return one specific post (e.g. by requesting <code>GET /posts/:id</code>), we’re going to request that instance like this:</p>
+<pre class="swift"><code>func specific(req: Request) throws -&gt; Future&lt;Post&gt; {
+    return try req.parameters.next(Post.self)
+}</code></pre>
+<p>This is very similar to what we’ve used to in Vapor 2 with the exception that fetching a parameter from the request now returns a <code>Future</code>.</p>
+<p>The accompanying entry in <code>routes.swift</code> looks like this:</p>
+<pre class="swift"><code>postsGroup.get(Post.parameter, use: postController.specific)</code></pre>
+<h4 id="creating-a-new-instance">Creating a new instance</h4>
+<p>To create a new post (e.g. by requesting <code>POST /posts</code>), we’re going to do it like this:</p>
+<pre class="swift"><code>func create(req: Request) throws -&gt; Future&lt;Post&gt; {
+    return try req.content.decode(Post.self).save(on: req)
+}</code></pre>
+<p>A couple of things have changed here. In Vapor 2 you might have used <code>req.data</code>, <code>req.form</code> or <code>req.json</code> for retrieving the body of a request, but in Vapor 3 this is now contained in a <code>ContentContainer</code> on the request. Next we can use <code>decode</code> to transform the body into the expected type using the <code>Decodable</code> protocol from Swift 4. Remember that our <code>Post</code> model conforms to <code>Codable</code> in order for this to work.</p>
+<p>The POST route can be added as follows:</p>
+<pre class="swift"><code>postsGroup.post(use: postController.create)</code></pre>
+<h4 id="updating-an-instance">Updating an instance</h4>
+<p>To update an existing post (e.g. by requesting <code>PATCH /posts/:id</code>), we’re going to do it like this:</p>
+<pre class="swift"><code>func update(req: Request) throws -&gt; Future&lt;Post&gt; {
+    let post = try req.parameter(Post.self)
+    let content = try req.content.decode(Post.self)
+
+    return flatMap(to: Post.self, post, content) { (post, content) in
+        post.title = content.title
+        post.body = content.body
+
+        return post.save(on: req)
+    }
+}</code></pre>
+<p>You could choose to do something similar to the code snippet for creating an instance, since Vapor will update the instance if the payload contains an <code>id</code> field. For this example, we’ve chosen to make it more explicit what is going on in the update process. In the above code, we’re fetching the post that was specified in the request, we’re decoding the post model that was giving in the body of the request and last we’re updating the currently saved post. Note how we’re using a static variant of <code>flatMap</code> that takes in two futures. We need this variant since getting the <code>Post</code> from the parameter and decoding the <code>Post</code> from request content both returns futures and we want to do a transformation once their values has arrived. Finally we use a <code>flatMap</code> since we are returning a <code>Future</code> in the closure when calling <code>save</code>.</p>
+<h4 id="deleting-an-instance">Deleting an instance</h4>
+<p>To delete an existing post (e.g. by requesting <code>DELETE /posts/:id</code>), we’re going to do it like this:</p>
+<pre class="swift"><code>func delete(req: Request) throws -&gt; Future&lt;HTTPResponse&gt; {
+    let post = try req.parameters.next(Post.self)
+    return post.flatMap(to: HTTPResponse.self) { post in
+        return post.delete(on: req).transform(to: HTTPResponse(status: .ok))
+    }
+}</code></pre>
+<p>The above code is very similar to how we deal with updating a post, with the difference being that instead of returning the updated post, we’re returning a <code>HTTPResponse</code> with the HTTP code 200.</p>
+<h3 id="views">Views</h3>
+<p>In order to render views using Leaf, we need to pull in the dependency. Go ahead and update <code>Package.swift</code> by adding the following:</p>
+<pre class="swift"><code>.package(url: &quot;https://github.com/vapor/leaf.git&quot;, from: &quot;3.0.0-rc&quot;),</code></pre>
+<p>Next, register the provider in <code>configure.swift</code>:</p>
+<pre class="swift"><code>try services.register(LeafProvider())</code></pre>
+<h4 id="rendering-a-view">Rendering a view</h4>
+<p>To render a simple a view, try and add a file called <code>hello.leaf</code> to your <code>Resources/Views</code> folder with the following content:</p>
+<div class="sourceCode" id="cb30"><pre class="sourceCode html"><code class="sourceCode html"><a class="sourceLine" id="cb30-1" title="1">Hello #(name)</a></code></pre></div>
+<p>To render this template file, we will have to do the folowing:</p>
+<pre class="swift"><code>func renderHello(_ req: Request) throws -&gt; Future&lt;View&gt; {
+    let leaf = try req.make(LeafRenderer.self)
+    let context: [String: String] = [&quot;name&quot;: &quot;VaporMan&quot;]
+    return leaf.render(&quot;hello&quot;, context)
+}</code></pre>
+<p>Opening the route in your browser should output <code>Hello VaporMan</code>.</p>
+<h4 id="rendering-a-view-with-persisted-data">Rendering a view with persisted data</h4>
+<p>Most of the time you need to fetch something from the database using Fluent and then render a view using that data. Earlier we looked at how we can fetch and return a <code>Post</code> in a JSON format by doing:</p>
+<pre class="swift"><code>func specific(req: Request) throws -&gt; Future&lt;Post&gt; {
+    return try req.parameters.next(Post.self)
+}</code></pre>
+<p>Now let’s have a look at how we can render a view displaying a single post. First thing is to create a new leaf file with the content:</p>
+<div class="sourceCode" id="cb33"><pre class="sourceCode html"><code class="sourceCode html"><a class="sourceLine" id="cb33-1" title="1"><span class="kw">&lt;h1&gt;</span>#(title)<span class="kw">&lt;/h1&gt;</span></a>
+<a class="sourceLine" id="cb33-2" title="2"><span class="kw">&lt;p&gt;</span>#(body)<span class="kw">&lt;/p&gt;</span></a></code></pre></div>
+<p>The file will simply output the title and the body of the blog post. The function for rendering the view looks like this:</p>
+<pre class="swift"><code>func renderSpecific(req: Request) throws -&gt; Future&lt;Post&gt; {
+    return try req.parameters.next(Post.self)
+        .flatMap(to: View.self) { post in
+            return try req.make(LeafRenderer.self).render(&quot;post&quot;, post)
+    }
+}</code></pre>
+<p>Instead of returning the <code>Post</code> directly as in the previous function, this one transforms it to a <code>View</code> using <code>flatMap</code> since rendering a view returns another <code>Future</code>.</p>
+<h3 id="commands">Commands</h3>
+<p>Creating a command is fairly simple and a bit more structured than in Vapor 2. For this example, let’s have a look at how we can make a command that seeds a post. For a command, there’s basically four parts you need to consider:</p>
+<ul>
+<li>Arguments: Required input for the command.</li>
+<li>Options: Optional input for the command.</li>
+<li>Help: Text to aid the user in how to use the command.</li>
+<li>Body: The actual work we want to perform when running the command.</li>
+</ul>
+<p>Let’s start by creating a simple command and make it comform to <code>Command</code>:</p>
+<pre class="swift"><code>public struct PostCommand: Command {
+
+}</code></pre>
+<h4 id="arguments">Arguments</h4>
+<p>To satisfy the conformance to <code>Command</code>, the first step would be to supply the available arguments for our command. Remember, that this list of commands are required in order to run the command. Go ahead and add the following to your <code>PostCommand</code>:</p>
+<pre class="swift"><code>public var arguments: [CommandArgument] {
+    return [.argument(name: &quot;title&quot;, help: [&quot;Title of the post&quot;])]
+}</code></pre>
+<p>This will make our <code>PostCommand</code> require a title to be passed in every time the command is run.</p>
+<h4 id="options">Options</h4>
+<p>Options are very similar to arguments:</p>
+<pre class="swift"><code>public var options: [CommandOption] {
+    return [
+        .value(name: &quot;body&quot;, short: &quot;b&quot;, default: &quot;This is a seeded post&quot;, help: [&quot;Change post&#39;s body&quot;]),
+    ]
+}</code></pre>
+<p>Options are optional and the command will run without these options being defined.</p>
+<h4 id="help">Help</h4>
+<p>We also need to supply a help message to describe what our command does, this is done like this:</p>
+<pre class="swift"><code>public var help: [String] {
+    return [&quot;Seeds a post.&quot;]
+}</code></pre>
+<p>This help text will be included when running our command with <code>--help</code>.</p>
+<h4 id="command-body">Command body</h4>
+<p>The last step is to provide the actual work we want to perform in our command. For this simple command, we will simply create a <code>Post</code> based on the input:</p>
+<pre class="swift"><code>public func run(using context: CommandContext) throws -&gt; Future&lt;Void&gt; {
+    let title = try context.argument(&quot;title&quot;)
+    let body = context.options[&quot;body&quot;] ?? &quot;Seeded post&quot;
+
+    return context.container.withNewConnection(to: .mysql) { db in
+        let post = Post(title: title, body: body)
+        return post.save(on: db).transform(to: ())
+    }
+}</code></pre>
+<p>Let’s walk through the steps we take in the above snippet:</p>
+<ul>
+<li>We pull out <code>title</code> from the arguments. Since arguments are required, we don’t have to unwrap the value.</li>
+<li>We pull out the <code>body</code> option from the dictionary of options and supply a fallback. Another approach would be to do <code>try context.requireOption("body")</code> since there’s already a fallback defined in the option. However doing this would mean that we would need to always pass in the option flag (in this case <code>-b</code>) but we can omit the value for the option if we want to. A way to think of it is to consider the value of the option to be optional, and not the existence of the option.</li>
+<li>Lastly we connect to our MySQL database and we create and save the post.</li>
+</ul>
+<h4 id="running-our-command">Running our command</h4>
+<p>With the command in place, the last thing to do is to register it in our <code>configure.swift</code>:</p>
+<pre class="swift"><code>// Commands
+var commandConfig = CommandConfig.default()
+commandConfig.use(PostCommand(), as: &quot;post-seeder&quot;)
+services.register(commandConfig)</code></pre>
+<p>We can now run our command:</p>
+<ul>
+<li><code>swift run Run post-seeder --help</code>: Outputs the help text</li>
+<li><code>swift run Run post-seeder "My post"</code>: Creates a post using the title and the default body. The body will be the one defined in <code>run</code>.</li>
+<li><code>swift run Run post-seeder "My post" -b</code>: Creates a post using the title and the default body. The body will be the one defined in the option.</li>
+<li><code>swift run Run post-seeder "My post" -b "My body"</code>: Creates a post using the title and body.</li>
+</ul>
+<h2 id="conclusion">Conclusion</h2>
+<p>Having worked with Vapor 3 for a couple of weeks we think that Vapor has come a long way. There’s a steeper learning curve to the framework compared to older versions of the framework mostly due to the async principles adopted in Vapor 3. However, once you get past that, then the framework feels more mature and more fun to use compared to older versions. One example is the fact that using <code>Codable</code> heavily reduces boilerplate and introduces some more safety in your code. Overall we’re excited about this major version and we can’t wait to migrate all of our packages and work on more projects using this new version.</p>

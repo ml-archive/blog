@@ -1,0 +1,121 @@
+---
+layout: post
+title: Swift Alps
+date: 2018-12-05 15:00:00
+tags: swift,arkit,accessibility,ios,macos
+authorIds:
+- chco
+- pebo
+categories:
+- iOS
+---
+
+<p class="date">2018-12-05 15:00:00</p>
+<p><a href="https://theswiftalps.com">Swift Alps</a> - as the name might imply - is a conference revolving around anything Swift related. As the name might also imply, the conference takes place in the Swiss Alps, in Crans-Montana more specifically.</p>
+<p>What sets this conference apart from many of the other conferences out there is the format.</p>
+<p>Instead of the “traditional” presenter/audience format, Swift Alps is centered around workshops where a mentor runs the workshop and a limited number of participants will pair up and work together learning new material. Each workshop takes 2 hours and you can attend a max number of 3 workshops each day.</p>
+<p>This year the topics range from Accessibility to ARKit and reverse engineering to name a few.</p>
+<p>2018 is the third year the conference takes place and first year with attendance from Nodes.</p>
+<p><a href="https://twitter.com/chriscombs76">Chris</a> and <a href="https://twitter.com/pbodsk">Peter</a> attended this years conference on the 29th and 30th of November, and this is a debrief from our Swift adventures in the Swiss Alps.</p>
+<h2 id="thursday">Thursday</h2>
+<p>After waking up to this <img src="https://github.com/nodesagency/blog/blob/feature/swift-alps-2018/source/_posts-images/2018-12-05-swift-alps-2018/goodmorning.png" alt="Good morning indeed" /></p>
+<p>It was time to head to the conference to get registered.</p>
+<p>After registration, caffeine level adjustments, getting access to the wifi and a brief introduction of their workshop from each of the mentors, it was time to get the show rolling.</p>
+<p>The workshops lined up for Thursday was:</p>
+<ul>
+<li><em>New generation networking with Swift-NIO</em> by <a href="https://twitter.com/fpillet">Florent Pillet</a></li>
+<li><em>Level Up Your Debugging Skills</em> by <a href="https://twitter.com/_Caro_N">Carola Nitz</a></li>
+<li><em>An “Intents” Guide to Custom Siri Shortcuts</em> by <a href="https://twitter.com/a2">Alexsander Akers</a></li>
+<li><em>Reverse Engineering</em> by <a href="https://twitter.com/_inside">Guilherme Rambo</a></li>
+</ul>
+<p>and the sad news was that you could only pick three out of these four interesting topics.</p>
+<h2 id="new-generation-networking-with-swift-nio">New generation networking with Swift-NIO</h2>
+<p>I attended the workshop focusing on <a href="https://github.com/apple/swift-nio">Swift NIO</a> (introduced at this years <a href="https://www.tryswift.co/events/2018/tokyo/en/">try! Swift Tokyo</a>) and the Network.framework (<a href="https://developer.apple.com/videos/play/wwdc2018/715/">introduced by Apple at this years WWDC</a>).</p>
+<p>The goal was to continue the work started by Florent on either an iOS chat client using Network.framework, or a macOS chat server using Swift NIO, and my session buddy and I chose to start out with the client app.</p>
+<p>In my normal, day to day work, networking work is something you set up at the start of a project - typically by copying some code you were satisfied with in a previous project, and then its just there, calling services, translating the returned JSON into model objects that you can use for your “real” work.</p>
+<p>Therefore it was really fun and challenging to try and wrap your head around implementing a chat client from scratch. Starting out with making a connection (deciding whether to use TCP or UDP), actually connecting and watch the connection go through different stages before - hopefully - being established, and finally being able to send data over the network.</p>
+<p>Apples new <a href="https://developer.apple.com/documentation/network">Network.framework</a> was pleasant to work with, it felt very swifty with various handler closures and enums with associated values.</p>
+<p>An interesting feature in Network.framework is the <a href="https://developer.apple.com/documentation/network/nwpath">NWPath</a> and <a href="https://developer.apple.com/documentation/network/nwpathmonitor">NWPathMonitor</a> which you can use to monitor the connection and react if it changes…or completely goes away. Super interesting when writing a network monitor for instance.</p>
+<p>All in all a very good workshop, good work Florent</p>
+<h2 id="an-intents-guide-to-custom-siri-shortcuts">An “Intents” Guide to Custom Siri Shortcuts</h2>
+<p>Siri shortcuts were one of the bigger announcements to come out of WWDC 2018. There’s a lot of talk about powerful workflows you can add to your app to make your user experience better for both casual and power users alike. In Aleksander’s workshop, we learned about how Siri shortcuts work, or specifically how the Intents framework works, and then implemented them in existing apps we had. We soon found out two important facts about developing Siri shortcuts.</p>
+<ol type="1">
+<li><p>Creating a new shortcut is super simple. All you need to do is create a new intent shortcut, provide it some info about what data it is expecting, what it should listen for, and what kind of action it is (voice call, ordering food, playing music, etc). Build it and run and you should be able to get to communicate with your app right away.</p></li>
+<li><p>Structuring your app to perform useful tasks with the data input from Siri is a huge complex problem. Since the intent is in its own extension, it does not have access to the rest of your codebase in the traditional sense. You need to modularize your code in a way that splits logic into separate services, which can then be imported into the intent extension. If your app isn’t already set up like this, it can be a huge refactor effort.</p></li>
+</ol>
+<p>We spent maybe 20 minutes setting up the intent and getting Siri to interact with our app. The next hour or so was spent refactoring the existing app so that the right code could be accessed by the Siri intent. All in all, it was a great exercise and shed light on what to expect when developing a Siri shortcut.</p>
+<h2 id="level-up-your-debugging-skills">Level Up Your Debugging Skills</h2>
+<p>I admit it, I like to debug, I actually do! It gives me a good idea about the flow of a program, I can see values of variables in a loop for instance and it is a great tool in my daily work.</p>
+<p>And since we’re doing confessions now, I’ll also admit that my debugging work in Xcode normally resolves to:</p>
+<ul>
+<li>place a breakpoint</li>
+<li><code>po interesting object</code></li>
+<li>step</li>
+<li>continue</li>
+</ul>
+<p>and that is about it. Sure, I had my mind blown by the <a href="https://developer.apple.com/videos/play/wwdc2018/412/">Advanced Debugging</a> video from WWDC 2018 and that also led to one conditional breakpoint in the days after, but that was about it.</p>
+<p>So clearly there was potential for levelling up my debugging skills!</p>
+<p>Carola had made kind of a treasure hunt which introduced us to various features in lldb directly from the terminal. We learned to have the debugger wait for a process to be launched, how to set a breakpoint directly in the terminal, how to use the repl to execute new code while your “real” code was paused and the final trick, how to update the UI of your app with help from the debugger.</p>
+<p>By now lldb veterans may be rolling their eyes over this idiot discovering blatantly obvious things, but it was really interesting for me to be “forced” into using those features. Now I just need to keep integrating the more advanced lldb features into my daily workflow.</p>
+<p>Thank you to Carola for a very fine workshop.</p>
+<h2 id="reverse-engineering">Reverse Engineering</h2>
+<p>Final course on the menu Thursday was a real treat. An introduction to fooling around with the private frameworks in the iOS simulator. The mentor was no other than Guilherme Rambo, amongst many other things writer, at <a href="https://9to5mac.com">9to5mac</a> who <a href="https://9to5mac.com/author/guirambobr/">describes him as</a></p>
+<blockquote>
+<p>a Mac and iOS developer based in Brazil. Known for discovering Apple’s secrets and analyzing leaks</p>
+</blockquote>
+<p>By using the tool <a href="http://stevenygard.com/projects/class-dump/">class-dump</a> we were able to find interesting ViewControllers in Apple’s private frameworks and then try to instantiate them from our own apps.</p>
+<p>The interesting thing was, that for this to really succeed, we had to use good old Objective C, since this language - beeing more dynamic in its nature - allows you to more easily load private frameworks dynamically instead of using the linker.</p>
+<p>Writing Objective C again was kind of depressing, not because of the language (I really liked Objective C back then), but because you became aware of how rusty you were in that language. Four years ago I was writing Objective C like there was no tomorrow, and now I was fighting the compiler over missing semicolons…how the times have changed.</p>
+<p>We managed to get an example project running that could load the PencilView you normally use in Apples Notes app, it wasn’t pretty but really fun.</p>
+<p>Later on, I managed to get an example working with the FUFlightViewController, and was then able to track our flight back home via Paris</p>
+<figure>
+<img src="{{ '/assets/img' | relative_url }}/2018-12-05-swift-alps-2018/flight.png" alt="take me home" /><figcaption>take me home</figcaption>
+</figure>
+<p>This session was great fun and it was interesting to see how you are able to get access to some of the secret frameworks that lies hidden in your simulator.</p>
+<h2 id="friday">Friday</h2>
+<p>The schedule for Friday looked as follows:</p>
+<ul>
+<li><em>Swift Design Patterns</em> by <a href="https://twitter.com/twostraws">Paul Hudson</a></li>
+<li><em>Better Developer Tooling by writing your own Mac Apps with Cocoa Bindings</em> by <a href="https://twitter.com/terhechte">Benedikt Terhechte</a></li>
+<li><em>Accessibility on iOS</em> by <a href="https://twitter.com/_ms_monika">Monika Mścichowska</a></li>
+<li><em>ARKit - from basics to advance</em> by <a href="https://twitter.com/gridnaka">Kateryna Gridina</a></li>
+</ul>
+<p>Again, hard choices were to be made!</p>
+<h2 id="arkit---from-basics-to-advance">ARKit - from basics to advance</h2>
+<p>First on the agenda for me was an introduction to ARKit. We’ve already used ARKit on projects in Nodes so this was a really interesting topic for me to look into.</p>
+<p>Kate helped us through a list of examples, starting with plane detection, loading a SpriteKit with simple elements scene from a .sks file, composing your own SpriteKit scene of objets and finally adding a “real” 3D model to a SpriteKit scene and have it render properly.</p>
+<figure>
+<img src="{{ '/assets/img' | relative_url }}/2018-12-05-swift-alps-2018/arapple.png" alt="ar apple" /><figcaption>ar apple</figcaption>
+</figure>
+<p>ARKit is still a relatively young framework and to me it still has elements of black magic attached to it, so it was nice to have the time and a mentor to help understand what actually goes on when ARKit starts tracking the world through your camera.</p>
+<h2 id="swift-design-patterns">Swift Design Patterns</h2>
+<p>Design Patterns, we all know and love them right?</p>
+<p>They give us developers a shared vocabulary. And at the same time it allows us to compose sentences containing seemingly normal words which - when spoken - makes <em>absolutely</em> no sense to non-developers</p>
+<p>“Yeah well, I think I would go for dependency injection here, but if you wanna do a singleton then sure!”</p>
+<p>Paul Hudson’s workshop was a series of design patterns examples, which could be applied to an existing app. The patterns was ranged in increasing complexity ranging from MVC to Coordinators (as famed by <a href="http://khanlou.com/2015/01/the-coordinator/">Soroush Khanlou</a>) and you could mix and match as you saw fit.</p>
+<p>It was - yet another -interesting workshop and few things beats the joy of trying to wrap your head around a design pattern, applying it to your code base and afterwards be able to delete line after line of no longer needed code.</p>
+<h2 id="accessibility-on-ios">Accessibility on iOS</h2>
+<p>When most people think of accessibility in app development, they think of.. well they usually don’t think about it. To be honest, most of the apps we develop at Nodes have very little effort put into making them accessible for users with disabilities. This workshop was really refreshing and showed another world of user experience.</p>
+<p>We began by putting our phones in voice-over mode. This is a feature for sight-impaired users, which reads aloud the various elements on screen. You need to use a lot of obscure gestures to navigate between UI elements and discover actions. Even having your phone in this mode for 5 minutes is enough to make you realize that making this experience nice is a huge benefit.</p>
+<p>We then took over a small sample app that was just a list of recipes, where tapping on one would open a detail view. We found that using this app with voice-over enabled was pretty cumbersome, so we applied some nice accessibility features such as element grouping, custom actions, and better accessibility labels.</p>
+<p>Apple has been making a huge push for better accessibility lately and I believe accessibility will become a huge focus for app development in the near term future.</p>
+<h2 id="better-developer-tooling-by-writing-your-own-mac-apps-with-cocoa-bindings">Better Developer Tooling by writing your own Mac Apps with Cocoa Bindings</h2>
+<p>Many of us are iOS developers, which also means that we use (and love) a Mac for our daily work every day.</p>
+<p>But how many of us has actually tried writing a macOS app?</p>
+<p>Benedikt has, and he was here to tell us about the joy of using bindings.</p>
+<p><a href="https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/CocoaBindings/Concepts/WhatAreBindings.html">Bindings</a> - in broad strokes - enables you to very quickly wire up your model and UI code, thereby reducing the amount of code you have to write to update your model object when ever a user taps a button or the other way around: update your UI when the model updates.</p>
+<p>They are an old technology (in development terms at least), powerful but also hard to debug, which is why you maybe shouldn’t rely on them too heavily when writing production apps.</p>
+<p>But for internal “tooling” apps, bindings is perfect and allows you to ship internal tooling apps quite fast.</p>
+<p>We were working our way through a series of examples and was able to make several apps with a lot of functionality and relatively few lines of code.</p>
+<p>Bindings are interesting in several ways. You can do a lot with few lines of code, but make one typo and you are left looking at “interesting” error messages, in some cases you don’t even have to make the errors yourself, Interface Builder contains errors that you need to know your way around. At the same time you get a sense that this framework has been around for quite some time. The amount of options and possibilities are staggering, but sometimes well hidden and sparsely documented. An elegant weapon…for a more civilized age if you will.</p>
+<p>I think many of us left that workshop with a sudden urge to start writing macOS apps instead of the “normal” shell script for internal tool projects, so…mission accomplished Benedikt!</p>
+<h2 id="game-over">Game Over</h2>
+<p>So there you have it! Two interesting days flew by way too quick and now we’re back in a rainy and dark Denmark armed with a ton of new tricks up our sleeves.</p>
+<p>It was an absolute joy meeting likeminded developers who loves the iOS platform as much as we do and learn how they attack the challenges we all face from time to time.</p>
+<p>The concept of working together with a complete stranger on each workshop is really great, it means that you get to “know” a lot of the other conference goers really quick and makes it easier to talk over coffee afterwards.</p>
+<h2 id="should-i-go">Should I go?</h2>
+<p>So, big question, should you go to Swift Alps next year?</p>
+<p>As we hope the above post might illustrate, we highly recommend it, both for the high quality content and for the social networking involved.</p>
+<p>Swift Alps organizers, mentors and participants, thank you so much for two great days, we hope to see you next year.</p>
+</body>
+</html>

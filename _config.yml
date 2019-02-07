@@ -4,5 +4,8 @@ sass:
 source: src
 destination: dist
 
+new_post_name: :year-:month-:day-:title.html
+permalink: /categories/:categories/:year/:month/:day/:title
+
 exclude:
   - README.md
