@@ -28,6 +28,7 @@ Nodes Engineering Blog
 - https://kylewbanks.com/blog/creating-category-pages-in-jekyll-without-plugins
 - https://elliotekj.com/2016/12/05/jekyll-create-a-list-of-all-posts-in-the-same-category/
 - https://mademistakes.com/articles/using-jekyll-2016/
+- https://github.com/jekyll/jekyll/issues/2926
 
 ## 💻 Developers
 
