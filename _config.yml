@@ -1,5 +1,17 @@
 sass:
   sass_dir: assets/css
 
+source: src
+destination: dist
+
+new_post_name: :year-:month-:day-:title.md
+permalink: /categories/:categories/:year/:month/:day/:title
+
+defaults:
+  - scope:
+      path: "_posts"
+    values:
+      layout: "post"
+
 exclude:
   - README.md

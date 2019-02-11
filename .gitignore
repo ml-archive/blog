@@ -3,6 +3,8 @@
 
 ### Jekyll template
 _site/
+dist/
 .sass-cache/
 .jekyll-cache/
 .jekyll-metadata
+public/
