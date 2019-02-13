@@ -1,7 +1,7 @@
 ---
 title: Getting started with Vapor 3
 date: 2018-05-09 13:00:00
-tags: vapor,swift,linux,swift4,vapor3
+tags: [vapor,swift,linux,swift4,vapor3]
 authorIds:
 - stso
 - sikk

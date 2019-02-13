@@ -1,7 +1,7 @@
 ---
 title: UIGestures
 date: 2017-12-20 13:00:00
-tags: ios,accelerators,gestures
+tags: [ios,accelerators,gestures]
 authorIds:
 - roju
 categories:

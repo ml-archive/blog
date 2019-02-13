@@ -1,7 +1,7 @@
 ---
 title: Book a test drive with Siri Shortcuts (a Siri Shortcuts intro)
 date: 2018-07-16 10:00:00
-tags: ios,siri,siri shortcuts, test drive
+tags: [ios,siri,siri shortcuts, test drive]
 authorIds:
 - anho
 categories:

@@ -1,7 +1,7 @@
 ---
 title: What this WWDC means for us
 date: 2017-06-21 10:10:57
-tags: ios,WWDC,ios11,
+tags: [ios,WWDC,ios11]
 authorIds:
 - maco
 categories:

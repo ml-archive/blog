@@ -1,7 +1,7 @@
 ---
 title: Google Cast
 date: 2018-03-20 10:00:00
-tags: ios,google,googlecast
+tags: [ios,google,googlecast]
 authorIds:
 - anho
 categories:
