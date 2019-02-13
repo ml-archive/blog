@@ -13,5 +13,10 @@ defaults:
     values:
       layout: "post"
 
+marked:
+  gfm: true
+  tables: true
+  smartypants: true
+
 exclude:
   - README.md
