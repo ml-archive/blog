@@ -1,18 +1,32 @@
-.navbar{
-  box-shadow: 1px 1px 3px $primary;
-  opacity: 0.8;
-  background: $white;
+.navbar {
+  box-shadow: 0 8px 16px 0 rgba(39, 8, 11, 0.05), 0 4px 8px 0 rgba(39, 8, 11, 0.05);
+  background-color: #ffffff;
+  padding: 0;
 
-  .nav-item{
-    font-size: 1.4rem;
-    padding-right: 20px;
+  .nav-item {
+    font-family: 'Roboto', sans-serif;
+    font-size: 15px;
+    font-weight: 500;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.33;
+    letter-spacing: 0.6px;
+    text-align: right;
+  }
+
+  li.disabled {
+    cursor: default;
+
+    a {
+      pointer-events: none;
+    }
   }
 }
 
 .nav-link {
-  color: $info !important;
+  color: #26080b !important;
 
   &:hover {
-    color: $primary !important;
+    color: #b52c6e !important;
   }
 }

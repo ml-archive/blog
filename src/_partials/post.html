@@ -1,0 +1,20 @@
+<div class="col-lg-4 col-md-6 col-sm-12 post">
+  <a href="{{ site.baseurl }}{{ post.url }}">
+    <div class="thumbnail" style="background-image: linear-gradient(105deg, #ff4d79, #b52c6e);">
+      {% if post.image %}
+        <img src="{{ post.image }}" alt="{{ post.title }}" />
+      {% endif %}
+    </div>
+    <div class="body">
+      <p class="date">
+        <time datetime="{{ post.date }}">{{ post.date | date_to_string }}</time>
+      </p>
+      <h3 class="title">{{ post.title }}</h3>
+      <div class="categories">
+        {% for category in post.categories %}
+          <span class="badge badge-pill badge-secondary category">{{ category }}</span>
+        {% endfor %}
+      </div>
+    </div>
+  </a>
+</div>

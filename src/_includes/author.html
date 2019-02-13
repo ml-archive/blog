@@ -1,0 +1,16 @@
+<div class="col-md-5 col-sm-12 author">
+  {% assign info = author %}
+  {% if author.first[0] == null %}
+    {% assign info = author[1]  %}
+  {% endif %}
+  <div class="thumbnail center">
+    <img src="{{ info.image }}" alt="{{ info.name }}">
+  </div>
+  <div style="text-align: center; padding: 20px;">
+    <h3 class="name">{{ info.name }}</h3>
+    <span class="occupation">{{ info.occupation }}</span>
+    <p class="about">{{ info.about }}</p>
+  </div>
+  {% assign info = nil %}
+  {% assign author = nil %}
+</div>
