@@ -2,12 +2,13 @@
 title: What this WWDC means for us
 date: 2017-06-21 10:10:57
 tags: [ios,WWDC,ios11]
+image: https://cdn-laravel.vapor.cloud/image/nstack/translate_values/wwdc17-og_gKPiuvwlII.jpg
 authorIds:
 - maco
 categories:
 - iOS
 ---
-<p align=center><img src="https://cdn-laravel.vapor.cloud/image/nstack/translate_values/wwdc17-og_gKPiuvwlII.jpg"/></p>
+
 
 WWDC 2017 happened at the beginning of June in San Jose, California, and Apple presented lots of exciting changes. We already covered in [this article](https://www.nodesagency.com/ios-11-top-new-features-additions/) the most important iOS additions from a user's perspective, but what exactly did WWDC 2017 bring for an iOS developer? Continuing the trend from the last year, the WWDC Keynote was less targeted to developers, and more towards media and users. The interesting things for developers are covered mostly in the Platforms State of the Union, and in the following sessions.
 
