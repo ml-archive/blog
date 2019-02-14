@@ -5,13 +5,25 @@ source: src
 destination: dist
 
 new_post_name: :year-:month-:day-:title.md
-permalink: /categories/:categories/:year/:month/:day/:title
 
 defaults:
-  - scope:
+  -
+    scope:
       path: "_posts"
     values:
+      permalink: /categories/:categories/:year/:month/:day/:title
       layout: "post"
+  -
+    scope:
+      path: "_authors"
+    values:
+      permalink: /authors/:author_id
+      layout: "author"
+
+collections:
+  authors:
+    title: Authors
+    output: true
 
 marked:
   gfm: true
