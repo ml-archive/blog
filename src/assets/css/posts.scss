@@ -1,0 +1,83 @@
+.posts {
+  margin-top: 20px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.posts .flex-container {
+  margin-bottom: 15px;
+  width: 100%;
+  padding: 10px;
+}
+
+.posts .flex-item {
+  width: 100%;
+  padding: 0 15px;
+}
+
+.posts .flex-item:first-child {
+  padding-bottom: 15px;
+}
+
+.posts .flex-item .embed-container {
+  background: linear-gradient(105deg, #ff4d79, #b52c6e);
+  border-radius: 10px;
+}
+
+.posts .flex-item .embed-container img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.posts .flex-item .info .date {
+  color: #b52c6e;
+}
+
+.posts .flex-item .info .title a, a:hover, a:focus {
+  color: #26080b;
+}
+
+.posts .flex-item .info .title h3 {
+  font-size: 32px;
+  line-height: 1.25;
+}
+
+.posts .flex-item .categories {
+  padding-top: 10px;
+}
+
+.posts .flex-item .categories .category {
+  margin-top: 10px;
+  margin-right: 6px;
+  font-size: 12px;
+  line-height: 1.67;
+  letter-spacing: 0.5px;
+  color: #898989;
+  border-radius: 12px;
+  background-color: #e4e4e4;
+}
+
+@media screen and (min-width: 768px) {
+  .posts .flex-container {
+    width: 50%;
+  }
+
+  .posts .flex-item {
+    width: 100%;
+    padding: 5px;
+  }
+}
+
+@media screen and (min-width: 992px) {
+  .posts .flex-container {
+    width: 33%;
+  }
+
+  .posts .flex-item {
+    width: 100%;
+    padding: 5px;
+  }
+}

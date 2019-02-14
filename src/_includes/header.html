@@ -12,13 +12,13 @@
       <p>{{ page.subtitle }}</p>
     {% endif %}
     {% if page.date %}
-      <span class="entry-date">
+      <span class="entry-date text-center text-uppercase">
         <time datetime="{{ page.date }}">{{ page.date | date_to_string }}</time>
       </span>
     {% endif %}
     <p>
       {% for authorId in page.authorIds %}
-        <span class="entry-author">{{ authorId }}</span>
+        <span class="entry-author text-center text-uppercase">{{ authorId }}</span>
       {% endfor %}
     </p>
   </div>

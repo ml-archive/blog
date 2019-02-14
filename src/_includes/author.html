@@ -6,8 +6,8 @@
   <div class="thumbnail center">
     <img src="{{ info.image }}" alt="{{ info.name }}">
   </div>
-  <div style="text-align: center; padding: 20px;">
-    <h3 class="name">{{ info.name }}</h3>
+  <div class="text-center">
+    <h3 class="font-weight-bold name"><a href="{{ site.baseurl }}/authors/{{ info.id }}">{{ info.name }}</a></h3>
     <span class="occupation">{{ info.occupation }}</span>
     <p class="about">{{ info.about }}</p>
   </div>

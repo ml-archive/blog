@@ -3,8 +3,10 @@ layout: default
 ---
 
 
-<div class="row">
-  {% for post in site.categories[page.category] %}
-    {% include_relative _partials/post.html post=post %}
-  {% endfor %}
+<div class="first-content m-b-15">
+  <div class="row posts">
+    {% for post in site.categories[page.category] %}
+     {% include post.html post=post %}
+    {% endfor %}
+  </div>
 </div>
