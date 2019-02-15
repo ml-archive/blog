@@ -3,7 +3,7 @@ layout: default
 ---
 
 
-<div class="row justify-content-md-center posts">
+<div class="row justify-content-md-center d-flex flex-wrap posts">
   {% assign authorId = page.url | split: "/" | last %}
   {% assign posts = site.posts | sort | where_exp: "post", "post.authorIds contains authorId" %}
   {% for post in posts %}

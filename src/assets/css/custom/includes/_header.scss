@@ -1,32 +1,41 @@
-.navbar {
-  box-shadow: 0 8px 16px 0 rgba(39, 8, 11, 0.05), 0 4px 8px 0 rgba(39, 8, 11, 0.05);
-  background-color: #ffffff;
-  padding: 0;
-
-  .nav-item {
-    font-family: 'Roboto', sans-serif;
-    font-size: 15px;
-    font-weight: 500;
-    font-style: normal;
-    font-stretch: normal;
-    line-height: 1.33;
-    letter-spacing: 0.6px;
-    text-align: right;
-  }
-
-  li.disabled {
-    cursor: default;
-
-    a {
-      pointer-events: none;
-    }
-  }
+.page-header {
+  position: relative;
+  height: 500px;
+  background-size: cover;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-repeat: no-repeat;
+  background-position: 50% center;
 }
 
-.nav-link {
-  color: #26080b !important;
+.page-header .page-title {
+  position: absolute;
+  text-align: center;
+  top: 75%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+}
 
-  &:hover {
-    color: #b52c6e !important;
-  }
+.page-header .page-date {
+  padding-left: 10px;
+  padding-right: 10px;
+  font-size: 15px;
+  line-height: 1.33;
+  letter-spacing: 0.6px;
+  color: #ffffff;
+}
+
+.page-header .page-author {
+  padding-left: 5px;
+  padding-right: 5px;
+  font-size: 15px;
+  line-height: 1.33;
+  letter-spacing: 0.6px;
+  color: #ff4d79;
+}
+
+.page-header .page-author a, a:hover, a:focus {
+  color: #ff4d79;
 }
