@@ -1,7 +1,7 @@
 ---
 title: Android Bottom Navigation
 date: 2016-11-15 10:31:21
-tags: android, ui, ux
+tags: [android, ui, ux]
 authorIds:
 - joal
 categories:

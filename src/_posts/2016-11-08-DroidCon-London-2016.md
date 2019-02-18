@@ -1,7 +1,7 @@
 ---
 title: Droidcon London 2016
 date: 2016-11-15 17:26:43
-tags: android,droidcon,conference,facebook,security
+tags: [android,droidcon,conference,facebook,security]
 authorIds: 
 - joso
 categories:

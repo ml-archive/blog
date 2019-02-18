@@ -1,0 +1,145 @@
+anho:
+    id: anho
+    name: Andrei Hogea
+    occupation: iOS Developer
+    github: kjoneandrei
+    about: iOS developer based in Copenhagen, Denmark. Always curious
+    image: https://media.licdn.com/dms/image/C4E03AQGAyZLJCiZ2qg/profile-displayphoto-shrink_200_200/0?e=1526220000&v=alpha&t=QqEvuqH3E93VlTXOs5VGTDJW8eetHOUzczgEqsqA6Ao
+brto:
+    id: brto
+    name: Brett R. Toomey
+    occupation: Vapor & iOS Developer
+    about: Using Swift to take over the world.
+    twitter: brettRToomey
+    github: brettRToomey
+    image: https://pbs.twimg.com/profile_images/803734242597314560/aeWxuf3k_400x400.jpg
+chco:
+    id: chco
+    name: Chris Combs
+    occupation: Lead iOS Developer
+    twitter: chriscombs76
+    github: chriscombs
+    about: iOS Developer, Swift enthusiast
+    image: https://avatars2.githubusercontent.com/u/3409077?v=4&u=6aef567e861729b4448c3f70f5cf6a0de6fe7768&s=400
+dhni:
+    id: dhni
+    name: Dennis Haulund Nielsen
+    occupation: Front-end Developer
+    about: I love Javascripts
+    github: nickskull
+    image: https://lh4.googleusercontent.com/-8zlAxSM5xCQ/AAAAAAAAAAI/AAAAAAAAABE/t7_zkJLB8_0/photo.jpg
+doha:
+    id: doha
+    name: Dominik Hádl
+    occupation: Lead iOS Developer
+    twitter: dominikhadl
+    github: nickskull
+    about: iOS games and apps developer, music enthusiast, game designer and stuff. I love mechanical keyboards. /ˈɡɪf/
+    image: https://pbs.twimg.com/profile_images/736536321867448320/4OmC9TeR.jpg
+dori:
+    id: dori
+    name: Dominik Ringler
+    occupation: iOS Developer
+    twitter: dominikringler
+    github: crashoverride777
+    about: iOS games and apps developer. I love Swift very much. /ˈɡɪf/
+    image:
+jmje:
+    id: jmje
+    name: Jakob Mygind
+    occupation: iOS Developer
+    twitter: jakobmygind
+    github: jakobmygind
+    about: iOS, drums and weights.
+    image: https://pbs.twimg.com/profile_images/2296445181/image.jpg
+joal:
+    id: joal
+    name: Joao Alves
+    occupation: Android Developer
+    twitter: jcmsalves
+    github: jcmsalves
+    about: Android developer that loves both technology and sports
+    image: https://avatars1.githubusercontent.com/u/9438692?v=3&s=460
+josc:
+    id: josc
+    name: Jonas Schwartz
+    ocupation: Operations
+    about: I love Servers
+joso:
+    id: joso
+    name: Johnny Sørensen
+    occupation: Mobile Lead
+    twitter: jeghedderjohnny
+    github: johsoe
+    about: Android, Windows and some iOS
+    image: https://media.licdn.com/mpr/mpr/shrinknp_400_400/AAEAAQAAAAAAAAM_AAAAJDY4MTJjYzBjLWYwOGItNDkyOS1hM2QwLWI4YTczYTJlNmQ1MA.jpg
+maco:
+    id: maco
+    name: Marius Constantinescu
+    occupation: iOS Developer
+    twitter: marius_const
+    github: mariusc
+    about: iOS engineer at @Nodesdk. @iOSGoodies core contributor. 2013 GSoC'er. @DTU_compute alumnus
+    image: https://avatars2.githubusercontent.com/u/844175?v=3&s=466
+olha:
+    id: olha
+    name: Oliver Wang Hansen
+    occupation: Technical Director
+    twitter: gnawrevilo
+    github: OliverWangHansen
+    about: I love technology and people, and create tools that join both of them on a daily basis.
+    image: https://media.licdn.com/mpr/mpr/shrinknp_400_400/AAEAAQAAAAAAAATEAAAAJDNlOTM2NzQ3LTgzNGItNDY3Yy05ZGI4LWRiZjJlYzY1Y2Y2NA.jpg
+pebo:
+    id: pebo
+    name: Peter Bødskov
+    occupation: Lead Developer
+    twitter: pbodsk
+    github: pbodsk
+    about: Composer of bugs and infinite loops on iOS and macOS. let preferredWeaponOfChoice = Swift
+    image: https://avatars2.githubusercontent.com/u/117636?s=460&v=4
+re:
+    id: re
+    name: Rasmus Ebbesen
+    occupation: Senior Backend Developer
+    github: rasmusebbesen
+    about: Seasoned backend developer from Copenhagen.
+    image:
+roju:
+    id: roju
+    name: Roxana Jula
+    occupation: Mobile Developer
+    about: Passionate about 💻 Tech, ✈️ Travel and 🍵 Tea
+    twitter: RoxanaJula
+    github: roxanajula
+    image: https://avatars1.githubusercontent.com/u/5189246?s=460&v=4
+sely:
+    id: sely
+    name: Sebastian Ly Serena
+    occupation: QA Specialist
+    about: Professional bug hunter
+    twitter: s_ly_serena
+    github: sebastianlyserena
+    image: https://avatars1.githubusercontent.com/u/8152466?s=400&u=71fe80779572bbbb63e83ea46cec3bbd01a7b27b&v=4
+sikk:
+    id: sikk
+    name: Siemen Sikkema
+    occupation: Senior Vapor & iOS Developer
+    about: Swift, Vapor and acroyoga make my heart beat faster.
+    twitter: siemensikkema
+    github: siemensikkema
+    image: https://avatars1.githubusercontent.com/u/1049951?s=400&v=4
+stso:
+    id: stso
+    name: Steffen D. Sommer
+    occupation: Lead Developer & Head of Vapor Development
+    about: Excited about Swift and FRP. Fan of boards 🏂🏄
+    twitter: steffendsommer
+    github: steffendsommer
+    image: https://pbs.twimg.com/profile_images/760547932458328064/M4uNKOf9_400x400.jpg
+vaga:
+    id: vaga
+    name: Valentín Corral García
+    occupation: Vapor Intern
+    about: programming, new technologies and gaming!
+    github: valen90
+    image: https://avatars2.githubusercontent.com/u/8956082?v=3&u=b125542a9332235a1195ba9f979536bb070d75b8&s=400

@@ -1,0 +1,42 @@
+.blog-post {
+  margin-bottom: 58px; //5em?
+  position: relative;
+  font-size: 1em;
+  line-height: 2.14286em;
+  color: #999;
+
+  .entry-content {
+    padding-top: 64px;
+
+    img {
+      display: block;
+      max-width: 100%;
+      height: auto;
+      margin: auto;
+      float: none!important;
+    }
+  }
+}
+
+.sub-header  {
+  font-size: 32px;
+  line-height: 1.25;
+  color: #26080b;
+}
+
+.category-tag {
+  font-size: 12px;
+  line-height: 1.67;
+  letter-spacing: 0.5px;
+  color: #898989;
+  border-radius: 12px;
+  background-color: #e4e4e4;
+}
+
+.tags {
+  margin-bottom: 56px;
+
+  .tag {
+    margin: 3px;
+  }
+}

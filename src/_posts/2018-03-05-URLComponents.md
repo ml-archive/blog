@@ -1,7 +1,7 @@
 ---
 title: URLComponents
 date: 2018-03-05 10:00:00
-tags: ios,urlcomponents
+tags: [ios,urlcomponents]
 authorIds:
 - pebo
 categories:

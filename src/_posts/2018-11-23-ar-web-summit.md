@@ -1,14 +1,14 @@
 ---
 title: Augmented reality is here to disrupt the industry Insights from Web Summit 2018
 date: 2018-11-23 15:00:00
-tags: ar,vr,mr,augmentedreality,mixedreality,websummit,websummit2018,wayray,magicleap,porche,blippar
+tags: [ar,vr,mr,augmentedreality,mixedreality,websummit,websummit2018,wayray,magicleap,porche,blippar]
+image: /assets/img/2018-11-23-ar-web-summit/stage.JPG
 authorIds:
 - roju
 categories:
 - iOS
 ---
 
-![Web Summit Stage Image]({{ '/assets/img' | relative_url }}/2018-11-23-ar-web-summit/stage.JPG)
 
 It has been two weeks since [Web Summit](https://websummit.com) took place in Lisbon, Portugal and we can still feel the energetic vibes. 3 days full of inspirational speakers, current tech trends, coffee astronauts, robots (have you seen the new social robot Furhat revealed at the summit?), diversity in tech and much more. But out of all, I was personally most excited about the interest that big companies are putting more and more into AR, VR and MR technologies.
 

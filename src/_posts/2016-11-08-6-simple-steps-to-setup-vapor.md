@@ -1,7 +1,7 @@
 ---
 title: 6 simple steps to get your first Vapor JSON response
 date: 2016-11-08 12:42:00
-tags: vapor,setup
+tags: [vapor,setup]
 authorIds: 
 - olha
 categories:
