@@ -1,30 +1,25 @@
-<!-- NAV -->
-<nav class="navbar navbar-expand-md navbar-light py-4">
-  <div class="container">
-    <a href="{{ site.baseurl }}/" class="navbar-brand">
-      <h3 class="d-inline align-middle pl-3 text-primary">Nodes Engineering Blog</h3>
-    </a>
-    <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarNav">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav">
-        {% assign categories_list = site.categories %}
-        {% if categories_list.first[0] == null %}
-        {% for category in categories_list %}
-        <li class="nav-item">
-          <a href="{{ '/categories' | relative_url }}/{{ category | downcase | downcase | url_escape | strip | replace: ' ', '-' }}" class="nav-link">{{ category | camelcase }} ({{ site.tags[category].size }})</a>
-        </li>
-        {% endfor %}
-        {% else %}
-        {% for category in categories_list %}
-        <li class="nav-item">
-          <a href="{{ '/categories' | relative_url }}/{{ category[0] | downcase | url_escape | strip | replace: ' ', '-' }}" class="nav-link">{{ category[0] | camelcase }} ({{ category[1].size }})</a>
-        </li>
-        {% endfor %}
-        {% endif %}
-        {% assign categories_list = nil %}
-      </ul>
-    </div>
+{% if page.image != nil %}
+  {% assign bgImg = "linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.5)), url('" | append: page.image | append: "');" %}
+{% else %}
+  {% assign bgImg = "linear-gradient(105deg, #ff4d79, #b52c6e);" %}
+{% endif %}
+<div class="jumbotron-fluid text-center page-header" style="{{ bgImg | prepend: 'background-image: ' }}">
+  <div class="page-title">
+    <h1>{{ page.title }}</h1>
+    {% if page.subtitle %}
+      <p>{{ page.subtitle }}</p>
+    {% endif %}
+    {% if page.date %}
+      <span class="text-center text-uppercase">
+        <time class="page-date" datetime="{{ page.date }}">{{ page.date | date_to_string }}</time>
+      </span>
+    {% endif %}
+    <p class="text-center text-uppercase">
+      {% for authorId in page.authorIds %}
+        <span class="page-author">
+          <a href="{{ site.baseurl }}/authors/{{ authorId }}">{{ authorId }}</a>
+        </span>
+      {% endfor %}
+    </p>
   </div>
-</nav>
+</div>

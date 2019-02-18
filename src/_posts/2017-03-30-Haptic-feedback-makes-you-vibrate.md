@@ -1,7 +1,7 @@
 ---
 title: Haptic Feedback makes you vibrate!
 date: 2017-04-21 10:10:57
-tags: ios,haptic,feedback,vibrate
+tags: [ios,haptic,feedback,vibrate]
 authorIds: 
 - maco
 categories:

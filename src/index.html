@@ -1,28 +1,19 @@
 ---
 layout: default
-title: Nodes Engineering Blog
+title: Welcome to the Nodes Engineering site
+subtitle: Fresh out of the presses, we are proud to present our new engineering site! <br/> Here we are going to write about all things related to the development we do at Nodes
+image : /assets/img/nodes-agency-team.jpg
+pagination:
+  enabled: true
+  collection: posts
+  title: Welcome to the Nodes Engineering site
 ---
 
 
-<div class="row">
-	<div class="col">
-		<h1 class="text-primary">Categories</h1>
-		{% for category in site.categories %}
-		<h3 id="{{ category[0] | downcase | url_escape | strip | replace: ' ', '-' }}">{{ category[0] | camelcase }}</h3>
-		<ul>
-			{% assign pages_list = category[1] %}
-			{% for post in pages_list %}
-			{% if post.title != null %}
-			{% if group == null or group == post.group %}
-			<li>
-				<a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }} <time datetime="{{ post.date | date_to_xmlschema }}" itemprop="datePublished">{{ post.date | date: "%B %d, %Y" }}</time></a>
-			</li>
-			{% endif %}
-			{% endif %}
-			{% endfor %}
-			{% assign pages_list = nil %}
-			{% assign group = nil %}
-		</ul>
-		{% endfor %}
-	</div>
+<div class="first-content m-b-15">
+  <div class="row d-flex flex-wrap posts">
+    {% for post in paginator.posts %}
+     {% include post.html post=site.posts %}
+    {% endfor %}
+  </div>
 </div>

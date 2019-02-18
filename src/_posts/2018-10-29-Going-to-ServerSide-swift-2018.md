@@ -1,7 +1,7 @@
 ---
 title: Going to ServerSide.swift 2018
 date: 2018-10-29 18:00:00
-tags: vapor,swift,linux,swift4,vapor3,serversideswift,backend
+tags: [vapor,swift,linux,swift4,vapor3,serversideswift,backend]
 authorIds:
 - stso
 - re

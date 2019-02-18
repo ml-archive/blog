@@ -1,18 +1,41 @@
-.navbar{
-  box-shadow: 1px 1px 3px $primary;
-  opacity: 0.8;
-  background: $white;
-
-  .nav-item{
-    font-size: 1.4rem;
-    padding-right: 20px;
-  }
+.page-header {
+  position: relative;
+  height: 500px;
+  background-size: cover;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-repeat: no-repeat;
+  background-position: 50% center;
 }
 
-.nav-link {
-  color: $info !important;
+.page-header .page-title {
+  position: absolute;
+  text-align: center;
+  top: 75%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+}
 
-  &:hover {
-    color: $primary !important;
-  }
+.page-header .page-date {
+  padding-left: 10px;
+  padding-right: 10px;
+  font-size: 15px;
+  line-height: 1.33;
+  letter-spacing: 0.6px;
+  color: #ffffff;
+}
+
+.page-header .page-author {
+  padding-left: 5px;
+  padding-right: 5px;
+  font-size: 15px;
+  line-height: 1.33;
+  letter-spacing: 0.6px;
+  color: #ff4d79;
+}
+
+.page-header .page-author a, a:hover, a:focus {
+  color: #ff4d79;
 }

@@ -1,14 +1,14 @@
 ---
 title: How we debug with Charles
 date: 2017-12-18 00:00:00
-tags: charles,QA,testing
+tags: [charles,QA,testing]
+image: https://cdn-laravel.vapor.cloud/image/nstack/translate_values/charles_IPjFgz7Fvv.png
 categories:
 - QA
 authorIds:
 - sely
 ---
 
-![Charles](https://cdn-laravel.vapor.cloud/image/nstack/translate_values/charles_IPjFgz7Fvv.png)
 
 For those who don't know [Charles](https://www.charlesproxy.com), Charles is an HTTP proxy and monitor that enables testers and developers to view all HTTP and HTTPS traffic between the device and the internet. This includes requests, responses and the HTTP headers. Charles is an incredibly powerful tool in debugging mobile and web applications. This post of the Nodes Engineering Blog explores the debugging capabilities of Charles used daily by our QA and Application Mangement Team.
 

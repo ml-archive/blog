@@ -1,6 +1,50 @@
 ---
 ---
 
+
 @import "custom/variables";
 @import 'bootstrap/bootstrap';
+@import 'custom/includes/navbar';
 @import 'custom/includes/header';
+@import 'custom/includes/posts.scss';
+@import 'custom/includes/post.scss';
+@import 'custom/includes/authors.scss';
+@import 'custom/includes/pagination.scss';
+@import 'custom/includes/share_buttons.scss';
+
+body, html {
+  height: 100%;
+}
+
+body {
+  color: #7a7475;
+}
+
+@font-face {
+  font-family: 'Roboto';
+  src: url('https://fonts.googleapis.com/css?family=Roboto') format('truetype');
+}
+
+.ff-roboto {
+  font-family: 'Roboto', sans-serif, Arial !important;
+  font-style: normal;
+  font-stretch: normal;
+  letter-spacing: normal;
+}
+
+.m-b-0 {
+  margin-bottom: 0;
+}
+
+.m-b-15 {
+  margin-bottom: 15px;
+}
+
+.first-content {
+  margin-top: 54px;
+}
+
+.center {
+  display: table;
+  margin: 0 auto;
+}
