@@ -30,5 +30,22 @@ marked:
   tables: true
   smartypants: true
 
+plugins:
+  - jekyll-paginate-v2
+
 exclude:
   - README.md
+  - Gemfile
+  - Gemfile.lock
+
+pagination:
+  enabled: true
+  per_page: 9
+  permalink: '/page/:num/'
+  title: ' - page :num'
+  limit: 0
+  sort_field: 'date'
+  sort_reverse: true
+  trail:
+    before: 1
+    after: 1

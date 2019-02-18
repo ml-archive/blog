@@ -5,8 +5,8 @@ layout: default
 
 <div class="first-content m-b-15">
   <div class="row posts">
-    {% for post in site.categories[page.category] %}
-     {% include post.html post=post %}
+    {% for post in paginator.posts %}
+      {% include post.html post=post %}
     {% endfor %}
   </div>
 </div>

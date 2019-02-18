@@ -7,6 +7,6 @@ layout: default
   {% assign authorId = page.url | split: "/" | last %}
   {% assign posts = site.posts | sort | where_exp: "post", "post.authorIds contains authorId" %}
   {% for post in posts %}
-   {% include post.html post=post %}
+    {% include post.html post=post %}
   {% endfor %}
 </div>

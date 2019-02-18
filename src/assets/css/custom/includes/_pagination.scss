@@ -1,0 +1,10 @@
+.pagination a {
+  border: none !important;
+  border-radius: 0 !important;
+}
+
+.page-item {
+  &.selected .page-link {
+    color: #ff4d79;
+  }
+}

@@ -6,9 +6,10 @@
 @import 'bootstrap/bootstrap';
 @import 'custom/includes/navbar';
 @import 'custom/includes/header';
-@import 'posts.scss';
-@import 'post.scss';
-@import 'authors.scss';
+@import 'custom/includes/posts.scss';
+@import 'custom/includes/post.scss';
+@import 'custom/includes/authors.scss';
+@import 'custom/includes/pagination.scss';
 
 body, html {
   height: 100%;
