@@ -10,10 +10,15 @@ layout: default
         {{ content }}
       </div>
     </article>
-    <div class="tags">
-      {% for tag in page.tags %}
-        <span class="badge badge-pill badge-secondary text-center font-weight-normal category-tag tag">{{ tag }}</span>
-      {% endfor %}
+    <div class="d-flex justify-content-between">
+      <div class="tags">
+        {% for tag in page.tags %}
+          <span class="badge badge-pill badge-secondary text-center font-weight-normal category-tag tag">{{ tag }}</span>
+        {% endfor %}
+      </div>
+      <div class="share-buttons">
+        {% include share_buttons.html %}
+      </div>
     </div>
   </div>
 </div>
