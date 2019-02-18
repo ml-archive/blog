@@ -4,7 +4,7 @@ layout: default
 
 
 <div class="row justify-content-md-center">
-  <div class="col-md-10">
+  <div class="col-md-8">
     <article class="blog-post">
       <div class="entry-content">
         {{ content }}
@@ -29,7 +29,7 @@ layout: default
   </h3>
 </div>
 
-<div class="row no-gutters justify-content-md-center">
+<div class="row justify-content-md-center d-flex flex-wrap authors">
   {% for authorId in page.authorIds %}
     {% assign author = site.data.authors[authorId] %}
     {% include author.html author=author %}

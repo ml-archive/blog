@@ -1,12 +1,16 @@
-<div class="col-md-5 col-sm-12 author">
+<div class="author">
   {% assign info = author %}
   {% if author.first[0] == null %}
-    {% assign info = author[1]  %}
+    {% assign info = author[1] %}
   {% endif %}
-  <div class="thumbnail center">
-    <img src="{{ info.image }}" alt="{{ info.name }}">
+  <div class="item">
+    <div class="img-container">
+      {% if info.image %}
+        <img src="{{ info.image }}" alt="{{ info.name }}" />
+      {% endif %}
+    </div>
   </div>
-  <div class="text-center">
+  <div class="item text-center">
     <h3 class="font-weight-bold name"><a href="{{ site.baseurl }}/authors/{{ info.id }}">{{ info.name }}</a></h3>
     <span class="occupation">{{ info.occupation }}</span>
     <p class="about">{{ info.about }}</p>
