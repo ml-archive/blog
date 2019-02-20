@@ -1,7 +1,7 @@
 module Jekyll
   class ActivePage < Liquid::Tag
     def render(context)
-        return context.environments.first["page"]["category"] == context[@markup.strip] ? ' active' : ''
+        return context.environments.first["page"]["active"] == context[@markup.strip].downcase ? ' active' : ''
     end
   end
 end

@@ -1,7 +1,8 @@
 ---
 layout: category
 title: Android
-category: Android
+active: android
+group: posts
 permalink: categories/android/
 pagination:
   enabled: true

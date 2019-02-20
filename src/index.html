@@ -3,6 +3,8 @@ layout: default
 title: Welcome to the Nodes Engineering site
 subtitle: Fresh out of the presses, we are proud to present our new engineering site! <br/> Here we are going to write about all things related to the development we do at Nodes
 image : /assets/img/nodes-agency-team.jpg
+active: all
+group: posts
 pagination:
   enabled: true
   collection: posts
@@ -10,10 +12,10 @@ pagination:
 ---
 
 
-<div class="first-content m-b-15">
-  <div class="row d-flex flex-wrap posts">
-    {% for post in paginator.posts %}
-     {% include post.html post=site.posts %}
-    {% endfor %}
-  </div>
+{% include filter.html %}
+
+<div class="row d-flex flex-wrap posts">
+  {% for post in paginator.posts %}
+  {% include post.html post=site.posts %}
+  {% endfor %}
 </div>

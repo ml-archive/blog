@@ -1,0 +1,19 @@
+<div class="row no-gutters">
+  <div class="filter">
+    <a href="{{ '/' | relative_url }}"
+       class="badge badge-pill badge-secondary text-center text-justify font-weight-normal link{% active_link 'all' %}">All</a>
+    {% assign categories = site.categories %}
+    {% if categories.first[0] == null %}
+      {% for category in categories %}
+        <a href="{{ '/categories' | relative_url }}/{{ category | downcase | downcase | url_escape | strip | replace: ' ', '-' }}"
+           class="badge badge-pill badge-secondary text-center text-justify font-weight-normal link{% active_link category %}">{{ category | camelcase }}</a>
+      {% endfor %}
+    {% else %}
+      {% for category in categories %}
+        <a href="{{ '/categories' | relative_url }}/{{ category[0] | downcase | url_escape | strip | replace: ' ', '-' }}"
+           class="badge badge-pill badge-secondary text-center text-justify font-weight-normal link{% active_link category[0] %}">{{ category[0] | camelcase }}</a>
+      {% endfor %}
+    {% endif %}
+    {% assign categories = nil %}
+  </div>
+</div>

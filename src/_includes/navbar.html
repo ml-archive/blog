@@ -9,23 +9,11 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav ml-auto">
-        {% assign categories = site.categories %}
-        {% if categories.first[0] == null %}
-          {% for category in categories %}
-          <li class="nav-item{% active_link category %}">
-            <a href="{{ '/categories' | relative_url }}/{{ category | downcase | downcase | url_escape | strip | replace: ' ', '-' }}" class="nav-link{% active_page category %}">{{ category | camelcase }}</a>
-          </li>
-          {% endfor %}
-        {% else %}
-          {% for category in categories %}
-          <li class="nav-item{% active_link category[0] %}">
-            <a href="{{ '/categories' | relative_url }}/{{ category[0] | downcase | url_escape | strip | replace: ' ', '-' }}" class="nav-link{% active_page category[0] %}">{{ category[0] | camelcase }}</a>
-          </li>
-          {% endfor %}
-        {% endif %}
-        {% assign categories = nil %}
-        <li class="nav-item">
-          <a href="{{ '/authors' | relative_url }}" class="nav-link">Authors</a>
+        <li class="nav-item{% active_group posts|disabled %}">
+          <a href="{{ '/' | relative_url }}" class="nav-link{% active_group posts|active %}">Posts</a>
+        </li>
+        <li class="nav-item{% active_url authors|disabled %}">
+          <a href="{{ '/authors' | relative_url }}" class="nav-link{% active_url authors|active %}">Authors</a>
         </li>
       </ul>
     </div>
