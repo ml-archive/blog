@@ -1,7 +1,7 @@
 module Jekyll
   class ActiveLink < Liquid::Tag
     def render(context)
-        return context.environments.first["page"]["category"] == context[@markup.strip] ? ' disabled' : ''
+        return context.environments.first["page"]["active"] == context[@markup.strip].downcase ? ' disabled' : ''
     end
   end
 end

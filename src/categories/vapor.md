@@ -1,7 +1,8 @@
 ---
 layout: category
 title: Vapor
-category: Vapor
+active: vapor
+group: posts
 permalink: categories/vapor/
 pagination:
   enabled: true

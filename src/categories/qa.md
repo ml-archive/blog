@@ -1,7 +1,8 @@
 ---
 layout: category
 title: QA
-category: QA
+active: qa
+group: posts
 permalink: categories/qa/
 pagination:
   enabled: true

@@ -11,6 +11,7 @@
 @import 'custom/includes/authors.scss';
 @import 'custom/includes/pagination.scss';
 @import 'custom/includes/share_buttons.scss';
+@import 'custom/includes/filter.scss';
 
 body, html {
   height: 100%;
@@ -38,10 +39,6 @@ body {
 
 .m-b-15 {
   margin-bottom: 15px;
-}
-
-.first-content {
-  margin-top: 54px;
 }
 
 .center {

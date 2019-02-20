@@ -1,0 +1,40 @@
+.filter {
+  a {
+    &.link {
+      margin-top: 16px;
+      margin-bottom: 16px;
+      text-decoration: none;
+      padding: 10px 15px 10px 15px;
+      margin-right: 16px;
+      font-size: 15px;
+      background-color: #e4e4e4;
+      vertical-align: middle;
+      color: #898989;
+
+      &:hover, &.disabled {
+        color: #ffffff;
+        background: linear-gradient(105deg, #ff4d79, #b52c6e);
+      }
+
+      &.disabled {
+        pointer-events: none;
+      }
+
+      &:last-child {
+        margin-right: 0;
+      }
+    }
+  }
+}
+
+
+@media screen and (min-width: 360px) {
+  .filter {
+    a {
+      &.link {
+        margin-top: 64px;
+        margin-bottom: 64px;
+      }
+    }
+  }
+}
