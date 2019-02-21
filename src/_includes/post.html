@@ -1,23 +1,17 @@
 <div class="post">
-  <div class="item">
-    <div class="img-container">
-      {% if post.image %}
-      <img src="{{ post.image }}" alt="{{ post.title }}" />
-      {% endif %}
+  <div class="img-container mb-3">
+    <div class="image">
+      <div class="cover-image"{% if post.image %} style="background-image: url('{{ post.image }}');"{% endif %}></div>
     </div>
   </div>
-  <div class="item">
-    <div class="info">
-      <p class="m-b-0 date"><time datetime="{{ post.date }}">{{ post.date | date_to_string }}</time></p>
-      <h3 class="title font-weight-bold"><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></h3>
-      <p class="m-b-0 description">{{ post.description }}</p>
-    </div>
+  <div class="info mb-2">
+    <p class="mb-0 date"><time datetime="{{ post.date }}">{{ post.date | date_to_string }}</time></p>
+    <h3 class="title font-weight-bold"><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></h3>
+    <p class="mb-0 description">{{ post.description }}</p>
   </div>
-  <div class="item">
-    <div class="categories">
-      {% for category in post.categories %}
-        <span class="badge badge-pill badge-secondary text-center font-weight-normal category-tag category">{{ category }}</span>
-      {% endfor %}
-    </div>
+  <div class="categories">
+    {% for category in post.categories %}
+    <span class="badge badge-pill badge-secondary text-center font-weight-normal category-tag category">{{ category }}</span>
+    {% endfor %}
   </div>
 </div>
