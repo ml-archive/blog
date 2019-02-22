@@ -1,32 +1,47 @@
 .navbar {
+  min-height: 72px;
   box-shadow: 0 8px 16px 0 rgba(39, 8, 11, 0.05), 0 4px 8px 0 rgba(39, 8, 11, 0.05);
   background-color: #ffffff;
   padding: 0;
 
   .nav-item {
-    font-family: 'Roboto', sans-serif;
     font-size: 15px;
-    font-weight: 500;
-    font-style: normal;
-    font-stretch: normal;
     line-height: 1.33;
     letter-spacing: 0.6px;
-    text-align: right;
+
+    .nav-link {
+      padding-left: 15px;
+
+      color: #26080b !important;
+
+      &:hover {
+        color: #b52c6e !important;
+      }
+    }
   }
 
-  li.disabled {
+  .navbar-brand {
+    padding: 0 15px;
+  }
+
+  .navbar-toggler {
+    margin-right: 15px;
+    padding: 9px 10px !important;
+  }
+
+  .disabled {
     cursor: default;
 
-    a {
+    .nav-link {
       pointer-events: none;
     }
   }
 }
 
-.nav-link {
-  color: #26080b !important;
-
-  &:hover {
-    color: #b52c6e !important;
+@media (min-width: 992px) {
+  .navbar-nav > li > a {
+    padding-top: 22.5px;
+    padding-bottom: 22.5px;
+    line-height: 27px;
   }
 }
