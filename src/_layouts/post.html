@@ -3,44 +3,51 @@ layout: default
 ---
 
 
-<div class="row justify-content-md-center">
+<div class="row no-gutters justify-content-md-center">
   <div class="col-md-8">
     <article class="blog-post">
       <div class="entry-content">
         {{ content }}
       </div>
     </article>
-    <div class="d-flex justify-content-between">
-      <div class="tags">
-        {% for tag in page.tags %}
-          <span class="badge badge-pill badge-secondary text-center font-weight-normal category-tag tag">{{ tag }}</span>
-        {% endfor %}
+  </div>
+</div>
+
+<div class="row no-gutters justify-content-md-center">
+  <div class="col-md-8">
+    <div class="row no-gutters">
+      <div class="col-sm-6 text-center tags-container">
+        <div class="tags">
+          {% for tag in page.tags %}
+            <span class="badge badge-pill badge-secondary text-center font-weight-normal category-tag tag">{{ tag }}</span>
+          {% endfor %}
+        </div>
       </div>
-      <div class="share-buttons">
+      <div class="col-sm-6 text-center share-buttons-container">
         {% include share_buttons.html %}
       </div>
     </div>
   </div>
 </div>
 
-<div class="row no-gutters justify-content-md-center">
+<div class="row no-gutters justify-content-center">
   <h3 class="text-center font-weight-bold sub-header">
     {% assign count = page.authorIds | size %}{% if count > 1 %}Authors{% else %}Author{% endif %}
   </h3>
 </div>
 
-<div class="row justify-content-md-center d-flex flex-wrap authors">
+<div class="row no-gutters justify-content-center d-flex flex-wrap authors{% if count == 1 %} single{% endif %}{% if count == 2 %} two{% endif %}">
   {% for authorId in page.authorIds %}
     {% assign author = site.data.authors[authorId] %}
     {% include author.html author=author %}
   {% endfor %}
 </div>
 
-<div class="row no-gutters justify-content-md-center mt-5">
+<div class="row no-gutters justify-content-center mt-5">
   <h3 class="text-center font-weight-bold sub-header">You may also like</h3>
 </div>
 
-<div class="row justify-content-md-center d-flex flex-wrap posts">
+<div class="row no-gutters justify-content-center d-flex flex-wrap posts two">
   {% for post in site.related_posts limit: 2 %}
     {% include post.html post=post %}
   {% endfor %}

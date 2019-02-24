@@ -3,6 +3,11 @@
   padding: 32px 10px 40px 10px;
 }
 
+.posts.two .post {
+  padding-left: 0;
+  padding-right: 0;
+}
+
 .posts .post .img-container {
   background: linear-gradient(105deg, #ff4d79, #b52c6e);
   border-radius: 10px;
@@ -43,10 +48,24 @@
   .posts .post {
     width: 50%;
   }
+
+  .posts.two .post {
+    &:first-child {
+      padding-inline-end: 10px;
+    }
+
+    &:last-child {
+      padding-inline-start: 10px;
+    }
+  }
 }
 
 @media screen and (min-width: 992px) {
   .posts .post {
     width: 33%;
+  }
+
+  .posts.two .post {
+    width: 470px;
   }
 }

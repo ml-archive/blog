@@ -13,7 +13,9 @@
       max-width: 100%;
       height: auto;
       margin: auto;
-      float: none!important;
+      border-radius: 8px;
+      overflow: hidden;
+      float: none !important;
     }
   }
 }
@@ -38,5 +40,20 @@
 
   .tag {
     margin: 3px;
+  }
+}
+
+.share-buttons-container {
+  padding-bottom: 20px;
+}
+
+@media screen and (min-width: 768px) {
+  .tags-container {
+    text-align: left !important;
+  }
+
+  .share-buttons-container {
+    text-align: right !important;
+    padding-bottom: 0 !important;
   }
 }
