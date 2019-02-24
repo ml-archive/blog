@@ -14,12 +14,5 @@
         <time class="page-date" datetime="{{ page.date }}">{{ page.date | date_to_string }}</time>
       </span>
     {% endif %}
-    <p class="text-center text-uppercase">
-      {% for authorId in page.authorIds %}
-        <span class="page-author">
-          <a href="{{ site.baseurl }}/authors/{{ authorId }}">{{ authorId }}</a>
-        </span>
-      {% endfor %}
-    </p>
   </div>
 </div>

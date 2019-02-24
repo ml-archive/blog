@@ -12,10 +12,11 @@
 .page-header .page-title {
   position: absolute;
   text-align: center;
-  top: 75%;
+  top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   color: white;
+  width: fit-content;
 }
 
 .page-header .page-date {
