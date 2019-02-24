@@ -39,6 +39,7 @@ https://www.aerobatic.com/blog/jekyll-assets-bootstrap/- https://jekyllrb.com/do
 - https://www.bootply.com/108614
 - https://startbootstrap.com/templates/full-width-pics/
 - https://www.ruby-forum.com/t/newbie-convert-integer-to-string-in-ruby/91550
+- https://coderwall.com/p/z87nsq/how-to-make-a-circular-image-with-css-only
 
 ## 💻 Developers
 
