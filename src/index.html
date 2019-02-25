@@ -14,8 +14,13 @@ pagination:
 
 {% include filter.html %}
 
+{% if paginator.page == 1 %}
+  {% assign post = site.posts.first %}
+  {% include most_recent_post.html post=post %}
+{% endif %}
+
 <div class="row d-flex flex-wrap posts">
-  {% for post in paginator.posts %}
-  {% include post.html post=site.posts %}
+  {% for post in paginator.posts offset: 1 %}
+    {% include post.html post=post %}
   {% endfor %}
 </div>
