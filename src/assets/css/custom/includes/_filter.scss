@@ -1,9 +1,10 @@
 .filter {
+  margin-top: 16px;
+  margin-bottom: 0;
+
   a {
     &.link {
       margin-top: 16px;
-      margin-bottom: 16px;
-      text-decoration: none;
       padding: 10px 15px 10px 15px;
       margin-right: 16px;
       font-size: 15px;
@@ -27,14 +28,9 @@
   }
 }
 
-
-@media screen and (min-width: 360px) {
+@media screen and (min-width: 414px) {
   .filter {
-    a {
-      &.link {
-        margin-top: 64px;
-        margin-bottom: 64px;
-      }
-    }
+    margin-top: 64px;
+    margin-bottom: 32px;
   }
 }

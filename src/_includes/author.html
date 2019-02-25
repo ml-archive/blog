@@ -5,13 +5,13 @@
   {% endif %}
   <div class="item">
     <div class="img-container">
-      {% if info.image %}
-        <img src="{{ info.image }}" alt="{{ info.name }}" />
-      {% endif %}
+      <div class="cover-image"{% if info.image %} style="background-image: url('{{ info.image }}');"{% endif %}>
+        <a href="{{ site.baseurl }}/authors/{{ info.id }}" class="text-decoration-none bg-image-link"></a>
+      </div>
     </div>
   </div>
   <div class="item text-center">
-    <h3 class="font-weight-bold name"><a href="{{ site.baseurl }}/authors/{{ info.id }}">{{ info.name }}</a></h3>
+    <h3 class="font-weight-bold name"><a href="{{ site.baseurl }}/authors/{{ info.id }}" class="text-decoration-none">{{ info.name }}</a></h3>
     <span class="occupation">{{ info.occupation }}</span>
     <p class="about">{{ info.about }}</p>
   </div>
