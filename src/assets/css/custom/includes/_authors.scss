@@ -5,13 +5,16 @@
     width: 100%;
     margin-top: 10px;
     margin-bottom: 10px;
-    height: 400px;
     border-radius: 8px;
     background-color: #f8f7f7;
 
+    .author-content {
+      padding: 30px;
+    }
+
     .item {
       width: 100%;
-      padding: 0 15px;
+      padding: 10px;
 
       .name {
         font-size: 32px;
@@ -24,17 +27,17 @@
       }
 
       .occupation {
-        font-size: 17px;
+        font-size: 15px;
         line-height: 1.41;
         color: #b52c6e;
+        font-weight: 500;
       }
 
       .about {
-        padding: 8px;
+        margin: 0px;
       }
 
       .img-container {
-        margin-top: 40px;
         align-items: center;
         justify-content: space-around;
         display: flex;
@@ -57,7 +60,7 @@
     }
 
     .item:first-child {
-      padding-bottom: 15px;
+      margin-bottom: 15px;
     }
   }
 

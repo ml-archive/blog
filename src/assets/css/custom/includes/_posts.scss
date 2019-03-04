@@ -1,6 +1,6 @@
 .posts .post {
   width: 100%;
-  padding: 32px 10px 40px 10px;
+  padding: 15px;
 }
 
 .posts.two .post {
@@ -24,6 +24,7 @@
 
 .posts .post .info .date {
   color: #b52c6e;
+  font-weight: 500;
 }
 
 .posts .post .info .title a, a:hover, a:focus {

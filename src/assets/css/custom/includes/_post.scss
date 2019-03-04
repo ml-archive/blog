@@ -1,5 +1,5 @@
 .blog-post {
-  margin-bottom: 58px; //5em?
+  margin-bottom: 58px;
   position: relative;
   font-size: 1em;
   line-height: 2.14286em;
@@ -16,6 +16,36 @@
       border-radius: 8px;
       overflow: hidden;
       float: none !important;
+    }
+
+    p {
+      line-height: 1.75;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+      color: #000;
+      margin-top: 40px;
+      margin-bottom: 20px;
+    }
+
+    code {
+      color: #000;
+      font-weight: bold;
+    }
+
+    .highlight {
+      border-radius: 10px;
+      line-height: 1.75;
+      margin-top: 10px;
+      margin-bottom: 20px;
+    }
+
+    pre.highlight {
+      padding: 20px;
+    }
+
+    a {
+      color: #ff4d79;
     }
   }
 }

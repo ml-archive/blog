@@ -4,6 +4,7 @@
  * Copyright 2011-2018 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
+@import url(fruity.css);
 :root {
   --blue: #007bff;
   --indigo: #6610f2;
@@ -6849,7 +6850,7 @@ a.text-dark:hover, a.text-dark:focus {
 
 .posts .post {
   width: 100%;
-  padding: 32px 10px 40px 10px; }
+  padding: 15px; }
 
 .posts.two .post {
   padding-left: 0;
@@ -6868,7 +6869,8 @@ a.text-dark:hover, a.text-dark:focus {
   background-repeat: no-repeat; }
 
 .posts .post .info .date {
-  color: #b52c6e; }
+  color: #b52c6e;
+  font-weight: 500; }
 
 .posts .post .info .title a, a:hover, a:focus {
   color: #26080b; }
@@ -6914,6 +6916,24 @@ a.text-dark:hover, a.text-dark:focus {
       border-radius: 8px;
       overflow: hidden;
       float: none !important; }
+    .blog-post .entry-content p {
+      line-height: 1.75; }
+    .blog-post .entry-content h1, .blog-post .entry-content h2, .blog-post .entry-content h3, .blog-post .entry-content h4, .blog-post .entry-content h5, .blog-post .entry-content h6 {
+      color: #000;
+      margin-top: 40px;
+      margin-bottom: 20px; }
+    .blog-post .entry-content code {
+      color: #000;
+      font-weight: bold; }
+    .blog-post .entry-content .highlight {
+      border-radius: 10px;
+      line-height: 1.75;
+      margin-top: 10px;
+      margin-bottom: 20px; }
+    .blog-post .entry-content pre.highlight {
+      padding: 20px; }
+    .blog-post .entry-content a {
+      color: #ff4d79; }
 
 .sub-header {
   font-size: 32px;
@@ -6943,18 +6963,72 @@ a.text-dark:hover, a.text-dark:focus {
   .share-buttons-container {
     text-align: right !important;
     padding-bottom: 0 !important; } }
+.post.most-recent {
+  margin-top: 40px;
+  margin-bottom: 75px; }
+
+.post.most-recent .img-container {
+  background: linear-gradient(105deg, #ff4d79, #b52c6e);
+  border-radius: 10px;
+  overflow: hidden; }
+
+.post.most-recent .img-container .image .cover-image {
+  width: 100%;
+  height: 200px;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat; }
+
+.post.most-recent .info .date {
+  color: #b52c6e;
+  margin-top: 5px;
+  margin-bottom: 16px;
+  font-weight: 500; }
+.post.most-recent .info .title a, .post.most-recent .info .title a:hover, .post.most-recent .info .title a:focus {
+  color: #26080b; }
+.post.most-recent .info .title h3 {
+  font-size: 32px;
+  line-height: 1.25; }
+
+.post.most-recent .categories {
+  padding-top: 10px; }
+
+.post.most-recent .categories .category {
+  margin-top: 10px;
+  margin-right: 6px; }
+
+@media screen and (min-width: 768px) {
+  .post.most-recent .img-container .image .cover-image {
+    height: 250px; } }
+.d-col {
+  display: flex;
+  flex-direction: column;
+  flex-basis: 100%; }
+
+.dd-col {
+  display: flex;
+  flex-direction: column;
+  flex-basis: 100%; }
+
+@media screen and (min-width: 768px) {
+  .d-col {
+    flex: 1; }
+
+  .dd-col {
+    flex: 2; } }
 .authors {
   margin-top: 20px; }
   .authors .author {
     width: 100%;
     margin-top: 10px;
     margin-bottom: 10px;
-    height: 400px;
     border-radius: 8px;
     background-color: #f8f7f7; }
+    .authors .author .author-content {
+      padding: 30px; }
     .authors .author .item {
       width: 100%;
-      padding: 0 15px; }
+      padding: 10px; }
       .authors .author .item .name {
         font-size: 32px;
         line-height: 1.25;
@@ -6962,13 +7036,13 @@ a.text-dark:hover, a.text-dark:focus {
       .authors .author .item .name a, .authors .author .item a:hover, .authors .author .item a:focus {
         color: #26080b; }
       .authors .author .item .occupation {
-        font-size: 17px;
+        font-size: 15px;
         line-height: 1.41;
-        color: #b52c6e; }
+        color: #b52c6e;
+        font-weight: 500; }
       .authors .author .item .about {
-        padding: 8px; }
+        margin: 0px; }
       .authors .author .item .img-container {
-        margin-top: 40px;
         align-items: center;
         justify-content: space-around;
         display: flex;
@@ -6986,7 +7060,7 @@ a.text-dark:hover, a.text-dark:focus {
           background-repeat: no-repeat;
           background-position: 50% center; }
     .authors .author .item:first-child {
-      padding-bottom: 15px; }
+      margin-bottom: 15px; }
   .authors.single .author {
     width: 940px !important;
     margin: 0 !important; }
@@ -7030,6 +7104,9 @@ a.text-dark:hover, a.text-dark:focus {
 
   .authors .author .item .name {
     font-size: 32px; } }
+ul.pagination {
+  margin-top: 40px; }
+
 .pagination a {
   border: none !important;
   border-radius: 0 !important; }
@@ -7135,7 +7212,8 @@ body, html {
   height: 100%; }
 
 body {
-  color: #7a7475; }
+  color: #7a7475;
+  font-size: 15px; }
 
 @font-face {
   font-family: 'Roboto';
@@ -7144,7 +7222,8 @@ body {
   font-family: 'Roboto', sans-serif, Arial !important;
   font-style: normal;
   font-stretch: normal;
-  letter-spacing: normal; }
+  letter-spacing: normal;
+  font-weight: 300 !important; }
 
 .m-b-0 {
   margin-bottom: 0; }
