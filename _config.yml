@@ -1,3 +1,8 @@
+title: Nodes Engineering
+subtitle: Engineering Awesome
+description: Leading digital product development agency with expert in-house developers that develop enterprise-grade digital products for leading brands.
+author: Nodes Agency
+
 sass:
   sass_dir: assets/css
 
@@ -19,6 +24,7 @@ defaults:
     values:
       permalink: /authors/:author_id
       layout: "author"
+      image : /assets/img/header/author.jpg
 
 collections:
   authors:

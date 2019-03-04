@@ -1,7 +1,11 @@
 <div class="post">
   <div class="img-container mb-3">
     <div class="image">
-      <div class="cover-image"{% if post.image %} style="background-image: url('{{ post.image }}');"{% endif %}>
+      {% capture image %}/assets/img/thumbnail/category-{{ post.categories.first | downcase }}.png{% endcapture %}
+      {% if post.image %}
+        {% assign image = post.image %}
+      {% endif %}
+      <div class="cover-image" style="background-image: url('{{ image }}');">
         <a href="{{ site.baseurl }}{{ post.url }}" class="text-decoration-none bg-image-link"></a>
       </div>
     </div>
@@ -13,7 +17,7 @@
   </div>
   <div class="categories">
     {% for category in post.categories %}
-    <span class="badge badge-pill badge-secondary text-center font-weight-normal category-tag category">{{ category }}</span>
+      <span class="badge badge-pill badge-secondary text-center font-weight-normal category-tag category">{{ category }}</span>
     {% endfor %}
   </div>
 </div>

@@ -2,8 +2,6 @@
 title: A Guide to Google Home Integrations
 date: 2019-01-31 10:00:00
 tags: [server,google,home,ai,api,cloud,serverless]
-image: https://www.nodesagency.com/wp-content/uploads/2018/12/Skærmbillede-2018-12-10-kl.-21.54.04.png
-image1: https://www.wabion.com/wp-content/uploads/2017/11/dialogflow.png
 authorIds: 
 - brto
 categories:
