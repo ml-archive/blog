@@ -9,7 +9,7 @@
     {% if page.subtitle %}
       <p>{{ page.subtitle }}</p>
     {% endif %}
-    {% if page.date %}
+    {% if page.date and page.authorId == null %}
       <span class="text-center text-uppercase">
         <time class="page-date" datetime="{{ page.date }}">{{ page.date | date_to_string }}</time>
       </span>
