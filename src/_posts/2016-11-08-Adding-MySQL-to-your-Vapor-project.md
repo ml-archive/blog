@@ -14,21 +14,21 @@ Follow these 3 steps if you don't already have MySQL on your machine.
 
 1. Install [Homebrew](http://brew.sh/):
 
-	```bash
-	/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-	```
+```bash
+/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+```
 
 2. Install MySQL: 
 
-	```bash
-	brew install mysql
-	```
+```bash
+brew install mysql
+```
 
 3. Start the MySQL server:
 
-	```bash
-	mysql.server start
-	```
+```bash
+mysql.server start
+```
 
 More info about MySQL setup [here](https://dev.mysql.com/doc/refman/5.6/en/osx-installation-pkg.html)
 
@@ -114,7 +114,7 @@ So now open terminal again and run:
 
 Open the newly added file and add the following: (Of course depending on your local MySQL settings)
 
-```bash
+```json
 {
     "host": "127.0.0.1",
     "user": "root",
@@ -190,7 +190,7 @@ Now try to run the 'get' endpoint in your browser (or Postman, or cURL, etc). `h
 
 And voila!, you should now see a JSON response of objects from the database.
 
-```bash
+```json
 [
 	{
 		color: "Red",
