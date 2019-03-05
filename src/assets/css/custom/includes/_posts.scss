@@ -9,7 +9,7 @@
 }
 
 .posts .post .img-container {
-  background: linear-gradient(105deg, #ff4d79, #b52c6e);
+  background: linear-gradient(105deg, $accent-1, $accent-3);
   border-radius: 10px;
   overflow: hidden;
 }
@@ -23,12 +23,8 @@
 }
 
 .posts .post .info .date {
-  color: #b52c6e;
+  color: $accent-3;
   font-weight: 500;
-}
-
-.posts .post .info .title a, a:hover, a:focus {
-  color: #26080b;
 }
 
 .posts .post .info .title h3 {
@@ -37,12 +33,13 @@
 }
 
 .posts .post .categories {
-  padding-top: 10px;
+  margin-top: 32px;
 }
 
-.posts .post .categories .category {
-  margin-top: 10px;
-  margin-right: 6px;
+.posts .post .description {
+  font-size: 17px;
+  line-height: 1.65;
+  color: $grey-3;
 }
 
 @media screen and (min-width: 768px) {

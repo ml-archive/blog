@@ -10,11 +10,11 @@
       font-size: 15px;
       background-color: #e4e4e4;
       vertical-align: middle;
-      color: #898989;
+      color: $grey-4;
 
       &:hover, &.disabled {
-        color: #ffffff;
-        background: linear-gradient(105deg, #ff4d79, #b52c6e);
+        color: $white;
+        background: linear-gradient(105deg, $accent-1, $accent-3);
       }
 
       &.disabled {

@@ -1,6 +1,21 @@
-$primary: #8d021f; // burgundy
-$info: #7f7f7f; // grey
-$navbar-light-active-color: #b52c6e !important;
+$base-1: #4D0628;
+$base-2: #26080B;
+$base-3: #0E191B;
+
+$grey-1: #ECEFF3;
+$grey-2: #DFE2E6;
+$grey-3: #7A7475;
+$grey-4: #898989;
+
+$accent-1: #FF4D79;
+$accent-2: #D83F73;
+$accent-3: #B52C6E;
+$accent-4: #7C3D83;
+$accent-5: #4F509E;
+
+$primary: #8d021f;
+$info: #7f7f7f;
+$navbar-light-active-color: $accent-3 !important;
 $font-weight-normal: 500 !default;
 $font-weight-bold: 900 !default;
 $pagination-color: #ababab;

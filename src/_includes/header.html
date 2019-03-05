@@ -6,9 +6,9 @@
 {% endif %}
 <div class="jumbotron-fluid text-center page-header" style="{{ bgImg | prepend: 'background-image: ' }}">
   <div class="page-title">
-    <h1>{{ page.title }}</h1>
+    <h3>{{ page.title }}</h3>
     {% if page.subtitle %}
-      <p>{{ page.subtitle }}</p>
+      <h6>{{ page.subtitle }}</h6>
     {% endif %}
     {% if page.date and page.authorId == null %}
       <span class="text-center text-uppercase">
