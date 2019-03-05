@@ -22,18 +22,18 @@ The demo project currently contains 2 ViewControllers, a CatalogViewController f
 
 In order to be able to start developing our Siri Shortcuts feature, we need to enable Siri Capabilities in our app. You can do this by opening your project navigator in the "Capabilities" tab. Here you can scroll down to and turn "Siri" on.
 
-<p align=center><img src="https://raw.githubusercontent.com/kjoneandrei/blog/iOS-siri-shortcuts-post/source/_posts-images/2018-07-16-SiriShortcuts/1.png"/></p>
+<p align="center"><img src="https://raw.githubusercontent.com/kjoneandrei/blog/iOS-siri-shortcuts-post/source/_posts-images/2018-07-16-SiriShortcuts/1.png"/></p>
 
 Now that we have enabled Siri, we will need to add the `IntentExtension` and `IntentExtensionUI` targets to our app. To do so, click "File" in the Xcode menu, select "New" -> "Target" and then select the "Intent Extension" target. Name your extension `SiriIntentExtension` and make sure you have checked "Include Intent Extension UI". This will include  `SiriIntentExtensionUI` automatically to our app's targets.
 
-<p align=center><img src = "https://raw.githubusercontent.com/kjoneandrei/blog/iOS-siri-shortcuts-post/source/_posts-images/2018-07-16-SiriShortcuts/2.png"/></p>
+<p align="center"><img src="https://raw.githubusercontent.com/kjoneandrei/blog/iOS-siri-shortcuts-post/source/_posts-images/2018-07-16-SiriShortcuts/2.png"/></p>
 
 ### Part 2: Request Siri permissions
 
 Include the NSSiriUsageDescription key in your iOS app’s Info.plist file and describes what our users will be allowing "Siri" interaction for.
 
 Then in our `CatalogViewController` import `IntentsUI` and add the following functions and call `requestSiriAuthorization` in `viewDidLoad`. The `requestSiriAuthorization` function will ask our users on the first app open to allow access to Siri. Because our app's main purpose is to demo Siri's functionality, we can add `allowSiriAlert` function, that will be called if the user hasn't allowed Siri permissions yet.
-```
+```swift
 //if user hasn't already allowed Siri permisions, we request the user to authorize Siri
 private func requestSiriAuthorization() {
     guard INPreferences.siriAuthorizationStatus() != .authorized else { return }
@@ -93,7 +93,7 @@ To make it easier for future implementation of other custom activities we will c
 
 Your extension should look like this: 
 
-```
+```swift
 extension NSUserActivity {
     struct ActivityKeys {
         static let catalog = "catalogActivity"
@@ -128,7 +128,7 @@ extension NSUserActivity {
 Switch back to `NSUserActivity+CatalogActivity` and start by extending `NSUserActivity` and import `UIKit` and `CoreSpotlight`. 
 Now add the following static variable: 
 
-```
+```swift
 import CoreSpotlight
 import UIKit
 
@@ -181,7 +181,7 @@ These types define the schema that Siri uses to identify requests the user makes
 
 Your final intent should look like this: 
 
-<p align=center><img src = "https://raw.githubusercontent.com/kjoneandrei/blog/iOS-siri-shortcuts-post/source/_posts-images/2018-07-16-SiriShortcuts/3.png"/></p>
+<p align="center"><img src="https://raw.githubusercontent.com/kjoneandrei/blog/iOS-siri-shortcuts-post/source/_posts-images/2018-07-16-SiriShortcuts/3.png"/></p>
 
 Now that we have created our intent, we must inform our `Intent Extensions` that our app will support this custom type.
 
@@ -194,7 +194,7 @@ Now that we have configured our app and our extensions to know about the intent,
 
 Inside our `SiriIntentExtension`, select default created `IntentHandler` and add the following lines of code there: 
 
-```
+```swift
 override func handler(for intent: INIntent) -> Any {
 guard intent is TestDriveIntent else {
     fatalError("Intent type not recognised \(intent)")
@@ -212,7 +212,7 @@ Go ahead and create `TestDriveIntentHandler` as a class conforming to `NSObject`
 
 Your final class should look like this: 
 
-```
+```swift
 import UIKit
 import Intents
 
@@ -266,7 +266,7 @@ In order to donate the interaction we need to be able to generate an `INInteract
 
 Go ahead and add the following to our `TestDrive.swift`:
 
-```
+```swift
 extension TestDrive {
     public var intent: TestDriveIntent {
         let intent = TestDriveIntent()
@@ -306,7 +306,7 @@ Now so that we can call our shortcut, we need to go to `Settings` -> `Siri & Sea
 
 Go ahead and ask Siri to book a test drive for you. This is how it should look like when you ask Siri to book a test drive for you.
 
-<p align=center><img src = "https://raw.githubusercontent.com/kjoneandrei/blog/iOS-siri-shortcuts-post/source/_posts-images/2018-07-16-SiriShortcuts/4.png"/></p>
+<p align="center"><img src="https://raw.githubusercontent.com/kjoneandrei/blog/iOS-siri-shortcuts-post/source/_posts-images/2018-07-16-SiriShortcuts/4.png"/></p>
 
 Something doesn't look quite right here, and that is because our `SiriIntentExtensionUI` does not know to display anything to the user at the moment. For that to change we need to edit `IntentViewController`'s `func configureView(for parameters: Set<INParameter>, of interaction: INInteraction, interactiveBehavior: INUIInteractiveBehavior, context: INUIHostedViewContext, completion: @escaping (Bool, Set<INParameter>, CGSize) -> Void)` that will prepare the interaction to handle and display the corresponding UI. 
 
@@ -314,7 +314,7 @@ In the  `SiriIntentExtensionUI`'s `MainInterface.storyboard` you should be able 
 
 Now in `IntentViewController` add the following functions that will help us display the UI.
 
-```
+```swift
 /// - Returns: Desired size of the view
 private func displayOverview(for testDrive: TestDrive, from intent: TestDriveIntent) -> CGSize {
     overviewView.configure(testDrive)
@@ -344,7 +344,7 @@ private func displayOrderConfirmation(for testDrive: TestDrive, from intent: Tes
 
 We are now ready do display our custom UI for the interaction. Inside our `configureView` function add the following `switch` just before the `completion` call. This will check the status of our intent and display the matching UI.
 
-```
+```swift
 // Different UIs can be displayed depending if the intent is in the confirmation phase or the handle phase.
 var desiredSize = CGSize.zero
 switch interaction.intentHandlingStatus {
@@ -361,7 +361,7 @@ switch interaction.intentHandlingStatus {
 
 Bring Siri up on screen again and call your custom phrase again. Now you should be able to see the custom UI which looks something like this: 
 
-<p align=center><img src = "https://raw.githubusercontent.com/kjoneandrei/blog/iOS-siri-shortcuts-post/source/_posts-images/2018-07-16-SiriShortcuts/5.png"/></p>
+<p align="center"><img src="https://raw.githubusercontent.com/kjoneandrei/blog/iOS-siri-shortcuts-post/source/_posts-images/2018-07-16-SiriShortcuts/5.png"/></p>
 
 The last thing for us to do before we have completely integrated shortcuts into our app is to handle the intent inside our app as well. 
 
@@ -369,7 +369,7 @@ Inside your `AppDelegate.swift`, go ahead and edit the `func application(_ appli
 continue userActivity: NSUserActivity,
 restorationHandler: @escaping ([UIUserActivityRestoring]?) -> Void) -> Bool` as follows:
 
-```
+```swift
 func application(_ application: UIApplication,
 continue userActivity: NSUserActivity,
 restorationHandler: @escaping ([UIUserActivityRestoring]?) -> Void) -> Bool {
@@ -413,7 +413,7 @@ Another feature to add to our app, is the option to add phrases to Siri directly
 
 For this to happen we will need to create a `VoiceShortcutsManager` that will have as purpose to update and add voice shortcuts to our intents.
 
-```
+```swift
 import Foundation
 import Intents
 
@@ -457,7 +457,7 @@ In our `CatalogViewController` go ahead and declare a `private lazy var voiceSho
 
 In `didSelectRowAt` go ahead and add the following block:
 
-```
+```swift
 if let shortcut = voiceShortcutManager.voiceShortcut(for: testDrive) {
     let editVoiceShortcutViewController = INUIEditVoiceShortcutViewController(voiceShortcut: shortcut)
     editVoiceShortcutViewController.delegate = self
@@ -470,14 +470,14 @@ if let shortcut = voiceShortcutManager.voiceShortcut(for: testDrive) {
 ```
 Here we check if the `voiceShortcutManager` knows of a shortcut for our intent and allow the user to create or update the shortcut. As well we need to conform to the delegate methods for `INUIAddVoiceShortcutViewControllerDelegate` and `INUIEditVoiceShortcutViewControllerDelegate`, by adding the following:
 
-```
+```swift
 func updateVoiceShortcuts() {
     voiceShortcutManager.updateVoiceShortcuts(completion: nil)
     dismiss(animated: true, completion: nil)
 }
 ```
 
-```
+```swift
 // MARK: - INUIAddVoiceShortcutViewControllerDelegate
 
 extension ViewController: INUIAddVoiceShortcutViewControllerDelegate {

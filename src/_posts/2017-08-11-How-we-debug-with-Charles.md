@@ -3,10 +3,10 @@ title: How we debug with Charles
 date: 2017-12-18 00:00:00
 tags: [charles,QA,testing]
 image: https://cdn-laravel.vapor.cloud/image/nstack/translate_values/charles_IPjFgz7Fvv.png
-categories:
-- QA
 authorIds:
 - sely
+categories:
+- QA
 ---
 
 

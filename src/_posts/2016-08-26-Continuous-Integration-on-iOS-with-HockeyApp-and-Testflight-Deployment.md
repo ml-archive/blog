@@ -24,7 +24,7 @@ We've chosen to use a combination of [HockeyApp](http://hockeyapp.com) and [Test
 
 Testflight gives us the most accurate representation of how the app will behave when in production, but the delay between uploading and it being available to test can be pretty big. This is why we opted for a model that uploads to both platforms simultaneously. The client only ever tests on Testflight, but HockeyApp is very handy for quickly making a new build available for internal testing by Q/A and Project Managers. 
 
-<p align=center><img src="https://d32wt9uxwfssua.cloudfront.net/tech-blog/uploads/ci_circle.png" /></p>
+<p align="center"><img src="https://d32wt9uxwfssua.cloudfront.net/tech-blog/uploads/ci_circle.png"/></p>
 
 The main requirements or features of a CI server are usually the same for any platform:
 
@@ -153,7 +153,7 @@ INFO [2016-08-21 16:44:17.10]: fastlane.tools just saved you 12 minutes! 🎉
 
 Continuous integration is awesome and you should be using it. After all, it not only makes it easy, fast and consistent to make builds, but also gives you a point on the [Joel Test](http://www.joelonsoftware.com/articles/fog0000000043.html)!
 
-<p align=center><img src="https://d32wt9uxwfssua.cloudfront.net/tech-blog/uploads/caveman.jpg" /></p>
+<p align="center"><img src="https://d32wt9uxwfssua.cloudfront.net/tech-blog/uploads/caveman.jpg"/></p>
 
 If you can't afford an in-house computer to set up as a build server or you prefer an all-in-one solution in the cloud, then your best bet would be [BuddyBuild](https://buddybuild.com/), which offers a tonne of features and has great support where you can communicate directly with the developers! 
 

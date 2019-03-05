@@ -20,7 +20,7 @@ We started out the implementation by taking advantage of [backtrace(3)](http://m
 
 Our implementation of `backtrace_symbols` is relatively straightforward. We just map over the buffer using [dladdr(3)](http://man7.org/linux/man-pages/man3/dladdr.3.html) to get information about the address. If there is no metadata for the given symbol, the name defaults to `???`. The implementation could be more performant by iterating over the collection twice and using the first pass to calculate how much memory we need and then allocate a single buffer big enough to fit all of this information. Then iterate over the buffer again `memcpy`ing the strings into our pool. We did not use this approach because extracting strings from a single, pool-allocated, buffer is much more involved than extracting them from a nested pointer.
 
-```C
+```c
 char ** get_symbols_for_backtrace(void * const *buffer, int size) {
     int i;
     char ** result;
@@ -56,11 +56,11 @@ Now we are ready to get our first stack trace!
 
 **And...**
 
-```
+`
 __T04Core15BuiltinFunctionC4makeACSS_SayAA4Type_pG2inAF3outSb10isVariadic4LLVM7IRValue
 _pAC_SayAA4Expr_pGAA11IRGeneratorVztc3genAaE_pAA7CheckerVz_AA4CallCtcSg02
 onP5ChecktFZfA4_
-```
+`
 
 ![eek!](https://www.filepicker.io/api/file/P0yc1BheSwgKi6GE6Iys)
 
@@ -106,7 +106,7 @@ libFrameAddress.so(get_stack_trace+0x2d)
 
 `libFrameAddress.so` is a C binary and `get_stack_trace` is our stack trace implementation.
 
-```
+```c
 App()
 ```
 

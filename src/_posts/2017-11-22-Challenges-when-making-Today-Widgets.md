@@ -45,7 +45,7 @@ After you have set up your outlets we need to add some logic to our WidgetViewCo
 
 This is what it could look like.
 
-```
+```swift
 extension WidgetViewController: NCWidgetProviding {
 
     func widgetPerformUpdate(completionHandler: @escaping (NCUpdateResult) -> Void) {
@@ -76,7 +76,7 @@ If there is no new widget data we should return the completion handler with `.no
 
 I like to use `ViewWillAppear` in the WidgetViewController to manually push an UI update, as I was sometimes having issues with the widget not updating immediately.
 
-```
+```swift
 override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
 
@@ -88,7 +88,7 @@ override func viewWillAppear(_ animated: Bool) {
 
 Widgets can even have buttons that for example will launch the app when pressed. This can be achieved very easily with the following line
 
-```
+```swift
 private func didPressButton() {
     guard let url = URL(string: “yourappURL://“) else { return }
     extensionContext?.open(url)
@@ -122,7 +122,7 @@ I like to create a basic WidgetDataManager that I can use to share my data betwe
 
 The actual logic and coding style is up to you but this is how it could look. Lets imagine our widget only has 1 UILabel for simplicity sake.
 
-```
+```swift
 enum WidgetDataManager {
 
     private static let userDefaults = UserDefaults(suiteName: “group.com.yourcompany.yourappname”)
@@ -147,7 +147,7 @@ I then simply added a getter/setter property to set/fetch the latest string from
 
 Remember the `isRequiredToUpdate` property from the `NSWidgetProviding` step above? The actual logic for this boolean would be the following
 
-```
+```swift
 final class WidgetViewController {
 
     @IBOutlet private weak var label1: UILabel!
@@ -170,20 +170,20 @@ The last step is to make sure that every time you are changing data that is to b
 
 For example in a game you might want to show the latest score in the widget. So in your code where you update the score
 
-```
+```swift
 GameDataManager.score = newScore
 ```
 
 simply update the WidgetDataManager as well.
 
-```
+```swift
 GameDataManager.score = newScore
 WidgetDataManager.label1Text = newScore
 ```
 
 ## Full Sample Code
 
-```
+```swift
 final class WidgetViewController {
 
     // MARK: - Properties
