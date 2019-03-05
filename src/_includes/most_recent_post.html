@@ -12,10 +12,10 @@
       </div>
     </div>
   </div>
-  <div class='col-md-6'>
-    <div class="info mb-2">
-      <h6 class="mb-0 font-weight-normal date"><time datetime="{{ post.date }}">{{ post.date | date_to_string }}</time></h6>
-      <h5 class="font-weight-bold"><a href="{{ site.baseurl }}{{ post.url }}" class="text-decoration-none color base-2">{{ post.title }}</a></h5>
+  <div class="col-md-6 text-container">
+    <div class="info">
+      <h6 class="font-weight-normal date"><time datetime="{{ post.date }}">{{ post.date | date_to_string }}</time></h6>
+      <h5 class="font-weight-bold title"><a href="{{ site.baseurl }}{{ post.url }}" class="text-decoration-none color base-2">{{ post.title }}</a></h5>
       {% if post.description %}
         {% assign excerpt = post.description %}
       {% else %}

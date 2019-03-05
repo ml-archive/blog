@@ -1,12 +1,13 @@
 .post.most-recent {
   margin-top: 40px;
-  margin-bottom: 75px;
+  margin-bottom: 16px;
 }
 
 .post.most-recent .img-container {
   background: linear-gradient(105deg, #ff4d79, #b52c6e);
   border-radius: 10px;
   overflow: hidden;
+  margin-bottom: 1rem;
 }
 
 .post.most-recent .img-container .image .cover-image {
@@ -20,13 +21,17 @@
 .post.most-recent .info {
   .date {
     color: $accent-3;
-    margin-top: 5px;
-    margin-bottom: 16px;
+    margin-bottom: 0;
     font-weight: 500;
+  }
+
+  .title {
+    margin-bottom: 8px;
   }
 }
 
 .post.most-recent .categories {
+  position: inherit;
   margin-top: 32px;
 }
 
@@ -36,9 +41,44 @@
   color: $grey-3;
 }
 
-@media screen and (min-width: 768px) {
+.post.most-recent .text-container {
+  max-width: 100%;
+  flex: 0 0 auto;
+}
+
+@media screen and (min-width: 992px) {
+  .post.most-recent .text-container {
+    max-width: 50%;
+    flex: 0 0 50%;
+  }
+
+  .post.most-recent {
+    margin-bottom: 75px;
+  }
+
+  .post.most-recent .categories {
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    margin: 0 auto;
+  }
+
+  .post.most-recent .img-container {
+    margin-bottom: 0;
+  }
+
+  .post.most-recent .info {
+    .date {
+      margin-bottom: 16px;
+    }
+
+    .title {
+      margin-bottom: 8px;
+    }
+  }
+
   .post.most-recent .img-container .image .cover-image {
-    height: 250px;
+    height: 280px;
   }
 }
 
