@@ -3,9 +3,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   {% if page.title %}
-    {% capture title %}{{ page.title }} - Site name!{% endcapture %}
+    {% capture title %}{{ page.title }} | {{ site.title }}{% endcapture %}
   {% elsif page.content %}
-    {% capture title %}{{ page.excerpt | strip_html | truncate: 50, '…'}} - Site name!{% endcapture %}
+    {% capture title %}{{ page.excerpt | strip_html | truncate: 50, '…'}} | {{ site.title }}{% endcapture %}
   {% endif %}
   <title>{{ title }}</title>
   <link rel='shortcut icon' type='image/x-icon' href="{{ '/assets/favicon.ico' | relative_url }}" />
