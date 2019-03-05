@@ -19,31 +19,21 @@
 
 .post.most-recent .info {
   .date {
-    color: #b52c6e;
+    color: $accent-3;
     margin-top: 5px;
     margin-bottom: 16px;
     font-weight: 500;
   }
-
-  .title {
-    a, a:hover, a:focus {
-      color: #26080b;
-    }
-
-    h3 {
-      font-size: 32px;
-      line-height: 1.25;
-    }
-  }
 }
 
 .post.most-recent .categories {
-  padding-top: 10px;
+  margin-top: 32px;
 }
 
-.post.most-recent .categories .category {
-  margin-top: 10px;
-  margin-right: 6px;
+.post.most-recent .description {
+  font-size: 17px;
+  line-height: 1.65;
+  color: $grey-3;
 }
 
 @media screen and (min-width: 768px) {

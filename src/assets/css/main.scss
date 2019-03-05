@@ -14,6 +14,7 @@
 @import 'custom/includes/share_buttons.scss';
 @import 'custom/includes/filter.scss';
 @import 'fruity.css';
+@import url('https://fonts.googleapis.com/css?family=Roboto');
 
 body, html {
   height: 100%;
@@ -22,19 +23,63 @@ body, html {
 body {
   color: #7a7475;
   font-size: 15px;
-}
-
-@font-face {
-  font-family: 'Roboto';
-  src: url('https://fonts.googleapis.com/css?family=Roboto') format('truetype');
-}
-
-.ff-roboto {
-  font-family: 'Roboto', sans-serif, Arial !important;
+  font-family: 'Roboto', sans-serif;
+  font-weight: normal;
   font-style: normal;
   font-stretch: normal;
   letter-spacing: normal;
-  font-weight: 300 !important;
+  box-sizing: border-box;
+  text-rendering: optimizeLegibility;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1 {
+  font-size: 5.65em;
+  line-height: 1.25em;
+  font-weight: 900;
+  margin-bottom: 32px;
+  margin-top: 0;
+}
+
+h2 {
+  font-size: 4.62em;
+  line-height: 1.25em;
+  font-weight: 900;
+  margin-bottom: 20px;
+  margin-top: 0;
+}
+
+h3 {
+  font-size: 3.5em;
+  line-height: 1.25em;
+  font-weight: 900;
+  margin-bottom: 16px;
+  margin-top: 0;
+}
+
+h4 {
+  font-size: 2.375em;
+  line-height: 1.5em;
+  font-weight: 900;
+  margin-bottom: 8px;
+  margin-top: 0;
+}
+
+h5 {
+  font-size: 1.875em;
+  line-height: 1.5em;
+  font-weight: 900;
+  margin-bottom: 4px;
+  margin-top: 0;
+}
+
+h6 {
+  font-size: 1em;
+  line-height: 1.5em;
+  font-weight: 900;
+  margin-bottom: 4px;
+  margin-top: 0;
 }
 
 .m-b-0 {
@@ -52,6 +97,10 @@ body {
 
 .text-decoration-none {
   text-decoration: none !important;
+}
+
+a, a:hover, a:focus .color.base-2 {
+  color: $base-2;
 }
 
 .bg-image-link {
