@@ -1,19 +1,21 @@
 <!-- NAV -->
 <nav class="navbar navbar-expand-lg navbar-light fixed-top">
-  <div class="container-fluid">
-    <a href="{{ site.baseurl }}/" class="navbar-brand">
-      <img src="{{ '/assets/img/logo' | relative_url }}/nodes-logo-2017.png"/>
+  <div class="container-fluid pl-0 pr-0">
+    <a href="{{ site.baseurl }}/" class="navbar-brand p-0 m-0">
+      <img src="{{ '/assets/img/logo' | relative_url }}/NodesLogo2017.png"/>
     </a>
     <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav ml-auto">
+        {% for category in site.data.menu %}
+          <li class="nav-item">
+            <a href="{{ category[1].url }}" class="nav-link font-weight-normal">{{ category[1].label }}</a>
+          </li>
+        {% endfor %}
         <li class="nav-item font-weight-normal{% active_group posts|disabled %}">
-          <a href="{{ '/' | relative_url }}" class="nav-link{% active_group posts|active %}">Posts</a>
-        </li>
-        <li class="nav-item font-weight-normal{% active_url authors|disabled %}">
-          <a href="{{ '/authors' | relative_url }}" class="nav-link{% active_url authors|active %}">Authors</a>
+          <a href="{{ '/' | relative_url }}" class="nav-link{% active_group posts|active %}">Blog</a>
         </li>
       </ul>
     </div>

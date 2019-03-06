@@ -5,23 +5,18 @@
   padding: 0;
 
   .nav-item {
+    padding-right: 20px;
     font-size: 15px;
     line-height: 1.33;
     letter-spacing: 0.6px;
 
     .nav-link {
-      padding-left: 15px;
-
-      color: #26080b !important;
+      color: $base-2;
 
       &:hover {
-        color: #b52c6e !important;
+        color: $accent-3 !important;
       }
     }
-  }
-
-  .navbar-brand {
-    padding: 0 15px;
   }
 
   .navbar-toggler {
