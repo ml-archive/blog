@@ -1,7 +1,13 @@
-title: Nodes Engineering
+name: Nodes Engineering
+title: Nodes Engineering Blog
 subtitle: Engineering Awesome
 description: Leading digital product development agency with expert in-house developers that develop enterprise-grade digital products for leading brands.
 author: Nodes Agency
+image: /assets/img/header/nodes-agency-team.jpg
+locale: en_GB
+social:
+  twitter:
+    username: Nodes_Apps
 
 sass:
   sass_dir: assets/css

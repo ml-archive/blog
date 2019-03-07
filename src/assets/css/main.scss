@@ -99,8 +99,10 @@ h6 {
   text-decoration: none !important;
 }
 
-a, a:hover, a:focus .color.base-2 {
-  color: $base-2;
+a.color.base-2 {
+  &, &:hover, &:focus {
+    color: $base-2;
+  }
 }
 
 .bg-image-link {
