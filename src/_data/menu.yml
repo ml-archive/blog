@@ -1,0 +1,27 @@
+home:
+  label: Home
+  url: https://www.nodesagency.com/
+cases:
+  label: Cases
+  url: https://www.nodesagency.com/cases/
+services:
+  label: Services
+  url: https://www.nodesagency.com/services/
+events:
+  label: Events
+  url: https://www.nodesagency.com/event/
+jobs:
+  label: Jobs
+  url: https://www.nodesagency.com/career/
+learn:
+  label: Learn
+  items:
+    nodes_blog:
+      label: Nodes Blog
+      url: https://www.nodesagency.com/blog/
+    tech_blog:
+      label: Tech Blog
+      url: /
+contact:
+  label: Contact
+  url: https://www.nodesagency.com/contact/
