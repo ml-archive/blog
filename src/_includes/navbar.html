@@ -2,20 +2,33 @@
 <nav class="navbar navbar-expand-lg navbar-light fixed-top">
   <div class="container-fluid pl-0 pr-0">
     <a href="{{ site.baseurl }}/" class="navbar-brand p-0 m-0">
-      <img src="{{ '/assets/img/logo' | relative_url }}/NodesLogo2017.png"/>
+      <img src="{{ '/assets/img/logo' | relative_url }}/nodes-logo-2017.png"/>
     </a>
     <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav ml-auto">
-        {% for category in site.data.menu %}
-          <li class="nav-item">
-            <a href="{{ category[1].url }}" class="nav-link font-weight-normal">{{ category[1].label }}</a>
-          </li>
+        {% for item in site.data.menu %}
+          {% if item[1].items %}
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                {{ item[1].label }}
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                {% for subItem in item[1].items %}
+                  <a class="dropdown-item" href="{{ subItem[1].url }}">{{ subItem[1].label }}</a>
+                {% endfor %}
+              </div>
+            </li>
+          {% else %}
+            <li class="nav-item">
+              <a href="{{ item[1].url }}" class="nav-link font-weight-normal">{{ item[1].label }}</a>
+            </li>
+          {% endif %}
         {% endfor %}
-        <li class="nav-item font-weight-normal{% active_group posts|disabled %}">
-          <a href="{{ '/' | relative_url }}" class="nav-link{% active_group posts|active %}">Blog</a>
+        <li class="nav-item disabled nav-separator">
+          <a href="#" class="nav-link font-weight-normal color grey-5">English</a>
         </li>
       </ul>
     </div>

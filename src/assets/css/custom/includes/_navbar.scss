@@ -4,11 +4,32 @@
   background-color: #ffffff;
   padding: 0;
 
+  .navbar-brand {
+    img {
+      margin-left: -2px;
+    }
+  }
+
   .nav-item {
     padding-right: 20px;
     font-size: 15px;
     line-height: 1.33;
     letter-spacing: 0.6px;
+
+    &.nav-separator {
+      position: relative;
+      padding-left: 20px;
+
+      &:before {
+        content: "";
+        width: 1px;
+        background: $pagination-disabled-color;
+        position: absolute;
+        left: 0;
+        height: 100%;
+        top: 0;
+      }
+    }
 
     .nav-link {
       color: $base-2;
