@@ -40,6 +40,15 @@ https://www.aerobatic.com/blog/jekyll-assets-bootstrap/- https://jekyllrb.com/do
 - https://startbootstrap.com/templates/full-width-pics/
 - https://www.ruby-forum.com/t/newbie-convert-integer-to-string-in-ruby/91550
 - https://coderwall.com/p/z87nsq/how-to-make-a-circular-image-with-css-only
+- https://stackoverflow.com/questions/3201500/keep-div-at-the-bottom-of-another-div-css
+- https://developer.twitter.com/en/docs/twitter-for-websites/javascript-api/guides/set-up-twitter-for-websites
+- https://developer.twitter.com/en/docs/twitter-for-websites/tweet-button/guides/parameter-reference1.html
+- https://milanaryal.com.np/integrating-social-meta-tags-into-jekyll/
+- http://aramzs.github.io/jekyll/social-media/2015/11/11/be-social-with-jekyll.html
+- https://conductofcode.io/post/social-meta-tags-with-jekyll/
+- http://davidensinger.com/2013/04/adding-open-graph-tags-to-jekyll/
+- http://www.cody402.com/2017/09/19/How-to-Make-Awesome-Social-Media-Cards-With-Jekyll.html
+- http://vrepin.org/vr/JekyllMeta/
 
 ## 💻 Developers
 
