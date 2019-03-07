@@ -1,6 +1,6 @@
 {% if paginator.page_trail %}
 <nav>
-  <ul class="pagination justify-content-center">
+  <ul class="pagination mb-0 justify-content-center">
     {% if paginator.previous_page %}
       <li class="page-item">
         <a class="page-link" href="{{ paginator.previous_page_path | remove: 'index.html' | relative_url }}">&lang;&lang;&nbsp;Previous</a>
