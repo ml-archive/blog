@@ -2,7 +2,7 @@
   <div class="col-lg-6">
     <div class="img-container">
       <div class="image">
-        {% capture image %}/assets/img/thumbnail/category-{{ post.categories.first | downcase }}.png{% endcapture %}
+        {% capture image %}/assets/img/thumbnail/category-{{ post.categories.first | downcase }}.jpg{% endcapture %}
         {% if post.image %}
           {% assign image = post.image %}
         {% endif %}

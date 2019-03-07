@@ -1,7 +1,7 @@
 <div class="post">
   <div class="img-container mb-3">
     <div class="image">
-      {% capture image %}/assets/img/thumbnail/category-{{ post.categories.first | downcase }}.png{% endcapture %}
+      {% capture image %}/assets/img/thumbnail/category-{{ post.categories.first | downcase }}.jpg{% endcapture %}
       {% if post.image %}
         {% assign image = post.image %}
       {% endif %}

@@ -17,7 +17,7 @@
 {% endif %}
 
 {% if page.authorIds and image == site.image %}
-  {% capture image %}/assets/img/thumbnail/category-{{ page.categories.first | downcase }}.png{% endcapture %}
+  {% capture image %}/assets/img/thumbnail/category-{{ page.categories.first | downcase }}.jpg{% endcapture %}
 {% endif %}
 
 {% unless image contains 'http' %}
