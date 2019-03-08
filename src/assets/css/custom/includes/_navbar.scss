@@ -16,21 +16,6 @@
     line-height: 1.33;
     letter-spacing: 0.6px;
 
-    &.nav-separator {
-      position: relative;
-      padding-left: 20px;
-
-      &:before {
-        content: "";
-        width: 1px;
-        background: $pagination-disabled-color;
-        position: absolute;
-        left: 0;
-        height: 100%;
-        top: 0;
-      }
-    }
-
     .nav-link {
       color: $base-2;
 
@@ -43,6 +28,57 @@
   .navbar-toggler {
     margin-right: 15px;
     padding: 9px 10px !important;
+    border: none;
+    background: transparent !important;
+  }
+  .navbar-toggler:focus {
+    outline: none;
+    background: transparent !important;
+  }
+
+  .navbar-toggler .icon-bar {
+    background-color: black;
+    transform: rotate(0deg) translate(0px, 0px);
+    transition: ease all .2s;
+  }
+
+  .navbar-toggler .icon-bar {
+    display: block;
+    width: 22px;
+    height: 2px;
+    border-radius: 1px;
+  }
+
+  .navbar-toggler .icon-bar + .icon-bar {
+    margin-top: 4px;
+  }
+
+  .icon-bar:nth-child(2) {
+    transition: ease all .2s;
+  }
+
+  .navbar-toggler:hover > .icon-bar:nth-child(2){
+    width: 22px;
+    transition: ease all .2s;
+  }
+  .navbar-toggler:active > .icon-bar:nth-child(2){
+    width: 22px;
+    transition: ease all .2s;
+  }
+
+  .navbar-toggler:not(.collapsed) .icon-bar:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 4px);
+    transition: ease all .2s;
+  }
+
+  .navbar-toggler:not(.collapsed) .icon-bar:nth-child(2) {
+    opacity: 0;
+    transition: ease all .2s;
+  }
+
+  .navbar-toggler:not(.collapsed) .icon-bar:nth-child(3) {
+    transform: rotate(-45deg) translate(4px, -4px);
+    transition: ease all .2s;
   }
 
   .disabled {
@@ -55,9 +91,86 @@
 }
 
 @media (min-width: 992px) {
-  .navbar-nav > li > a {
-    padding-top: 22.5px;
-    padding-bottom: 22.5px;
-    line-height: 27px;
+  .navbar-nav {
+    .nav-item {
+      .nav-link {
+        padding-top: 22.5px;
+        padding-bottom: 22.5px;
+        line-height: 27px;
+      }
+
+      &.nav-separator {
+        position: relative;
+        padding-left: 20px;
+
+        &:before {
+          content: "";
+          width: 1px;
+          background: $pagination-disabled-color;
+          position: absolute;
+          left: 0;
+          height: 100%;
+          top: 0;
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 992px) {
+  .navbar-brand > img {
+     width: 111px;
+     height: 50px;
+  }
+
+  #navbarNav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    margin: 0;
+    overflow: auto;
+    background-color: white;
+    z-index: 99;
+    width: 85%;
+    height: 100%;
+
+    .navbar-nav {
+      display: block;
+      min-width: 300px;
+      padding: 1em 25px 0;
+      font-size: 16px;
+      line-height: 1.5em;
+      font-weight: 500;
+      text-transform: none;
+    }
+
+    .nav-item {
+      display: block;
+      width: 100%;
+      padding: 0 !important;
+      font-size: 16px;
+      line-height: 20px;
+      letter-spacing: 0;
+
+      .nav-link {
+        display: block;
+        padding: .8125em 0;
+        border-bottom: 1px solid #f2f2f2;
+        letter-spacing: 0;
+      }
+    }
+  }
+
+  .menu-overlay {
+    display: none;
+    background-color: #000;
+    bottom: 0;
+    left: 0;
+    opacity: 0.5;
+    filter: alpha(opacity=50);
+    position: fixed;
+    right: 0;
+    top: 0;
+    z-index: 49;
   }
 }
