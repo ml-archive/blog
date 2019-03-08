@@ -49,6 +49,8 @@ https://www.aerobatic.com/blog/jekyll-assets-bootstrap/- https://jekyllrb.com/do
 - http://davidensinger.com/2013/04/adding-open-graph-tags-to-jekyll/
 - http://www.cody402.com/2017/09/19/How-to-Make-Awesome-Social-Media-Cards-With-Jekyll.html
 - http://vrepin.org/vr/JekyllMeta/
+- https://bootsnipp.com/snippets/E1rAy
+- https://stackoverflow.com/questions/49710238/bootstrap-4-custom-animated-hamburger-icon-closed-on-page-load
 
 ## 💻 Developers
 
