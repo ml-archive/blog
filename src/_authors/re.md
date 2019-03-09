@@ -2,5 +2,9 @@
 title: Rasmus Ebbesen
 permalink: authors/re
 authorId: re
+name: Rasmus Ebbesen
+occupation: Senior Backend Developer
+github: rasmusebbesen
+about: Seasoned backend developer from Copenhagen.
 ---
 

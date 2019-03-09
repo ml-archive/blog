@@ -10,23 +10,24 @@ categories:
 
 ## Motivation
 App search has been here since iOS9. This feature seems to go largely unused. Maybe this is because both developers and people selling features have forgotten it exists. This is a quick guide for less technical people, and a semi quick guide for developers.
+
 ## What you need to know (TL;DR for everyone)
 
-* #### An app can index content in your app, such that it will show up in search results when the user searches in spotlight
-  * Content in the app can either be indexed by user activity (e.g. opening an article or detail page of a contact), by indexing fetched data (e.g. a newsfeed), or combining the two.
+* An app can index content in your app, such that it will show up in search results when the user searches in spotlight
+* Content in the app can either be indexed by user activity (e.g. opening an article or detail page of a contact), by indexing fetched data (e.g. a newsfeed), or combining the two.
+* For an app that has a web counterpart it is possible to add markup to the website, such that the marked items may show up in Spotlight on your phone. This in conjunction with Universal Links, can add the ability to deep link to content in your app without ever having opened the app or manually indexed any content (Not described further here)
+* There are several ways of displaying these search results e.g. they can come with a call button if you're displaying an entity that has a phone number (e.g. people)
+* Items can be deleted again from index or be set to expire. They expire after one month per default.
+* When user taps search results appropriate action should be taken, which usually means taking the user to the detail view of the object displayed in the search. This navigation has to be manually implemented, but can likely be reused for deep linking from pushes.
 
-  * For an app that has a web counterpart it is possible to add markup to the website, such that the marked items may show up in Spotlight on your phone. This in conjunction with Universal Links, can add the ability to deep link to content in your app without ever having opened the app or manually indexed any content (Not described further here)
-  * There are several ways of displaying these search results e.g. they can come with a call button if you're displaying an entity that has a phone number (e.g. people)
-  * Items can be deleted again from index or be set to expire. They expire after one month per default.
-  * When user taps search results appropriate action should be taken, which usually means taking the user to the detail view of the object displayed in the search. This navigation has to be manually implemented, but can likely be reused for deep linking from pushes.
-* #### Real world examples:
+#### Real world examples:
 
-  * Making favorite employees searchable when favoriting -> Clicking employee in Spotlight search takes user to Employee detail view
+* Making favorite employees searchable when favoriting -> Clicking employee in Spotlight search takes user to Employee detail view
 
-  * Indexing the main feed to make items searchable and deep link to detail page
+* Indexing the main feed to make items searchable and deep link to detail page
 
-  * Making an article searchable when opening detail view from list -> Clicking article in spotlight search takes user to the article (Called UserActivity)
-    * This use case comes with handoff to web almost for free, provided the app has the URL to the content. This means that if you have the article open on your phone, you can continue reading on your mac
+* Making an article searchable when opening detail view from list -> Clicking article in spotlight search takes user to the article (Called UserActivity)
+  * This use case comes with handoff to web almost for free, provided the app has the URL to the content. This means that if you have the article open on your phone, you can continue reading on your mac
 
     <p align="center">
         <img src="https://cdn-laravel.vapor.cloud/image/nstack/translate_values/SimulatorScreenShot-iPhoneX-2017-10-31at102233_clWkOWGxvQ.png?width=180" style="margin:20px;">

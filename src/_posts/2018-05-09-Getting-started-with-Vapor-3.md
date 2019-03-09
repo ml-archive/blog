@@ -9,8 +9,6 @@ categories:
 - Vapor
 ---
 
-This blog post has been written by [Steffen D. Sommer](https://twitter.com/steffendsommer) and [Siemen Sikkema](https://twitter.com/siemensikkema).
-
 Vapor has been our go-to framework when we develop backend solutions at Nodes since January 2017. A lot has happened during the past year, especially when we saw Vapor 2 got released back in May. Our overall opinion is that Vapor 2 has been a mature and a fairly feature-rich framework we've enjoyed working with. That said, there is still room for improvement and therefore we have been watching the development of Vapor 3 with excitement.
 
 A couple of days ago, [Vapor released the next major version](https://medium.com/@codevapor/vapor-3-0-0-released-8356fa619a5d) and we've been following along since the betas came out to see how the changes will affect our daily work. We have developed and helped maintain around 25+ customer projects and 30+ open source packages so it's important for us to know the amount of changes needed in order to migrate these projects to Vapor 3. Some of these projects are already in the progress of being migrated and some of them still need to be worked on. Our progress of migrating our open source projects can be found on this [GitHub project board](https://github.com/nodes-vapor/readme/projects/2).

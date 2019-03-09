@@ -2,5 +2,11 @@
 title: Roxana Jula
 permalink: authors/roju
 authorId: roju
+name: Roxana Jula
+occupation: Mobile Developer
+about: Passionate about 💻 Tech, ✈️ Travel and 🍵 Tea
+twitter: RoxanaJula
+github: roxanajula
+authorImage: https://avatars1.githubusercontent.com/u/5189246?s=460&v=4
 ---
 

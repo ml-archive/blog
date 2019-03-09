@@ -3,12 +3,12 @@ layout: default
 title: Authors
 group: authors
 permalink: authors/
-image : /assets/img/header/author.jpg
+image: /assets/img/header/author.jpg
 ---
 
 
 <div class="row no-gutters justify-content-md-center d-flex flex-wrap authors">
-  {% for author in site.data.authors %}
+  {% for author in site.authors %}
     {% include author.html author=author %}
   {% endfor %}
 </div>

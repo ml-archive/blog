@@ -66,7 +66,7 @@ During development of the app, the developer might want to quickly change the AP
 
 
 
-}![rewrite1](https://cdn-laravel.vapor.cloud/image/nstack/translate_values/tool_rewrite1_3CeaIAAvHJ.png)
+![rewrite1](https://cdn-laravel.vapor.cloud/image/nstack/translate_values/tool_rewrite1_3CeaIAAvHJ.png)
 
 _First we create a rewrite rule in order to replace the URL of the iPhone X image_
 

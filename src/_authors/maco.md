@@ -2,5 +2,11 @@
 title: Marius Constantinescu
 permalink: authors/maco
 authorId: maco
+name: Marius Constantinescu
+occupation: iOS Developer
+twitter: marius_const
+github: mariusc
+about: iOS engineer at @Nodesdk. @iOSGoodies core contributor. 2013 GSoC'er. @DTU_compute alumnus
+authorImage: https://avatars2.githubusercontent.com/u/844175?v=3&s=466
 ---
 

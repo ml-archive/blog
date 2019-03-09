@@ -39,7 +39,8 @@ layout: default
 
 <div class="row no-gutters justify-content-center d-flex flex-wrap authors{% if count == 1 %} single{% endif %}{% if count == 2 %} two{% endif %}">
   {% for authorId in page.authorIds %}
-    {% assign author = site.data.authors[authorId] %}
+    <!-- {% assign author = site.data.authors[authorId] %} -->
+    {% assign author = site.authors | where: "authorId",authorId | first %}
     {% include author.html author=author %}
   {% endfor %}
 </div>

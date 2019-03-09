@@ -10,7 +10,7 @@ categories:
 
 If you're an iOS developer, most likely you've had to deal with code signing. And if you're a junior iOS developer, you might've felt a bit overwhelmed by everything going on in the "Certificates, Identifiers & Profiles" section of the developer portal.
 
-<p align=center><img src="https://d1gwekl0pol55k.cloudfront.net/image/baas/translate_values/hbikk_ospmSpNLyW.gif" /></p>
+<p align="center"><img src="https://d1gwekl0pol55k.cloudfront.net/image/baas/translate_values/hbikk_ospmSpNLyW.gif" /></p>
 
 The goal of this article is to help junior iOS developers understand code signing on a higher level. This will not be a step-by-step tutorial on how to code sign your app. Ideally, after reading this article, you will be able to code sign your app without following any tutorials.
 
@@ -83,7 +83,8 @@ The key points I want to highlight about code signing are:
 
 Understanding these will help you understand code signing and save you a lot of time in the end. 
 
-<p align=center><img src="https://d1gwekl0pol55k.cloudfront.net/image/baas/translate_values/success_YGu5HHLDK6.jpg" width = 50% /></p>
+<p align="center"><img src="https://d1gwekl0pol55k.cloudfront.net/image/baas/translate_values/success_YGu5HHLDK6.jpg" width="50%"/>
+</p>
 
 ### Further reading
 

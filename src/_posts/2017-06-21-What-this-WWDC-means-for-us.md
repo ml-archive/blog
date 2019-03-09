@@ -25,7 +25,7 @@ But it's not Swift 4 that got developers excited at WWDC. The greatest news, for
 
 Xcode 9 finally brings refactoring for Swift code. Not only that, but the whole source editor was rewritten (in Swift). The source control integration has been improved, there are updates to the build system and Xcode Server comes by default with Xcode 9.
 
-<p align=center><img src="https://cdn-laravel.vapor.cloud/image/nstack/translate_values/xcode-3_oHKU9h4bxf.gif"/></p>
+<p align="center"><img src="https://cdn-laravel.vapor.cloud/image/nstack/translate_values/xcode-3_oHKU9h4bxf.gif"/></p>
 
 Other noteworthy features are named colours in the asset catalogue, pure vector image support, a main thread checker, a new unexpected behaviour sanitizer, and wireless debugging. 
 
@@ -34,7 +34,7 @@ Other noteworthy features are named colours in the asset catalogue, pure vector 
 
 With regards to iOS 11, the two new APIs that excited me the most are the new `PDFView` and the Drag and Drop. Drag and Drop is really interesting, especially for iPads. There is support for Drag and Drop on iPhones too, but that's only in the same app. For iPad, however, this opens up a lot of possibilities. The whole way of interacting with files and data across multiple applications has been updated. There are a lot of new possibilities for app developers, and I can't wait to see iPad-optimised apps in autumn.
 
-<p align=center><img src="https://cdn-laravel.vapor.cloud/image/nstack/translate_values/ios_11_drag_and_drop_pltFnWyKjL.gif"/></p>
+<p align="center"><img src="https://cdn-laravel.vapor.cloud/image/nstack/translate_values/ios_11_drag_and_drop_pltFnWyKjL.gif"/></p>
 
 
 Regarding the new `PDFViewer`, I'm looking forward to not having to use a web view for displaying pdfs; even though that's fast, convenient and it worked, that always seemed a bit like a sub-optimal solution.

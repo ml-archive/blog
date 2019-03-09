@@ -36,8 +36,9 @@ Just add the UI elements you wish to use to the storyboard and create the necess
 
 This is what the storyboard could look like.
 
-<p align=center>
-<img src=https://cdn-laravel.vapor.cloud/image/nstack/translate_values/ScreenShot2017-11-22at104935_5ahcPXPuRk.png?width=280 style=";margin:20px;">
+<p align="center">
+<img src="https://cdn-laravel.vapor.cloud/image/nstack/translate_values/ScreenShot2017-11-22at104935_5ahcPXPuRk.png?width=280" style=";margin:20px;">
+</p>
 
 ## NSWidgetProviding
 
@@ -250,11 +251,12 @@ private extension WidgetViewController {
 
 Widgets are a great addition to any iOS app. They are very easy to setup and use and most applications should support them in some form or the other.
 
-<p align=center>
-<img src=https://cdn-laravel.vapor.cloud/image/nstack/translate_values/IMG_02842_4tRqdM5GAQ.jpg?width=280 style=";margin:20px;">
+<p align="center">
+<img src="https://cdn-laravel.vapor.cloud/image/nstack/translate_values/IMG_02842_4tRqdM5GAQ.jpg?width=280" style=";margin:20px;">
+</p>
 
 
 ## Resources
 
-* https://developer.apple.com/library/content/documentation/General/Conceptual/ExtensibilityPG/Today.html
-* https://www.raywenderlich.com/150953/today-extension-tutorial-getting-started
+* [https://developer.apple.com/library/content/documentation/General/Conceptual/ExtensibilityPG/Today.html](https://developer.apple.com/library/content/documentation/General/Conceptual/ExtensibilityPG/Today.html)
+* [https://www.raywenderlich.com/150953/today-extension-tutorial-getting-started](https://www.raywenderlich.com/150953/today-extension-tutorial-getting-started)

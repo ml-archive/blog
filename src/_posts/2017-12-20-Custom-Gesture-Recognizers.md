@@ -27,7 +27,7 @@ We also have the **cancelled** state that occurs when the current event is inter
 
 It is also important to implement a **reset()** method that will make sure we are ready to process new event sequences by returning to starting values.
 
-<p align=center><img width=50%; src="https://docs-assets.developer.apple.com/published/eedc7ffb40/922db1b2-9860-4618-8226-699b360701b3.png"/></p>
+<p align="center"><img width="50%" src="https://docs-assets.developer.apple.com/published/eedc7ffb40/922db1b2-9860-4618-8226-699b360701b3.png"/></p>
 
 *[Image source](https://developer.apple.com/documentation/uikit/touches_presses_and_gestures/implementing_a_custom_gesture_recognizer/about_the_gesture_recognizer_state_machine)*
 
@@ -176,7 +176,7 @@ Then we implement what should happen when the touch ended. We verify that the la
 ```swift
 view.addGestureRecognizer(CustomGestureRecognizer(target: self, action: #selector(openPhotoLibrary)))
 ```
-<p align=center><img width=40%; src = "https://cdn-laravel.vapor.cloud/image/nstack/translate_values/custom-gesture-simulator_8LPWcpLqKA.gif"/></p>
+<p align="center"><img width="40%" src = "https://cdn-laravel.vapor.cloud/image/nstack/translate_values/custom-gesture-simulator_8LPWcpLqKA.gif"/></p>
 
 ## Links/Resources
 * [Apple - Gesture Recognizer State Machine](https://developer.apple.com/documentation/uikit/touches_presses_and_gestures/implementing_a_custom_gesture_recognizer/about_the_gesture_recognizer_state_machine)

@@ -2,5 +2,11 @@
 title: Sebastian Ly Serena
 permalink: authors/sely
 authorId: sely
+name: Sebastian Ly Serena
+occupation: QA Specialist
+about: Professional bug hunter
+twitter: s_ly_serena
+github: sebastianlyserena
+authorImage: https://avatars1.githubusercontent.com/u/8152466?s=400&u=71fe80779572bbbb63e83ea46cec3bbd01a7b27b&v=4
 ---
 

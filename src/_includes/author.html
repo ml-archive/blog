@@ -2,21 +2,21 @@
   <div class="author-content">
     {% assign image = '/assets/img/thumbnail/author.png' %}
     {% assign info = author %}
-    {% if author.first[0] == null %}
-      {% assign info = author[1] %}
+    {% if author == null %}
+      {% assign info = author %}
     {% endif %}
-    {% if info.image %}
-      {% assign image = info.image %}
+    {% if info.authorImage %}
+      {% assign image = info.authorImage %}
     {% endif %}
     <div class="item">
       <div class="img-container">
         <div class="cover-image" style="background-image: url('{{ image }}');">
-          <a href="{{ site.baseurl }}/authors/{{ info.id }}" class="text-decoration-none bg-image-link"></a>
+          <a href="{{ site.baseurl }}/authors/{{ info.authorId }}" class="text-decoration-none bg-image-link"></a>
         </div>
       </div>
     </div>
     <div class="item text-center">
-      <h3 class="name"><a href="{{ site.baseurl }}/authors/{{ info.id }}" class="text-decoration-none color base-2">{{ info.name }}</a></h3>
+      <h3 class="name"><a href="{{ site.baseurl }}/authors/{{ info.authorId }}" class="text-decoration-none color base-2">{{ info.name }}</a></h3>
       <h6 class="occupation">{{ info.occupation }}</h6>
       <p class="about">{{ info.about }}</p>
     </div>

@@ -29,22 +29,22 @@ There are a few standard gestures that Apple’s guidelines advise us to keep th
 ### [Slack](https://slack.com/) - Gestures
 Slack is doing a great job at adding shortcuts in their apps and considering it is a tool used by over six million people daily it makes sense. You can see below some of the accelerators they made available for their users:
 
-<p align=center><img src = "https://cdn-laravel.vapor.cloud/image/nstack/translate_values/accelerators-slack-gestures_eyX3C5YKfB.png"/></p>
+<p align="center"><img src="https://cdn-laravel.vapor.cloud/image/nstack/translate_values/accelerators-slack-gestures_eyX3C5YKfB.png"/></p>
 
 ### [Slack](https://slack.com/) - Peek and pop - 3d Touch
 
-<p align=center><img width=40%; src = "https://cdn-laravel.vapor.cloud/image/nstack/translate_values/accelerators-peek-and-pop_15bgFVdIlh.gif"/></p>
+<p align="center"><img width="40%" src="https://cdn-laravel.vapor.cloud/image/nstack/translate_values/accelerators-peek-and-pop_15bgFVdIlh.gif"/></p>
 
 ### App icon quick actions - 3d Touch
 Here are some examples of how popular apps use quick actions powered by the 3d touch, some might make our interactions so much faster and some of them might not make such a big difference.
 
-<p align=center><img src = "https://cdn-laravel.vapor.cloud/image/nstack/translate_values/accelerators-app-icon-shortcuts_oYKfUvAOe4.png"/></p>
+<p align="center"><img src="https://cdn-laravel.vapor.cloud/image/nstack/translate_values/accelerators-app-icon-shortcuts_oYKfUvAOe4.png"/></p>
 
 ### [Nodes](https://www.nodesagency.com/) example
 
 In the Fitness DK app we provide a faster switch between Weekly and Monthly stats in the Tracker by letting the user tap on the background of the screen:
 
-<p align=center><img width=40%; src = "https://cdn-laravel.vapor.cloud/image/nstack/translate_values/accelerators-fitness-dk_ce9cGyOPEG.gif"/></p>
+<p align="center"><img width="40%" src="https://cdn-laravel.vapor.cloud/image/nstack/translate_values/accelerators-fitness-dk_ce9cGyOPEG.gif"/></p>
 
 ## Code examples
 Check out our accelerators code examples:
