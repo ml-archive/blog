@@ -12,6 +12,7 @@
 @import 'custom/includes/authors.scss';
 @import 'custom/includes/pagination.scss';
 @import 'custom/includes/share_buttons.scss';
+@import 'custom/includes/footer.scss';
 @import 'custom/includes/filter.scss';
 @import 'fruity.css';
 @import url('https://fonts.googleapis.com/css?family=Roboto:500,900');
@@ -117,6 +118,14 @@ a.color.base-2 {
   display:inline-block;
   width:100%;
   height:100%;
+}
+
+.gradient-bg {
+  background: linear-gradient(105deg, $accent-1, $accent-3);
+}
+
+.gradient-bg h2 {
+  color: white;
 }
 
 @media screen and (min-width: 1440px) {
