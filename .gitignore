@@ -8,3 +8,9 @@ dist/
 .jekyll-cache/
 .jekyll-metadata
 public/
+
+### macOS ###
+# General
+.DS_Store
+.AppleDouble
+.LSOverride
