@@ -21,7 +21,7 @@ A solution to this can be created by implementing the *Observer Pattern*.
 
 Observer is a behavioral design pattern. It specifies communication between objects: observable and observers. An observable is an object which notifies observers about the changes in its state. For example, in a shopping app, we need to always be notified when the user adds or removes a product from the cart. The user action will be what, in this case, changes the state of the upcoming purchase, and it causes for the cart to be notified.
 
-Today we will be going together over how to implement this pattern in a simple shopping iOS application.
+Today we will be going over how to implement this pattern in a simple shopping iOS application.
 
 ## Let's get started
 
@@ -38,7 +38,7 @@ As well I have created a demo project that can be downloaded [here](https://gith
 
 For our app to be able to observ changes we need a way to register an observer and to do so we need to create it first. So let's get started.
 
-``` 
+```swift
 class Observer<ObserverValue> {
 
     // the associated value for the observer
@@ -54,7 +54,7 @@ In the above snippet we have layed out the base for our observer. Here we are de
 
 Now that we can create an observer, let's see how we can subsribe to a change event. 
 
-```
+```swift
 // typealias for our observe callback
 typealias ObservableCallback = ((ObserverValue) -> Void)
 
@@ -86,7 +86,7 @@ func observe(_ values: @escaping ObservableCallback) -> ObserverId {
 
 Above we have created  `func observe(_ values: @escaping ObservableCallback) -> ObserverId`.  This function will allow us to safely register an observer, that in the following step we will notify when an update to our value happens. The following `func update(_ value: ObserverValue)` we will call to update the current value of our observer. When an update events happens we then will notify all our registered observers about the update with the help of  `func notify()`.
 
-```
+```swift
 func update(_ value: ObserverValue) {
     self.value = value
     notify()
@@ -99,19 +99,19 @@ private func notify() {
 }
 ```
 
-Once our observer is created we can now use it to subscribe to an update event. In our app we will use this to ease the way add the items selected by the user to the cart.
+Once our observer is created we can now use it to subscribe to an update event. In our app we will use this to ease the way we add the items selected by the user to the cart.
 
 ### Add the observer to our project
 
 Now in our project we can start including the observer. We are going to create an observer for the user selected products in our scenes root, to be able to pass it around via initialisers to our `UIViewControllers`. 
 
-```
+```swift
 let productsObserver: Observer<[Product]> = Observer([])
 ```
 
-With the observer created we now need a way to pass it to our  `UIViewControllers` so go ahead an modify the  `class func instantiate(productsObserver: Observer<[Product]>)`  in our `UIViewControllers` to include the `productsObserver` as a paremeter, then declare the `var productsObserver: Observer<[Product]>!` in the `UIViewController` as well. Your instantiate function for `ProductCategoriesViewController` should look similar to this now.
+With the observer created we now need a way to pass it to our  `UIViewControllers`, so go ahead an modify the  `class func instantiate(productsObserver: Observer<[Product]>)`  in our `UIViewControllers` to include the `productsObserver` as a paremeter, then declare the `var productsObserver: Observer<[Product]>!` in the `UIViewController` as well. Your instantiate function for `ProductCategoriesViewController` should look similar to this now.
 
-```
+```swift
 private var productsObserver: Observer<[Product]>!
 
 // MARK: - Init
@@ -132,7 +132,7 @@ For our cart to update in real time, we will need to subscribe to a change event
 
 In the `viewDidLoad` go ahead and add the following snippet: 
 
-```
+```swift
 observerReference = productsObserver.observe { (products) in
     self.productsLabel.text = "\(products.count) items"
     var price = 0.0
@@ -143,7 +143,7 @@ observerReference = productsObserver.observe { (products) in
 
 The observe function will notify us via it's callback whenever a change in the associated value of our observer happens. As well the function returns a value of type `Int` that we will use to hold a reference to our observable.
 
-```
+```swift
 private var observerReference: Int!
 ```
 
@@ -151,7 +151,7 @@ private var observerReference: Int!
 
 Now that we are listening for events and we have the observer declared in our app, we need a way to add the user selected products to the current value of our observer. In order to do so we would need to get the current array of products and append a new product to it. Currently we don't have a way to get the current value of our observer, but by adding the following function in our `Observer` class we can do so: 
 
-```
+```swift
 func getValue() -> ObserverValue {
     return value
 }
@@ -161,7 +161,7 @@ The  `func getValue() -> ObserverValue` will return the current associated value
 
 Now in our `ProductsViewController` in the `didSelectRowAt` delegsate function for our `UITableView` we can update the associated value: 
 
-```
+```swift
 func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     tableView.deselectRow(at: indexPath, animated: false)
     // get the selected product
