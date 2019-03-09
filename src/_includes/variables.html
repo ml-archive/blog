@@ -3,33 +3,27 @@
 {% else %}
   {% assign title = site.title %}
 {% endif %}
-
 {% assign url = page.url | replace:'/index.html','/' | prepend: site.baseurl | prepend: site.url  %}
-
 {% if page.image %}
   {% assign image = page.image %}
 {% else %}
   {% assign image = site.image %}
 {% endif %}
-
 {% if page.authorId %}
-  {% assign image = site.data.authors[page.authorId].image %}
+  {% assign author = site.authors | where: "authorId",page.authorId | first %}
+  {% assign image = author.authorImage %}
 {% endif %}
-
 {% if page.authorIds and image == site.image %}
   {% capture image %}/assets/img/thumbnail/category-{{ page.categories.first | downcase }}.jpg{% endcapture %}
 {% endif %}
-
 {% unless image contains 'http' %}
   {% assign image = image | prepend: site.baseurl | prepend: site.url %}
 {% endunless %}
-
 {% if page.excerpt %}
   {% assign description = page.excerpt | markdownify | strip_html | condense_spaces | strip_newlines | truncate: 160 | escape_once %}
 {% else %}
   {% assign description = site.description %}
 {% endif %}
-
 {% if page.tags %}
   {% assign tags = page.tags | join: ', ' | escape %}
 {% endif %}

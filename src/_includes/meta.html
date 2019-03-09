@@ -7,7 +7,8 @@
 {% endif %}
 
 {% if page.authorIds %}
-  <meta name="author" content="{{ site.data.authors[page.authorIds.first].name }}" />
+  {% assign author = site.authors | where: "authorId",page.authorIds.first | first %}
+  <meta name="author" content="{{ author.name }}" />
 {% endif %}
 
 {% if page.authorIds %}
