@@ -465,24 +465,62 @@
 
 
 		</div>
-		  <script>
-    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-          (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-    ga('create', 'UA-6201188-6', 'auto');
-    ga('send', 'pageview');
-  </script>
+		<footer class="gradient-bg">
+  <div class="container mb-0">
+    <header class="section-title-default section-title text-center">
+      <h2>Get in touch</h2>
+      <p><span style="color: white">Provide us with your contact details and we will contact you today.</span></p>
+    </header>
+    <div class="footer-form" id="footerhsform"></div>
+  </div>
+</footer>
 
 <!-- JS -->
+<script>
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-6201188-6', 'auto');
+	ga('send', 'pageview');
+</script>
+<!--[if lte IE 8]><script charset="utf-8" type="text/javascript" src="//js.hsforms.net/forms/v2-legacy.js"></script><![endif]-->
+<script charset="utf-8" type="text/javascript" src="//js.hsforms.net/forms/v2.js"></script>
 <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 <script type="text/javascript">
 	$(document).ready(function() {
+		hbspt.forms.create({
+			portalId: "4791122",
+			target: '#footerhsform',
+			formId: "d7ca80ac-7e84-4ec5-bac7-3907879250db",
+			css: "",
+			onFormSubmit: function($form) {
+				console.log("working");
+				window.dataLayer = window.dataLayer || [];
+				window.dataLayer.push({
+					'event': 'footerformsubmission',
+					'eventCategory': 'Contact Form',
+					'eventAction': 'Submit'
+				});
+				ga(function() {
+					var clientId = ga.getAll()[0].get('clientId');
+					$("[name='ga_client_id']").val(clientId);
+				});
+			}
+		});
+
+		setTimeout(function() {
+			$( ".input .hs-input" ).on('focus',function() {
+				$(this).parent().addClass("input-focused");
+			}).on('blur',function(){$(".input").removeClass('input-focused');
+			});
+		}, 3000);
+
 		$('[data-toggle="collapse"]').on('click', function() {
 			$($(this).data('target')).animate({'width': 'toggle'}, 350);
-			$(".menu-overlay").fadeIn(500);
+			// $(".menu-overlay").fadeIn(500);
 		});
 	});
 </script>
